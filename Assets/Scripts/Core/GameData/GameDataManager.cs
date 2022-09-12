@@ -98,16 +98,14 @@ namespace SuraSang
                         {
                             var parsedValue = ParseValue(type.Value.PropertyType, value.ToString());
 
-                            if (parsedValue == null)
-                            {
-                                Debug.LogError($"{dataBaseType} : 지원되지 않는 형식의 변환입니다. Type : {type} Value : {value}");
-                            }
-
                             if (parsedValue != null)
                             {
                                 type.Value.SetValue(data, parsedValue);
                             }
-                            else { }
+                            else
+                            {
+                                Debug.LogError($"{dataBaseType} : 지원되지 않는 형식의 변환입니다. Type : {type} Value : {value}");
+                            }
                         }
                     }
 
