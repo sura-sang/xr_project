@@ -32,6 +32,8 @@ namespace SuraSang
 
         public float JumpPower;
 
+        public float ForceMagnitude;//물체 미는 힘
+
         public Vector3 MoveDir { get; set; }
 
 
@@ -81,6 +83,21 @@ namespace SuraSang
 
 
             _controller.Move(MoveDir * Time.deltaTime);
+        }
+
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            var rig = hit.collider.attachedRigidbody;
+
+            if (rig != null)
+            {
+                var forceDir = hit.gameObject.transform.position - transform.position;
+                forceDir.y = 0;
+                forceDir.Normalize();
+
+                rig.AddForceAtPosition(forceDir * ForceMagnitude, transform.position, ForceMode.Impulse);
+            }
         }
 
         public void ChangeState(CharacterMoveState state)
