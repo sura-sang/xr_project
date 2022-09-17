@@ -1,5 +1,5 @@
 {
-    "name": "PhysicsCharacterActions",
+    "name": "CharacterActions",
     "maps": [
         {
             "name": "Player",
@@ -20,16 +20,7 @@
                     "id": "fdc643d6-5991-4851-8452-863d719bc1ec",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CancelJump",
-                    "type": "Button",
-                    "id": "66edb1a5-ce82-4fb9-97dd-f7d189058e53",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -208,28 +199,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2afe3129-06ec-4960-81d9-346129bcbbdc",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CancelJump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "36e02d4d-1869-4541-a5a5-079de7ff38e3",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "CancelJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
