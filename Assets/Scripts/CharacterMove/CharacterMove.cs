@@ -17,7 +17,13 @@ namespace SuraSang
 
     public class CharacterMove : MonoBehaviour
     {
+
+        public LayerMask HeadCheckLayer;
+
         // TODO : 다른곳으로 옮기자
+        public float CharacterHeight;
+        public float CharacterCrouchHeight;
+
         public float Gravity;
         public float FallingGravityMultiplier;// 떨어질때의 중력
         public float GravityLimit;
@@ -80,7 +86,6 @@ namespace SuraSang
 
             OnMove?.Invoke(moveInput);
             _currentState.UpdateState();
-
 
             _controller.Move(MoveDir * Time.deltaTime);
         }
@@ -174,9 +179,29 @@ namespace SuraSang
             transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         }
 
-        public void Crouch(bool active)
+        public bool Crouch(bool active)
         {
-            _controller.height = active ? 1 : 2;
+            if (active)
+            {
+                _controller.height = CharacterCrouchHeight;
+            }
+            else
+            {
+                if (IsHeadblocked())
+                {
+                    return false;
+                }
+
+                _controller.height = CharacterHeight;
+            }
+
+            return true;
+        }
+
+        public bool IsHeadblocked()
+        {
+            var headPos = transform.position + Vector3.up * (CharacterHeight * 0.5f);
+            return Physics.OverlapSphere(headPos, 0.1f, HeadCheckLayer).Length > 0;
         }
     }
 }

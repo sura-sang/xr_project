@@ -12,6 +12,9 @@ namespace SuraSang
 
         private float _speed;
 
+        private bool _isCrouch;
+        private bool _isCrouchFailed = false;
+
         public override void InitializeState()
         {
             _characterMove.OnMove = OnMove;
@@ -25,6 +28,11 @@ namespace SuraSang
 
         public override void UpdateState()
         {
+            if (_isCrouchFailed)
+            {
+                OnCrouch(_isCrouch);
+            }
+
             if (!_controller.isGrounded)
             {
                 if (Time.time - _lastGroundTime > _characterMove.CoyoteTime)
@@ -52,13 +60,18 @@ namespace SuraSang
 
         private void OnCrouch(bool isOn)
         {
-            _characterMove.Crouch(isOn);
+            _isCrouch = isOn;
+            if (_characterMove.Crouch(isOn))
+            {
+                _isCrouchFailed = true;
+                return;
+            }
             _speed = isOn ? _characterMove.Speed * _characterMove.CrouchMultiplier : _characterMove.Speed;
         }
 
         private void OnJump(bool isOn)
         {
-            if (isOn)
+            if (isOn && !_characterMove.IsHeadblocked())
             {
                 _characterMove.ChangeState(new CharacterMoveJumping(_characterMove));
             }

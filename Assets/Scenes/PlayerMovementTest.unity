@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 166525012}
   - component: {fileID: 166525010}
   - component: {fileID: 166525009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa765140e0dd8c143b904b0be7ddf857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeadCheckLayer:
+    serializedVersion: 2
+    m_Bits: 55
+  CharacterHeight: 0
+  CharacterCrouchHeight: 0
   Gravity: 50
   FallingGravityMultiplier: 1.5
   GravityLimit: 200
@@ -898,7 +903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634825156}
   - component: {fileID: 1634825157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1278,7 @@ GameObject:
   - component: {fileID: 2124505166}
   - component: {fileID: 2124505165}
   - component: {fileID: 2124505164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
