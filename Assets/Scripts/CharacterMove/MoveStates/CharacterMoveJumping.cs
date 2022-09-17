@@ -39,22 +39,29 @@ namespace SuraSang
         private void OnMove(Vector2 input)
         {
             var dir = _characterMove.MoveDir;
+            var y = dir.y;
 
             if (!_isJumpEnd && Time.time - _jumpStartTime < _characterMove.VariableJumpTime)
             {
-                dir.y = _characterMove.JumpPower;
-                _characterMove.MoveDir = dir;
+                y = _characterMove.JumpPower;
             }
             else
             {
-                dir.y -= _characterMove.Gravity * Time.deltaTime;
-                dir.y = Mathf.Max(dir.y, -_characterMove.GravityLimit);
+                y -= _characterMove.Gravity * Time.deltaTime;
+                y = Mathf.Max(y, -_characterMove.GravityLimit);
 
-                if (dir.y < 0)
+                if (y < 0)
                 {
                     _characterMove.ChangeState(new CharacterMoveFalling(_characterMove));
                 }
             }
+
+            dir.y = 0;
+
+            var inputDir = _characterMove.InputToCameraSpace(input) * _characterMove.Speed;
+            dir = Vector3.MoveTowards(dir, inputDir, _characterMove.AirControl * Time.deltaTime);
+
+            dir.y = y;
 
             _characterMove.MoveDir = dir;
         }

@@ -24,8 +24,15 @@ namespace SuraSang
         {
             var dir = _characterMove.MoveDir;
 
-            dir.y -= _characterMove.Gravity * _characterMove.FallingGravityMultiplier * Time.deltaTime;
-            dir.y = Mathf.Max(dir.y, -_characterMove.GravityLimit);
+            var y = dir.y - _characterMove.Gravity * _characterMove.FallingGravityMultiplier * Time.deltaTime;
+            y = Mathf.Max(y, -_characterMove.GravityLimit);
+
+            dir.y = 0;
+
+            var inputDir = _characterMove.InputToCameraSpace(input) * _characterMove.Speed;
+            dir = Vector3.MoveTowards(dir, inputDir, _characterMove.AirControl * Time.deltaTime);
+
+            dir.y = y;
 
             _characterMove.MoveDir = dir;
 
@@ -34,6 +41,5 @@ namespace SuraSang
                 _characterMove.ChangeState(new CharacterMoveGrounded(_characterMove));
             }
         }
-
     }
 }
