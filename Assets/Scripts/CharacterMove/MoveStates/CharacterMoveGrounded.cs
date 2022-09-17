@@ -25,7 +25,6 @@ namespace SuraSang
 
         public override void UpdateState()
         {
-            Debug.LogWarning(_controller.isGrounded);
             if (!_controller.isGrounded)
             {
                 if (Time.time - _lastGroundTime > _characterMove.CoyoteTime)
@@ -75,7 +74,8 @@ namespace SuraSang
             }
 
             dir *= _speed;
-            dir.y -= _characterMove.Gravity;
+
+            dir.y = _controller.isGrounded ? -1 : _characterMove.MoveDir.y - _characterMove.Gravity * Time.deltaTime;
 
             _characterMove.MoveDir = dir;
         }
