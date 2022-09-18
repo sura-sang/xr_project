@@ -8,8 +8,8 @@ namespace SuraSang
     {
         private Rigidbody _rigidbody;
         public bool IsGrab;
-        public LayerMask DetectedObject;
-        public float ObjectDetectLength;
+        public LayerMask DetectedObject; //레이어 설정
+        public float ObjectDetectLength; //잡기 범위
 
         private RaycastHit _ObjectHit;
         private TestPlayer _tPlayer;

@@ -22,7 +22,6 @@ namespace SuraSang
             _characterMove.SetAction(ButtonActions.Run, OnRun);
             _characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _characterMove.SetAction(ButtonActions.Jump, OnJump);
-
             _speed = _characterMove.Speed;
         }
 
