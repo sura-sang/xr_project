@@ -33,7 +33,7 @@ namespace SuraSang
 
 
 
-    public class GameDataManager
+    public class GameDataConverter
     {
         private const string JsonPath = "Json/";
 
@@ -84,7 +84,16 @@ namespace SuraSang
 
                     if (property != null)
                     {
-                        gameDataTypes.Add(gameData.ToString(), property);
+                        var key = gameData.ToString();
+
+                        if (gameDataTypes.ContainsKey(key))
+                        {
+                            Debug.LogError($"{gameDataTypes} 데이터에 중복된 키가 존재합니다 Key : {key}");
+                        }
+                        else
+                        {
+                            gameDataTypes.Add(gameData.ToString(), property);
+                        }
                     }
                 }
 
