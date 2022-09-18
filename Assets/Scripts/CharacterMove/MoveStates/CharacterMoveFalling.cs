@@ -13,7 +13,6 @@ namespace SuraSang
         public override void InitializeState()
         {
             _characterMove.OnMove = OnMove;
-            _controller = _characterMove.Controller;
         }
 
         public override void UpdateState() { }

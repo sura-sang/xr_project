@@ -7,10 +7,10 @@ namespace SuraSang
     public class HangingInteraction : MonoBehaviour
     {
         public bool IsHolding;
-        public LayerMask DetectedEdge;
+        public LayerMask DetectedEdge;//레이어 설정
 
-        public float EdgeDetectLength;
-        public float EdgeSphereCastRadius;
+        public float EdgeDetectLength;//매달리기 거리
+        public float EdgeSphereCastRadius;//매달리기 탐지 범위
 
         private RaycastHit _edgeHit;
         private Rigidbody _rigidbody;
@@ -66,6 +66,7 @@ namespace SuraSang
                 _tPlayer.Speed = _tPlayer.SlowSpeed;
             }
         }
+
         //private void OnDrawGizmos()
         //{
         //    Gizmos.color = Color.red;
