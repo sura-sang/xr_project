@@ -20,17 +20,23 @@ namespace SuraSang
             _characterMove.OnMove = OnMove;
 
             _characterMove.SetAction(ButtonActions.Run, OnRun);
-            _characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
+            //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _characterMove.SetAction(ButtonActions.Jump, OnJump);
+            _characterMove.SetAction(ButtonActions.Absorb, OnAbsorb);
+
             _speed = _characterMove.Speed;
+        }
+        private void OnAbsorb(bool isOn)
+        {
+            Debug.Log(isOn);
         }
 
         public override void UpdateState()
         {
-            if (_isCrouchFailed)
-            {
-                OnCrouch(_isCrouch);
-            }
+            //if (_isCrouchFailed)
+            //{
+            //    OnCrouch(_isCrouch);
+            //}
 
             if (!_controller.isGrounded)
             {

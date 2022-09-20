@@ -45,6 +45,7 @@ namespace SuraSang
         public float ForceMagnitude;//물체 미는 힘
 
         public float EdgeDetectLength;//매달리기 거리
+        public float MoveToLedgeSpeed;//매달리기 거리 보다 멀어 질려고 할때 다시 붙는 속도
         public bool IsHolding;
         public bool IsEdgeDetected;
         public RaycastHit EdgeHit;
@@ -91,8 +92,8 @@ namespace SuraSang
         private void OnDisable()
         {
             _inputActions.Disable();
-        }
 
+        }
         private void Update()
         {
             var moveInput = _moveInputAction.ReadValue<Vector2>();

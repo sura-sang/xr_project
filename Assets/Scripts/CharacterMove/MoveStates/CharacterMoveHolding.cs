@@ -9,15 +9,11 @@ namespace SuraSang
         public CharacterMoveHolding(CharacterMove characterMove) : base(characterMove) { }
 
         private Transform _curEdge;
-        private float _OriginFallingGravityMultiplier;
-        private float _OriginGravity;
         private float _speed;
-        private bool _isHold;
+        private bool _isSame;
 
         public override void InitializeState()
         {
-            _OriginFallingGravityMultiplier = _characterMove.FallingGravityMultiplier;
-            _OriginGravity = _characterMove.Gravity;
             _speed = _characterMove.Speed;
 
             _characterMove.OnMove = OnMove;
@@ -37,6 +33,18 @@ namespace SuraSang
 
             if (_characterMove.IsHolding)
             {
+                Vector3 directionToPoint = (_characterMove.EdgeHit.point - _characterMove.PlayerTransform.position).normalized;
+                _characterMove.LookVector(directionToPoint);
+                _characterMove.PlayerTransform.rotation = _characterMove.EdgeHit.transform.rotation;
+
+                //_curEdge = _characterMove.EdgeHit.transform;
+                var distanceToLedge = Vector3.Distance(_characterMove.PlayerTransform.position, _characterMove.EdgeHit.point);
+
+                if (distanceToLedge > 0.6f)
+                {
+                    _controller.Move(directionToPoint.normalized * _characterMove.MoveToLedgeSpeed * 10f * Time.deltaTime);
+                }
+
                 _speed = _characterMove.SlowSpeed;
             }
             else
@@ -44,7 +52,7 @@ namespace SuraSang
                 _speed = _characterMove.Speed;
             }
         }
-
+       
         private void OnMove(Vector2 input)
         {
             var dir = _characterMove.InputToCameraSpace(input);
@@ -76,14 +84,9 @@ namespace SuraSang
 
         private void Hanging(bool isOn)
         {
-            //_isEdgeDetected = Physics.SphereCast(_characterMove.PlayerTransform.position, _characterMove.EdgeSphereCastRadius, _characterMove.PlayerTransform.forward, out _edgeHit, _characterMove.EdgeDetectLength, _characterMove.DetectedEdge);
-
             if (_characterMove.IsEdgeDetected && isOn)
             {
-                _curEdge = _characterMove.EdgeHit.transform;
-
-                Vector3 directionToEdge = _curEdge.position - _characterMove.PlayerTransform.position;
-
+                //Vector3 directionToEdge = _curEdge.position - _characterMove.PlayerTransform.position;
                 _characterMove.IsHolding = true;
             }
             else

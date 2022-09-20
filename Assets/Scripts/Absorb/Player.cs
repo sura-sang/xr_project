@@ -36,13 +36,11 @@ namespace SuraSang
         void Start()
         {
             _defaultMaterial = GetComponent<Material>();
-            _defaultMaterial = gameObject.GetComponent<Renderer>().material;
+            _defaultMaterial = gameObject.GetComponent<Renderer>().material; 
         }
 
         void Update()
         {
-            _characterMove.SetAction(ButtonActions.Absorb, OnAbsorb);
-
             if (_isAbsorb)
             {
                 _timer += Time.deltaTime;
@@ -107,6 +105,8 @@ namespace SuraSang
 
         private void OnAbsorb(bool isOn)
         {
+            Debug.Log(isOn);
+
             if (isOn && _hitTargetContainer.Count != 0)
             {
                 for (int i = 0; i < _hitTargetContainer.Count; i++)
