@@ -41,6 +41,8 @@ namespace SuraSang
 
         void Update()
         {
+            _characterMove.SetAction(ButtonActions.Absorb, OnAbsorb);
+
             if (_isAbsorb)
             {
                 _timer += Time.deltaTime;
