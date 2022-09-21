@@ -15,13 +15,18 @@ namespace SuraSang
         Catch,
         Hold,
         Absorb,
+
     }
 
     public class CharacterMove : MonoBehaviour
     {
+
         public LayerMask HeadCheckLayer;
         public LayerMask DetectedEdge;//매달리기 레이어 설정
         public LayerMask DetectedObject; //잡기 레이어 설정
+
+        public LayerMask HeadCheckLayer;
+
 
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
@@ -34,7 +39,9 @@ namespace SuraSang
         public float RunMultiplier;
         public float CrouchMultiplier;
         public float Speed;
+
         public float SlowSpeed;
+
 
         public float CoyoteTime;// 절벽 끝나고 플레이어가 공중에 있어도 일정 시간동안 점프 가능
         public float VariableJumpTime;// 꾸욱 누르면 더 올라가는 기능
@@ -49,6 +56,7 @@ namespace SuraSang
         public bool IsHolding;
         public bool IsEdgeDetected;
         public RaycastHit EdgeHit;
+
 
         public Vector3 MoveDir { get; set; }
 
@@ -67,6 +75,7 @@ namespace SuraSang
 
         private Transform _cameraTransform;
 
+
         //트랜스폼
         public Transform PlayerTransform { get; set; }
 
@@ -77,12 +86,14 @@ namespace SuraSang
             _controller = GetComponent<CharacterController>();
             _cameraTransform = Camera.main.transform;
 
+
             PlayerTransform = GetComponent<Transform>();
 
             SetInputActions();
 
             ChangeState(new CharacterMoveFalling(this));
         }
+
 
         private void OnEnable()
         {
@@ -92,8 +103,8 @@ namespace SuraSang
         private void OnDisable()
         {
             _inputActions.Disable();
-
         }
+
         private void Update()
         {
             var moveInput = _moveInputAction.ReadValue<Vector2>();
@@ -103,6 +114,7 @@ namespace SuraSang
 
             _controller.Move(MoveDir * Time.deltaTime);
         }
+
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
@@ -118,6 +130,7 @@ namespace SuraSang
             }
         }
 
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -132,6 +145,7 @@ namespace SuraSang
             else
                 Gizmos.DrawRay(transform.position, transform.forward * EdgeDetectLength);
         }
+
 
         public void ChangeState(CharacterMoveState state)
         {
@@ -164,11 +178,13 @@ namespace SuraSang
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
 
+
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Hold)?.Invoke(false);
 
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
+
         }
 
         private UnityAction<bool> GetAction(ButtonActions type)
