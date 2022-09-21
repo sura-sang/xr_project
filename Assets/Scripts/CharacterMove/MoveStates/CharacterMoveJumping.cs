@@ -18,12 +18,14 @@ namespace SuraSang
 
             _characterMove.SetAction(ButtonActions.Jump, OnJump);
 
+
             var dir = _characterMove.MoveDir;
             dir.y = _characterMove.JumpPower;
             _characterMove.MoveDir = dir;
         }
 
         public override void UpdateState() { }
+
         public override void ClearState() { }
 
         private void OnJump(bool isOn)
@@ -43,10 +45,12 @@ namespace SuraSang
             {
                 y = _characterMove.JumpPower;
             }
+
             else if(_characterMove.IsEdgeDetected)
             {
                 _characterMove.ChangeState(new CharacterMoveHolding(_characterMove));
             }
+
             else
             {
                 y -= _characterMove.Gravity * Time.deltaTime;

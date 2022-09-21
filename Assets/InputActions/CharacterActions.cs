@@ -261,7 +261,9 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""9434bbee-354d-45c1-aa6e-87a06da577e1"",
                     ""path"": ""<Mouse>/leftButton"",
+
                     ""interactions"": ""Hold(duration=0.1,pressPoint=0.5)"",
+
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hold"",
