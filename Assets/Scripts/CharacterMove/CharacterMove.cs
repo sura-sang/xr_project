@@ -15,7 +15,6 @@ namespace SuraSang
         Catch,
         Hold,
         Absorb,
-
     }
 
     public class CharacterMove : MonoBehaviour
@@ -24,9 +23,6 @@ namespace SuraSang
         public LayerMask HeadCheckLayer;
         public LayerMask DetectedEdge;//매달리기 레이어 설정
         public LayerMask DetectedObject; //잡기 레이어 설정
-
-        public LayerMask HeadCheckLayer;
-
 
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
