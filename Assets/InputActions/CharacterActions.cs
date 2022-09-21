@@ -272,7 +272,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""4f894c4b-efee-4b9a-b170-65fe62034c6b"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press(pressPoint=0.5,behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Absorb"",
