@@ -45,6 +45,12 @@ namespace SuraSang
             {
                 y = _characterMove.JumpPower;
             }
+
+            else if(_characterMove.IsEdgeDetected)
+            {
+                _characterMove.ChangeState(new CharacterMoveHolding(_characterMove));
+            }
+
             else
             {
                 y -= _characterMove.Gravity * Time.deltaTime;

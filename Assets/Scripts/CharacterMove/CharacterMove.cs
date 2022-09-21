@@ -13,12 +13,20 @@ namespace SuraSang
         Jump,
         Crouch,
         Catch,
+        Hold,
+        Absorb,
+
     }
 
     public class CharacterMove : MonoBehaviour
     {
 
         public LayerMask HeadCheckLayer;
+        public LayerMask DetectedEdge;//매달리기 레이어 설정
+        public LayerMask DetectedObject; //잡기 레이어 설정
+
+        public LayerMask HeadCheckLayer;
+
 
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
@@ -32,6 +40,9 @@ namespace SuraSang
         public float CrouchMultiplier;
         public float Speed;
 
+        public float SlowSpeed;
+
+
         public float CoyoteTime;// 절벽 끝나고 플레이어가 공중에 있어도 일정 시간동안 점프 가능
         public float VariableJumpTime;// 꾸욱 누르면 더 올라가는 기능
         public float AirControl;// 공중에서 컨트롤가능한 정도
@@ -39,6 +50,13 @@ namespace SuraSang
         public float JumpPower;
 
         public float ForceMagnitude;//물체 미는 힘
+
+        public float EdgeDetectLength;//매달리기 거리
+        public float MoveToLedgeSpeed;//매달리기 거리 보다 멀어 질려고 할때 다시 붙는 속도
+        public bool IsHolding;
+        public bool IsEdgeDetected;
+        public RaycastHit EdgeHit;
+
 
         public Vector3 MoveDir { get; set; }
 
@@ -57,12 +75,19 @@ namespace SuraSang
 
         private Transform _cameraTransform;
 
+
+        //트랜스폼
+        public Transform PlayerTransform { get; set; }
+
         private void Awake()
         {
             _buttonEvents = new Dictionary<ButtonActions, UnityAction<bool>>();
 
             _controller = GetComponent<CharacterController>();
             _cameraTransform = Camera.main.transform;
+
+
+            PlayerTransform = GetComponent<Transform>();
 
             SetInputActions();
 
@@ -105,6 +130,23 @@ namespace SuraSang
             }
         }
 
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            IsEdgeDetected = Physics.Raycast(transform.position, transform.forward, out EdgeHit, EdgeDetectLength, DetectedEdge);
+
+            if (IsEdgeDetected)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay(transform.position, transform.forward * EdgeHit.distance);
+            }
+            else
+                Gizmos.DrawRay(transform.position, transform.forward * EdgeDetectLength);
+        }
+
+
         public void ChangeState(CharacterMoveState state)
         {
             if (_currentState != null)
@@ -135,6 +177,14 @@ namespace SuraSang
 
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
+
+
+            _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
+            _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Hold)?.Invoke(false);
+
+            _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
+            _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
+
         }
 
         private UnityAction<bool> GetAction(ButtonActions type)

@@ -25,6 +25,7 @@ namespace SuraSang
 
             _speed = _characterMove.Speed;
         }
+        
 
         public override void UpdateState()
         {
