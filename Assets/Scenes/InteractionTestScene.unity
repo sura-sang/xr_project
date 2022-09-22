@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163758354}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440335, z: 0.00067751406, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440216, z: 0.00067751174, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -16.427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -920,7 +920,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847529107}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440335, z: 0.00067751406, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440216, z: 0.00067751174, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -16.427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2387,7 +2387,6 @@ GameObject:
   - component: {fileID: 2127620528}
   - component: {fileID: 2127620527}
   - component: {fileID: 2127620526}
-  - component: {fileID: 2127620525}
   - component: {fileID: 2127620530}
   m_Layer: 8
   m_Name: PlayerDummy
@@ -2396,47 +2395,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2127620525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127620524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa765140e0dd8c143b904b0be7ddf857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HeadCheckLayer:
-    serializedVersion: 2
-    m_Bits: 55
-  DetectedEdge:
-    serializedVersion: 2
-    m_Bits: 64
-  DetectedObject:
-    serializedVersion: 2
-    m_Bits: 128
-  CharacterHeight: 0
-  CharacterCrouchHeight: 0
-  Gravity: 50
-  FallingGravityMultiplier: 1.5
-  GravityLimit: 200
-  RunMultiplier: 2
-  CrouchMultiplier: 0.5
-  Speed: 7
-  SlowSpeed: 3
-  CoyoteTime: 0.25
-  VariableJumpTime: 0.1
-  AirControl: 15
-  JumpPower: 15
-  ClimbPower: 17
-  ForceMagnitude: 0.1
-  EdgeDetectLength: 1
-  MoveToLedgeSpeed: 1
-  IsHolding: 0
-  IsEdgeDetected: 0
-  isWPressed: 0
 --- !u!143 &2127620526
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2535,7 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentEmotion: 4
-  _debugMode: 0
+  _debugMode: 1
   _ViewAngle: 166
   _viewRadius: 2.72
   _viewTargetMask:
@@ -2544,6 +2502,33 @@ MonoBehaviour:
   _viewObstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  HeadCheckLayer:
+    serializedVersion: 2
+    m_Bits: 759
+  DetectedEdge:
+    serializedVersion: 2
+    m_Bits: 64
+  DetectedObject:
+    serializedVersion: 2
+    m_Bits: 128
+  CharacterHeight: 2
+  CharacterCrouchHeight: 1
+  Gravity: 50
+  FallingGravityMultiplier: 1.5
+  GravityLimit: 200
+  RunMultiplier: 2
+  CrouchMultiplier: 0.5
+  Speed: 7
+  SlowSpeed: 3
+  CoyoteTime: 0.25
+  VariableJumpTime: 0.1
+  AirControl: 15
+  JumpPower: 15
+  ClimbPower: 17
+  ForceMagnitude: 0.1
+  EdgeDetectLength: 1
+  MoveToLedgeSpeed: 1
+  isWPressed: 0
 --- !u!1001 &3070441877572128755
 PrefabInstance:
   m_ObjectHideFlags: 0

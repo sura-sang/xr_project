@@ -3,129 +3,114 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace SuraSang
 {
-    public class Player : MonoBehaviour
+    
+
+    public partial class Player : CharacterMove
     {
-        public Emotion CurrentEmotion;
+        public LayerMask HeadCheckLayer;
+        public LayerMask DetectedEdge;//매달리기 레이어 설정
+        public LayerMask DetectedObject; //잡기 레이어 설정
 
-        [Header("View Config")]
-        [SerializeField] private bool _debugMode = false;
-        [Range(0f, 360f)]
-        [SerializeField] private float _ViewAngle = 0f; // 시야각
-        [SerializeField] private float _viewRadius = 1f; //시야 범위
-        [SerializeField] private LayerMask _viewTargetMask; //인식 가능한 타켓의 레이어
-        [SerializeField] private LayerMask _viewObstacleMask; //인식 방해물의 레이어 
+        // TODO : 다른곳으로 옮기자
+        public float CharacterHeight;
+        public float CharacterCrouchHeight;
 
-        private List<Collider> _hitTargetContainer = new List<Collider>();//인식한 물체 보관하는 리스트
+        public float Gravity;
+        public float FallingGravityMultiplier;// 떨어질때의 중력
+        public float GravityLimit;
 
-        private float _horizontalViewHalfAngle = 0f; //시야각의 절반 값
-        private bool _isFind;
-        private bool _isAbsorb;
-        private float _timer;
-        private Material _defaultMaterial;
+        public float RunMultiplier;
+        public float CrouchMultiplier;
+        public float Speed;
 
-        private CharacterMove _characterMove;
+        public float SlowSpeed;
+
+
+        public float CoyoteTime;// 절벽 끝나고 플레이어가 공중에 있어도 일정 시간동안 점프 가능
+        public float VariableJumpTime;// 꾸욱 누르면 더 올라가는 기능
+        public float AirControl;// 공중에서 컨트롤가능한 정도
+
+        public float JumpPower;
+        public float ClimbPower;
+
+        public float ForceMagnitude;//물체 미는 힘
+
+        public float EdgeDetectLength;//매달리기 거리
+        public float MoveToLedgeSpeed;//매달리기 거리 보다 멀어 질려고 할때 다시 붙는 속도
+       
+        private Transform _cameraTransform;
 
         private void Awake()
         {
-            _characterMove = GetComponent<CharacterMove>();
+            _controller = GetComponent<CharacterController>();
+            _cameraTransform = Camera.main.transform;
+
+            InitInputs();
+            InitAbsorb();
+
+            ChangeState(new PlayerMoveFalling(this));
         }
 
-        void Start()
+        public override void ChangeState(CharacterMoveState state)
         {
-            _defaultMaterial = GetComponent<Material>();
-            _defaultMaterial = gameObject.GetComponent<Renderer>().material; 
+            _buttonEvents.Clear();
+            OnMove = null;
+
+            base.ChangeState(state);
         }
 
-        void Update()
+        protected new void Update()
         {
-            _characterMove.SetAction(ButtonActions.Absorb, OnAbsorb);
-            
-            if (_isAbsorb)
-            {
-                _timer += Time.deltaTime;
+            base.Update();
 
-                if (_timer >= 3f)
-                {
-                    ReturnEmotion();
-                }
-            }
+            UpdateInputs();
+            UpdateAbsorb();
+
+            _controller.Move(MoveDir * Time.deltaTime);
         }
+
+
+        //private void OnControllerColliderHit(ControllerColliderHit hit)
+        //{
+        //    var rig = hit.collider.attachedRigidbody;
+
+        //    if (rig != null)
+        //    {
+        //        var forceDir = hit.gameObject.transform.position - transform.position;
+        //        forceDir.y = 0;
+        //        forceDir.Normalize();
+
+        //        rig.AddForceAtPosition(forceDir * ForceMagnitude, transform.position, ForceMode.Impulse);
+        //    }
+        //}
 
         private void OnDrawGizmos()
         {
-            FindViewTargets();
-
             if (_debugMode)
             {
+                Gizmos.color = Color.red;
+
+                var edgeInfo = GetEdgeDetectInfo();
+
+                if (edgeInfo.Item1)
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawRay(transform.position, transform.forward * edgeInfo.Item2.distance);
+                }
+                else
+                {
+                    Gizmos.DrawRay(transform.position, transform.forward * EdgeDetectLength);
+                }
+
                 Handles.color = _isFind ? Color.red : Color.blue;
 
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, _ViewAngle / 2, _viewRadius);
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -_ViewAngle / 2, _viewRadius);
             }
-        }
-
-        public Collider[] FindViewTargets()
-        {
-            _hitTargetContainer.Clear();
-
-            var originPos = transform.position;
-
-            Collider[] hitedTargets = Physics.OverlapSphere(originPos, _viewRadius, _viewTargetMask);
-
-            foreach(Collider target in hitedTargets)
-            {
-                var targetPos = target.transform.position;
-                var dist = targetPos - transform.position;
-
-                if(dist.magnitude <= _viewRadius)
-                {
-                    var dot = Vector3.Dot(dist.normalized, transform.forward);
-                    var theta = Mathf.Acos(dot);
-                    var degree = Mathf.Rad2Deg * theta;
-
-                    if (degree <= _ViewAngle / 2f)
-                    {
-                        _isFind = true;
-                        _hitTargetContainer.Add(target);
-                    }
-                    else
-                    {
-                        _isFind = false;
-                        continue;
-                    }
-                }
-            }
-
-            if (_hitTargetContainer.Count > 0)
-                return _hitTargetContainer.ToArray();
-            else
-                return null;
-        }
-
-        private void OnAbsorb(bool isOn)
-        {
-
-            if (isOn && _hitTargetContainer.Count != 0)
-            {
-                for (int i = 0; i < _hitTargetContainer.Count; i++)
-                {
-                    _isAbsorb = true;
-                    _timer = 0;
-                    CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().getEmotion();
-                    gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
-                }
-            }
-        }
-
-        private void ReturnEmotion()
-        {
-            gameObject.GetComponent<Renderer>().material = _defaultMaterial;
-            CurrentEmotion = Emotion.Default;
-            _timer = 0;
-            _isAbsorb = false;
         }
     }
 }
