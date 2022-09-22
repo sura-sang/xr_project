@@ -18,7 +18,7 @@ namespace SuraSang
         public override void UpdateState() { }
 
         public override void ClearState() { }
-    
+
         private void OnMove(Vector2 input)
         {
             var dir = _characterMove.MoveDir;
@@ -38,6 +38,10 @@ namespace SuraSang
             if (_controller.isGrounded)
             {
                 _characterMove.ChangeState(new CharacterMoveGrounded(_characterMove));
+            }
+            else if (_characterMove.IsEdgeDetected && !_controller.isGrounded)
+            {
+                _characterMove.ChangeState(new CharacterMoveHolding(_characterMove));
             }
         }
     }
