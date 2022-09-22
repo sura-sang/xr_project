@@ -44,6 +44,7 @@ namespace SuraSang
         public float AirControl;// 공중에서 컨트롤가능한 정도
 
         public float JumpPower;
+        public float ClimbPower;
 
         public float ForceMagnitude;//물체 미는 힘
 
@@ -53,7 +54,7 @@ namespace SuraSang
         public bool IsEdgeDetected;
         public RaycastHit EdgeHit;
 
-
+        public bool isWPressed;
         public Vector3 MoveDir { get; set; }
 
 
@@ -109,6 +110,16 @@ namespace SuraSang
             _currentState.UpdateState();
 
             _controller.Move(MoveDir * Time.deltaTime);
+
+
+            if(moveInput.x ==0.0f && moveInput.y == 1.0f)
+            {
+                isWPressed = true;
+            }
+            else
+            {
+                isWPressed = false;
+            }
         }
 
 
@@ -141,7 +152,6 @@ namespace SuraSang
             else
                 Gizmos.DrawRay(transform.position, transform.forward * EdgeDetectLength);
         }
-
 
         public void ChangeState(CharacterMoveState state)
         {
@@ -181,6 +191,8 @@ namespace SuraSang
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
 
+            _inputActions.Player.Move.performed += (x) => isWPressed = true;
+            _inputActions.Player.Move.canceled += (x) => isWPressed = false;
         }
 
         private UnityAction<bool> GetAction(ButtonActions type)

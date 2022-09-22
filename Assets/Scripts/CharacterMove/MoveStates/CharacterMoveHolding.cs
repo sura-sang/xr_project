@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SuraSang
 {
@@ -33,16 +34,17 @@ namespace SuraSang
 
             if (_characterMove.IsHolding)
             {
-                Vector3 directionToPoint = (_characterMove.EdgeHit.point - _characterMove.PlayerTransform.position).normalized;
-                _characterMove.LookVector(directionToPoint);
-                _characterMove.PlayerTransform.rotation = _characterMove.EdgeHit.transform.rotation;
+                var directionToPoint = (_characterMove.EdgeHit.point - _characterMove.PlayerTransform.position).normalized;
+                var normalVector = _characterMove.EdgeHit.normal;
+   
+                _characterMove.LookVector(-normalVector);
 
                 //_curEdge = _characterMove.EdgeHit.transform;
                 var distanceToLedge = Vector3.Distance(_characterMove.PlayerTransform.position, _characterMove.EdgeHit.point);
 
                 if (distanceToLedge > 0.6f)
                 {
-                    _controller.Move(directionToPoint.normalized * _characterMove.MoveToLedgeSpeed * 10f * Time.deltaTime);
+                    _controller.Move(-normalVector.normalized * _characterMove.MoveToLedgeSpeed * 50f * Time.deltaTime);
                 }
 
                 _speed = _characterMove.SlowSpeed;
@@ -56,6 +58,8 @@ namespace SuraSang
         private void OnMove(Vector2 input)
         {
             var dir = _characterMove.InputToCameraSpace(input);
+            var pDir = _characterMove.MoveDir;
+            var y = pDir.y;
 
             if (dir != Vector3.zero && !_characterMove.IsHolding)
             {
@@ -68,12 +72,31 @@ namespace SuraSang
             {
                 dir.y = _controller.isGrounded ? -1 : _characterMove.MoveDir.y - _characterMove.Gravity * Time.deltaTime;
             }
-
             _characterMove.MoveDir = dir;
 
-            if (_controller.isGrounded)
+            if (_characterMove.isWPressed && _characterMove.IsHolding)
+            {
+                var normalVector = _characterMove.EdgeHit.normal;
+                y = _characterMove.ClimbPower;
+
+                pDir.y = 0;
+                pDir = Vector3.MoveTowards(dir, -normalVector, _characterMove.AirControl * Time.deltaTime);
+                pDir.x = -normalVector.x;
+                pDir.z = -normalVector.z;
+                pDir.y = y;
+
+                _characterMove.MoveDir = pDir;
+
+                _characterMove.ChangeState(new CharacterMoveFalling(_characterMove));
+            }
+
+            if (_controller.isGrounded && !_characterMove.IsHolding)
             {
                 _characterMove.ChangeState(new CharacterMoveGrounded(_characterMove));
+            }
+            else if(!_controller.isGrounded && !_characterMove.IsHolding)
+            {
+                _characterMove.ChangeState(new CharacterMoveFalling(_characterMove));
             }
         }
 
