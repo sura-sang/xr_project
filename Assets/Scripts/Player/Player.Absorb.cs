@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace SuraSang
 {
-    public class Player : MonoBehaviour
+    public partial class Player
     {
         public Emotion CurrentEmotion;
 
@@ -24,25 +24,19 @@ namespace SuraSang
         private bool _isFind;
         private bool _isAbsorb;
         private float _timer;
+
         private Material _defaultMaterial;
 
-        private CharacterMove _characterMove;
-
-        private void Awake()
+        private void InitAbsorb()
         {
-            _characterMove = GetComponent<CharacterMove>();
-        }
+            SetAction(ButtonActions.Absorb, OnAbsorb);
 
-        void Start()
-        {
             _defaultMaterial = GetComponent<Material>();
-            _defaultMaterial = gameObject.GetComponent<Renderer>().material; 
+            _defaultMaterial = gameObject.GetComponent<Renderer>().material;
         }
 
-        void Update()
+        private void UpdateAbsorb()
         {
-            _characterMove.SetAction(ButtonActions.Absorb, OnAbsorb);
-            
             if (_isAbsorb)
             {
                 _timer += Time.deltaTime;
@@ -54,19 +48,6 @@ namespace SuraSang
             }
         }
 
-        private void OnDrawGizmos()
-        {
-            FindViewTargets();
-
-            if (_debugMode)
-            {
-                Handles.color = _isFind ? Color.red : Color.blue;
-
-                Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, _ViewAngle / 2, _viewRadius);
-                Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -_ViewAngle / 2, _viewRadius);
-            }
-        }
-
         public Collider[] FindViewTargets()
         {
             _hitTargetContainer.Clear();
@@ -75,12 +56,12 @@ namespace SuraSang
 
             Collider[] hitedTargets = Physics.OverlapSphere(originPos, _viewRadius, _viewTargetMask);
 
-            foreach(Collider target in hitedTargets)
+            foreach (Collider target in hitedTargets)
             {
                 var targetPos = target.transform.position;
                 var dist = targetPos - transform.position;
 
-                if(dist.magnitude <= _viewRadius)
+                if (dist.magnitude <= _viewRadius)
                 {
                     var dot = Vector3.Dot(dist.normalized, transform.forward);
                     var theta = Mathf.Acos(dot);
@@ -107,6 +88,7 @@ namespace SuraSang
 
         private void OnAbsorb(bool isOn)
         {
+            FindViewTargets();
 
             if (isOn && _hitTargetContainer.Count != 0)
             {
