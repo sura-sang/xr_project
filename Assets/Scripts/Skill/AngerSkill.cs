@@ -19,8 +19,8 @@ namespace SuraSang
         private RaycastHit _hit;
         private IEnumerator _runningCo;
         private Player _player;
-        private float playerMinYAngles;
-        private float playerMaxYAngles;
+        private float _playerMinYAngles;
+        private float _playerMaxYAngles;
 
 
         private void Start()
@@ -44,7 +44,7 @@ namespace SuraSang
                     Vector3 playerEulerAngles = transform.rotation.eulerAngles;
                     playerEulerAngles.y = (playerEulerAngles.y > 180) ? playerEulerAngles.y - 360 : playerEulerAngles.y;
 
-                    playerEulerAngles.y = Mathf.Clamp(playerEulerAngles.y, playerMinYAngles, playerMaxYAngles);
+                    playerEulerAngles.y = Mathf.Clamp(playerEulerAngles.y, _playerMinYAngles, _playerMaxYAngles);
                     transform.rotation = Quaternion.Euler(playerEulerAngles);
 
                     transform.Translate(transform.forward * (_player.Speed + PlusSpeed) * Time.deltaTime, Space.World);
@@ -59,11 +59,11 @@ namespace SuraSang
 
         private void LimitRot(Vector3 v)
         {
-            playerMinYAngles = v.y + MinYRot;
-            playerMaxYAngles = v.y + MaxYRot;
+            _playerMinYAngles = v.y + MinYRot;
+            _playerMaxYAngles = v.y + MaxYRot;
 
-            playerMinYAngles = (playerMinYAngles < -180) ? playerMinYAngles + 360 : playerMinYAngles;
-            playerMaxYAngles = (playerMaxYAngles > 180) ? playerMaxYAngles - 360 : playerMaxYAngles;
+            _playerMinYAngles = (_playerMinYAngles < -180) ? _playerMinYAngles + 360 : _playerMinYAngles;
+            _playerMaxYAngles = (_playerMaxYAngles > 180) ? _playerMaxYAngles - 360 : _playerMaxYAngles;
         }
 
         private void OnSkill()
