@@ -22,106 +22,34 @@ namespace SuraSang
             _speed = _player.Speed;
 
             _player.OnMove = OnMove;
-            _player.SetAction(ButtonActions.Hold, OnHold);
+            _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
         }
 
-        public override void ClearState()
-        {
-        }
+        public override void ClearState() { }
 
-        public override void UpdateState()
-        {
-            //UpdateState가 OnMove보다 먼저 호출됨
-            (_isEdgeDetected, _edgeHit) = _player.GetEdgeDetectInfo();
-
-            if ((!_isEdgeDetected && _isHolding) || !_isHolding)
-            {
-                _isHolding = false;
-            }
-
-            if (_isHolding)
-            {
-                var directionToPoint = (_edgeHit.point - _player.transform.position).normalized;
-                var normalVector = _edgeHit.normal;
-
-                _player.LookVector(-normalVector);
-
-                //_curEdge = _characterMove.EdgeHit.transform;
-                var distanceToLedge = Vector3.Distance(_player.transform.position, _edgeHit.point);
-
-                if (distanceToLedge > 0.6f)
-                {
-                    _controller.Move(-normalVector.normalized * _player.MoveToLedgeSpeed * 50f * Time.deltaTime);
-                }
-
-                _speed = _player.SlowSpeed;
-            }
-            else
-            {
-                _speed = _player.Speed;
-            }
-        }
+        public override void UpdateState() { }
 
         private void OnMove(Vector2 input)
         {
-            var dir = _player.InputToCameraSpace(input);
-            var pDir = _player.MoveDir;
-            var y = pDir.y;
+            (_isEdgeDetected, _edgeHit) = _player.GetEdgeDetectInfo();
 
-            if (dir != Vector3.zero && !_isHolding)
+
+            if (_isHolding && _isEdgeDetected)
             {
-                _player.LookVector(dir);
-            }
-
-            dir *= _speed;
-
-            if (!_isHolding)
-            {
-                dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
-            }
-            _player.MoveDir = dir;
-
-            if (_player.isWPressed && _isHolding)
-            {
+                var dir = Vector3Extentions.InputToTransformSpace(new Vector2(input.x, 0), _player.transform);
                 var normalVector = _edgeHit.normal;
-                y = _player.ClimbPower;
+                //_player.ClimbPower;
 
-                pDir.y = 0;
-                pDir = Vector3.MoveTowards(dir, -normalVector, _player.AirControl * Time.deltaTime);
-                pDir.x = -normalVector.x;
-                pDir.z = -normalVector.z;
-                pDir.y = y;
+                dir -= normalVector;
+                
+                //나중에 위로 올라가는거 만들기
 
-                _player.MoveDir = pDir;
-
-                _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
-            }
-
-            if (_controller.isGrounded && !_isHolding)
-            {
-                _characterMove.ChangeState(new PlayerMoveGrounded(_characterMove));
-            }
-            else if (!_controller.isGrounded && !_isHolding)
-            {
-                _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
-            }
-        }
-
-        private void OnHold(bool isOn)
-        {
-            Hanging(isOn);
-        }
-
-        private void Hanging(bool isOn)
-        {
-            if (_isEdgeDetected && isOn)
-            {
-                //Vector3 directionToEdge = _curEdge.position - _characterMove.PlayerTransform.position;
-                _isHolding = true;
+                _player.MoveDir = dir * _speed;
+                _player.LookVector(-normalVector);
             }
             else
             {
-                _isHolding = false;
+                _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
             }
         }
     }

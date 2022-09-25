@@ -8,11 +8,15 @@ namespace SuraSang
     {
         // TODO : 여기서 메달리기 상태로 이어지게 만들면 될 듯
 
+        private bool _isHolding;
+        
         public PlayerMoveFalling(CharacterMove characterMove) : base(characterMove) { }
 
         public override void InitializeState()
         {
             _player.OnMove = OnMove;
+            
+            _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
         }
 
         public override void UpdateState() { }
@@ -39,7 +43,7 @@ namespace SuraSang
             {
                 _characterMove.ChangeState(new PlayerMoveGrounded(_characterMove));
             }
-            else if (_player.IsEdgeDetected() && !_controller.isGrounded)
+            else if (_player.IsEdgeDetected() && _isHolding && !_controller.isGrounded)
             {
                 _characterMove.ChangeState(new PlayerMoveHolding(_characterMove));
             }
