@@ -26,5 +26,10 @@ namespace SuraSang
         {
             ChangeState(new MonsterMoveSleep(this));
         }
+
+        public virtual void NextState()
+        {
+            // TODO 공용으로 사용하는 상태의 경우 다음 상태를 어케 해야할지?
+        }
     }
 }
