@@ -21,6 +21,7 @@ namespace SuraSang
         private Player _player;
         private float _playerMinYAngles;
         private float _playerMaxYAngles;
+        private float _tempSpeed;
 
 
         private void Start()
@@ -47,7 +48,7 @@ namespace SuraSang
                     playerEulerAngles.y = Mathf.Clamp(playerEulerAngles.y, _playerMinYAngles, _playerMaxYAngles);
                     transform.rotation = Quaternion.Euler(playerEulerAngles);
 
-                    transform.Translate(transform.forward * (_player.Speed + PlusSpeed) * Time.deltaTime, Space.World);
+                    transform.Translate(transform.forward * (_tempSpeed + PlusSpeed) * Time.deltaTime, Space.World);
                 }
                 else
                 {
@@ -70,22 +71,25 @@ namespace SuraSang
         {
             if (Input.GetMouseButtonDown(1) && !isSkillRunning)
             {
+                isSkillRunning = true;
                 StartCoroutine(_runningCo);
+                _tempSpeed = _player.Speed;
+                _player.Speed = 1.0f;
                 LimitRot(transform.rotation.eulerAngles);
             }
         }
 
         private void CoroutineReset()
         {
+            isSkillRunning = false;
             StopCoroutine(_runningCo);
+            _player.Speed = _tempSpeed;
             _runningCo = Coroutine();
         }
 
         IEnumerator Coroutine()
         {
-            isSkillRunning = true;
             yield return new WaitForSeconds(SkillRunningTime);
-            isSkillRunning = false;
             CoroutineReset();
         }
     }
