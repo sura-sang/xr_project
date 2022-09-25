@@ -18,6 +18,7 @@ namespace SuraSang
         public override void InitializeState()
         {
             _player.OnMove = OnMove;
+            _player.SetAbsorbAction();
 
             _player.SetAction(ButtonActions.Run, OnRun);
             //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);

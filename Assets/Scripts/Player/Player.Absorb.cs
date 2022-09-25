@@ -29,8 +29,6 @@ namespace SuraSang
 
         private void InitAbsorb()
         {
-            SetAction(ButtonActions.Absorb, OnAbsorb);
-
             _defaultMaterial = GetComponent<Material>();
             _defaultMaterial = gameObject.GetComponent<Renderer>().material;
         }
@@ -48,7 +46,12 @@ namespace SuraSang
             }
         }
 
-        public Collider[] FindViewTargets()
+        public void SetAbsorbAction()
+        {
+            SetAction(ButtonActions.Absorb, OnAbsorb);
+        }
+        
+        private Collider[] FindViewTargets()
         {
             _hitTargetContainer.Clear();
 
