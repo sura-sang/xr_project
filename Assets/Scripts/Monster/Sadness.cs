@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SuraSang
 {
     public class Sadness : Monster
     {
-        public Emotion MyEmotion;
-
-        public override Emotion getEmotion()
+        public override Emotion Emotion => Emotion.Sadness;
+        
+        private void Awake()
         {
-            return MyEmotion;
+            Agent = GetComponent<NavMeshAgent>();
+            
+            ChangeState(new MonsterMoveChase(this));
         }
     }
 }
