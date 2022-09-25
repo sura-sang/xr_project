@@ -11,9 +11,6 @@ namespace SuraSang
     {
         private CharacterMoveState _currentState;
 
-        public CharacterController Controller => _controller;
-        protected CharacterController _controller;
-
         public virtual void ChangeState(CharacterMoveState state)
         {
             if (_currentState != null)
