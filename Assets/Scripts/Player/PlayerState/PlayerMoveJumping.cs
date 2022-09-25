@@ -9,6 +9,7 @@ namespace SuraSang
         public PlayerMoveJumping(CharacterMove characterMove) : base(characterMove) { }
 
         private bool _isJumpEnd = false;
+        private bool _isHolding;
         private float _jumpStartTime;
 
         public override void InitializeState()
@@ -16,6 +17,7 @@ namespace SuraSang
             _jumpStartTime = Time.time;
             _player.OnMove = OnMove;
 
+            _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
             _player.SetAction(ButtonActions.Jump, OnJump);
 
 
@@ -45,10 +47,6 @@ namespace SuraSang
             {
                 y = _player.JumpPower;
             }
-            else if (_player.IsEdgeDetected())
-            {
-                _characterMove.ChangeState(new PlayerMoveHolding(_characterMove));
-            }
             else
             {
                 y -= _player.Gravity * Time.deltaTime;
@@ -58,6 +56,11 @@ namespace SuraSang
                 {
                     _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
                 }
+            }
+            
+            if (_player.IsEdgeDetected() && _isHolding)
+            {
+                _characterMove.ChangeState(new PlayerMoveHolding(_characterMove));
             }
 
             dir.y = 0;

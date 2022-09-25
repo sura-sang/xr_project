@@ -27,8 +27,6 @@ namespace SuraSang
         private CharacterActions _inputActions;
         private InputAction _moveInputAction;
 
-
-        public bool isWPressed;
         public Vector3 MoveDir { get; set; }
 
 
@@ -71,16 +69,6 @@ namespace SuraSang
             var moveInput = _moveInputAction.ReadValue<Vector2>();
 
             OnMove?.Invoke(moveInput);
-
-            if (moveInput.x == 0.0f && moveInput.y == 1.0f)
-            {
-                isWPressed = true;
-            }
-            else
-            {
-                isWPressed = false;
-            }
-
         }
 
         private void OnEnable()
