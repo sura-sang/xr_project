@@ -21,6 +21,7 @@ namespace SuraSang
     {
         // 벡터를 넘겨주기 위해 move만 따로 처리
         public UnityAction<Vector2> OnMove { get; set; }
+        private Dictionary<ButtonActions, InputAction> _buttonActions;
         private Dictionary<ButtonActions, UnityAction<bool>> _buttonEvents;
 
         private CharacterActions _inputActions;
@@ -33,32 +34,36 @@ namespace SuraSang
 
         private void InitInputs()
         {
+            _buttonActions = new Dictionary<ButtonActions, InputAction>();
             _buttonEvents = new Dictionary<ButtonActions, UnityAction<bool>>();
 
             _inputActions = new global::CharacterActions();
             _moveInputAction = _inputActions.Player.Move;
 
+            _buttonActions.Add(ButtonActions.Run, _inputActions.Player.Run);
             _inputActions.Player.Run.performed += (x) => GetAction(ButtonActions.Run)?.Invoke(true);
             _inputActions.Player.Run.canceled += (x) => GetAction(ButtonActions.Run)?.Invoke(false);
 
+            _buttonActions.Add(ButtonActions.Jump, _inputActions.Player.Jump);
             _inputActions.Player.Jump.started += (x) => GetAction(ButtonActions.Jump)?.Invoke(true);
             _inputActions.Player.Jump.canceled += (x) => GetAction(ButtonActions.Jump)?.Invoke(false);
 
+            _buttonActions.Add(ButtonActions.Crouch, _inputActions.Player.Crouch);
             _inputActions.Player.Crouch.performed += (x) => GetAction(ButtonActions.Crouch)?.Invoke(true);
             _inputActions.Player.Crouch.canceled += (x) => GetAction(ButtonActions.Crouch)?.Invoke(false);
 
+            _buttonActions.Add(ButtonActions.Catch, _inputActions.Player.Catch);
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
 
 
+            _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Hold)?.Invoke(false);
 
-            _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
-            _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
-
-            _inputActions.Player.Move.performed += (x) => isWPressed = true;
-            _inputActions.Player.Move.canceled += (x) => isWPressed = false;
+            _buttonActions.Add(ButtonActions.Absorb, _inputActions.Player.Absorb);
+            _inputActions.Player.Absorb.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
+            _inputActions.Player.Absorb.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
         }
 
         private void UpdateInputs()
@@ -106,6 +111,11 @@ namespace SuraSang
             else
             {
                 _buttonEvents[type] = action;
+            }
+            
+            if (_buttonActions.TryGetValue(type, out var input))
+            {
+                action?.Invoke(input.IsPressed());
             }
         }
 
