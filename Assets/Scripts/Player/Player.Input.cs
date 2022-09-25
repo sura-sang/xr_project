@@ -111,17 +111,7 @@ namespace SuraSang
 
         public Vector3 InputToCameraSpace(Vector2 input)
         {
-            var foward = _cameraTransform.forward;
-            var right = _cameraTransform.right;
-            foward.y = 0;
-            right.y = 0;
-            foward.Normalize();
-            right.Normalize();
-
-            var fowardReVerticalInput = input.y * foward;
-            var rightRelHorizontalInput = input.x * right;
-
-            return fowardReVerticalInput + rightRelHorizontalInput;
+            return Vector3Extentions.InputToTransformSpace(input, _cameraTransform);
         }
 
         public void LookVector(Vector3 dir)
