@@ -11,6 +11,8 @@ namespace SuraSang
 
     public partial class Player : CharacterMove
     {
+        public CharacterController Controller { get; private set; }
+
         public LayerMask HeadCheckLayer;
         public LayerMask DetectedEdge;//매달리기 레이어 설정
         public LayerMask DetectedObject; //잡기 레이어 설정
@@ -46,7 +48,7 @@ namespace SuraSang
 
         private void Awake()
         {
-            _controller = GetComponent<CharacterController>();
+            Controller = GetComponent<CharacterController>();
             _cameraTransform = Camera.main.transform;
 
             InitInputs();
@@ -70,7 +72,7 @@ namespace SuraSang
             UpdateInputs();
             UpdateAbsorb();
 
-            _controller.Move(MoveDir * Time.deltaTime);
+            Controller.Move(MoveDir * Time.deltaTime);
         }
 
 

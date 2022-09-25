@@ -122,7 +122,7 @@ namespace SuraSang
         {
             if (active)
             {
-                _controller.height = CharacterCrouchHeight;
+                Controller.height = CharacterCrouchHeight;
             }
             else
             {
@@ -131,7 +131,7 @@ namespace SuraSang
                     return false;
                 }
 
-                _controller.height = CharacterHeight;
+                Controller.height = CharacterHeight;
             }
 
             return true;
