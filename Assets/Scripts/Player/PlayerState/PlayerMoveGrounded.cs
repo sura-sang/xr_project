@@ -25,10 +25,13 @@ namespace SuraSang
 
             _speed = _player.Speed;
         }
-        
+
 
         public override void UpdateState()
         {
+            // Develop
+            _speed = _player.Speed;
+
             //if (_isCrouchFailed)
             //{
             //    OnCrouch(_isCrouch);
@@ -82,16 +85,16 @@ namespace SuraSang
         {
             var dir = _player.InputToCameraSpace(input);
 
+
             if (dir != Vector3.zero)
             {
                 _player.LookVector(dir);
             }
 
             dir *= _speed;
-
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
-
             _player.MoveDir = dir;
+
         }
     }
 }
