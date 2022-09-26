@@ -99,7 +99,7 @@ namespace SuraSang
                 {
                     _isAbsorb = true;
                     _timer = 0;
-                    CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().getEmotion();
+                    CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
                     gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                 }
             }
