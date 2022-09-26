@@ -19,7 +19,7 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _speed = _player.Speed;
+            _speed = _player.SlowSpeed;
 
             _player.OnMove = OnMove;
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
