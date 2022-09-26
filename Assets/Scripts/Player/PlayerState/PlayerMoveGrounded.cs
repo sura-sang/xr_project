@@ -61,6 +61,10 @@ namespace SuraSang
             {
                 _player.AngerSkill.OnSkill();
             }
+            else if(_player.CurrentEmotion == Emotion.Sadness)
+            {
+                _player.SadSkill.OnSkill(_isSkill);
+            }
         }
 
         public override void ClearState()

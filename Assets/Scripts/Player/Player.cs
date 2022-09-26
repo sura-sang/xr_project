@@ -46,6 +46,7 @@ namespace SuraSang
 
         public HappySkill HappySkill;
         public AngerSkill AngerSkill;
+        public SadSkill SadSkill;
 
         private Transform _cameraTransform;
 
