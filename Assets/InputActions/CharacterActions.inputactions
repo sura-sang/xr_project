@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Skill",
+                    "type": "Button",
+                    "id": "496c6035-1b32-4553-bd18-c906630de9ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -239,9 +248,7 @@
                     "name": "",
                     "id": "9434bbee-354d-45c1-aa6e-87a06da577e1",
                     "path": "<Mouse>/leftButton",
-
                     "interactions": "Hold(duration=0.1,pressPoint=0.5)",
-
                     "processors": "",
                     "groups": "",
                     "action": "Hold",
@@ -256,6 +263,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Absorb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e06a678-e1df-4062-bfad-ee705b9311c2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Skill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

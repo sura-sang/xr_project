@@ -89,6 +89,15 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""496c6035-1b32-4553-bd18-c906630de9ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,9 +270,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""9434bbee-354d-45c1-aa6e-87a06da577e1"",
                     ""path"": ""<Mouse>/leftButton"",
-
                     ""interactions"": ""Hold(duration=0.1,pressPoint=0.5)"",
-
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hold"",
@@ -278,6 +285,17 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Absorb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e06a678-e1df-4062-bfad-ee705b9311c2"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -872,6 +890,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         m_Player_Catch = m_Player.FindAction("Catch", throwIfNotFound: true);
         m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
         m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
+        m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -950,6 +969,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Catch;
     private readonly InputAction m_Player_Hold;
     private readonly InputAction m_Player_Absorb;
+    private readonly InputAction m_Player_Skill;
     public struct PlayerActions
     {
         private @CharacterActions m_Wrapper;
@@ -961,6 +981,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         public InputAction @Catch => m_Wrapper.m_Player_Catch;
         public InputAction @Hold => m_Wrapper.m_Player_Hold;
         public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
+        public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -991,6 +1012,9 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                 @Absorb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
+                @Skill.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
+                @Skill.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
+                @Skill.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1016,6 +1040,9 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                 @Absorb.started += instance.OnAbsorb;
                 @Absorb.performed += instance.OnAbsorb;
                 @Absorb.canceled += instance.OnAbsorb;
+                @Skill.started += instance.OnSkill;
+                @Skill.performed += instance.OnSkill;
+                @Skill.canceled += instance.OnSkill;
             }
         }
     }
@@ -1179,6 +1206,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         void OnCatch(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
         void OnAbsorb(InputAction.CallbackContext context);
+        void OnSkill(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
