@@ -15,6 +15,7 @@ namespace SuraSang
         Catch,
         Hold,
         Absorb,
+        Skill,
     }
 
     public partial class Player
@@ -62,6 +63,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Absorb, _inputActions.Player.Absorb);
             _inputActions.Player.Absorb.performed += (x) => GetAction(ButtonActions.Absorb)?.Invoke(true);
             _inputActions.Player.Absorb.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.Skill, _inputActions.Player.Skill);
+            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);
+            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(false);
         }
 
         private void UpdateInputs()

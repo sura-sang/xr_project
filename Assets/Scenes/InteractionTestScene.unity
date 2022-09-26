@@ -857,7 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d4f3d8ae2e3e14b9a60cb6f8946794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyEmotion: 1
 --- !u!1 &847529107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a02bb79a093a6409ad03bc0b812891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyEmotion: 2
 --- !u!1 &960304151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1758,6 @@ MonoBehaviour:
   MaxYRot: 20
   MinYRot: -20
   isSkillRunning: 0
-  _tempSpeed: 0
 --- !u!1001 &1746624254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2058,7 +2055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5e6d4a2edbf6140b9d48b464b2d871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyEmotion: 0
 --- !u!1 &1959340935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,6 +2405,7 @@ GameObject:
   - component: {fileID: 2127620526}
   - component: {fileID: 2127620530}
   - component: {fileID: 2127620531}
+  - component: {fileID: 2127620532}
   m_Layer: 8
   m_Name: PlayerDummy
   m_TagString: Untagged
@@ -2513,7 +2510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a196b609a705542bc1d2c7f79d1602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEmotion: 4
+  CurrentEmotion: 3
   _debugMode: 1
   _ViewAngle: 166
   _viewRadius: 2.72
@@ -2549,7 +2546,7 @@ MonoBehaviour:
   ForceMagnitude: 0.1
   EdgeDetectLength: 1
   MoveToLedgeSpeed: 1
-  isWPressed: 0
+  _happySkill: {fileID: 2127620532}
 --- !u!114 &2127620531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,7 +2554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127620524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03c8afe212f138a43823feea4d6181c1, type: 3}
   m_Name: 
@@ -2568,7 +2565,22 @@ MonoBehaviour:
   MaxYRot: 2
   MinYRot: -2
   isSkillRunning: 0
-  _tempSpeed: 0
+--- !u!114 &2127620532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127620524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab9c31077dffd4498ae0cac9302849b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillTarget:
+    serializedVersion: 2
+    m_Bits: 512
+  FollowSpeed: 0
 --- !u!1001 &3070441877572128755
 PrefabInstance:
   m_ObjectHideFlags: 0
