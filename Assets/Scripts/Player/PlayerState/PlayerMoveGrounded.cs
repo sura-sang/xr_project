@@ -23,6 +23,7 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Run, OnRun);
             //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _player.SetAction(ButtonActions.Jump, OnJump);
+            _player.SetAction(ButtonActions.Skill, OnSkill);
 
             _speed = _player.Speed;
         }
@@ -92,7 +93,14 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
+        }
 
+        private void OnSkill(bool isOn)
+        {
+            if(_player.CurrentEmotion == Emotion.Happiness && isOn)
+            {
+                _player._happySkill.SkillHappy();
+            }
         }
     }
 }
