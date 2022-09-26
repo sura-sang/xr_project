@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: e27bf22f5bda8447bb65abc939d0750e, type: 2}
 --- !u!1 &163758354
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163758354}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440086, z: 0.0006775093, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440463, z: 0.00067751645, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -18.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -474,7 +474,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &426691911
 BoxCollider:
@@ -571,7 +571,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &569007657
 MeshCollider:
@@ -743,6 +743,10 @@ PrefabInstance:
     - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
@@ -942,7 +946,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847529107}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440086, z: 0.0006775093, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440463, z: 0.00067751645, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -18.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1102,7 +1106,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &960304152
 BoxCollider:
@@ -1320,7 +1324,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1103768364
 BoxCollider:
@@ -1608,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
 --- !u!4 &1549497407 stripped
@@ -1890,6 +1898,10 @@ PrefabInstance:
     - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
@@ -2187,7 +2199,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &2028069549
 BoxCollider:
@@ -2380,7 +2392,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &2086041496
 BoxCollider:
@@ -2738,6 +2750,10 @@ PrefabInstance:
     - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
