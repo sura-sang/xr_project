@@ -49,6 +49,8 @@ namespace SuraSang
 
         private Transform _cameraTransform;
 
+        public Animator Animator;
+
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
