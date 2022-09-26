@@ -30,9 +30,6 @@ namespace SuraSang
 
         public override void UpdateState()
         {
-            // Develop
-            _speed = _player.Speed;
-
             //if (_isCrouchFailed)
             //{
             //    OnCrouch(_isCrouch);
