@@ -7,7 +7,10 @@ namespace SuraSang
     public class HappySkill : MonoBehaviour
     {
         public LayerMask SkillTarget;
+
+        //TODO : 임시 변수
         public float FollowSpeed;
+
         private List<Monster> _monsterList;
         private Transform _playerTransform;
 
@@ -26,7 +29,7 @@ namespace SuraSang
             //animator로 기쁨의 춤 애니메이션 재생
             CheckMonster();
 
-            foreach(Monster monster in _monsterList)
+            foreach (Monster monster in _monsterList)
             {
                 var speed = Vector3.zero;
                 //monster.transform.position = Vector3.SmoothDamp(monster.transform.position, _playerTransform.position, ref speed , 0.1f);
