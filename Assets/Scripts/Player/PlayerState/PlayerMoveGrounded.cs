@@ -14,6 +14,7 @@ namespace SuraSang
 
         private bool _isCrouch;
         private bool _isCrouchFailed = false;
+        private bool _isSkill;
 
         public override void InitializeState()
         {
@@ -23,10 +24,10 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Run, OnRun);
             //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _player.SetAction(ButtonActions.Jump, OnJump);
+            _player.SetAction(ButtonActions.Skill, OnSkill);
 
             _speed = _player.Speed;
         }
-
 
         public override void UpdateState()
         {
@@ -45,6 +46,16 @@ namespace SuraSang
             else
             {
                 _lastGroundTime = Time.time;
+            }
+
+            // TODO : 임시 스킬 사용
+            if (_player.CurrentEmotion == Emotion.Happiness && _isSkill)
+            {
+                _player.HappySkill.SkillHappy();
+            }
+            else if (_player.CurrentEmotion == Emotion.Anger && _isSkill)
+            {
+                _player.AngerSkill.OnSkill();
             }
         }
 
@@ -92,7 +103,11 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
+        }
 
+        private void OnSkill(bool isOn)
+        {
+            _isSkill = isOn;
         }
     }
 }
