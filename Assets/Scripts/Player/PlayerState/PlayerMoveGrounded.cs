@@ -29,7 +29,6 @@ namespace SuraSang
             _speed = _player.Speed;
         }
 
-
         public override void UpdateState()
         {
             //if (_isCrouchFailed)
@@ -49,11 +48,12 @@ namespace SuraSang
                 _lastGroundTime = Time.time;
             }
 
+            // TODO : 임시 스킬 사용
             if (_player.CurrentEmotion == Emotion.Happiness && _isSkill)
             {
                 _player.HappySkill.SkillHappy();
             }
-            else if(_player.CurrentEmotion == Emotion.Anger && _isSkill)
+            else if (_player.CurrentEmotion == Emotion.Anger && _isSkill)
             {
                 _player.AngerSkill.OnSkill();
             }
