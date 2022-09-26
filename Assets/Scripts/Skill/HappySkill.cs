@@ -29,8 +29,9 @@ namespace SuraSang
             foreach(Monster monster in _monsterList)
             {
                 var speed = Vector3.zero;
-                monster.transform.position = Vector3.SmoothDamp(monster.transform.position, _playerTransform.position, ref speed , 0.1f);
-            }
+                //monster.transform.position = Vector3.SmoothDamp(monster.transform.position, _playerTransform.position, ref speed , 0.1f);
+                monster.Agent.SetDestination(_playerTransform.position);
+            } 
 
             _monsterList.Clear();
         }

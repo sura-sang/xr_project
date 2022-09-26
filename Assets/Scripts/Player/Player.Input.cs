@@ -29,13 +29,13 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-
+        public bool IsSkill;
 
         private void InitInputs()
         {
             _buttonActions = new Dictionary<ButtonActions, InputAction>();
             _buttonEvents = new Dictionary<ButtonActions, UnityAction<bool>>();
-
+           
             _inputActions = new global::CharacterActions();
             _moveInputAction = _inputActions.Player.Move;
 
@@ -65,8 +65,8 @@ namespace SuraSang
             _inputActions.Player.Absorb.canceled += (x) => GetAction(ButtonActions.Absorb)?.Invoke(false);
 
             _buttonActions.Add(ButtonActions.Skill, _inputActions.Player.Skill);
-            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);
-            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(false);
+            _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);           
+            _inputActions.Player.Skill.canceled += (x) => GetAction(ButtonActions.Skill)?.Invoke(false);
         }
 
         private void UpdateInputs()

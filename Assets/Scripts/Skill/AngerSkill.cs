@@ -33,7 +33,7 @@ namespace SuraSang
 
         private void Update()
         {
-            OnSkill();
+            //OnSkill();
         }
 
         private void FixedUpdate()
@@ -67,9 +67,9 @@ namespace SuraSang
             _playerMaxYAngles = (_playerMaxYAngles > 180) ? _playerMaxYAngles - 360 : _playerMaxYAngles;
         }
 
-        private void OnSkill()
+        public void OnSkill()
         {
-            if (Input.GetMouseButtonDown(1) && !isSkillRunning)
+            if (!isSkillRunning)
             {
                 isSkillRunning = true;
                 StartCoroutine(_runningCo);

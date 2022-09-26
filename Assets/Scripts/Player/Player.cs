@@ -44,7 +44,8 @@ namespace SuraSang
         public float EdgeDetectLength;//매달리기 거리
         public float MoveToLedgeSpeed;//매달리기 거리 보다 멀어 질려고 할때 다시 붙는 속도
 
-        public HappySkill _happySkill;
+        public HappySkill HappySkill;
+        public AngerSkill AngerSkill;
 
         private Transform _cameraTransform;
 
@@ -114,6 +115,8 @@ namespace SuraSang
 
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, _ViewAngle / 2, _viewRadius);
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -_ViewAngle / 2, _viewRadius);
+
+                Gizmos.DrawWireSphere(transform.position, 10);
             }
         }
     }

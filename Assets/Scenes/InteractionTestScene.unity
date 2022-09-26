@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163758354}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440463, z: 0.00067751645, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440086, z: 0.0006775093, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -18.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 765933217}
   - component: {fileID: 765933216}
   - component: {fileID: 765933220}
+  - component: {fileID: 765933221}
   m_Layer: 9
   m_Name: Sadness
   m_TagString: Untagged
@@ -857,6 +858,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d4f3d8ae2e3e14b9a60cb6f8946794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &765933221
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765933215}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &847529107
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847529107}
-  m_LocalRotation: {x: 0.18776874, y: -0.0035440463, z: 0.00067751645, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776874, y: -0.0035440086, z: 0.0006775093, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.339, z: -18.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -941,6 +964,7 @@ GameObject:
   - component: {fileID: 959393334}
   - component: {fileID: 959393333}
   - component: {fileID: 959393337}
+  - component: {fileID: 959393338}
   m_Layer: 9
   m_Name: Anger
   m_TagString: Untagged
@@ -1039,6 +1063,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a02bb79a093a6409ad03bc0b812891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &959393338
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959393332}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &960304151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,6 +2003,7 @@ GameObject:
   - component: {fileID: 1936942753}
   - component: {fileID: 1936942752}
   - component: {fileID: 1936942756}
+  - component: {fileID: 1936942757}
   m_Layer: 9
   m_Name: Happiness
   m_TagString: Untagged
@@ -2055,6 +2102,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5e6d4a2edbf6140b9d48b464b2d871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &1936942757
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936942751}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1959340935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2615,9 @@ MonoBehaviour:
   ForceMagnitude: 0.1
   EdgeDetectLength: 1
   MoveToLedgeSpeed: 1
-  _happySkill: {fileID: 2127620532}
+  HappySkill: {fileID: 2127620532}
+  AngerSkill: {fileID: 2127620531}
+  IsSkill: 0
 --- !u!114 &2127620531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,7 +2625,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127620524}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03c8afe212f138a43823feea4d6181c1, type: 3}
   m_Name: 
@@ -2580,7 +2651,7 @@ MonoBehaviour:
   SkillTarget:
     serializedVersion: 2
     m_Bits: 512
-  FollowSpeed: 0
+  FollowSpeed: 3
 --- !u!1001 &3070441877572128755
 PrefabInstance:
   m_ObjectHideFlags: 0

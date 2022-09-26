@@ -14,6 +14,7 @@ namespace SuraSang
 
         private bool _isCrouch;
         private bool _isCrouchFailed = false;
+        private bool _isSkill;
 
         public override void InitializeState()
         {
@@ -46,6 +47,15 @@ namespace SuraSang
             else
             {
                 _lastGroundTime = Time.time;
+            }
+
+            if (_player.CurrentEmotion == Emotion.Happiness && _isSkill)
+            {
+                _player.HappySkill.SkillHappy();
+            }
+            else if(_player.CurrentEmotion == Emotion.Anger && _isSkill)
+            {
+                _player.AngerSkill.OnSkill();
             }
         }
 
@@ -97,10 +107,7 @@ namespace SuraSang
 
         private void OnSkill(bool isOn)
         {
-            if(_player.CurrentEmotion == Emotion.Happiness && isOn)
-            {
-                _player._happySkill.SkillHappy();
-            }
+            _isSkill = isOn;
         }
     }
 }
