@@ -41,7 +41,7 @@ namespace SuraSang
 
                 if (_timer >= 3f)
                 {
-                    ReturnEmotion();
+                    // ReturnEmotion();
                 }
             }
         }
