@@ -22,19 +22,29 @@ namespace SuraSang
         [SerializeField] Transform[] _eyes;
         [SerializeField] LineRenderer[] _lineRenderers;
 
+        [SerializeField] GameObject effect;
 
-        public void OnSkill(bool isOn)
+        private Player _player;
+
+        private void Start()
         {
-            if (isOn)
+            _player = GetComponent<Player>();
+        }
+
+        private void Update()
+        {
+            if (!_player.IsSkill) SkillEnd();
+        }
+
+        public void OnSkill()
+        {
+            if (_player.IsSkill)
             {
                 for (int i = 0; i < _eyes.Length && i < _lineRenderers.Length; i++)
                 {
                     SetTearLine(_eyes[i], _lineRenderers[i]);
+                    effect.SetActive(true);
                 }
-            }
-            else
-            {
-                SkillEnd();
             }
         }
 
@@ -44,6 +54,7 @@ namespace SuraSang
             {
                 _lineRenderers[i].positionCount = 0;
             }
+            effect.SetActive(false);
         }
 
         private List<Vector3> GetTearsPositions(Transform eye)
