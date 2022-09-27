@@ -123,6 +123,11 @@ namespace SuraSang
             transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         }
 
+        public void EulerRotation(Vector3 dir)
+        {
+            transform.rotation = Quaternion.Euler(dir);
+        }
+
         public bool Crouch(bool active)
         {
             if (active)
