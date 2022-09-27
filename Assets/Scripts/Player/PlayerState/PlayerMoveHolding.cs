@@ -9,7 +9,6 @@ namespace SuraSang
     {
         public PlayerMoveHolding(CharacterMove characterMove) : base(characterMove) { }
 
-        private const bool V = true;
         private Transform _curEdge;
         private float _speed;
         private bool _isSame;
