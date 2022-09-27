@@ -31,7 +31,6 @@ namespace SuraSang
 
         public float SlowSpeed;
 
-
         public float CoyoteTime;// 절벽 끝나고 플레이어가 공중에 있어도 일정 시간동안 점프 가능
         public float VariableJumpTime;// 꾸욱 누르면 더 올라가는 기능
         public float AirControl;// 공중에서 컨트롤가능한 정도

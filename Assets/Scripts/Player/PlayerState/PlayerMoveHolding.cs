@@ -9,6 +9,7 @@ namespace SuraSang
     {
         public PlayerMoveHolding(CharacterMove characterMove) : base(characterMove) { }
 
+        private const bool V = true;
         private Transform _curEdge;
         private float _speed;
         private bool _isSame;
@@ -16,6 +17,7 @@ namespace SuraSang
 
         private bool _isEdgeDetected;
         private RaycastHit _edgeHit;
+        private bool _isHit;
 
         public override void InitializeState()
         {
@@ -27,7 +29,9 @@ namespace SuraSang
 
         public override void ClearState() { }
 
-        public override void UpdateState() { }
+        public override void UpdateState()
+        {
+        }
 
         private void OnMove(Vector2 input)
         {
@@ -39,8 +43,8 @@ namespace SuraSang
                 var normalVector = _edgeHit.normal;
 
                 dir -= normalVector;
-                
-                if(input.y == 1f)
+
+                if (input.y == 1f )
                 {
                     dir = Vector3.MoveTowards(dir, -normalVector, _player.AirControl * Time.deltaTime);
                     dir.y = _player.ClimbPower;
@@ -49,6 +53,10 @@ namespace SuraSang
 
                 _player.MoveDir = dir * _speed;
                 _player.LookVector(-normalVector);
+            }
+            else if (_controller.isGrounded)
+            {
+                _characterMove.ChangeState(new PlayerMoveGrounded(_characterMove));
             }
             else
             {
