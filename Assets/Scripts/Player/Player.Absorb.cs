@@ -97,10 +97,14 @@ namespace SuraSang
             {
                 for (int i = 0; i < _hitTargetContainer.Count; i++)
                 {
-                    _isAbsorb = true;
-                    _timer = 0;
-                    CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
-                    gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
+                    if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
+                    {
+                        _isAbsorb = true;
+                        _timer = 0;
+                        gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
+                        CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
+                        _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
+                    }
                 }
             }
         }
