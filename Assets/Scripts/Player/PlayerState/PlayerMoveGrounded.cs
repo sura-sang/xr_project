@@ -94,7 +94,6 @@ namespace SuraSang
         {
             var dir = _player.InputToCameraSpace(input);
 
-
             if (dir != Vector3.zero)
             {
                 _player.LookVector(dir);
