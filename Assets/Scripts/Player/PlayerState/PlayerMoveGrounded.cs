@@ -18,7 +18,6 @@ namespace SuraSang
 
         private bool _isCrouch;
         private bool _isCrouchFailed = false;
-        private bool _isSkill;
 
         public override void InitializeState()
         {
@@ -53,17 +52,9 @@ namespace SuraSang
             }
 
             // TODO : 임시 스킬 사용
-            if (_player.CurrentEmotion == Emotion.Happiness && _isSkill)
+            if (_player.IsSkill)
             {
-                _player.HappySkill.SkillHappy();
-            }
-            else if (_player.CurrentEmotion == Emotion.Anger && _isSkill)
-            {
-                _player.AngerSkill.OnSkill();
-            }
-            else if(_player.CurrentEmotion == Emotion.Sadness)
-            {
-                _player.SadSkill.OnSkill(_isSkill);
+                _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
         }
 
@@ -121,7 +112,7 @@ namespace SuraSang
 
         private void OnSkill(bool isOn)
         {
-            _isSkill = isOn;
+            _player.IsSkill = isOn;
         }
     }
 }
