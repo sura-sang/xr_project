@@ -6,6 +6,10 @@ namespace SuraSang
 {
     public class PlayerMoveGrounded : PlayerMoveState
     {
+        readonly int IsWalking = Animator.StringToHash("IsWalking");
+        readonly int IsRunning = Animator.StringToHash("IsRunning");
+
+
         public PlayerMoveGrounded(CharacterMove characterMove) : base(characterMove) { }
 
         private float _lastGroundTime;
@@ -14,7 +18,6 @@ namespace SuraSang
 
         private bool _isCrouch;
         private bool _isCrouchFailed = false;
-        private bool _isSkill;
 
         public override void InitializeState()
         {
@@ -49,19 +52,17 @@ namespace SuraSang
             }
 
             // TODO : 임시 스킬 사용
-            if (_player.CurrentEmotion == Emotion.Happiness && _isSkill)
+            if (_player.IsSkill)
             {
-                _player.HappySkill.SkillHappy();
-            }
-            else if (_player.CurrentEmotion == Emotion.Anger && _isSkill)
-            {
-                _player.AngerSkill.OnSkill();
+                _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
         }
 
         public override void ClearState()
         {
             _player.Crouch(false);
+            _player.Animator.SetBool(IsWalking, false);
+            _player.Animator.SetBool(IsRunning, false);
         }
 
 
@@ -69,6 +70,8 @@ namespace SuraSang
         {
             _player.Crouch(false);
             _speed = isOn ? _player.Speed * _player.RunMultiplier : _player.Speed;
+
+            _player.Animator.SetBool(IsRunning, isOn);
         }
 
         private void OnCrouch(bool isOn)
@@ -102,11 +105,13 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
+            
+            _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
         }
 
         private void OnSkill(bool isOn)
         {
-            _isSkill = isOn;
+            _player.IsSkill = isOn;
         }
     }
 }

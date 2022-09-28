@@ -25,12 +25,12 @@ namespace SuraSang
         private bool _isAbsorb;
         private float _timer;
 
+        [SerializeField] private Renderer _renderer;
         private Material _defaultMaterial;
 
         private void InitAbsorb()
         {
-            _defaultMaterial = GetComponent<Material>();
-            _defaultMaterial = gameObject.GetComponent<Renderer>().material;
+            _defaultMaterial = _renderer.material;
         }
 
         private void UpdateAbsorb()
@@ -41,7 +41,7 @@ namespace SuraSang
 
                 if (_timer >= 3f)
                 {
-                    ReturnEmotion();
+                    // ReturnEmotion();
                 }
             }
         }
@@ -111,7 +111,12 @@ namespace SuraSang
 
         private void ReturnEmotion()
         {
-            gameObject.GetComponent<Renderer>().material = _defaultMaterial;
+            if(CurrentEmotion == Emotion.Sadness)
+            {
+                SadSkill.SkillEnd();
+            }
+
+            _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
             _timer = 0;
             _isAbsorb = false;
