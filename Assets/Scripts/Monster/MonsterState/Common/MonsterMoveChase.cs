@@ -12,7 +12,7 @@ namespace SuraSang
 
         public override void UpdateState()
         {
-            _agent.SetDestination(Vector3.zero);
+            //_agent.SetDestination(Vector3.zero);
         }
 
         public override void ClearState() { }
