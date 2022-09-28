@@ -9,8 +9,6 @@ namespace SuraSang
     {
         public LayerMask SkillTarget;
 
-        //TODO : 임시 변수
-        public float FollowSpeed;
 
         private List<Monster> _monsterList;
         private Transform _playerTransform;
@@ -33,8 +31,7 @@ namespace SuraSang
             foreach (Monster monster in _monsterList)
             {
                 var speed = Vector3.zero;
-                //monster.transform.position = Vector3.SmoothDamp(monster.transform.position, _playerTransform.position, ref speed , 0.1f);
-                monster.Agent.SetDestination(_playerTransform.position);
+                monster.ChangeState(new SadnessMove(monster));
             } 
 
             _monsterList.Clear();
