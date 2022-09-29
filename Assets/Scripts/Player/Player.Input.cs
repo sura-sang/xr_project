@@ -117,16 +117,8 @@ namespace SuraSang
             return Vector3Extentions.InputToTransformSpace(input, _cameraTransform);
         }
 
-        public void LookVector(Vector3 dir)
-        {
-            dir.y = 0;
-            transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-        }
+        
 
-        public void EulerRotation(Vector3 dir)
-        {
-            transform.rotation = Quaternion.Euler(dir);
-        }
 
         public bool Crouch(bool active)
         {
