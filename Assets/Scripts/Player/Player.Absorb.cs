@@ -107,11 +107,6 @@ namespace SuraSang
 
         private void ReturnEmotion()
         {
-            if(CurrentEmotion == Emotion.Sadness)
-            {
-                SadSkill.SkillEnd();
-            }
-
             _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
             _timer = 0;
