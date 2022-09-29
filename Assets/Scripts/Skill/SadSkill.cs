@@ -63,7 +63,7 @@ namespace SuraSang
             positions.Add(eye.position);
 
             var eyeDir = eye.forward * _speed;
-            var time = 0.1f;
+            var time = _accuracy;
 
             for (int i = 1; i < _sampleCount; i++)
             {
@@ -78,7 +78,7 @@ namespace SuraSang
 
         private (int lastIndex, RaycastHit hit) GetTearHitPoints(List<Vector3> tears, int skip)
         {
-            var lastIndex = tears.Count - 1;
+            var lastIndex = tears.Count;
             var hit = new RaycastHit();
 
             for (int i = skip; i < tears.Count; i += skip)
@@ -100,7 +100,7 @@ namespace SuraSang
             var positions = GetTearsPositions(eye);
             (var lastIndex, var hitPoint) = GetTearHitPoints(positions, 1);
 
-            if (lastIndex != positions.Count - 1)
+            if (lastIndex != positions.Count)
             {
                 lastIndex++;
 
@@ -114,7 +114,13 @@ namespace SuraSang
 
         private void OnDrawGizmos()
         {
-
+            for (int i = 0; i < _eyes.Length; i++)
+            {
+                foreach (var point in GetTearsPositions(_eyes[i]))
+                {
+                    Gizmos.DrawWireSphere(point, 0.1f);
+                }
+            }
         }
 
     }
