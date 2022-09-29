@@ -68,10 +68,8 @@ namespace SuraSang
         private void HappyMove(Vector2 input)
         {
             var dir = _player.InputToCameraSpace(input);
-            if (dir != Vector3.zero)
-            {
-                _player.LookVector(dir);
-            }
+            
+            _player.SmoothRotation(dir);
             dir *= _player.Speed;
             _player.MoveDir = dir;
         }
@@ -91,7 +89,7 @@ namespace SuraSang
             var dir = _player.InputToCameraSpace(input);
             if (dir != Vector3.zero)
             {
-                _player.LookVector(dir);
+                _player.SmoothRotation(dir);
             }
             _player.MoveDir = Vector3.zero;
         }
