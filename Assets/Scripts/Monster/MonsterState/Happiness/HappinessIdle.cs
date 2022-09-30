@@ -13,7 +13,6 @@ namespace SuraSang
         private float _timer;
         private float _radius;
         private Transform _moveRange;
-        private bool _canMove;
 
         public override void InitializeState() 
         {
@@ -26,7 +25,6 @@ namespace SuraSang
 
         public override void UpdateState() 
         {
-            _canMove = CanMove();
             _timer += Time.deltaTime;
 
             if (_timer >= 1f)
