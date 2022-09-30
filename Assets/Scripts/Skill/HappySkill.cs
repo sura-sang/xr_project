@@ -25,7 +25,6 @@ namespace SuraSang
 
         public void SkillHappy()
         {
-            //animator로 기쁨의 춤 애니메이션 재생
             CheckMonster();
 
             foreach (Monster monster in _monsterList)
