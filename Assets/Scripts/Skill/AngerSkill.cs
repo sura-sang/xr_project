@@ -1,13 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace SuraSang
 {
-    public class AngerSkill : MonoBehaviour
+    public class AngerSkill : MonoBehaviour, ISkill
     {
+        private Player _player;
+        private CharacterController _controller;
+
+        public AngerSkill(Player player, CharacterController controller)
+        {
+            _player = player;
+            _controller = controller;
+        }
+
+        public void OnMove(Vector2 input)
+        {
+            var dir = _player.InputToCameraSpace(input);
+
+
+            if (dir != Vector3.zero)
+            {
+                _player.LookVector(dir);
+            }
+
+            dir *= _player.Speed;
+            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
+            _player.MoveDir = dir;
+        }
+
+        public void OnSkill()
+        {
+            // TO DO : 분노 스킬
+        }
+
+        public void Animation()
+        {
+            // TO DO : 분노 애니메이션 파라미터
+        }
+
+
+
+        /*
         public float PlusSpeed = 2f;
         public float SkillRunningTime = 5f;
         public float RayDistance = 1f;
@@ -30,9 +65,21 @@ namespace SuraSang
             _player = GetComponent<Player>();
         }
 
-        private void Update() 
+        private void Update()
         {
             if (isSkillRunning) _player.IsSkill = true;
+        }
+
+        private void AngerMove(Vector2 input)
+        {
+            // TODO : 분노 무브먼트
+
+            //var dir = _player.transform.eulerAngles;
+            //dir.y = (dir.y > 180) ? dir.y - 360 : dir.y;
+            //float[] rot = _player.AngerSkill.LimitRot(dir);
+            //dir.y = Mathf.Clamp(dir.y, rot[0], rot[1]);
+            //// _player.EulerRotation(dir);
+            //_player.MoveDir = Vector3.zero;
         }
 
         private void FixedUpdate()
@@ -85,5 +132,6 @@ namespace SuraSang
             yield return new WaitForSeconds(SkillRunningTime);
             Clear();
         }
+        */
     }
 }
