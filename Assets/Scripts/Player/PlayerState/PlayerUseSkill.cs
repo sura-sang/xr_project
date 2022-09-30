@@ -13,7 +13,7 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _player.SetAction(ButtonActions.Skill, isOn => _player.IsSkill = isOn);
+            _player.SetAction(ButtonActions.Skill, OnSkill);
 
             if (_player.CurrentEmotion == Emotion.Happiness)
             {
@@ -30,7 +30,6 @@ namespace SuraSang
 
             _player.OnMove = _skill.OnMove;
             _skill.Animation();
-            _skill.OnSkill();
         }
 
         public override void UpdateState()
@@ -50,17 +49,24 @@ namespace SuraSang
             if (!_player.IsSkill)
             {
                 _player.ChangeState(new PlayerMoveGrounded(_characterMove));
+                AnimationClear();
             }
+
+            _skill.OnSkill();
         }
 
         public override void ClearState() { }
 
+        private void OnSkill(bool isOn)
+        {
+            if(_player.CurrentEmotion != Emotion.Anger) _player.IsSkill = isOn;
+        }
+
         private void AnimationClear()
         {
             // TODO : 전체 애니메이션 파라미터 초기화
-
-            // _player.Animator.SetBool("IsUseJoySkill", false);
-            // _player.Animator.SetBool("IsUseAngerSkill", false);
+            _player.Animator.SetBool("IsUseJoySkill", false);
+            _player.Animator.SetBool("IsUseAngerSkill", false);
         }
     }
 }

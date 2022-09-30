@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class SadSkill : MonoBehaviour, ISkill
+    public class SadSkill : ISkill
     {
         private Player _player;
         private CharacterController _controller;
