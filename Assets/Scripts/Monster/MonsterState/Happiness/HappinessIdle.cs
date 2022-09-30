@@ -18,7 +18,9 @@ namespace SuraSang
         public override void InitializeState() 
         {
             _radius = 5f;
-            _moveRange = GameObject.FindWithTag("MoveRange").transform;
+            FineNearestTag();
+            //_moveRange = GameObject.FindWithTag("MoveRange").transform;
+
             _destination = RandomNavSphere(_monster.transform.position, _radius, -1);
         }
 
@@ -48,6 +50,29 @@ namespace SuraSang
         { 
         }
 
+        private void FineNearestTag()
+        {
+            GameObject[] moveRange = GameObject.FindGameObjectsWithTag("MoveRange");
+            float shortDis = 0;
+
+            if (moveRange.Length != 0)
+            {
+                shortDis = Vector3.Distance(_monster.transform.position, moveRange[0].transform.position);
+            }
+
+            foreach(GameObject mRange in moveRange)
+            {
+                var dist = Vector3.Distance(_monster.transform.position, mRange.transform.position);
+
+                if(dist <= shortDis)
+                {
+                    _moveRange = mRange.transform;
+                }             
+            }
+
+        }
+
+
         private Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
         {
             Vector3 randDirection = Random.insideUnitSphere * dist;
@@ -69,5 +94,6 @@ namespace SuraSang
                 return false;
             }
         }
+
     }
 }
