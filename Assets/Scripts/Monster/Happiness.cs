@@ -22,7 +22,9 @@ namespace SuraSang
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position, _moveRange.transform.position);
+
+            if (_moveRange != null)
+                Gizmos.DrawLine(transform.position, _moveRange.transform.position);
         }
 
         private void FineNearestTag()
