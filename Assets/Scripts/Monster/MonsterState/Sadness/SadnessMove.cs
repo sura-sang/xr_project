@@ -7,8 +7,12 @@ namespace SuraSang
     public class SadnessMove : MonsterMoveState
     {
         public SadnessMove(CharacterMove characterMove) : base(characterMove) { }
+        private Sadness _sadness;
 
-        public override void InitializeState() { }
+        public override void InitializeState()
+        {
+            _sadness = GameObject.Find("Sadness").GetComponent<Sadness>();
+        }
 
         public override void UpdateState() 
         {
@@ -28,6 +32,7 @@ namespace SuraSang
         {
             _agent.isStopped = true;
             _agent.velocity = Vector3.zero;
+            _sadness.IsFollow = false;
         }
     }
 }
