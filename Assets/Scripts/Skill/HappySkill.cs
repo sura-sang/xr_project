@@ -34,7 +34,7 @@ namespace SuraSang
 
         /*
         public LayerMask SkillTarget;
-
+        public static float CheckRange = 10f;
 
         private List<Monster> _monsterList;
         private Transform _playerTransform;
@@ -51,7 +51,6 @@ namespace SuraSang
 
         public void SkillHappy()
         {
-            //animator로 기쁨의 춤 애니메이션 재생
             CheckMonster();
 
             foreach (Monster monster in _monsterList)
@@ -67,7 +66,7 @@ namespace SuraSang
 
         void CheckMonster()
         {
-            Collider[] hitedTargets = Physics.OverlapSphere(transform.position, 10, SkillTarget);
+            Collider[] hitedTargets = Physics.OverlapSphere(transform.position, CheckRange, SkillTarget);
 
             foreach (Collider monster in hitedTargets)
             {
