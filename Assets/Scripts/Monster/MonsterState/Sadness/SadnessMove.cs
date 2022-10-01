@@ -13,7 +13,7 @@ namespace SuraSang
         public override void UpdateState() 
         {
             if (_monster.PlayerTransform.GetComponent<Player>().CurrentEmotion == Emotion.Happiness
-                && Vector3.Distance(_monster.PlayerTransform.position, _monster.transform.position) < 10)
+                && Vector3.Distance(_monster.PlayerTransform.position, _monster.transform.position) < HappySkill.CheckRange)
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_monster.PlayerTransform.position);

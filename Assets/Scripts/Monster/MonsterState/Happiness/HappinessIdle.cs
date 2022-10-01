@@ -13,12 +13,14 @@ namespace SuraSang
         private float _timer;
         private float _radius;
         private Transform _moveRange;
+        private float _randomSec;
 
         public override void InitializeState() 
         {
-            _radius = 5f;
             FineNearestTag();
-            //_moveRange = GameObject.FindWithTag("MoveRange").transform;
+
+            _radius = _moveRange.GetComponent<HappyMoveRange>().MoveRadius;         
+            _randomSec = 1f;
 
             _destination = RandomNavSphere(_monster.transform.position, _radius, -1);
         }
@@ -27,7 +29,7 @@ namespace SuraSang
         {
             _timer += Time.deltaTime;
 
-            if (_timer >= 1f)
+            if (_timer >= _randomSec)
             {
                 _destination = RandomNavSphere(_monster.transform.position, _radius, -1);
                 _timer = 0;
@@ -45,7 +47,8 @@ namespace SuraSang
         }
 
         public override void ClearState() 
-        { 
+        {
+            
         }
 
         private void FineNearestTag()
@@ -62,14 +65,12 @@ namespace SuraSang
             {
                 var dist = Vector3.Distance(_monster.transform.position, mRange.transform.position);
 
-                if(dist <= shortDis)
+                if (dist <= shortDis)
                 {
-                    _moveRange = mRange.transform;
+                    _moveRange = mRange.transform;                 
                 }             
             }
-
         }
-
 
         private Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
         {
@@ -83,7 +84,7 @@ namespace SuraSang
 
         private bool CanMove()
         {
-            if (Vector3.Distance(_moveRange.transform.position, _destination) <= 5)
+            if (Vector3.Distance(_moveRange.transform.position, _destination) <= _radius)
             {
                 return true;
             }
