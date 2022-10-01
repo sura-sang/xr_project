@@ -30,7 +30,7 @@ namespace SuraSang
 
         public void OnMove(Vector2 input)
         {
-            _player.MoveDir = new Vector3(0, -1, 0);
+            _player.MoveDir = Vector3.down;
 
             /*var dir = _player.transform.eulerAngles;
             dir.y = (dir.y > 180) ? dir.y - 360 : dir.y;
