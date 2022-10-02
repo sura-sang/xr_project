@@ -6,13 +6,13 @@ namespace SuraSang
 {
     public class SadnessMove : MonsterMoveState
     {
-        public SadnessMove(CharacterMove characterMove) : base(characterMove) { }
         private Sadness _sadness;
-
-        public override void InitializeState()
+        public SadnessMove(CharacterMove characterMove,Sadness sadness) : base(characterMove) 
         {
-            _sadness = GameObject.Find("Sadness").GetComponent<Sadness>();
+            _sadness = sadness;
         }
+
+        public override void InitializeState() { }
 
         public override void UpdateState() 
         {
@@ -24,7 +24,7 @@ namespace SuraSang
             }
             else
             {
-                _monster.ChangeState(new SadnessIdle(_monster));
+                _monster.ChangeState(new SadnessIdle(_monster, _sadness));
             }
         }
 
