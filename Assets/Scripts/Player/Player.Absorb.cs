@@ -25,12 +25,12 @@ namespace SuraSang
         private bool _isAbsorb;
         private float _timer;
 
+        [SerializeField] private Renderer _renderer;
         private Material _defaultMaterial;
 
         private void InitAbsorb()
         {
-            _defaultMaterial = GetComponent<Material>();
-            _defaultMaterial = gameObject.GetComponent<Renderer>().material;
+            _defaultMaterial = _renderer.material;
         }
 
         private void UpdateAbsorb()
@@ -41,7 +41,7 @@ namespace SuraSang
 
                 if (_timer >= 3f)
                 {
-                    ReturnEmotion();
+                    // ReturnEmotion();
                 }
             }
         }
@@ -97,17 +97,21 @@ namespace SuraSang
             {
                 for (int i = 0; i < _hitTargetContainer.Count; i++)
                 {
-                    _isAbsorb = true;
-                    _timer = 0;
-                    CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
-                    gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
+                    if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
+                    {
+                        _isAbsorb = true;
+                        _timer = 0;
+                        gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
+                        CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
+                        _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
+                    }
                 }
             }
         }
 
         private void ReturnEmotion()
         {
-            gameObject.GetComponent<Renderer>().material = _defaultMaterial;
+            _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
             _timer = 0;
             _isAbsorb = false;
