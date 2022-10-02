@@ -12,8 +12,9 @@ namespace SuraSang
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            
-            ChangeState(new MonsterMoveChase(this));
+            PlayerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
+
+            ChangeState(new SadnessIdle(this));
         }
     }
 }

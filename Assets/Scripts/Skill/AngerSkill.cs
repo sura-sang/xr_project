@@ -1,70 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Printing;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace SuraSang
 {
-    public class AngerSkill : MonoBehaviour
+    public class AngerSkill : ISkill
     {
-        public float PlusSpeed = 2f;
-        public float SkillRunningTime = 5f;
-        public float RayDistance = 1f;
-        public float MaxYRot = 20f;
-        public float MinYRot = -20f;
-        public bool isSkillRunning = false;
-
-
-        private RaycastHit _hit;
-        private IEnumerator _runningCo;
         private Player _player;
+        private CharacterController _controller;
+
+        private float PlusSpeed = 2f;
+        private float SkillRunningTime = 2f;
+        private bool isSkillRunning = false;
+
+        private float MaxYRot = 20f;
+        private float MinYRot = -20f;
         private float _playerMinYAngles;
         private float _playerMaxYAngles;
-        private float _tempSpeed;
 
+        private float _radius = 1f;
+        private float _timer;
 
-        private void Start()
+        public AngerSkill(Player player, CharacterController controller)
         {
-            _runningCo = Coroutine();
-
-            _player = GetComponent<Player>();
+            _player = player;
+            _controller = controller;
         }
 
-        private void Update()
+        public void OnMove(Vector2 input)
         {
-            //OnSkill();
-        }
+            _player.MoveDir = Vector3.down;
 
-        private void FixedUpdate()
-        {
-            if (isSkillRunning)
-            {
-                if (!Physics.Raycast(transform.position, transform.forward, out _hit, RayDistance))
-                {
-                    Vector3 playerEulerAngles = transform.rotation.eulerAngles;
-                    playerEulerAngles.y = (playerEulerAngles.y > 180) ? playerEulerAngles.y - 360 : playerEulerAngles.y;
-
-                    playerEulerAngles.y = Mathf.Clamp(playerEulerAngles.y, _playerMinYAngles, _playerMaxYAngles);
-                    transform.rotation = Quaternion.Euler(playerEulerAngles);
-
-                    transform.Translate(transform.forward * (_tempSpeed + PlusSpeed) * Time.deltaTime, Space.World);
-                }
-                else
-                {
-                    isSkillRunning = false;
-                    CoroutineReset();
-                }
-            }
-        }
-
-        private void LimitRot(Vector3 v)
-        {
-            _playerMinYAngles = v.y + MinYRot;
-            _playerMaxYAngles = v.y + MaxYRot;
-
-            _playerMinYAngles = (_playerMinYAngles < -180) ? _playerMinYAngles + 360 : _playerMinYAngles;
-            _playerMaxYAngles = (_playerMaxYAngles > 180) ? _playerMaxYAngles - 360 : _playerMaxYAngles;
+            /*var dir = _player.transform.eulerAngles;
+            dir.y = (dir.y > 180) ? dir.y - 360 : dir.y;
+            float[] rot = _player.AngerSkill.LimitRot(dir);
+            dir.y = Mathf.Clamp(dir.y, rot[0], rot[1]);
+            _player.EulerRotation(dir);
+            _player.MoveDir = Vector3.zero;*/
         }
 
         public void OnSkill()
@@ -72,25 +45,57 @@ namespace SuraSang
             if (!isSkillRunning)
             {
                 isSkillRunning = true;
-                StartCoroutine(_runningCo);
-                _tempSpeed = _player.Speed;
-                _player.Speed = 1.0f;
-                LimitRot(transform.rotation.eulerAngles);
+            }
+            else if (isSkillRunning)
+            {
+                Cooldown();
+                _controller.Move(_player.transform.forward * (_player.Speed + PlusSpeed) * Time.deltaTime);
+
+                Vector3 vec = _player.transform.position;
+                Collider[] colliders = Physics.OverlapSphere(_player.transform.position, _radius);
+                foreach (Collider col in colliders)
+                {
+                    if (col.gameObject.layer != LayerMask.NameToLayer("Player")) Clear();
+                }
             }
         }
 
-        private void CoroutineReset()
+        public void Animation()
         {
-            isSkillRunning = false;
-            StopCoroutine(_runningCo);
-            _player.Speed = _tempSpeed;
-            _runningCo = Coroutine();
+            _player.Animator.SetBool("IsUseAngerSkill", true);
         }
 
-        IEnumerator Coroutine()
+        private void Cooldown()
         {
-            yield return new WaitForSeconds(SkillRunningTime);
-            CoroutineReset();
+            if (isSkillRunning)
+            {
+                _timer += Time.deltaTime;
+                Debug.Log(_timer);
+
+                if (_timer >= SkillRunningTime)
+                {
+                    Clear();
+                }
+            }
+        }
+
+        private void Clear()
+        {
+            _player.IsSkill = false;
+            isSkillRunning = false;
+        }
+
+        public float[] LimitRot(Vector3 v)
+        {
+            float[] rot = new float[2];
+
+            _playerMinYAngles = v.y + MinYRot;
+            _playerMaxYAngles = v.y + MaxYRot;
+
+            _playerMinYAngles = (_playerMinYAngles < -180) ? _playerMinYAngles + 360 : _playerMinYAngles;
+            _playerMaxYAngles = (_playerMaxYAngles > 180) ? _playerMaxYAngles - 360 : _playerMaxYAngles;
+
+            return rot;
         }
     }
 }
