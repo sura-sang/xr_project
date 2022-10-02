@@ -6,6 +6,8 @@ namespace SuraSang
 {
     public class HappySkill : ISkill
     {
+        public const float CheckRange = 5;
+
         private Player _player;
         private CharacterController _controller;
 
