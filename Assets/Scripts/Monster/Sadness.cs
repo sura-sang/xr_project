@@ -15,7 +15,7 @@ namespace SuraSang
             Agent = GetComponent<NavMeshAgent>();
             PlayerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
 
-            ChangeState(new SadnessIdle(this));
+            ChangeState(new SadnessIdle(this,this));
         }
     }
 }
