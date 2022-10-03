@@ -8,13 +8,14 @@ namespace SuraSang
     public class Sadness : Monster
     {
         public override Emotion Emotion => Emotion.Sadness;
-        
+        public bool IsFollow;
+
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
             PlayerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
 
-            ChangeState(new SadnessIdle(this));
+            ChangeState(new SadnessIdle(this,this));
         }
     }
 }
