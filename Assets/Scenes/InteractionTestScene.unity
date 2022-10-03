@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163758354}
-  m_LocalRotation: {x: 0.18776873, y: -0.0035440428, z: 0.00067751575, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776873, y: -0.003544012, z: 0.0006775099, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.341, z: -19.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1493,7 +1493,7 @@ GameObject:
   - component: {fileID: 843771158}
   - component: {fileID: 843771159}
   m_Layer: 0
-  m_Name: TestObj
+  m_Name: TestOyster
   m_TagString: OysterMushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,6 +1528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bf95835afae01478fc19892e7f748b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Size: 3
+  GrowSpeed: 1
 --- !u!1 &847529107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1592,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847529107}
-  m_LocalRotation: {x: 0.18776873, y: -0.0035440428, z: 0.00067751575, w: 0.98220664}
+  m_LocalRotation: {x: 0.18776873, y: -0.003544012, z: 0.0006775099, w: 0.98220664}
   m_LocalPosition: {x: 3.848, y: 8.341, z: -19.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1985,7 +1987,7 @@ GameObject:
   - component: {fileID: 980480066}
   - component: {fileID: 980480067}
   m_Layer: 0
-  m_Name: TestObj (2)
+  m_Name: TestClown
   m_TagString: OysterMushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2673,7 +2675,7 @@ GameObject:
   - component: {fileID: 1320172489}
   - component: {fileID: 1320172490}
   m_Layer: 0
-  m_Name: TestObj (1)
+  m_Name: TestFresh
   m_TagString: OysterMushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
