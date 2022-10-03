@@ -5,8 +5,35 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class SadSkill : MonoBehaviour
+    public class SadSkill : ISkill
     {
+        private Player _player;
+        private CharacterController _controller;
+
+        public SadSkill(Player player, CharacterController controller)
+        {
+            _player = player;
+            _controller = controller;
+        }
+
+        public void OnMove(Vector2 input)
+        {
+            // TO DO : 슬픔 무브먼트
+        }
+
+        public void OnSkill()
+        {
+            // TO DO : 슬픔 스킬
+        }
+
+        public void Animation()
+        {
+            // TO DO : 슬픔 애니메이션 파라미터
+        }
+
+
+
+        /*
         [SerializeField] LayerMask _tearBlock;
 
         [SerializeField] float _speed;
@@ -122,6 +149,7 @@ namespace SuraSang
                 }
             }
         }
+        */
 
     }
 }

@@ -6,11 +6,20 @@ namespace SuraSang
 {
     public class SadnessIdle : MonsterMoveState
     {
-        public SadnessIdle(CharacterMove characterMove) : base(characterMove) { }
+        private Sadness _sadness;
+        public SadnessIdle(CharacterMove characterMove, Sadness sadness) : base(characterMove)
+        {
+            _sadness = sadness;
+        }
 
         public override void InitializeState() { }
-
-        public override void UpdateState() { }
+        public override void UpdateState()
+        {
+            if (_sadness.IsFollow)
+            {
+                _monster.ChangeState(new SadnessMove(_monster,_sadness));
+            }
+        }
 
         public override void ClearState() { }
     }
