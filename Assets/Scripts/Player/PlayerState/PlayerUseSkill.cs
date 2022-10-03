@@ -55,7 +55,10 @@ namespace SuraSang
             _skill.UpdateSkill();
         }
 
-        public override void ClearState() { }
+        public override void ClearState()
+        {
+            _skill.ClearSkill();
+        }
 
         private void OnSkill(bool isOn)
         {

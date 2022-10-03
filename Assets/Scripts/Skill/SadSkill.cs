@@ -16,16 +16,35 @@ namespace SuraSang
             _controller = controller;
         }
 
-        public void OnMove(Vector2 input) { }
-
-        public void UpdateSkill()
+        public void OnMove(Vector2 input)
         {
+            var dir = _player.InputToCameraSpace(input);
+
+            _player.SmoothRotation(dir);
+
+            dir *= _player.Speed;
+            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
+            _player.MoveDir = dir;
             
+            foreach (var eye in _player.SadEyes)
+            {
+                eye.SetTearLine();
+            }
         }
 
+        public void UpdateSkill() { }
+
+        public void FixedUpdateSkill()
+        {
+            // foreach (var eye in _player.SadEyes)
+            // {
+            //     eye.SetTearHitPoints();
+            // }
+        }
+        
         public void InitializeSkill()
         {
-            foreach (var eye in _player.SadEyes)   
+            foreach (var eye in _player.SadEyes)
             {
                 eye.ResetTears();
             }
@@ -33,9 +52,11 @@ namespace SuraSang
 
         public void ClearSkill()
         {
-            // TO DO : 슬픔 애니메이션 파라미터
+            foreach (var eye in _player.SadEyes)
+            {
+                eye.ResetTears();
+            }
         }
-
 
 
         /*
@@ -155,6 +176,5 @@ namespace SuraSang
             }
         }
         */
-
     }
 }
