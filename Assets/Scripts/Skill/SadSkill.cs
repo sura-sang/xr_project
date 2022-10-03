@@ -16,17 +16,22 @@ namespace SuraSang
             _controller = controller;
         }
 
-        public void OnMove(Vector2 input)
+        public void OnMove(Vector2 input) { }
+
+        public void UpdateSkill()
         {
-            // TO DO : 슬픔 무브먼트
+            
         }
 
-        public void OnSkill()
+        public void InitializeSkill()
         {
-            // TO DO : 슬픔 스킬
+            foreach (var eye in _player.SadEyes)   
+            {
+                eye.ResetTears();
+            }
         }
 
-        public void Animation()
+        public void ClearSkill()
         {
             // TO DO : 슬픔 애니메이션 파라미터
         }
