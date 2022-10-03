@@ -118,7 +118,7 @@ namespace SuraSang
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, _ViewAngle / 2, _viewRadius);
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -_ViewAngle / 2, _viewRadius);
 
-                Gizmos.DrawWireSphere(transform.position, 10);
+                Gizmos.DrawWireSphere(transform.position, HappySkill.CheckRange);
             }
         }
     }
