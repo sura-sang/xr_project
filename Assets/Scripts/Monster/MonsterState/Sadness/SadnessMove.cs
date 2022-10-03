@@ -6,7 +6,11 @@ namespace SuraSang
 {
     public class SadnessMove : MonsterMoveState
     {
-        public SadnessMove(CharacterMove characterMove) : base(characterMove) { }
+        private Sadness _sadness;
+        public SadnessMove(CharacterMove characterMove,Sadness sadness) : base(characterMove) 
+        {
+            _sadness = sadness;
+        }
 
         public override void InitializeState() { }
 
@@ -20,7 +24,7 @@ namespace SuraSang
             }
             else
             {
-                _monster.ChangeState(new SadnessIdle(_monster));
+                _monster.ChangeState(new SadnessIdle(_monster, _sadness));
             }
         }
 
@@ -28,6 +32,7 @@ namespace SuraSang
         {
             _agent.isStopped = true;
             _agent.velocity = Vector3.zero;
+            _sadness.IsFollow = false;
         }
     }
 }
