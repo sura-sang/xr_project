@@ -36,6 +36,10 @@ namespace SuraSang
         //    _monsterList = new List<Monster>();
         //    _speed = _player.Speed;
         //}
+        public void InitializeSkill()
+        {
+            _player.Animator.SetBool(IsUseJoySkill, true);
+        }
 
         public void OnMove(Vector2 input)
         {
@@ -50,7 +54,7 @@ namespace SuraSang
             _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
         }
 
-        public void OnSkill()
+        public void UpdateSkill()
         {
             CheckMonster();
 
@@ -62,9 +66,10 @@ namespace SuraSang
             _monsterList.Clear();
         }
 
-        public void Animation()
+        
+        public void ClearSkill()
         {
-            _player.Animator.SetBool(IsUseJoySkill, true);
+            
         }
 
         void CheckMonster()
