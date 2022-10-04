@@ -51,6 +51,13 @@ namespace SuraSang
 
         public Animator Animator;
 
+        //TO DO : 임시 변수
+        [Header("test")]
+        public bool ObsTest;
+        public bool ObsTest2;
+        public bool ObsTest3;
+        public GameObject TestObserver;
+
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
@@ -78,6 +85,14 @@ namespace SuraSang
             UpdateAbsorb();
 
             Controller.Move(MoveDir * Time.deltaTime);
+
+            if(ObsTest)
+            {
+                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
+                PuzzleManager.Instance.Notify(TestObserver.GetComponent<PuzzleObserver>());
+
+                PuzzleManager.Instance.RemoveObserver(TestObserver.GetComponent<PuzzleObserver>());
+            }
         }
 
 
