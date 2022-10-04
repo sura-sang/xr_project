@@ -8,82 +8,60 @@ namespace SuraSang
 {
     public class SadEye : MonoBehaviour
     {
-        [SerializeField] private float _tearJiggleSpeed;
-        [SerializeField] private AnimationCurve _tearAnimation;
+        [SerializeField] private float _targetLength = 1.0f;
+
+        [SerializeField] private float _smoothSpeed = 0.02f;
         [SerializeField] private LayerMask _tearBlock;
 
-        [SerializeField] private float _speed;
-        [SerializeField] private float _gravity;
-        [SerializeField] private int _sampleCount;
-        [SerializeField] private float _accuracy;
+        [SerializeField] private float _speed = 0.3f;
+        [SerializeField] private float _gravity = 0.125f;
+        [SerializeField] private float _downGravity = 0.25f;
+        [SerializeField] private int _sampleCount = 7;
 
-        private Player _player;
         private LineRenderer _lineRenderer;
 
         private Vector3[] _curTearLines;
+        private Vector3[] _curTearVelocity;
 
         private int _lastIndex;
         private RaycastHit _lastHit;
 
-        private Vector3 _curLastPoint;
-
         private void Awake()
         {
-            _player = GetComponentInParent<Player>();
             _lineRenderer = GetComponent<LineRenderer>();
             _curTearLines = new Vector3[_sampleCount];
         }
 
         public void ResetTears()
         {
-            _curTearLines = GetTearsPositions().ToArray();
+            _curTearLines = Enumerable.Repeat(transform.position, _sampleCount).ToArray();
+            _curTearVelocity = new Vector3[_sampleCount];
             _lineRenderer.positionCount = 0;
         }
 
         public void SetTearLine()
         {
-            var targetPositions = GetTearsPositions();
+            _curTearLines[0] = transform.position;
 
-            for (int i = 0; i < targetPositions.Count; i++)
+            float curLength = 0;
+            var power = transform.forward * _speed;
+
+            for (int i = 1; i < _curTearLines.Length; i++)
             {
-                var target = targetPositions[i];
-                var current = _curTearLines[i];
+                _curTearLines[i] = Vector3.SmoothDamp(_curTearLines[i], _curTearLines[i - 1] + power,
+                    ref _curTearVelocity[i], _smoothSpeed);
 
-                var newPos = Vector3.Lerp(Vector3.Lerp(current, target, _tearJiggleSpeed * Time.deltaTime),
-                    target, _tearAnimation.Evaluate((float)i / _sampleCount));
+                power += Vector3.down * (power.y > 0 ? _gravity : _downGravity);
 
-                _curTearLines[i] = targetPositions[i] = newPos;
+                curLength += (_curTearLines[i] - _curTearLines[i - 1]).sqrMagnitude;
             }
 
-            var lastIndex = _lastIndex;
+            _lineRenderer.positionCount = _lastIndex + (_lastIndex == _sampleCount ? 0 : 1);
+            _lineRenderer.SetPositions(_curTearLines);
 
-            if (lastIndex != targetPositions.Count)
-            {
-                lastIndex++;
-                targetPositions.RemoveRange(lastIndex, targetPositions.Count - lastIndex);
-            }
-
-            _lineRenderer.positionCount = lastIndex;
-            _lineRenderer.SetPositions(targetPositions.ToArray());
-        }
-
-        private List<Vector3> GetTearsPositions()
-        {
-            List<Vector3> positions = new List<Vector3>();
-            positions.Add(transform.position);
-
-            var eyeDir = transform.forward * _speed;
-            var time = _accuracy;
-
-            for (int i = 1; i < _sampleCount; i++)
-            {
-                var pos = transform.position + (eyeDir + (Vector3.down * _gravity * time)) * time;
-
-                time += _accuracy;
-                positions.Add(pos);
-            }
-
-            return positions;
+            var key = _lineRenderer.widthCurve[1];
+            key.time = Mathf.Clamp01(curLength / (_targetLength * _targetLength));
+            _lineRenderer.widthCurve.MoveKey(1, key);
         }
 
         private void FixedUpdate()
@@ -106,9 +84,17 @@ namespace SuraSang
 
         private void OnDrawGizmos()
         {
-            foreach (var point in GetTearsPositions())
+            Gizmos.DrawWireSphere(transform.position, 0.1f);
+
+            Vector3 point = transform.position;
+
+            var power = transform.forward * _speed;
+            for (int i = 1; i < _sampleCount; i++)
             {
+                point += power;
+
                 Gizmos.DrawWireSphere(point, 0.1f);
+                power += Vector3.down * (power.y > 0 ? _gravity : _downGravity);
             }
         }
     }
