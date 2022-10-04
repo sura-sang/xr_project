@@ -20,7 +20,7 @@ namespace SuraSang
         private Player _player;
         private LineRenderer _lineRenderer;
 
-        private List<Vector3> _curTearLines;
+        private Vector3[] _curTearLines;
 
         private int _lastIndex;
         private RaycastHit _lastHit;
@@ -31,33 +31,29 @@ namespace SuraSang
         {
             _player = GetComponentInParent<Player>();
             _lineRenderer = GetComponent<LineRenderer>();
-            _curTearLines = new List<Vector3>();
+            _curTearLines = new Vector3[_sampleCount];
         }
 
         public void ResetTears()
         {
-            _curTearLines.Clear();
+            _curTearLines = GetTearsPositions().ToArray();
             _lineRenderer.positionCount = 0;
         }
 
         public void SetTearLine()
         {
             var targetPositions = GetTearsPositions();
-            var curTearLines = new List<Vector3>();
 
             for (int i = 0; i < targetPositions.Count; i++)
             {
                 var target = targetPositions[i];
-                var current = _curTearLines.Count > i ? _curTearLines[i] : Vector3.zero;
+                var current = _curTearLines[i];
 
                 var newPos = Vector3.Lerp(Vector3.Lerp(current, target, _tearJiggleSpeed * Time.deltaTime),
                     target, _tearAnimation.Evaluate((float)i / _sampleCount));
 
-                targetPositions[i] = newPos + transform.position;
-                curTearLines.Add(newPos);
+                _curTearLines[i] = targetPositions[i] = newPos;
             }
-
-            _curTearLines = curTearLines;
 
             var lastIndex = _lastIndex;
 
@@ -74,14 +70,14 @@ namespace SuraSang
         private List<Vector3> GetTearsPositions()
         {
             List<Vector3> positions = new List<Vector3>();
-            positions.Add(Vector3.zero);
+            positions.Add(transform.position);
 
             var eyeDir = transform.forward * _speed;
             var time = _accuracy;
 
             for (int i = 1; i < _sampleCount; i++)
             {
-                var pos = (eyeDir + (Vector3.down * _gravity * time)) * time;
+                var pos = transform.position + (eyeDir + (Vector3.down * _gravity * time)) * time;
 
                 time += _accuracy;
                 positions.Add(pos);
@@ -92,15 +88,15 @@ namespace SuraSang
 
         private void FixedUpdate()
         {
-            _lastIndex = _curTearLines.Count;
+            _lastIndex = _curTearLines.Length;
             _lastHit = new RaycastHit();
 
-            for (int i = 1; i < _curTearLines.Count; i++)
+            for (int i = 1; i < _curTearLines.Length; i++)
             {
                 var dir = _curTearLines[i] - _curTearLines[i - 1];
                 var distance = dir.magnitude;
 
-                if (Physics.Raycast(transform.position + _curTearLines[i - 1], dir, out _lastHit, distance, _tearBlock))
+                if (Physics.Raycast(_curTearLines[i - 1], dir, out _lastHit, distance, _tearBlock))
                 {
                     _lastIndex = i;
                     return;
@@ -112,7 +108,7 @@ namespace SuraSang
         {
             foreach (var point in GetTearsPositions())
             {
-                Gizmos.DrawWireSphere(transform.position + point, 0.1f);
+                Gizmos.DrawWireSphere(point, 0.1f);
             }
         }
     }
