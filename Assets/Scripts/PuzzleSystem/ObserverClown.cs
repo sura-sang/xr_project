@@ -28,7 +28,7 @@ namespace SuraSang
         {
             while (transform.Find("Cap").localScale.x < Size)
             {
-                transform.Find("Cap").localScale = _upSize * (1f + _time * GrowSpeed);
+                transform.Find("Cap").localScale += _upSize * (_time * GrowSpeed);
 
                 _time += Time.deltaTime;
 
