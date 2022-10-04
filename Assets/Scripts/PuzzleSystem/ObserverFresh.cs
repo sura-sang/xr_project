@@ -8,12 +8,11 @@ namespace SuraSang
     {
         public float Size = 3f;
         public float GrowSpeed = 1f;
-        private float _time;
-        private Vector3 _originScale;
+        private float _time; 
+        public Vector3 _upSize;
 
         private void Start()
         {
-            _originScale = transform.Find("Body").localScale;
             PuzzleManager.Instance.AddObserver(this);
         }
 
@@ -22,15 +21,20 @@ namespace SuraSang
             StartCoroutine(GrowUp());
             Debug.Log("갓버섯 퍼즐 실행");
         }
-
+     
         IEnumerator GrowUp()
         {
-            while (transform.localScale.x < Size)
+            while (transform.Find("Body").localScale.y < Size)
             {
-                transform.localScale = _originScale * (1f + _time * GrowSpeed);
+                var pos = transform.Find("Cap").localPosition;
+
+                transform.Find("Body").localScale += _upSize * (_time * GrowSpeed);
+                pos.y = transform.Find("Body").localScale.y;
+                transform.Find("Cap").localPosition = pos;
+
                 _time += Time.deltaTime;
 
-                if (transform.localScale.x >= Size)
+                if (transform.Find("Body").localScale.y >= Size)
                 {
                     _time = 0;
                     break;
