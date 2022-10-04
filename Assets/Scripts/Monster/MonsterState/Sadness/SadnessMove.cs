@@ -16,11 +16,11 @@ namespace SuraSang
 
         public override void UpdateState() 
         {
-            if (_monster.PlayerTransform.GetComponent<Player>().CurrentEmotion == Emotion.Happiness
-                && Vector3.Distance(_monster.PlayerTransform.position, _monster.transform.position) < HappySkill.CheckRange)
+            if (GameManager.Instance.Player.CurrentEmotion == Emotion.Happiness
+                && Vector3.Distance(GameManager.Instance.Player.transform.position, _monster.transform.position) < HappySkill.CheckRange)
             {
                 _agent.isStopped = false;
-                _agent.SetDestination(_monster.PlayerTransform.position);
+                _agent.SetDestination(GameManager.Instance.Player.transform.position);
             }
             else
             {
