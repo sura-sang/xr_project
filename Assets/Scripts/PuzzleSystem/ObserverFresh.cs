@@ -13,7 +13,7 @@ namespace SuraSang
 
         private void Start()
         {
-            _originScale = transform.localScale;
+            _originScale = transform.Find("Body").localScale;
             PuzzleManager.Instance.AddObserver(this);
         }
 

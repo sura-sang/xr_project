@@ -57,6 +57,8 @@ namespace SuraSang
         public bool ObsTest2;
         public bool ObsTest3;
         public GameObject TestObserver;
+        public GameObject TestObserver2;
+        public GameObject TestObserver3;
 
         private void Awake()
         {
@@ -86,12 +88,28 @@ namespace SuraSang
 
             Controller.Move(MoveDir * Time.deltaTime);
 
-            if(ObsTest)
+            //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
+            //        가져온 퍼즐옵저버의 태그가 어떠한 버섯인지 태그로 확인.
+            if (ObsTest)
             {
                 //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
                 PuzzleManager.Instance.Notify(TestObserver.GetComponent<PuzzleObserver>());
 
                 PuzzleManager.Instance.RemoveObserver(TestObserver.GetComponent<PuzzleObserver>());
+            }
+            else if (ObsTest2)
+            {
+                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
+                PuzzleManager.Instance.Notify(TestObserver2.GetComponent<PuzzleObserver>());
+
+                PuzzleManager.Instance.RemoveObserver(TestObserver2.GetComponent<PuzzleObserver>());
+            }
+            else if (ObsTest3)
+            {
+                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
+                PuzzleManager.Instance.Notify(TestObserver3.GetComponent<PuzzleObserver>());
+
+                PuzzleManager.Instance.RemoveObserver(TestObserver3.GetComponent<PuzzleObserver>());
             }
         }
 
