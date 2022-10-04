@@ -31,7 +31,6 @@ namespace SuraSang
 
         public float SlowSpeed;
 
-
         public float CoyoteTime;// 절벽 끝나고 플레이어가 공중에 있어도 일정 시간동안 점프 가능
         public float VariableJumpTime;// 꾸욱 누르면 더 올라가는 기능
         public float AirControl;// 공중에서 컨트롤가능한 정도
@@ -119,7 +118,7 @@ namespace SuraSang
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, _ViewAngle / 2, _viewRadius);
                 Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -_ViewAngle / 2, _viewRadius);
 
-                Gizmos.DrawWireSphere(transform.position, 10);
+                Gizmos.DrawWireSphere(transform.position, HappySkill.CheckRange);
             }
         }
     }
