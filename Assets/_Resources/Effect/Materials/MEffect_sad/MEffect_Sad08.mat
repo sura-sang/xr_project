@@ -21,8 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MEffect_Sad08
-  m_Shader: {fileID: 4800000, guid: 6e9604408d4bd5943b6eb3b519bdeef3, type: 3}
-  m_ValidKeywords: []
+  m_Shader: {fileID: 4800000, guid: d85fa84daa09691488b1cc5861d5ba01, type: 3}
+  m_ValidKeywords:
+  - _KEYWORD0_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -103,7 +104,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 1526825fdc5c2c5479c598f406a6307e, type: 3}
-        m_Scale: {x: 1.02, y: 1}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample1:
         m_Texture: {fileID: 2800000, guid: 401b72306be28ba4fab6623afcd2d617, type: 3}
@@ -139,7 +140,7 @@ Material:
     - _Dissolve: -0.06470589
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Float0: 0
+    - _Float0: 1.4029288
     - _Float1: 1
     - _Float2: 0
     - _Float3: 0.25
@@ -147,9 +148,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _INS: 36.6
+    - _INS: 16.3
     - _Ins: 22.75389
-    - _Keyword0: 0
+    - _Keyword0: 1
     - _Keyword1: 0
     - _MAINPOW: 1.07
     - _MASKPOW: 2.8
@@ -177,7 +178,7 @@ Material:
     - _UPANNER: 0
     - _UseMaskTexture: 1
     - _VP: -0.17
-    - _VPANNER: 0.2
+    - _VPANNER: 0.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _power: 1.894

@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Dissolve_T:
-        m_Texture: {fileID: 2800000, guid: 7efcc62c969d2b944941b8f3a40a9b5b, type: 3}
+        m_Texture: {fileID: 2800000, guid: dd792bf5fe36b42449ed5f354c8f8624, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: -1}
         m_Offset: {x: 0, y: 0}
     - _MaskTexture:
-        m_Texture: {fileID: 2800000, guid: 40bb89f55ec539646b708928cc7f12f7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 401b72306be28ba4fab6623afcd2d617, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -78,7 +78,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NOISETEXTURE:
-        m_Texture: {fileID: 2800000, guid: 27ec0403e3048a7409f669c5e4b71735, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecb622dae321d0e46aa13558e42ebd44, type: 3}
         m_Scale: {x: 1, y: 0.15}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -138,17 +138,17 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _INS: 50
+    - _INS: -4.5
     - _Keyword0: 0
     - _Keyword1: 0
-    - _MASKPOW: 2.4
+    - _MASKPOW: 2.5
     - _Mainstr: 1
     - _Metallic: 0
-    - _NoiseVal: 0.23
+    - _NoiseVal: 0
     - _Noise_U: 0
     - _Noise_V: 0.285
     - _OcclusionStrength: 1
-    - _POW: 1
+    - _POW: 1.05
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -159,7 +159,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UP: -0.04
-    - _VP: -0.17
+    - _VP: -0.09
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

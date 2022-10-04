@@ -17,14 +17,18 @@ namespace SuraSang
     public abstract class Monster : CharacterMove
     {
         public NavMeshAgent Agent { get; protected set; }
+        public Transform PlayerTransform;
 
         public abstract Emotion Emotion { get; }
-        
+
         public bool IsSleep { get; private set; } = false;
 
         public void Absorbed()
         {
+            Material material = Resources.Load<Material>("Sleep");
             ChangeState(new MonsterMoveSleep(this));
+            this.gameObject.GetComponent<Renderer>().material = material;
+            IsSleep = true;
         }
 
         public virtual void NextState()

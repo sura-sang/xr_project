@@ -51,8 +51,7 @@ namespace SuraSang
                 _lastGroundTime = Time.time;
             }
 
-            // TODO : 임시 스킬 사용
-            if (_player.IsSkill)
+            if (_player.IsSkill && _player.CurrentEmotion != Emotion.Default)
             {
                 _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
@@ -96,7 +95,6 @@ namespace SuraSang
         private void OnMove(Vector2 input)
         {
             var dir = _player.InputToCameraSpace(input);
-
 
             if (dir != Vector3.zero)
             {
