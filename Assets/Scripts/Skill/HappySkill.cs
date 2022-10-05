@@ -9,7 +9,6 @@ namespace SuraSang
         private Player _player;
         private CharacterController _controller;
         public LayerMask SkillTarget;
-        public const float CheckRange = 10f;
 
         private List<Monster> _monsterList;
         private Transform _playerTransform;
@@ -35,15 +34,16 @@ namespace SuraSang
         //    _monsterList = new List<Monster>();
         //    _speed = _player.Speed;
         //}
+        public void InitializeSkill()
+        {
+            _player.Animator.SetBool(IsUseJoySkill, true);
+        }
 
         public void OnMove(Vector2 input)
         {
             var dir = _player.InputToCameraSpace(input);
 
-            if (dir != Vector3.zero)
-            {
-                _player.LookVector(dir);
-            }
+            _player.SmoothRotation(dir);
 
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
@@ -52,7 +52,7 @@ namespace SuraSang
             _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
         }
 
-        public void OnSkill()
+        public void UpdateSkill()
         {
             CheckMonster();
 
@@ -64,9 +64,10 @@ namespace SuraSang
             _monsterList.Clear();
         }
 
-        public void Animation()
+        
+        public void ClearSkill()
         {
-            _player.Animator.SetBool(IsUseJoySkill, true);
+            
         }
 
         void CheckMonster()
