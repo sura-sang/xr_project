@@ -8,6 +8,9 @@ namespace SuraSang
 {
     public class SadEye : MonoBehaviour
     {
+        public RaycastHit? LastHit => _lastHit;
+        private RaycastHit? _lastHit = null;
+
         [SerializeField] private float _targetLength = 1.0f;
 
         [SerializeField] private float _smoothSpeed = 0.02f;
@@ -24,7 +27,6 @@ namespace SuraSang
         private Vector3[] _curTearVelocity;
 
         private int _lastIndex;
-        private RaycastHit _lastHit;
 
         private void Awake()
         {
@@ -67,15 +69,16 @@ namespace SuraSang
         private void FixedUpdate()
         {
             _lastIndex = _curTearLines.Length;
-            _lastHit = new RaycastHit();
+            _lastHit = null;
 
             for (int i = 1; i < _curTearLines.Length; i++)
             {
                 var dir = _curTearLines[i] - _curTearLines[i - 1];
                 var distance = dir.magnitude;
 
-                if (Physics.Raycast(_curTearLines[i - 1], dir, out _lastHit, distance, _tearBlock))
+                if (Physics.Raycast(_curTearLines[i - 1], dir, out var hit, distance, _tearBlock))
                 {
+                    _lastHit = hit;
                     _lastIndex = i;
                     return;
                 }
