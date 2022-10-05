@@ -39,8 +39,13 @@ namespace SuraSang
             _player.EulerRotation(dir);
             _player.MoveDir = Vector3.zero;*/
         }
+        
+        public void InitializeSkill()
+        {
+            _player.Animator.SetBool("IsUseAngerSkill", true);
+        }
 
-        public void OnSkill()
+        public void UpdateSkill()
         {
             if (!isSkillRunning)
             {
@@ -60,9 +65,9 @@ namespace SuraSang
             }
         }
 
-        public void Animation()
+        public void ClearSkill()
         {
-            _player.Animator.SetBool("IsUseAngerSkill", true);
+            
         }
 
         private void Cooldown()

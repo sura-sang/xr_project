@@ -29,7 +29,7 @@ namespace SuraSang
             }
 
             _player.OnMove = _skill.OnMove;
-            _skill.Animation();
+            _skill.InitializeSkill();
         }
 
         public override void UpdateState()
@@ -52,10 +52,13 @@ namespace SuraSang
                 AnimationClear();
             }
 
-            _skill.OnSkill();
+            _skill.UpdateSkill();
         }
 
-        public override void ClearState() { }
+        public override void ClearState()
+        {
+            _skill.ClearSkill();
+        }
 
         private void OnSkill(bool isOn)
         {

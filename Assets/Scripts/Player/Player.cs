@@ -17,6 +17,9 @@ namespace SuraSang
         public LayerMask DetectedEdge;//매달리기 레이어 설정
         public LayerMask DetectedObject; //잡기 레이어 설정
 
+        // 슬픔 스킬용
+        public SadEye[] SadEyes;
+        
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
         public float CharacterCrouchHeight;
