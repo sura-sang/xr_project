@@ -21,7 +21,6 @@ namespace SuraSang
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-
             if (_moveRange != null)
                 Gizmos.DrawLine(transform.position, _moveRange.transform.position);
         }

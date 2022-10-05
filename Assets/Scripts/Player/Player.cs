@@ -18,7 +18,8 @@ namespace SuraSang
         public LayerMask DetectedObject; //잡기 레이어 설정
 
         // 슬픔 스킬용
-        public SadEye[] SadEyes;
+        public SadEye[] SadEyes => _sadEyes;
+        [SerializeField] private SadEye[] _sadEyes;
         
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
@@ -81,6 +82,29 @@ namespace SuraSang
             UpdateAbsorb();
 
             Controller.Move(MoveDir * Time.deltaTime);
+
+            var hits = GetLastHits();
+
+            for (var i = 0; i < hits.Count; i++)
+            {
+                PuzzleManager.Instance.Notify(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
+                PuzzleManager.Instance.RemoveObserver(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
+            }
+        }
+
+        private List<RaycastHit> GetLastHits()
+        {
+            List<RaycastHit> raycastHits = new();
+
+            foreach (var eye in SadEyes)
+            {
+                if (eye.LastHit != null)
+                {
+                    raycastHits.Add(eye.LastHit.Value);
+                }
+            }
+
+            return raycastHits;
         }
 
 
