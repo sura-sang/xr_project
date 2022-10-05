@@ -17,7 +17,6 @@ namespace SuraSang
     public abstract class Monster : CharacterMove
     {
         public NavMeshAgent Agent { get; protected set; }
-        public Transform PlayerTransform;
 
         public abstract Emotion Emotion { get; }
 
