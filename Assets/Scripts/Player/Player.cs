@@ -18,7 +18,8 @@ namespace SuraSang
         public LayerMask DetectedObject; //잡기 레이어 설정
 
         // 슬픔 스킬용
-        public SadEye[] SadEyes;
+        public SadEye[] SadEyes => _sadEyes;
+        [SerializeField] private SadEye[] _sadEyes;
         
         // TODO : 다른곳으로 옮기자
         public float CharacterHeight;
@@ -54,15 +55,6 @@ namespace SuraSang
 
         public Animator Animator;
 
-        //TO DO : 임시 변수
-        [Header("test")]
-        public bool ObsTest;
-        public bool ObsTest2;
-        public bool ObsTest3;
-        public GameObject TestObserver;
-        public GameObject TestObserver2;
-        public GameObject TestObserver3;
-
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
@@ -91,29 +83,28 @@ namespace SuraSang
 
             Controller.Move(MoveDir * Time.deltaTime);
 
-            //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
-            //        가져온 퍼즐옵저버의 태그가 어떠한 버섯인지 태그로 확인.
-            if (ObsTest)
-            {
-                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
-                PuzzleManager.Instance.Notify(TestObserver.GetComponent<PuzzleObserver>());
+            var hits = GetLastHits();
 
-                PuzzleManager.Instance.RemoveObserver(TestObserver.GetComponent<PuzzleObserver>());
-            }
-            else if (ObsTest2)
+            for (var i = 0; i < hits.Count; i++)
             {
-                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
-                PuzzleManager.Instance.Notify(TestObserver2.GetComponent<PuzzleObserver>());
-
-                PuzzleManager.Instance.RemoveObserver(TestObserver2.GetComponent<PuzzleObserver>());
+                PuzzleManager.Instance.Notify(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
+                PuzzleManager.Instance.RemoveObserver(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
             }
-            else if (ObsTest3)
+        }
+
+        private List<RaycastHit> GetLastHits()
+        {
+            List<RaycastHit> raycastHits = new();
+
+            foreach (var eye in SadEyes)
             {
-                //TO DO : SadSkill의 GetTearHitPoints로 raycast와 접촉한 퍼즐옵저버를 가져옴.
-                PuzzleManager.Instance.Notify(TestObserver3.GetComponent<PuzzleObserver>());
-
-                PuzzleManager.Instance.RemoveObserver(TestObserver3.GetComponent<PuzzleObserver>());
+                if (eye.LastHit != null)
+                {
+                    raycastHits.Add(eye.LastHit.Value);
+                }
             }
+
+            return raycastHits;
         }
 
 
