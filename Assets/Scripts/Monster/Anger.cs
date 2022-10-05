@@ -9,11 +9,22 @@ namespace SuraSang
     {
         public override Emotion Emotion => Emotion.Anger;
 
+        public float ChaseRange;
+        public float SkillRange;
+        public float SkillCooltime;
+
+        public LayerMask DashCheckLayerMask;
+
+        public float DashSpeed;
+        public float MaxDashTime;
+
+
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            
-            ChangeState(new MonsterMoveChase(this));
+            Agent.updateRotation = false;
+
+            ChangeState(new AngerIdle(this));
         }
     }
 }
