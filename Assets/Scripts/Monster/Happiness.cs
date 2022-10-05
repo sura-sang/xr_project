@@ -13,7 +13,6 @@ namespace SuraSang
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            PlayerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
             FineNearestTag();
 
             ChangeState(new HappinessIdle(this));

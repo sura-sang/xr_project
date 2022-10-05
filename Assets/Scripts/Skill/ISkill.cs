@@ -6,8 +6,9 @@ namespace SuraSang
 {
     public interface ISkill
     {
+        abstract void InitializeSkill();
         abstract void OnMove(Vector2 input);
-        abstract void OnSkill();
-        abstract void Animation();
+        abstract void UpdateSkill();
+        abstract void ClearSkill();
     }
 }

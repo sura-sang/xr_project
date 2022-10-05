@@ -51,7 +51,7 @@ namespace SuraSang
                 }
 
                 _player.MoveDir = dir * _speed;
-                _player.LookVector(-normalVector);
+                _player.SmoothRotation(-normalVector);
             }
             else if (_controller.isGrounded)
             {
