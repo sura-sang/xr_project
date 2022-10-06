@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace SuraSang
 {
@@ -64,6 +65,18 @@ namespace SuraSang
             InitAbsorb();
 
             ChangeState(new PlayerMoveFalling(this));
+
+
+            //TO DO : 씬이 다시 로드 될때 플레이어의 위치 재설정
+            if (SaveManager.Instance.CheckListUsable())
+            {
+                transform.position = SaveManager.Instance.GetLastLevelMemento().TranformData;
+                CurrentEmotion = Emotion.Default;
+            }
+            else
+            {
+                CurrentEmotion = Emotion.Default;
+            }
         }
 
         public override void ChangeState(CharacterMoveState state)
@@ -90,6 +103,18 @@ namespace SuraSang
                 PuzzleManager.Instance.Notify(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
                 PuzzleManager.Instance.RemoveObserver(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
             }
+
+            if(IsReset)
+            {
+                if (SaveManager.Instance.CheckListUsable())
+                {
+                    SceneManager.LoadScene(SaveManager.Instance.GetLastLevelMemento().LevelData - 1);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+            }
         }
 
         private List<RaycastHit> GetLastHits()
@@ -103,9 +128,10 @@ namespace SuraSang
                     raycastHits.Add(eye.LastHit.Value);
                 }
             }
-
+            
             return raycastHits;
         }
+              
 
 
         //private void OnControllerColliderHit(ControllerColliderHit hit)
