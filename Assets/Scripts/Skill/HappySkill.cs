@@ -49,8 +49,6 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
-
-            _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
         }
 
         public void UpdateSkill()

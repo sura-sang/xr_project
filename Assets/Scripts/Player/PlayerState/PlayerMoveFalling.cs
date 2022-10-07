@@ -14,14 +14,17 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _player.OnMove = OnMove;
-            
+            _player.OnMove = OnMove;            
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
+            _player.Animator.SetBool("IsFalling", true);
         }
 
         public override void UpdateState() { }
 
-        public override void ClearState() { }
+        public override void ClearState() 
+        {
+            _player.Animator.SetBool("IsFalling", false);
+        }
 
         private void OnMove(Vector2 input)
         {
