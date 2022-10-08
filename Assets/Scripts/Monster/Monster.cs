@@ -6,10 +6,10 @@ using UnityEngine.PlayerLoop;
 
 public enum Emotion
 {
+    Default,
+    Anger,
     Happiness,
     Sadness,
-    Anger,
-    Default,
 }
 
 namespace SuraSang
