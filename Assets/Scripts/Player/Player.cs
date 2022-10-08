@@ -56,27 +56,25 @@ namespace SuraSang
 
         public Animator Animator;
 
+
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
+
+            Controller.enabled = false;
+            transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+            CurrentEmotion = Emotion.Default;
+            Controller.enabled = true;
+
+            Debug.Log("Position: " + transform.position);
+            Debug.Log("CheckPoint Position : " + SceneMaster.SceneInstance.CurrentCheckPoint.transform.position);
+
             _cameraTransform = Camera.main.transform;
 
             InitInputs();
             InitAbsorb();
 
             ChangeState(new PlayerMoveFalling(this));
-
-
-            //TO DO : 씬이 다시 로드 될때 플레이어의 위치 재설정
-            if (SaveManager.Instance.CheckListUsable())
-            {
-                transform.position = SaveManager.Instance.GetLastLevelMemento().TranformData;
-                CurrentEmotion = Emotion.Default;
-            }
-            else
-            {
-                CurrentEmotion = Emotion.Default;
-            }
         }
 
         public override void ChangeState(CharacterMoveState state)
@@ -106,14 +104,7 @@ namespace SuraSang
 
             if(IsReset)
             {
-                if (SaveManager.Instance.CheckListUsable())
-                {
-                    SceneManager.LoadScene(SaveManager.Instance.GetLastLevelMemento().LevelData - 1);
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                }
+                SceneMaster.SceneInstance.LoadLevel(0);
             }
         }
 
@@ -131,8 +122,6 @@ namespace SuraSang
             
             return raycastHits;
         }
-              
-
 
         //private void OnControllerColliderHit(ControllerColliderHit hit)
         //{
