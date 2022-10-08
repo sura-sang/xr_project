@@ -60,8 +60,6 @@ namespace SuraSang
         public override void ClearState()
         {
             _player.Crouch(false);
-            _player.Animator.SetBool(IsWalking, false);
-            _player.Animator.SetBool(IsRunning, false);
         }
 
 
@@ -69,8 +67,6 @@ namespace SuraSang
         {
             _player.Crouch(false);
             _speed = isOn ? _player.Speed * _player.RunMultiplier : _player.Speed;
-
-            _player.Animator.SetBool(IsRunning, isOn);
         }
 
         private void OnCrouch(bool isOn)
@@ -102,7 +98,8 @@ namespace SuraSang
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
             
-            _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
+            if (input != Vector2.zero) _player.Animator.SetFloat("Speed", _speed);
+            else _player.Animator.SetFloat("Speed", 0f);
         }
 
         private void OnSkill(bool isOn)

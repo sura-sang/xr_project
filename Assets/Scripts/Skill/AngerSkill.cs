@@ -42,7 +42,7 @@ namespace SuraSang
         
         public void InitializeSkill()
         {
-            _player.Animator.SetBool("IsUseAngerSkill", true);
+
         }
 
         public void UpdateSkill()
