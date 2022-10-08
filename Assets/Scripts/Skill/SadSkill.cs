@@ -10,6 +10,8 @@ namespace SuraSang
         private Player _player;
         private CharacterController _controller;
 
+        private bool _skillInUse = false;
+
         public SadSkill(Player player, CharacterController controller)
         {
             _player = player;
@@ -22,10 +24,11 @@ namespace SuraSang
 
             _player.SmoothRotation(dir);
 
-            dir *= _player.Speed;
+            dir *= _skillInUse ? 0 : _player.Speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
-            
+
+            // 실행 순서 상 OnMove가 UpdateSkill보다 뒤 임
             foreach (var eye in _player.SadEyes)
             {
                 eye.SetTearLine();
@@ -44,6 +47,8 @@ namespace SuraSang
 
         public void InitializeSkill()
         {
+            _skillInUse = true;
+
             foreach (var eye in _player.SadEyes)
             {
                 eye.ResetTears();
@@ -52,13 +57,15 @@ namespace SuraSang
 
         public void ClearSkill()
         {
+            _skillInUse = false;
+
             foreach (var eye in _player.SadEyes)
             {
                 eye.ResetTears();
             }
         }
-        
-        
+
+
         private List<RaycastHit> GetLastSadHits()
         {
             List<RaycastHit> raycastHits = new();
