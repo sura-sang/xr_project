@@ -37,7 +37,7 @@ namespace SuraSang
         //}
         public void InitializeSkill()
         {
-            _player.Animator.SetBool(IsUseJoySkill, true);
+
         }
 
         public void OnMove(Vector2 input)
