@@ -32,7 +32,15 @@ namespace SuraSang
             }
         }
 
-        public void UpdateSkill() { }
+        public void UpdateSkill()
+        {
+            var hits = GetLastSadHits();
+
+            foreach (var hit in hits)
+            {
+                hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(null);
+            }
+        }
 
         public void InitializeSkill()
         {
@@ -48,6 +56,22 @@ namespace SuraSang
             {
                 eye.ResetTears();
             }
+        }
+        
+        
+        private List<RaycastHit> GetLastSadHits()
+        {
+            List<RaycastHit> raycastHits = new();
+
+            foreach (var eye in _player.SadEyes)
+            {
+                if (eye.LastHit != null)
+                {
+                    raycastHits.Add(eye.LastHit.Value);
+                }
+            }
+
+            return raycastHits;
         }
     }
 }
