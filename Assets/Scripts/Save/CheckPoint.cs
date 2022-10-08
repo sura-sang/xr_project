@@ -6,27 +6,59 @@ namespace SuraSang
 {
     public class CheckPoint : MonoBehaviour
     {
-        public int Level;
-        public Vector3 Location;
+        public float CheckPointRadius = 5f;
 
-        private void Start()
+        private SphereCollider _cpRaius;
+        private bool _isCurCheckPoint;
+
+        public delegate void UpdateCheckpointDel(string cpName);
+        public static event UpdateCheckpointDel OnCheckPointHit;
+
+        private void OnEnable()
         {
-            Location = transform.position;
+            OnCheckPointHit += UpdateCheckpoint;
+        }
+
+        private void OnDisable()
+        {
+            OnCheckPointHit -= UpdateCheckpoint;
+        }
+
+        private void Awake()
+        {
+            _cpRaius = GetComponent<SphereCollider>();
+            _cpRaius.radius = CheckPointRadius;
+        }
+
+        public void UpdateCheckpoint(string cpName)
+        {
+            if (gameObject.name == cpName)
+            {
+                SceneMaster.SceneInstance.CurrentCheckPoint = this;
+                gameObject.GetComponent<Renderer>().material.color = Color.green;
+            }
+            else
+            {
+                gameObject.GetComponent<Renderer>().material.color = Color.red;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Player")
+            if(!_isCurCheckPoint)
             {
-                LevelMemento levelMemento = new(Level, Location);
-                SaveManager.Instance.PushLevelData(levelMemento);
+                if (other.CompareTag("Player"))
+                {
+                    OnCheckPointHit(gameObject.name);
+                    Debug.Log("체크포인트 접촉");
+                }
             }
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawCube(transform.position, gameObject.GetComponent<BoxCollider>().size);
+            Gizmos.DrawWireSphere(transform.position, CheckPointRadius);
         }
     }
 }

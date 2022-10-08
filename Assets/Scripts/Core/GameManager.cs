@@ -19,6 +19,10 @@ namespace SuraSang
             Instance = this;
         }
 
+        private void Start()
+        {
+        }
+
         [SerializeField] private Player _player;
         public Player Player => _player;
     }

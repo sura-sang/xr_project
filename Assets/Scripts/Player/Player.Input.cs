@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 namespace SuraSang
 {
@@ -32,7 +31,7 @@ namespace SuraSang
 
         public Vector3 MoveDir { get; set; }
         public bool IsSkill;
-        public bool IsReset;
+        public bool IsReset = false;
 
         private void InitInputs()
         {
