@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class ObserverClown : PuzzleObserver
+    public class PuzzleClown : PuzzleElements
     {
         public float Size = 5f;
         public float GrowSpeed = 1f;
@@ -18,7 +18,7 @@ namespace SuraSang
             PuzzleManager.Instance.AddObserver(this);
         }
 
-        public override void OnNotify()
+        public override void OnNotify(PuzzleContext context)
         {
             StartCoroutine(GrowUp());
             Debug.Log("광대 버섯 퍼즐 실행");
