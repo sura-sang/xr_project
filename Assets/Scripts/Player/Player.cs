@@ -55,19 +55,26 @@ namespace SuraSang
         private Transform _cameraTransform;
 
         public Animator Animator;
+        public GameObject CurrentCharacter;
 
+
+        [SerializeField] private GameObject _characterDefault;
+        [SerializeField] private GameObject _characterAnger;
+        [SerializeField] private GameObject _characterHappy;
+        [SerializeField] private GameObject _characterSad;
+        
 
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
 
-            Controller.enabled = false;
-            transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
-            ReturnEmotion();
-            Controller.enabled = true;
-
-            Debug.Log("Position: " + transform.position);
-            Debug.Log("CheckPoint Position : " + SceneMaster.SceneInstance.CurrentCheckPoint.transform.position);
+            if (SceneMaster.SceneInstance != null)
+            {
+                Controller.enabled = false;
+                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+                ReturnEmotion();
+                Controller.enabled = true;
+            }
 
             _cameraTransform = Camera.main.transform;
 
@@ -95,6 +102,11 @@ namespace SuraSang
 
             Controller.Move(MoveDir * Time.deltaTime);
 
+
+            if (IsReset)
+            {
+                SceneMaster.SceneInstance.LoadLevel(0);
+            }
         }
         
         //private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -110,6 +122,49 @@ namespace SuraSang
         //        rig.AddForceAtPosition(forceDir * ForceMagnitude, transform.position, ForceMode.Impulse);
         //    }
         //}
+
+        public void ChangeCharacter()
+        {
+            switch(CurrentEmotion)
+            {
+                case Emotion.Default:
+                    CurrentCharacter.SetActive(false);
+                    CurrentCharacter = _characterDefault;
+                    _characterDefault.SetActive(true);
+                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
+                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    break;
+
+                case Emotion.Anger:
+                    CurrentCharacter.SetActive(false);
+                    CurrentCharacter = _characterAnger;
+                    _characterAnger.SetActive(true);
+                    Animator.avatar = _characterAnger.GetComponent<Animator>().avatar;
+                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    break;
+
+                case Emotion.Happiness:
+                    CurrentCharacter.SetActive(false);
+                    CurrentCharacter = _characterHappy;
+                    _characterHappy.SetActive(true);
+                    Animator.avatar = _characterHappy.GetComponent<Animator>().avatar;
+                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    break;
+
+                    //아직 슬픔 모델 안나옴
+                case Emotion.Sadness:
+                    //CurrentCharacter.SetActive(false);
+                    //CurrentCharacter = _characterSad;
+                    //_characterSad.SetActive(true);
+                    Animator.Play("ChangeTest", 0, 0.8f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    break;
+            }
+        }
+
 
         private void OnDrawGizmos()
         {
