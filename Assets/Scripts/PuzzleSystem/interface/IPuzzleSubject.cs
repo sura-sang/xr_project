@@ -6,8 +6,8 @@ namespace SuraSang
 {
     public interface IPuzzleSubject
     {
-        void AddObserver(PuzzleObserver po);
-        void RemoveObserver(PuzzleObserver po);
-        void Notify(PuzzleObserver po);
+        void AddObserver(PuzzleElements po);
+        void RemoveObserver(PuzzleElements po);
+        void Notify(PuzzleElements po, PuzzleContext context);
     }
 }

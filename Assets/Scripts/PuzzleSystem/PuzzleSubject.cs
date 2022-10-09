@@ -6,9 +6,9 @@ namespace SuraSang
 {
     public class PuzzleSubject : MonoBehaviour, IPuzzleSubject
     {
-        private List<PuzzleObserver> _puzzleObservers = new List<PuzzleObserver>();
+        private List<PuzzleElements> _puzzleObservers = new List<PuzzleElements>();
 
-        public void AddObserver(PuzzleObserver po)
+        public void AddObserver(PuzzleElements po)
         {
             if (!_puzzleObservers.Contains(po))
             {
@@ -16,7 +16,7 @@ namespace SuraSang
             }
         }
 
-        public void RemoveObserver(PuzzleObserver po)
+        public void RemoveObserver(PuzzleElements po)
         {
             if (_puzzleObservers.Contains(po))
             {
@@ -24,13 +24,13 @@ namespace SuraSang
             }
         }
 
-        public void Notify(PuzzleObserver po)
+        public void Notify(PuzzleElements pe, PuzzleContext context)
         {
-            foreach (PuzzleObserver pObs in _puzzleObservers)
+            foreach (PuzzleElements pObs in _puzzleObservers)
             {
-                if (pObs == po)
+                if (pObs == pe)
                 {
-                    pObs.OnNotify();
+                    pObs.OnNotify(context);
                 }
             }
         }
