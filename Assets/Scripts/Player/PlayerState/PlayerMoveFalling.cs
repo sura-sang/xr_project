@@ -17,6 +17,7 @@ namespace SuraSang
             _player.OnMove = OnMove;
             
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
+            _player.SetAction(ButtonActions.Reset, OnReset);
         }
 
         public override void UpdateState() { }
@@ -47,6 +48,11 @@ namespace SuraSang
             {
                 _characterMove.ChangeState(new PlayerMoveHolding(_characterMove));
             }
+        }
+
+        private void OnReset(bool isOn)
+        {
+            _player.IsReset = isOn;
         }
     }
 }
