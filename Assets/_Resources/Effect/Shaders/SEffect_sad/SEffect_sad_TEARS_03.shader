@@ -211,7 +211,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -308,7 +308,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -403,29 +403,29 @@ Shader "DO/SEffect_sad_TEARS_03"
 						ShadowCoords = TransformWorldToShadowCoord( WorldPosition );
 					#endif
 				#endif
-				float4 color53 = IsGammaSpace() ? float4(1,1,1,1) : float4(1,1,1,1);
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 color53 = IsGammaSpace() ? half4(1,1,1,1) : half4(1,1,1,1);
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord3.xy.y;
+				half staticSwitch14 = IN.ase_texcoord3.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float4 temp_cast_0 = (_MAINPOW).xxxx;
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half4 temp_cast_0 = (_MAINPOW).xxxx;
 				
-				float2 texCoord33 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 texCoord33 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord3.z;
+				half staticSwitch46 = IN.ase_texcoord3.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				float3 BakedAlbedo = 0;
@@ -500,7 +500,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -610,7 +610,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -706,26 +706,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 					#endif
 				#endif
 
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord2.xy.y;
+				half staticSwitch14 = IN.ase_texcoord2.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord2.z;
+				half staticSwitch46 = IN.ase_texcoord2.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				float Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -782,7 +782,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -874,7 +874,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -970,26 +970,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 					#endif
 				#endif
 
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord2.xy.y;
+				half staticSwitch14 = IN.ase_texcoord2.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord2.z;
+				half staticSwitch46 = IN.ase_texcoord2.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				float Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -1061,7 +1061,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -1158,7 +1158,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -1253,29 +1253,29 @@ Shader "DO/SEffect_sad_TEARS_03"
 						ShadowCoords = TransformWorldToShadowCoord( WorldPosition );
 					#endif
 				#endif
-				float4 color53 = IsGammaSpace() ? float4(1,1,1,1) : float4(1,1,1,1);
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 color53 = IsGammaSpace() ? half4(1,1,1,1) : half4(1,1,1,1);
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord3.xy.y;
+				half staticSwitch14 = IN.ase_texcoord3.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float4 temp_cast_0 = (_MAINPOW).xxxx;
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half4 temp_cast_0 = (_MAINPOW).xxxx;
 				
-				float2 texCoord33 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 texCoord33 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord3.z;
+				half staticSwitch46 = IN.ase_texcoord3.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				float3 BakedAlbedo = 0;
@@ -1352,7 +1352,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -1439,7 +1439,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -1520,26 +1520,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord.xy.y;
+				half staticSwitch14 = IN.ase_texcoord.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord.z;
+				half staticSwitch46 = IN.ase_texcoord.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				surfaceDescription.Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -1600,7 +1600,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -1688,7 +1688,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -1769,26 +1769,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord.xy.y;
+				half staticSwitch14 = IN.ase_texcoord.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord.z;
+				half staticSwitch46 = IN.ase_texcoord.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				surfaceDescription.Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -1858,7 +1858,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -1945,7 +1945,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -2026,26 +2026,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord1.xy.y;
+				half staticSwitch14 = IN.ase_texcoord1.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord1.z;
+				half staticSwitch46 = IN.ase_texcoord1.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				surfaceDescription.Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -2112,7 +2112,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -2198,7 +2198,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 ase_normal : NORMAL;
-				float4 ase_color : COLOR;
+				half4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -2279,26 +2279,26 @@ Shader "DO/SEffect_sad_TEARS_03"
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float2 appendResult28 = (float2(_MAINU , _MAINV));
-				float2 texCoord10 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult28 = (half2(_MAINU , _MAINV));
+				half2 texCoord10 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD0_ON
-				float staticSwitch14 = IN.ase_texcoord1.xy.y;
+				half staticSwitch14 = IN.ase_texcoord1.xy.y;
 				#else
-				float staticSwitch14 = _Float0;
+				half staticSwitch14 = _Float0;
 				#endif
-				float2 appendResult12 = (float2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
-				float2 appendResult21 = (float2(_Float1 , _Float2));
-				float2 texCoord19 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
-				float2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
-				float4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
-				float2 texCoord33 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
-				float2 texCoord42 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 appendResult12 = (half2(texCoord10.x , pow( ( 1.0 - texCoord10.y ) , staticSwitch14 )));
+				half2 appendResult21 = (half2(_Float1 , _Float2));
+				half2 texCoord19 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half2 panner20 = ( 1.0 * _Time.y * appendResult21 + texCoord19);
+				half2 panner27 = ( 1.0 * _Time.y * appendResult28 + ( appendResult12 + ( tex2D( _TextureSample0, panner20 ).r * _NOISEVAL ) ));
+				half4 tex2DNode31 = tex2D( _TextureSample1, panner27 );
+				half2 texCoord33 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
+				half4 tex2DNode34 = tex2D( _TextureSample2, texCoord33 );
+				half2 texCoord42 = IN.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
 				#ifdef _KEYWORD1_ON
-				float staticSwitch46 = IN.ase_texcoord1.z;
+				half staticSwitch46 = IN.ase_texcoord1.z;
 				#else
-				float staticSwitch46 = _DISSOLVE;
+				half staticSwitch46 = _DISSOLVE;
 				#endif
 				
 				surfaceDescription.Alpha = ( IN.ase_color.a * saturate( ( ( saturate( pow( saturate( ( ( tex2DNode31.r + tex2DNode34.r ) * tex2DNode34.r ) ) , _Float3 ) ) * saturate( ( tex2D( _TextureSample3, texCoord42 ).r + staticSwitch46 ) ) ) * _OPACITY ) ) );
@@ -2328,7 +2328,7 @@ Shader "DO/SEffect_sad_TEARS_03"
 }
 /*ASEBEGIN
 Version=18935
-7;6;2546;1406;1865.432;-152.6881;1.585233;True;False
+7;6;2546;1406;654.2341;37.66313;1;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;23;-1650.581,1269.852;Float;False;Property;_Float2;Float 2;4;0;Create;True;0;0;0;False;0;False;-0.5;0.1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.CommentaryNode;18;-1699.207,-423.829;Inherit;False;1081.205;846.9529;Comment;7;10;16;15;12;11;13;14;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.RangedFloatNode;22;-1671.308,1008.693;Float;False;Property;_Float1;Float 1;3;0;Create;True;0;0;0;False;0;False;-0.02;0;0;0;0;1;FLOAT;0
@@ -2372,24 +2372,24 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;1355.151,1177.444;Inherit;False
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;50;1776.931,1167.449;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;60;2105.457,1124.847;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.VertexColorNode;59;1192.892,139.4588;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.PowerNode;56;1192.892,343.4588;Inherit;False;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;1;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;55;636.8917,74.45877;Float;False;Property;_INS;INS;15;0;Create;True;0;0;0;False;0;False;2.8;1.3;1;30;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;53;395.8917,183.4588;Inherit;False;Constant;_Color0;Color 0;15;0;Create;True;0;0;0;False;0;False;1,1,1,1;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;54;921.8917,255.4588;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;61;2321.638,1113.303;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;52;644.2587,297.0649;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;55;636.8917,74.45877;Float;False;Property;_INS;INS;15;0;Create;True;0;0;0;False;0;False;2.8;1.8;1;30;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;53;395.8917,183.4588;Inherit;False;Constant;_Color0;Color 0;15;0;Create;True;0;0;0;False;0;False;1,1,1,1;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;57;911.8917,513.4587;Float;False;Property;_MAINPOW;MAINPOW;16;0;Create;True;0;0;0;False;0;False;1.4;2.097647;1;10;0;1;FLOAT;0
+Node;AmplifyShaderEditor.PowerNode;56;1192.892,343.4588;Inherit;False;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;1;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;58;1458.892,306.4588;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;54;921.8917,255.4588;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;57;911.8917,513.4587;Float;False;Property;_MAINPOW;MAINPOW;16;0;Create;True;0;0;0;False;0;False;1.4;1.78;1;10;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;8;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthNormalsOnly;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthNormalsOnly;False;True;15;d3d9;d3d11_9x;d3d11;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;1965.265,535.8069;Half;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;3;DO/SEffect_sad_TEARS_03;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;1;False;-1;1;1;False;-1;10;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;22;Surface;1;637994205389219136;  Blend;2;637994205408101657;Two Sided;1;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;DOTS Instancing;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,-1;0;  Type;0;0;  Tess;16,False,-1;0;  Min;10,False,-1;0;  Max;25,False,-1;0;  Edge Length;16,False,-1;0;  Max Displacement;25,False,-1;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;True;True;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;SceneSelectionPass;0;6;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;8;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthNormalsOnly;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;1;False;-1;1;1;False;-1;10;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=Universal2D;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;7;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;7;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;1;False;-1;1;1;False;-1;10;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=Universal2D;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;SceneSelectionPass;0;6;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;True;4;d3d11;glcore;gles;gles3;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;1965.265,535.8069;Half;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;3;DO/SEffect_sad_TEARS_03;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;1;False;-1;1;1;False;-1;10;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;22;Surface;1;637994205389219136;  Blend;2;637994205408101657;Two Sided;1;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;DOTS Instancing;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,-1;0;  Type;0;0;  Tess;16,False,-1;0;  Min;10,False,-1;0;  Max;25,False,-1;0;  Edge Length;16,False,-1;0;  Max Displacement;25,False,-1;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;True;True;True;True;True;False;;False;0
 WireConnection;21;0;22;0
 WireConnection;21;1;23;0
 WireConnection;11;0;10;2
@@ -2431,17 +2431,17 @@ WireConnection;40;1;45;0
 WireConnection;50;0;40;0
 WireConnection;50;1;51;0
 WireConnection;60;0;50;0
-WireConnection;56;0;54;0
-WireConnection;56;1;57;0
+WireConnection;54;0;55;0
+WireConnection;54;1;52;0
 WireConnection;61;0;59;4
 WireConnection;61;1;60;0
 WireConnection;52;0;53;0
 WireConnection;52;1;31;0
+WireConnection;56;0;54;0
+WireConnection;56;1;57;0
 WireConnection;58;0;59;0
 WireConnection;58;1;56;0
-WireConnection;54;0;55;0
-WireConnection;54;1;52;0
 WireConnection;1;2;58;0
 WireConnection;1;3;61;0
 ASEEND*/
-//CHKSM=578E207E3D37CF794B4D19BB7012CEA9291C98EE
+//CHKSM=8C00698EA4AE217882666A101B3C53093BDE71D1
