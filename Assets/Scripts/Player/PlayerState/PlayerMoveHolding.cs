@@ -24,9 +24,13 @@ namespace SuraSang
 
             _player.OnMove = OnMove;
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
+            _player.Animator.SetBool("IsHolding", true);
         }
 
-        public override void ClearState() { }
+        public override void ClearState() 
+        {
+            _player.Animator.SetBool("IsHolding", false);
+        }
 
         public override void UpdateState()
         {
@@ -35,6 +39,8 @@ namespace SuraSang
         private void OnMove(Vector2 input)
         {
             (_isEdgeDetected, _edgeHit) = _player.GetEdgeDetectInfo();
+            _player.Animator.SetFloat("Left", input.x);
+            _player.Animator.SetFloat("Forward", input.y);
 
             if (_isHolding && _isEdgeDetected)
             {

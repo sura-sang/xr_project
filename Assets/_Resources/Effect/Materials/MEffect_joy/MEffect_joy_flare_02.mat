@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4d3d119bda6ede5409dd68e8e97968c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7fe4798e7b7966542ad2e7b0098e7bcb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Star_01:
@@ -64,12 +64,12 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.5
     - _Darken: 0
-    - _Inten: 1
+    - _Inten: 10
     - _MainInten: 1
-    - _POW: 1
+    - _POW: 1.25
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 1, g: 0.6920755, b: 0.27830186, a: 0}
   m_BuildTextureStacks: []

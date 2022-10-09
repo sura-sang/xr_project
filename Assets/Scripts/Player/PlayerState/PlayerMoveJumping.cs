@@ -19,6 +19,7 @@ namespace SuraSang
 
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
             _player.SetAction(ButtonActions.Jump, OnJump);
+            _player.Animator.SetBool("IsJumping", true);
 
             var dir = _player.MoveDir;
             dir.y = _player.JumpPower;
@@ -27,7 +28,10 @@ namespace SuraSang
 
         public override void UpdateState() { }
 
-        public override void ClearState() { }
+        public override void ClearState()
+        {
+            _player.Animator.SetBool("IsJumping", false);
+        }
 
         private void OnJump(bool isOn)
         {

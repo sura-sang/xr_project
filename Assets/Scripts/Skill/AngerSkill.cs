@@ -20,6 +20,7 @@ namespace SuraSang
         private float _playerMaxYAngles;
 
         private float _radius = 1f;
+        private float _pivot = 0.1f;
         private float _timer;
 
         public AngerSkill(Player player, CharacterController controller)
@@ -42,7 +43,7 @@ namespace SuraSang
         
         public void InitializeSkill()
         {
-            _player.Animator.SetBool("IsUseAngerSkill", true);
+
         }
 
         public void UpdateSkill()
@@ -57,10 +58,11 @@ namespace SuraSang
                 _controller.Move(_player.transform.forward * (_player.Speed + PlusSpeed) * Time.deltaTime);
 
                 Vector3 vec = _player.transform.position;
-                Collider[] colliders = Physics.OverlapSphere(_player.transform.position, _radius);
+                vec.y += _pivot;
+                Collider[] colliders = Physics.OverlapSphere(vec, _radius);
                 foreach (Collider col in colliders)
                 {
-                    if (col.gameObject.layer != LayerMask.NameToLayer("Player")) Clear();
+                    if (col.gameObject.layer != LayerMask.NameToLayer("Player") && col.gameObject.layer != LayerMask.NameToLayer("CameraArea")) Clear();
                 }
             }
         }

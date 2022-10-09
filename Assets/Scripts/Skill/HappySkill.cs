@@ -12,7 +12,6 @@ namespace SuraSang
         public LayerMask SkillTarget;
 
         private List<Monster> _monsterList;
-        private Transform _playerTransform;
 
         readonly int IsWalking = Animator.StringToHash("IsWalking");
         readonly int IsUseJoySkill = Animator.StringToHash("IsUseJoySkill");
@@ -23,7 +22,6 @@ namespace SuraSang
         {
             _player = player;
             _controller = controller;
-            _playerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
             _monsterList = new List<Monster>();
             _speed = _player.Speed;
             SkillTarget = LayerMask.GetMask("Monster");
@@ -37,7 +35,7 @@ namespace SuraSang
         //}
         public void InitializeSkill()
         {
-            _player.Animator.SetBool(IsUseJoySkill, true);
+
         }
 
         public void OnMove(Vector2 input)
@@ -49,8 +47,6 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
-
-            _player.Animator.SetBool(IsWalking, _player.Controller.velocity.sqrMagnitude > 0.01f);
         }
 
         public void UpdateSkill()

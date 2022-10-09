@@ -22,7 +22,6 @@ namespace SuraSang
 
         private float _horizontalViewHalfAngle = 0f; //시야각의 절반 값
         private bool _isFind;
-        private bool _isAbsorb;
         private float _timer;
 
         [SerializeField] private Renderer _renderer;
@@ -35,15 +34,7 @@ namespace SuraSang
 
         private void UpdateAbsorb()
         {
-            if (_isAbsorb)
-            {
-                _timer += Time.deltaTime;
-
-                if (_timer >= 3f)
-                {
-                    // ReturnEmotion();
-                }
-            }
+            
         }
 
         public void SetAbsorbAction()
@@ -99,10 +90,10 @@ namespace SuraSang
                 {
                     if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
                     {
-                        _isAbsorb = true;
                         _timer = 0;
                         gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
+                        Animator.SetFloat("Emotion", (int)CurrentEmotion);
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                     }
                 }
@@ -114,7 +105,6 @@ namespace SuraSang
             _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
             _timer = 0;
-            _isAbsorb = false;
         }
     }
 }

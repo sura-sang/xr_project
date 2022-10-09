@@ -95,35 +95,8 @@ namespace SuraSang
 
             Controller.Move(MoveDir * Time.deltaTime);
 
-            var hits = GetLastHits();
-
-            for (var i = 0; i < hits.Count; i++)
-            {
-                PuzzleManager.Instance.Notify(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
-                PuzzleManager.Instance.RemoveObserver(GetLastHits()[i].collider?.GetComponentInParent<PuzzleObserver>());
-            }
-
-            if(IsReset)
-            {
-                SceneMaster.SceneInstance.LoadLevel(0);
-            }
         }
-
-        private List<RaycastHit> GetLastHits()
-        {
-            List<RaycastHit> raycastHits = new();
-
-            foreach (var eye in SadEyes)
-            {
-                if (eye.LastHit != null)
-                {
-                    raycastHits.Add(eye.LastHit.Value);
-                }
-            }
-            
-            return raycastHits;
-        }
-
+        
         //private void OnControllerColliderHit(ControllerColliderHit hit)
         //{
         //    var rig = hit.collider.attachedRigidbody;
