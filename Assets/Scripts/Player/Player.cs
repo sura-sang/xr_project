@@ -104,7 +104,6 @@ namespace SuraSang
         //    }
         //}
 
-        //TO DO : Animator의 아바타도 교체 해야함. 남은 변신 애니메이션 마저 재생시켜야 함.
         public void ChangeCharacter()
         {
             switch(CurrentEmotion)
@@ -113,29 +112,36 @@ namespace SuraSang
                     CurrentCharacter.SetActive(false);
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
+                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
                     Animator.Play("ChangeTest", 0, 0.8f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
                     CurrentCharacter.SetActive(false);
                     CurrentCharacter = _characterAnger;
                     _characterAnger.SetActive(true);
+                    Animator.avatar = _characterAnger.GetComponent<Animator>().avatar;
                     Animator.Play("ChangeTest", 0, 0.8f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Happiness:
                     CurrentCharacter.SetActive(false);
                     CurrentCharacter = _characterHappy;
                     _characterHappy.SetActive(true);
+                    Animator.avatar = _characterHappy.GetComponent<Animator>().avatar;
                     Animator.Play("ChangeTest", 0, 0.8f);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
-                case Emotion.Sadness:
-                    CurrentCharacter.SetActive(false);
-                    CurrentCharacter = _characterSad;
-                    _characterSad.SetActive(true);
-                    Animator.Play("ChangeTest", 0, 0.8f);
-                    break;
+                //아직 슬픔 모델 안나옴
+                //case Emotion.Sadness:
+                //    CurrentCharacter.SetActive(false);
+                //    CurrentCharacter = _characterSad;
+                //    _characterSad.SetActive(true);
+                //    Animator.Play("ChangeTest", 0, 0.8f);
+                //    break;
             }
         }
 
