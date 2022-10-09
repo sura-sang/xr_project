@@ -68,13 +68,13 @@ namespace SuraSang
         {
             Controller = GetComponent<CharacterController>();
 
-            Controller.enabled = false;
-            transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
-            ReturnEmotion();
-            Controller.enabled = true;
-
-            Debug.Log("Position: " + transform.position);
-            Debug.Log("CheckPoint Position : " + SceneMaster.SceneInstance.CurrentCheckPoint.transform.position);
+            if (SceneMaster.SceneInstance != null)
+            {
+                Controller.enabled = false;
+                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+                ReturnEmotion();
+                Controller.enabled = true;
+            }
 
             _cameraTransform = Camera.main.transform;
 
@@ -102,6 +102,11 @@ namespace SuraSang
 
             Controller.Move(MoveDir * Time.deltaTime);
 
+
+            if (IsReset)
+            {
+                SceneMaster.SceneInstance.LoadLevel(0);
+            }
         }
         
         //private void OnControllerColliderHit(ControllerColliderHit hit)
