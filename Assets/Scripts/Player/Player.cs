@@ -63,7 +63,7 @@ namespace SuraSang
 
             Controller.enabled = false;
             transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
-            CurrentEmotion = Emotion.Default;
+            ReturnEmotion();
             Controller.enabled = true;
 
             Debug.Log("Position: " + transform.position);

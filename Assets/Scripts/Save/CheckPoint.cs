@@ -35,6 +35,7 @@ namespace SuraSang
             if (gameObject.name == cpName)
             {
                 SceneMaster.SceneInstance.CurrentCheckPoint = this;
+                GameManager.Instance.Player.ReturnEmotion();
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
             }
             else
