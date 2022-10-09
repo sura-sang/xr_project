@@ -21,7 +21,6 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.Animator.SetBool("IsJumping", true);
 
-
             var dir = _player.MoveDir;
             dir.y = _player.JumpPower;
             _player.MoveDir = dir;

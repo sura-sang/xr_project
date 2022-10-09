@@ -16,6 +16,7 @@ namespace SuraSang
         Hold,
         Absorb,
         Skill,
+        Reset
     }
 
     public partial class Player
@@ -30,6 +31,7 @@ namespace SuraSang
 
         public Vector3 MoveDir { get; set; }
         public bool IsSkill;
+        public bool IsReset = false;
 
         private void InitInputs()
         {
@@ -67,6 +69,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Skill, _inputActions.Player.Skill);
             _inputActions.Player.Skill.performed += (x) => GetAction(ButtonActions.Skill)?.Invoke(true);           
             _inputActions.Player.Skill.canceled += (x) => GetAction(ButtonActions.Skill)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.Reset, _inputActions.Player.Reset);
+            _inputActions.Player.Reset.performed += (x) => GetAction(ButtonActions.Reset)?.Invoke(true);
+            _inputActions.Player.Reset.canceled += (x) => GetAction(ButtonActions.Reset)?.Invoke(false);
         }
 
         private void UpdateInputs()
