@@ -87,6 +87,7 @@ namespace SuraSang
 
         protected new void Update()
         {
+            SetAction(ButtonActions.Reset, OnReset);
             base.Update();
 
             UpdateInputs();
@@ -162,6 +163,11 @@ namespace SuraSang
 
                 Gizmos.DrawWireSphere(transform.position, HappySkill.CheckRange);
             }
+        }
+
+        private void OnReset(bool isOn)
+        {
+            IsReset = isOn;
         }
     }
 }

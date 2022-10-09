@@ -19,8 +19,6 @@ namespace SuraSang
 
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
             _player.SetAction(ButtonActions.Jump, OnJump);
-            _player.SetAction(ButtonActions.Reset, OnReset);
-
 
             var dir = _player.MoveDir;
             dir.y = _player.JumpPower;
@@ -73,10 +71,5 @@ namespace SuraSang
 
             _player.MoveDir = dir;
         }
-        private void OnReset(bool isOn)
-        {
-            _player.IsReset = isOn;
-        }
-
     }
 }
