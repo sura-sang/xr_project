@@ -96,7 +96,6 @@ namespace SuraSang
                         Debug.Log((int)CurrentEmotion);
                         //임시 흡수 애니메이션 재생
                         Animator.SetTrigger("IsChange");
-                        Animator.SetFloat("Emotion", (int)CurrentEmotion);
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                     }
                 }
