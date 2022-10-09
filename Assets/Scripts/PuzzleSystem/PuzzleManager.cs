@@ -17,7 +17,7 @@ namespace SuraSang
                     _instance = FindObjectOfType(typeof(PuzzleManager)) as PuzzleManager;
 
                     if (_instance == null)
-                        Debug.Log("no singleton obj");
+                        Debug.Log("no singleton obj : " + _instance.GetType());
                 }
 
                 return _instance;

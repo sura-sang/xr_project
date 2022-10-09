@@ -100,7 +100,7 @@ namespace SuraSang
             }
         }
 
-        private void ReturnEmotion()
+        public void ReturnEmotion()
         {
             _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
