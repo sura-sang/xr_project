@@ -12,7 +12,6 @@ namespace SuraSang
         public LayerMask SkillTarget;
 
         private List<Monster> _monsterList;
-        private Transform _playerTransform;
 
         readonly int IsWalking = Animator.StringToHash("IsWalking");
         readonly int IsUseJoySkill = Animator.StringToHash("IsUseJoySkill");
@@ -23,7 +22,6 @@ namespace SuraSang
         {
             _player = player;
             _controller = controller;
-            _playerTransform = GameObject.Find("PlayerDummy").GetComponent<Transform>();
             _monsterList = new List<Monster>();
             _speed = _player.Speed;
             SkillTarget = LayerMask.GetMask("Monster");
