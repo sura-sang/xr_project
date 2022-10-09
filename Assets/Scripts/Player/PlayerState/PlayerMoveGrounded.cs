@@ -9,7 +9,6 @@ namespace SuraSang
         readonly int IsWalking = Animator.StringToHash("IsWalking");
         readonly int IsRunning = Animator.StringToHash("IsRunning");
 
-
         public PlayerMoveGrounded(CharacterMove characterMove) : base(characterMove) { }
 
         private float _lastGroundTime;

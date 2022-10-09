@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace SuraSang
 {
@@ -55,9 +56,19 @@ namespace SuraSang
 
         public Animator Animator;
 
+
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
+
+            Controller.enabled = false;
+            transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+            ReturnEmotion();
+            Controller.enabled = true;
+
+            Debug.Log("Position: " + transform.position);
+            Debug.Log("CheckPoint Position : " + SceneMaster.SceneInstance.CurrentCheckPoint.transform.position);
+
             _cameraTransform = Camera.main.transform;
 
             InitInputs();
@@ -76,12 +87,14 @@ namespace SuraSang
 
         protected new void Update()
         {
+            SetAction(ButtonActions.Reset, OnReset);
             base.Update();
 
             UpdateInputs();
             UpdateAbsorb();
 
             Controller.Move(MoveDir * Time.deltaTime);
+
         }
         
         //private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -123,6 +136,11 @@ namespace SuraSang
 
                 Gizmos.DrawWireSphere(transform.position, HappySkill.CheckRange);
             }
+        }
+
+        private void OnReset(bool isOn)
+        {
+            IsReset = isOn;
         }
     }
 }

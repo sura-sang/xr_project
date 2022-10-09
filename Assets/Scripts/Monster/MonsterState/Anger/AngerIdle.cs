@@ -19,8 +19,7 @@ namespace SuraSang
 
         public override void UpdateState()
         {
-            if (Vector3.Distance(_monster.transform.position,
-                    _player.transform.position) < _anger.ChaseRange)
+            if (Vector3.Distance(_monster.transform.position, _player.transform.position) < _anger.ChaseRange)
             {
                 _anger.ChangeState(new AngerChase(_characterMove));
             }
