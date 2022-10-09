@@ -14,7 +14,6 @@ namespace SuraSang
         public override void InitializeState()
         {
             _player.SetAction(ButtonActions.Skill, OnSkill);
-            _player.SetAction(ButtonActions.Reset, OnReset);
 
             if (_player.CurrentEmotion == Emotion.Happiness)
             {
@@ -72,10 +71,5 @@ namespace SuraSang
             _player.Animator.SetBool("IsUseJoySkill", false);
             _player.Animator.SetBool("IsUseAngerSkill", false);
         }
-        private void OnReset(bool isOn)
-        {
-            _player.IsReset = isOn;
-        }
-
     }
 }

@@ -9,7 +9,6 @@ namespace SuraSang
         readonly int IsWalking = Animator.StringToHash("IsWalking");
         readonly int IsRunning = Animator.StringToHash("IsRunning");
 
-
         public PlayerMoveGrounded(CharacterMove characterMove) : base(characterMove) { }
 
         private float _lastGroundTime;
@@ -28,7 +27,6 @@ namespace SuraSang
             //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.SetAction(ButtonActions.Skill, OnSkill);
-            _player.SetAction(ButtonActions.Reset, OnReset);
 
             _speed = _player.Speed;
         }
@@ -109,11 +107,6 @@ namespace SuraSang
         private void OnSkill(bool isOn)
         {
             _player.IsSkill = isOn;
-        }
-
-        private void OnReset(bool isOn)
-        {
-            _player.IsReset = isOn;
         }
     }
 }
