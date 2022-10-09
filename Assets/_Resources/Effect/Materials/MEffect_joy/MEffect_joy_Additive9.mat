@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MEffect_joy_Additive9
+  m_Shader: {fileID: 4800000, guid: d2a56383d6d3ef644b3b9dc6f1439f36, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Circle_01:
+        m_Texture: {fileID: 2800000, guid: bdfa5a3e424390e41bfc30538954424b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Circle_07:
+        m_Texture: {fileID: 2800000, guid: ba49fd3a390762b4da0d397069f02ff5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Circle_08:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Clouds_03:
+        m_Texture: {fileID: 2800000, guid: 2666fbd93c88a0444857ac8dfe081fb7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 53aafa04707354d4d9005c81ba54c186, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Manifold11512x512:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TEffect_joy_line04:
+        m_Texture: {fileID: 2800000, guid: f054dbf195712da4d9a480123fe92db5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: f054dbf195712da4d9a480123fe92db5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: bdfa5a3e424390e41bfc30538954424b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _maintex:
+        m_Texture: {fileID: 2800000, guid: ba49fd3a390762b4da0d397069f02ff5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alph: 0
+    - _Alpha: 0.94
+    - _AlphaCutoff: 0.5
+    - _AlphaPOW: 1
+    - _Ceneter: 0.42
+    - _Float10: 0.65
+    - _Float11: 0.22
+    - _INS: 20
+    - _Inten: 5.07
+    - _Length: 4
+    - _MAINPOW: 1
+    - _MASKPOW: 2.78
+    - _Noise: 0
+    - _POW: 1.25
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Radial: 0.65
+    - _UPANNER: -0.25
+    - _VPANNER: 0
+    - _inten: 3
+    m_Colors:
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.6415094, g: 0.44894654, b: 0.26326093, a: 0}
+    - _Panner: {r: 0, g: 0.3, b: 0, a: 0}
+    - _maincolor: {r: 1, g: 0.8537914, b: 0.52358484, a: 0}
+  m_BuildTextureStacks: []
