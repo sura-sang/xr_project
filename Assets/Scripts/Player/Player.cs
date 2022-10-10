@@ -184,11 +184,6 @@ namespace SuraSang
             }
         }
 
-        public void DestroyEffect()
-        {
-            Destroy(_effect);
-        }
-
         private void OnDrawGizmos()
         {
             if (_debugMode)
