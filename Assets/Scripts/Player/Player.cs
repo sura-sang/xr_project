@@ -152,11 +152,12 @@ namespace SuraSang
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
-                    //아직 슬픔 모델 안나옴
+                    //TO DO : 아직 슬픔 모델 안나옴.
                 case Emotion.Sadness:
-                    //CurrentCharacter.SetActive(false);
-                    //CurrentCharacter = _characterSad;
-                    //_characterSad.SetActive(true);
+                    CurrentCharacter.SetActive(false);
+                    CurrentCharacter = _characterDefault;
+                    _characterDefault.SetActive(true);
+                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;

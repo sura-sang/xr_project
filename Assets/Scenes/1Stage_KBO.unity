@@ -1435,6 +1435,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142464450}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &149627360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7704156342913165026, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
+  m_PrefabInstance: {fileID: 7362189884502036743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &155378847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12063,7 +12068,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322256222}
-  m_LocalRotation: {x: 0.032452177, y: 0.8074352, z: -0.044610668, w: 0.5873714}
+  m_LocalRotation: {x: 0.032452177, y: 0.8074352, z: -0.04461067, w: 0.5873714}
   m_LocalPosition: {x: -8.064018, y: -6.620864, z: 25.332088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19633,6 +19638,10 @@ PrefabInstance:
       propertyPath: JumpPower
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7362189885273058760, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
+      propertyPath: _characterSad
+      value: 
+      objectReference: {fileID: 149627360}
     - target: {fileID: 7362189885273058761, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_RootOrder
       value: 15
