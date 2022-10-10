@@ -47,12 +47,12 @@ namespace SuraSang
                 _lastGroundTime = Time.time;
             }
 
-            if (!_player.IsSkill)
+            _skill.UpdateSkill();
+
+            if (!_player.IsSkill && _skill.IsStopAble)
             {
                 _player.ChangeState(new PlayerMoveGrounded(_characterMove));
             }
-
-            _skill.UpdateSkill();
         }
 
         public override void ClearState()

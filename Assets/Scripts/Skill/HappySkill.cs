@@ -6,6 +6,8 @@ namespace SuraSang
 {
     public class HappySkill : ISkill
     {
+        public bool IsStopAble => true;
+
         private Player _player;
         private CharacterController _controller;
         public const float CheckRange = 10f;
