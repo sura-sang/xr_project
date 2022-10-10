@@ -132,7 +132,7 @@ namespace SuraSang
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
@@ -141,7 +141,7 @@ namespace SuraSang
                     CurrentCharacter = _characterAnger;
                     _characterAnger.SetActive(true);
                     Animator.avatar = _characterAnger.GetComponent<Animator>().avatar;
-                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
@@ -150,7 +150,7 @@ namespace SuraSang
                     CurrentCharacter = _characterHappy;
                     _characterHappy.SetActive(true);
                     Animator.avatar = _characterHappy.GetComponent<Animator>().avatar;
-                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
@@ -159,7 +159,7 @@ namespace SuraSang
                     //CurrentCharacter.SetActive(false);
                     //CurrentCharacter = _characterSad;
                     //_characterSad.SetActive(true);
-                    Animator.Play("ChangeTest", 0, 0.8f);
+                    Animator.Play("Change", 0, 0.8f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
             }
