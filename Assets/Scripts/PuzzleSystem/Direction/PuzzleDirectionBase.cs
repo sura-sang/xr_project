@@ -17,7 +17,7 @@ namespace SuraSang
 
     public abstract class PuzzleDirectionBase : PuzzleElements
     {
-        protected const float StartAngle = 0;
+        [SerializeField] private float StartAngle = 0;
         protected const int DirCount = 6;
 
         protected PuzzleContextDirection _context;
