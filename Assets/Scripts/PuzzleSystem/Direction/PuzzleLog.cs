@@ -19,6 +19,11 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
+            if (!_rigidbody.isKinematic)
+            {
+                return;
+            }
+
             base.OnNotify(context);
 
             if (_context == null)
