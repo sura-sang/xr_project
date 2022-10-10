@@ -7,6 +7,8 @@ namespace SuraSang
 {
     public class AngerSkill : ISkill
     {
+        private const float _sphereSize = 0.5f;
+
         public bool IsStopAble => _isStopAble;
         private bool _isStopAble = false;
 
@@ -24,6 +26,8 @@ namespace SuraSang
         private float _playerMaxYAngles;
 
         private Vector3 _dir;
+
+        private Vector3 _overlapPoint;
 
         private float _dashStartTime;
 
@@ -59,6 +63,9 @@ namespace SuraSang
 
             _dir.Normalize();
 
+            _overlapPoint = _controller.center + _dir * _controller.radius
+                + Vector3.up * (_controller.stepOffset + _controller.skinWidth + (_sphereSize - _controller.height) * 0.5f);
+
             _dashStartTime = Time.time;
             _isStopAble = false;
         }
@@ -69,18 +76,12 @@ namespace SuraSang
             _controller.Move(move);
             _player.SmoothRotation(_dir);
 
-            var capsulePoint1 = _player.transform.position + _controller.center + Vector3.up * -_controller.height * 0.5f;
-            var capsulePoint2 = capsulePoint1 + Vector3.up * _controller.height;
-
-            capsulePoint1 += Vector3.up * _controller.stepOffset;
-
-            var result = Physics.CapsuleCastAll(capsulePoint1, capsulePoint2,
-                0.1f, _dir, (_player.Speed + PlusSpeed) * Time.deltaTime, CheckMask);
+            var result = Physics.OverlapSphere(_player.transform.position + _overlapPoint, _sphereSize, CheckMask);
 
             foreach (var hit in result)
             {
                 Debug.Log(hit.transform.gameObject.name);
-                hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward));
+                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward));
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
