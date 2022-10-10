@@ -50,7 +50,7 @@ namespace SuraSang
                 _lastGroundTime = Time.time;
             }
 
-            if (_player.IsSkill && _player.CurrentEmotion != Emotion.Default)
+            if (_player.IsSkill && _player.CurrentEmotion != Emotion.Default && _player.CanMove)
             {
                 _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
