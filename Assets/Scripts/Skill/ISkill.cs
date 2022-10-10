@@ -6,6 +6,7 @@ namespace SuraSang
 {
     public interface ISkill
     {
+        abstract bool IsStopAble { get; }
         abstract void InitializeSkill();
         abstract void OnMove(Vector2 input);
         abstract void UpdateSkill();
