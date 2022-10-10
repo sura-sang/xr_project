@@ -57,7 +57,6 @@ namespace SuraSang
         public Animator Animator;
         public GameObject CurrentCharacter;
 
-
         [SerializeField] private GameObject _characterDefault;
         [SerializeField] private GameObject _characterAnger;
         [SerializeField] private GameObject _characterHappy;
