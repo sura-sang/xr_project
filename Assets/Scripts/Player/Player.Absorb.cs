@@ -99,19 +99,16 @@ namespace SuraSang
                         {
                             case Emotion.Anger:
                                 var Angerobj = Instantiate(GameManager.Instance.AngerAB, transform);
-                                Angerobj.transform.position = transform.position;
                                 Destroy(Angerobj, Angerobj.GetComponent<ParticleSystem>().duration);
                                 break;
 
                             case Emotion.Happiness:
                                 var Happyobj = Instantiate(GameManager.Instance.HappyAB, transform);
-                                Happyobj.transform.position = transform.position;
                                 Destroy(Happyobj, Happyobj.GetComponent<ParticleSystem>().duration);
                                 break;
 
                             case Emotion.Sadness:
                                 var Sadobj = Instantiate(GameManager.Instance.SadAB, transform);
-                                Sadobj.transform.position = transform.position;
                                 Destroy(Sadobj, Sadobj.GetComponent<ParticleSystem>().duration);
                                 break;
                         }
