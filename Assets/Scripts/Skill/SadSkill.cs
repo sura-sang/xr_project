@@ -7,6 +7,8 @@ namespace SuraSang
 {
     public class SadSkill : ISkill
     {
+        public bool IsStopAble => true;
+
         private Player _player;
         private CharacterController _controller;
 
