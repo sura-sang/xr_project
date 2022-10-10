@@ -5,13 +5,10 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -1101177579192414875
-    second: A_P_empty_JUMPUP (1)
-  - first:
-      74: -1101177579192414875
-    second: A_P_common_JUMPUP
+    second: A_P_empty_JUMPUP
   - first:
       74: 9026813570451024544
-    second: A_P_common_JUMPDOWN
+    second: A_P_empty_JUMPDOWN
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -42,18 +39,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: A_P_common_JUMPUP
+      name: A_P_empty_JUMPUP
       takeName: A_P_empty_JUMP3
       internalID: 0
-      firstFrame: 0
-      lastFrame: 14
+      firstFrame: 5
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -71,18 +68,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A_P_common_JUMPDOWN
+      name: A_P_empty_JUMPDOWN
       takeName: A_P_empty_JUMP3
       internalID: 0
-      firstFrame: 15
-      lastFrame: 28
+      firstFrame: 20
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
