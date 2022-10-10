@@ -8,26 +8,25 @@ namespace SuraSang
     {
         public Vector3 Dir;
 
-        PuzzleContextDirection(Vector2 dir)
+        public PuzzleContextDirection(Vector3 dir)
         {
             Dir = dir;
         }
     }
 
 
-    public abstract class PuzzleDirection : PuzzleElements
+    public abstract class PuzzleDirectionBase : PuzzleElements
     {
-        public float StartAngle;
-        public int DirCount;
+        protected const float StartAngle = 0;
+        protected const int DirCount = 6;
 
-        private PuzzleContextDirection _context;
+        protected PuzzleContextDirection _context;
 
 
         public override void OnNotify(PuzzleContext context)
         {
             _context = context as PuzzleContextDirection;
         }
-
 
         protected Vector3 GetVector(float radians)
         {
@@ -38,7 +37,12 @@ namespace SuraSang
         {
             Vector3 dir = end - start;
             dir.y = 0;
-            return Mathf.Atan2(dir.z, dir.x);
+            return GetAngle(dir);
+        }
+
+        protected float GetAngle(Vector3 dir)
+        {
+            return Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
         }
 
         protected float GetNearestAngle(float angle)
