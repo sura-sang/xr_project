@@ -29,5 +29,9 @@ namespace SuraSang
         public GameObject AngerAB;
         public GameObject SadAB;
         public GameObject HappyAB;
+        [Space(30f)]
+        public GameObject AngerTrans;
+        public GameObject SadTrans;
+        public GameObject HappyTrans;
     }
 }

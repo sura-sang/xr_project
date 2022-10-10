@@ -95,7 +95,7 @@ namespace SuraSang
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
                         Debug.Log((int)CurrentEmotion);
 
-                        switch(CurrentEmotion)
+                        switch (CurrentEmotion)
                         {
                             case Emotion.Anger:
                                 var Angerobj = Instantiate(GameManager.Instance.AngerAB, transform);

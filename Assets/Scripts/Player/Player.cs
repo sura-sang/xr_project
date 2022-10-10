@@ -62,7 +62,8 @@ namespace SuraSang
         [SerializeField] private GameObject _characterAnger;
         [SerializeField] private GameObject _characterHappy;
         [SerializeField] private GameObject _characterSad;
-        
+
+        private GameObject _effect;
 
         private void Awake()
         {
@@ -165,6 +166,28 @@ namespace SuraSang
             }
         }
 
+        public void TransEffect()
+        {
+            switch (CurrentEmotion)
+            {
+                case Emotion.Anger:
+                    _effect = Instantiate(GameManager.Instance.AngerTrans, transform);
+                    break;
+
+                case Emotion.Sadness:
+                    _effect = Instantiate(GameManager.Instance.SadTrans, transform);
+                    break;
+
+                case Emotion.Happiness:
+                    _effect = Instantiate(GameManager.Instance.HappyTrans, transform);
+                    break;
+            }
+        }
+
+        public void DestroyEffect()
+        {
+            Destroy(_effect);
+        }
 
         private void OnDrawGizmos()
         {
