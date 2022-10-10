@@ -94,12 +94,41 @@ namespace SuraSang
                         gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
                         Debug.Log((int)CurrentEmotion);
-                        //임시 흡수 애니메이션 재생
+
+                        switch(CurrentEmotion)
+                        {
+                            case Emotion.Anger:
+                                var Angerobj = Instantiate(GameManager.Instance.AngerAB, transform);
+                                Angerobj.transform.position = transform.position;
+                                Destroy(Angerobj, Angerobj.GetComponent<ParticleSystem>().duration);
+                                break;
+
+                            case Emotion.Happiness:
+                                var Happyobj = Instantiate(GameManager.Instance.HappyAB, transform);
+                                Happyobj.transform.position = transform.position;
+                                Destroy(Happyobj, Happyobj.GetComponent<ParticleSystem>().duration);
+                                break;
+
+                            case Emotion.Sadness:
+                                var Sadobj = Instantiate(GameManager.Instance.SadAB, transform);
+                                Sadobj.transform.position = transform.position;
+                                Destroy(Sadobj, Sadobj.GetComponent<ParticleSystem>().duration);
+                                break;
+                        }
+
+                        //TO DO : 흡수 애니메이션 코드 추가
+
+                        //임시 변신 애니메이션 재생
                         Animator.SetTrigger("IsChange");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                     }
                 }
             }
+        }
+
+        void DestroyObj(GameObject obj)
+        {
+            Destroy(obj);
         }
 
         public void ReturnEmotion()

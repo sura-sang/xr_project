@@ -25,5 +25,9 @@ namespace SuraSang
 
         [SerializeField] private Player _player;
         public Player Player => _player;
+
+        public GameObject AngerAB;
+        public GameObject SadAB;
+        public GameObject HappyAB;
     }
 }
