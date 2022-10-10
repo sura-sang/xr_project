@@ -160,7 +160,7 @@ namespace SuraSang
                     //CurrentCharacter.SetActive(false);
                     //CurrentCharacter = _characterSad;
                     //_characterSad.SetActive(true);
-                    Animator.Play("ChangeTest", 0, 0.4f);
+                    Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
             }
