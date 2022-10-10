@@ -10,8 +10,7 @@ namespace SuraSang
         public bool IsStopAble => _isStopAble;
         private bool _isStopAble = false;
 
-        //private static readonly LayerMask CheckMask = ~LayerMask.GetMask("Player", "CameraArea");
-        private static readonly LayerMask CheckMask = LayerMask.GetMask("Wall");
+        private static readonly LayerMask CheckMask = ~LayerMask.GetMask("Player", "CameraArea");
 
         private Player _player;
         private CharacterController _controller;
@@ -23,8 +22,6 @@ namespace SuraSang
         private float MinYRot = -20f;
         private float _playerMinYAngles;
         private float _playerMaxYAngles;
-
-        private float _radius = 1f;
 
         private Vector3 _dir;
 
@@ -72,11 +69,13 @@ namespace SuraSang
             _controller.Move(move);
             _player.SmoothRotation(_dir);
 
-            var capsulePoint1 = _player.transform.position + _controller.center + Vector3.down * _controller.height * 0.5f;
+            var capsulePoint1 = _player.transform.position + _controller.center + Vector3.up * -_controller.height * 0.5f;
             var capsulePoint2 = capsulePoint1 + Vector3.up * _controller.height;
 
+            capsulePoint1 += Vector3.up * _controller.stepOffset;
+
             var result = Physics.CapsuleCastAll(capsulePoint1, capsulePoint2,
-                _radius, _dir, (_player.Speed + PlusSpeed) * Time.deltaTime, CheckMask);
+                0.1f, _dir, (_player.Speed + PlusSpeed) * Time.deltaTime, CheckMask);
 
             foreach (var hit in result)
             {
