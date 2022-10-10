@@ -93,7 +93,6 @@ namespace SuraSang
                         _timer = 0;
                         gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
-                        Debug.Log((int)CurrentEmotion);
                         //임시 흡수 애니메이션 재생
                         Animator.SetTrigger("IsChange");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
