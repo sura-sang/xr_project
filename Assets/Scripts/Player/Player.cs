@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 
 namespace SuraSang
 {
-    
-
     public partial class Player : CharacterMove
     {
         public CharacterController Controller { get; private set; }
@@ -57,12 +55,12 @@ namespace SuraSang
         public Animator Animator;
         public GameObject CurrentCharacter;
 
-
         [SerializeField] private GameObject _characterDefault;
         [SerializeField] private GameObject _characterAnger;
         [SerializeField] private GameObject _characterHappy;
         [SerializeField] private GameObject _characterSad;
-        
+
+        public bool CanMove = true;
 
         private void Awake()
         {
@@ -100,8 +98,10 @@ namespace SuraSang
             UpdateInputs();
             UpdateAbsorb();
 
-            Controller.Move(MoveDir * Time.deltaTime);
-
+            if (CanMove)
+            {
+                Controller.Move(MoveDir * Time.deltaTime);
+            }
 
             if (IsReset)
             {
@@ -160,7 +160,7 @@ namespace SuraSang
                     //CurrentCharacter.SetActive(false);
                     //CurrentCharacter = _characterSad;
                     //_characterSad.SetActive(true);
-                    Animator.Play("Change", 0, 0.8f);
+                    Animator.Play("ChangeTest", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
             }
@@ -171,17 +171,25 @@ namespace SuraSang
             switch (CurrentEmotion)
             {
                 case Emotion.Anger:
+                    CanMove = false;
                     Instantiate(GameManager.Instance.AngerTrans, transform);
                     break;
 
                 case Emotion.Sadness:
+                    CanMove = false;
                     Instantiate(GameManager.Instance.SadTrans, transform);
                     break;
 
                 case Emotion.Happiness:
+                    CanMove = false;
                     Instantiate(GameManager.Instance.HappyTrans, transform);
                     break;
             }
+        }
+
+        public void canMove()
+        {
+            CanMove = true;
         }
 
         private void OnDrawGizmos()

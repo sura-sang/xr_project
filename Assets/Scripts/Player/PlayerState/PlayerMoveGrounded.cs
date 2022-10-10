@@ -91,7 +91,10 @@ namespace SuraSang
         {
             var dir = _player.InputToCameraSpace(input);
 
-            _player.SmoothRotation(dir);
+            if (_player.CanMove)
+            {
+                _player.SmoothRotation(dir);
+            }
 
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
