@@ -93,6 +93,7 @@ namespace SuraSang
                         _timer = 0;
                         gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
+
                         Debug.Log((int)CurrentEmotion);
 
                         switch (CurrentEmotion)
