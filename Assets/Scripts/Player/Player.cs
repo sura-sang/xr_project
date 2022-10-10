@@ -132,8 +132,6 @@ namespace SuraSang
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-                    Animator.Play("ChangeTest", 0, 0.4f);
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -165,6 +163,23 @@ namespace SuraSang
             }
         }
 
+        public void TransEffect()
+        {
+            switch (CurrentEmotion)
+            {
+                case Emotion.Anger:
+                    Instantiate(GameManager.Instance.AngerTrans, transform);
+                    break;
+
+                case Emotion.Sadness:
+                    Instantiate(GameManager.Instance.SadTrans, transform);
+                    break;
+
+                case Emotion.Happiness:
+                    Instantiate(GameManager.Instance.HappyTrans, transform);
+                    break;
+            }
+        }
 
         private void OnDrawGizmos()
         {
