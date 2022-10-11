@@ -17,6 +17,7 @@ namespace SuraSang
 
         private bool _isCrouch;
         private bool _isCrouchFailed = false;
+        private bool _isDancing = false;
 
         public override void InitializeState()
         {
@@ -27,6 +28,7 @@ namespace SuraSang
             //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.SetAction(ButtonActions.Skill, OnSkill);
+            _player.SetAction(ButtonActions.Dance, OnDance);
 
             _speed = _player.Speed;
         }
@@ -54,6 +56,19 @@ namespace SuraSang
             {
                 _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
+
+            if (_isDancing && _player.CurrentEmotion == Emotion.Happiness && _player.CanMove)
+            {
+                _player.Animator.SetTrigger("IsDance");
+                _player.cantMove();
+            }
+
+            if (_player.Animator.GetCurrentAnimatorStateInfo(0).IsName("Dance") &&
+                _player.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
+            {
+                _player.canMove();
+            }
+
         }
 
         public override void ClearState()
@@ -107,6 +122,11 @@ namespace SuraSang
         private void OnSkill(bool isOn)
         {
             _player.IsSkill = isOn;
+        }
+
+        private void OnDance(bool isOn)
+        {
+            _isDancing = isOn;
         }
     }
 }
