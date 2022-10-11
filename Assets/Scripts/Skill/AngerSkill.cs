@@ -7,21 +7,30 @@ namespace SuraSang
 {
     public class AngerSkill : ISkill
     {
+        private const float _sphereSize = 0.5f;
+
+        public bool IsStopAble => _isStopAble;
+        private bool _isStopAble = false;
+
+        private static readonly LayerMask CheckMask = ~LayerMask.GetMask("Player", "CameraArea");
+
         private Player _player;
         private CharacterController _controller;
 
         private float PlusSpeed = 2f;
         private float SkillRunningTime = 2f;
-        private bool isSkillRunning = false;
 
         private float MaxYRot = 20f;
         private float MinYRot = -20f;
         private float _playerMinYAngles;
         private float _playerMaxYAngles;
 
-        private float _radius = 1f;
-        private float _pivot = 0.1f;
-        private float _timer;
+        private Vector3 _dir;
+
+        private Vector3 _overlapPoint;
+
+        private float _dashStartTime;
+
 
         public AngerSkill(Player player, CharacterController controller)
         {
@@ -43,53 +52,48 @@ namespace SuraSang
         
         public void InitializeSkill()
         {
+            _dir = _player.MoveDir;
+            _dir.y = 0;
 
+            if(_dir == Vector3.zero)
+            {
+                _dir = _player.transform.forward;
+                _dir.y = 0;
+            }
+
+            _dir.Normalize();
+
+            _overlapPoint = _controller.center + _dir * _controller.radius
+                + Vector3.up * (_controller.stepOffset + _controller.skinWidth + (_sphereSize - _controller.height) * 0.5f);
+
+            _dashStartTime = Time.time;
+            _isStopAble = false;
         }
 
         public void UpdateSkill()
         {
-            if (!isSkillRunning)
-            {
-                isSkillRunning = true;
-            }
-            else if (isSkillRunning)
-            {
-                Cooldown();
-                _controller.Move(_player.transform.forward * (_player.Speed + PlusSpeed) * Time.deltaTime);
+            var move = _dir * (_player.Speed + PlusSpeed) * Time.deltaTime;
+            _controller.Move(move);
+            _player.SmoothRotation(_dir);
 
-                Vector3 vec = _player.transform.position;
-                vec.y += _pivot;
-                Collider[] colliders = Physics.OverlapSphere(vec, _radius);
-                foreach (Collider col in colliders)
-                {
-                    if (col.gameObject.layer != LayerMask.NameToLayer("Player") && col.gameObject.layer != LayerMask.NameToLayer("CameraArea")) Clear();
-                }
+            var result = Physics.OverlapSphere(_player.transform.position + _overlapPoint, _sphereSize, CheckMask);
+
+            foreach (var hit in result)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward));
+            }
+
+            if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
+            {
+                _player.IsSkill = false;
+                _isStopAble = true;
             }
         }
 
         public void ClearSkill()
         {
             
-        }
-
-        private void Cooldown()
-        {
-            if (isSkillRunning)
-            {
-                _timer += Time.deltaTime;
-                Debug.Log(_timer);
-
-                if (_timer >= SkillRunningTime)
-                {
-                    Clear();
-                }
-            }
-        }
-
-        private void Clear()
-        {
-            _player.IsSkill = false;
-            isSkillRunning = false;
         }
 
         public float[] LimitRot(Vector3 v)

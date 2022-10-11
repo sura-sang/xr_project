@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 namespace SuraSang
 {
@@ -59,6 +60,10 @@ namespace SuraSang
         [SerializeField] private GameObject _characterAnger;
         [SerializeField] private GameObject _characterHappy;
         [SerializeField] private GameObject _characterSad;
+
+        [Header("Change Avater Camera")]
+        [SerializeField] private CinemachineVirtualCamera _camera;
+        [SerializeField] private CinemachineDollyCart _cart;
 
         public bool CanMove = true;
 
@@ -132,6 +137,9 @@ namespace SuraSang
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
+
+                    //Animator.Play("Change", 0, 0.4f);
+                    //Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -188,6 +196,19 @@ namespace SuraSang
         public void canMove()
         {
             CanMove = true;
+        }
+
+        public void CameraStart()
+        {
+            _camera.m_Priority = 11;
+            _cart.m_Speed = 0.25f;
+        }
+
+        public void CameraStop()
+        {
+            _camera.m_Priority = 9;
+            _cart.m_Speed = 0f;
+            _cart.m_Position = 0f;
         }
 
         private void OnDrawGizmos()
