@@ -66,6 +66,7 @@ namespace SuraSang
         [SerializeField] private CinemachineDollyCart _cart;
 
         public bool CanMove = true;
+        private GameObject HappyEffect;
 
         private void Awake()
         {
@@ -91,7 +92,6 @@ namespace SuraSang
         {
             _buttonEvents.Clear();
             OnMove = null;
-
             base.ChangeState(state);
         }
 
@@ -111,6 +111,16 @@ namespace SuraSang
             if (IsReset)
             {
                 SceneMaster.SceneInstance.LoadLevel(0);
+            }
+
+            if (IsSkill)
+            {
+                if (CurrentEmotion == Emotion.Happiness && HappyEffect == null)
+                    HappyEffect = Instantiate(GameManager.Instance.HappySkillEffect, transform);
+            }
+            else
+            {
+                Destroy(HappyEffect);  
             }
         }
         

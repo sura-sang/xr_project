@@ -33,5 +33,7 @@ namespace SuraSang
         public GameObject AngerTrans;
         public GameObject SadTrans;
         public GameObject HappyTrans;
+        [Space(30f)]
+        public GameObject HappySkillEffect;
     }
 }

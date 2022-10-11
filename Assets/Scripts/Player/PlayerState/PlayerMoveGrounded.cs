@@ -57,7 +57,6 @@ namespace SuraSang
                 _characterMove.ChangeState(new PlayerUseSkill(_characterMove));
             }
 
-
             if (_isDancing && _player.CurrentEmotion == Emotion.Happiness && _player.CanMove)
             {
                 _player.Animator.SetTrigger("IsDance");
