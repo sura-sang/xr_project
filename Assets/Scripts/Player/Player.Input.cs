@@ -16,7 +16,8 @@ namespace SuraSang
         Hold,
         Absorb,
         Skill,
-        Reset
+        Reset,
+        Dance,
     }
 
     public partial class Player
@@ -73,6 +74,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Reset, _inputActions.Player.Reset);
             _inputActions.Player.Reset.performed += (x) => GetAction(ButtonActions.Reset)?.Invoke(true);
             _inputActions.Player.Reset.canceled += (x) => GetAction(ButtonActions.Reset)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.Dance, _inputActions.Player.Dance);
+            _inputActions.Player.Dance.performed += (x) => GetAction(ButtonActions.Dance)?.Invoke(true);
+            _inputActions.Player.Dance.canceled += (x) => GetAction(ButtonActions.Dance)?.Invoke(false);
         }
 
         private void UpdateInputs()
