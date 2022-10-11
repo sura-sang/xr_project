@@ -5,11 +5,10 @@ using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 namespace SuraSang
 {
-    
-
     public partial class Player : CharacterMove
     {
         public CharacterController Controller { get; private set; }
@@ -57,12 +56,17 @@ namespace SuraSang
         public Animator Animator;
         public GameObject CurrentCharacter;
 
-
         [SerializeField] private GameObject _characterDefault;
         [SerializeField] private GameObject _characterAnger;
         [SerializeField] private GameObject _characterHappy;
         [SerializeField] private GameObject _characterSad;
-        
+
+        [Header("Change Avater Camera")]
+        [SerializeField] private CinemachineVirtualCamera _camera;
+        [SerializeField] private CinemachineDollyCart _cart;
+
+        public bool CanMove = true;
+        private GameObject HappyEffect;
 
         private void Awake()
         {
@@ -88,7 +92,6 @@ namespace SuraSang
         {
             _buttonEvents.Clear();
             OnMove = null;
-
             base.ChangeState(state);
         }
 
@@ -100,12 +103,24 @@ namespace SuraSang
             UpdateInputs();
             UpdateAbsorb();
 
-            Controller.Move(MoveDir * Time.deltaTime);
-
+            if (CanMove)
+            {
+                Controller.Move(MoveDir * Time.deltaTime);
+            }
 
             if (IsReset)
             {
                 SceneMaster.SceneInstance.LoadLevel(0);
+            }
+
+            if (IsSkill)
+            {
+                if (CurrentEmotion == Emotion.Happiness && HappyEffect == null)
+                    HappyEffect = Instantiate(GameManager.Instance.HappySkillEffect, transform);
+            }
+            else
+            {
+                Destroy(HappyEffect);  
             }
         }
         
@@ -132,8 +147,9 @@ namespace SuraSang
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-                    Animator.Play("Change", 0, 0.4f);
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+
+                    //Animator.Play("Change", 0, 0.4f);
+                    //Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -154,17 +170,61 @@ namespace SuraSang
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
-                    //아직 슬픔 모델 안나옴
+                    //TO DO : 아직 슬픔 모델 안나옴.
                 case Emotion.Sadness:
-                    //CurrentCharacter.SetActive(false);
-                    //CurrentCharacter = _characterSad;
-                    //_characterSad.SetActive(true);
-                    Animator.Play("Change", 0, 0.8f);
+                    CurrentCharacter.SetActive(false);
+                    CurrentCharacter = _characterDefault;
+                    _characterDefault.SetActive(true);
+                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
+                    Animator.Play("Change", 0, 0.4f);
                     Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
             }
         }
 
+        public void TransEffect()
+        {
+            switch (CurrentEmotion)
+            {
+                case Emotion.Anger:
+                    CanMove = false;
+                    Instantiate(GameManager.Instance.AngerTrans, transform);
+                    break;
+
+                case Emotion.Sadness:
+                    CanMove = false;
+                    Instantiate(GameManager.Instance.SadTrans, transform);
+                    break;
+
+                case Emotion.Happiness:
+                    CanMove = false;
+                    Instantiate(GameManager.Instance.HappyTrans, transform);
+                    break;
+            }
+        }
+
+        public void canMove()
+        {
+            CanMove = true;
+        }
+
+        public void cantMove()
+        {
+            CanMove = false;
+        }
+
+        public void CameraStart()
+        {
+            _camera.m_Priority = 11;
+            _cart.m_Speed = 0.25f;
+        }
+
+        public void CameraStop()
+        {
+            _camera.m_Priority = 9;
+            _cart.m_Speed = 0f;
+            _cart.m_Position = 0f;
+        }
 
         private void OnDrawGizmos()
         {

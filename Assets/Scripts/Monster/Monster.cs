@@ -26,7 +26,8 @@ namespace SuraSang
         {
             Material material = Resources.Load<Material>("Sleep");
             ChangeState(new MonsterMoveSleep(this));
-            this.gameObject.GetComponent<Renderer>().material = material;
+            this.gameObject.GetComponentInChildren<Renderer>().material = material;
+            this.gameObject.GetComponentInChildren<Light>().enabled = false;
             IsSleep = true;
         }
 

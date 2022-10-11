@@ -36,6 +36,7 @@ namespace SuraSang
             {
                 SceneMaster.SceneInstance.CurrentCheckPoint = this;
                 GameManager.Instance.Player.ReturnEmotion();
+                GameManager.Instance.Player.ChangeCharacter();
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
             }
             else
@@ -51,6 +52,7 @@ namespace SuraSang
                 if (other.CompareTag("Player"))
                 {
                     OnCheckPointHit(gameObject.name);
+                    _isCurCheckPoint = true;
                     Debug.Log("체크포인트 접촉");
                 }
             }

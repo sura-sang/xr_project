@@ -10,7 +10,7 @@ namespace SuraSang
 
         private Player _player;
         private CharacterController _controller;
-        public const float CheckRange = 10f;
+        public const float CheckRange = 5f;
         public LayerMask SkillTarget;
 
         private List<Monster> _monsterList;
