@@ -198,6 +198,11 @@ namespace SuraSang
             CanMove = true;
         }
 
+        public void cantMove()
+        {
+            CanMove = false;
+        }
+
         public void CameraStart()
         {
             _camera.m_Priority = 11;
