@@ -27,7 +27,7 @@ namespace SuraSang
             _player.Animator.SetBool("IsHolding", true);
         }
 
-        public override void ClearState() 
+        public override void ClearState()
         {
             _player.Animator.SetBool("IsHolding", false);
         }
@@ -39,21 +39,24 @@ namespace SuraSang
         private void OnMove(Vector2 input)
         {
             (_isEdgeDetected, _edgeHit) = _player.GetEdgeDetectInfo();
-            _player.Animator.SetFloat("Left", input.x);
-            _player.Animator.SetFloat("Forward", input.y);
 
             if (_isHolding && _isEdgeDetected)
             {
-                var dir = Vector3Extentions.InputToTransformSpace(new Vector2(input.x, 0), _player.transform);
                 var normalVector = _edgeHit.normal;
+                var dir = new Vector3(input.x, 0, input.y);
+                var dot = Vector3.Dot(-normalVector, dir);
 
                 dir -= normalVector;
-
-                if (input.y == 1f )
+                if (dot > Mathf.Cos(45))
                 {
+                    _player.Animator.SetFloat("Forward", 1);
                     dir = Vector3.MoveTowards(dir, -normalVector, _player.AirControl * Time.deltaTime);
                     dir.y = _player.ClimbPower;
                     _player.MoveDir = dir;
+                }
+                else
+                {
+                    _player.Animator.SetFloat("Forward", 0);
                 }
 
                 _player.MoveDir = dir * _speed;
