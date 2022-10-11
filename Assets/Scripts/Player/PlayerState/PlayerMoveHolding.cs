@@ -44,7 +44,7 @@ namespace SuraSang
             {
                 var normalVector = _edgeHit.normal;
                 var dir = new Vector3(input.x, 0, input.y);
-                var dot = Vector3.Dot(-normalVector, dir);
+                var dot = Vector3.Dot(-normalVector, -dir);
 
                 dir -= normalVector;
                 if (dot > Mathf.Cos(45))
