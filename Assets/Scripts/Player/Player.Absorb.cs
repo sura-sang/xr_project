@@ -91,26 +91,26 @@ namespace SuraSang
                     if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
                     {
                         _timer = 0;
-                        gameObject.GetComponent<Renderer>().material = _hitTargetContainer[i].GetComponent<Renderer>().material;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
-
-                        Debug.Log((int)CurrentEmotion);
 
                         switch (CurrentEmotion)
                         {
                             case Emotion.Anger:
                                 var AngerObj = Instantiate(GameManager.Instance.AngerAB, transform);
                                 Destroy(AngerObj, AngerObj.GetComponent<ParticleSystem>().duration);
+                                gameObject.GetComponent<Renderer>().material.color = Color.red;// 임시 색상 변경
                                 break;
 
                             case Emotion.Happiness:
                                 var HappyObj = Instantiate(GameManager.Instance.HappyAB, transform);
                                 Destroy(HappyObj, HappyObj.GetComponent<ParticleSystem>().duration);
+                                gameObject.GetComponent<Renderer>().material.color = Color.yellow;// 임시 색상 변경
                                 break;
 
                             case Emotion.Sadness:
                                 var SadObj = Instantiate(GameManager.Instance.SadAB, transform);
                                 Destroy(SadObj, SadObj.GetComponent<ParticleSystem>().duration);
+                                gameObject.GetComponent<Renderer>().material.color = Color.blue;// 임시 색상 변경
                                 break;
                         }
 
