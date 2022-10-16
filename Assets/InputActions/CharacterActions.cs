@@ -116,6 +116,15 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheckPointInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff948b01-9320-4293-8ac9-3d1dbfa0a52d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -336,6 +345,17 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adcd4be0-209b-42b2-af5f-5972f8589259"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckPointInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -933,6 +953,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
         m_Player_Dance = m_Player.FindAction("Dance", throwIfNotFound: true);
+        m_Player_CheckPointInteraction = m_Player.FindAction("CheckPointInteraction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1014,6 +1035,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Skill;
     private readonly InputAction m_Player_Reset;
     private readonly InputAction m_Player_Dance;
+    private readonly InputAction m_Player_CheckPointInteraction;
     public struct PlayerActions
     {
         private @CharacterActions m_Wrapper;
@@ -1028,6 +1050,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
         public InputAction @Dance => m_Wrapper.m_Player_Dance;
+        public InputAction @CheckPointInteraction => m_Wrapper.m_Player_CheckPointInteraction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1067,6 +1090,9 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                 @Dance.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDance;
                 @Dance.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDance;
                 @Dance.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDance;
+                @CheckPointInteraction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheckPointInteraction;
+                @CheckPointInteraction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheckPointInteraction;
+                @CheckPointInteraction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheckPointInteraction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1101,6 +1127,9 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
                 @Dance.started += instance.OnDance;
                 @Dance.performed += instance.OnDance;
                 @Dance.canceled += instance.OnDance;
+                @CheckPointInteraction.started += instance.OnCheckPointInteraction;
+                @CheckPointInteraction.performed += instance.OnCheckPointInteraction;
+                @CheckPointInteraction.canceled += instance.OnCheckPointInteraction;
             }
         }
     }
@@ -1267,6 +1296,7 @@ public partial class @CharacterActions : IInputActionCollection2, IDisposable
         void OnSkill(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
         void OnDance(InputAction.CallbackContext context);
+        void OnCheckPointInteraction(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
