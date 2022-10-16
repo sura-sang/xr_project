@@ -47,6 +47,12 @@ namespace SuraSang
             }
         }
 
+        public Vector3 SpawnPosition()
+        {
+            var spawnPos = new Vector3(transform.position.x - 2f, transform.position.y + 1f, transform.position.z);
+            return spawnPos;
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if(!_isCurCheckPoint)
