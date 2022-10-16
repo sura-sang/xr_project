@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 50e97c33a266fc340813262638b4e3dd
+guid: 1ef6474ef30fbe94bb3ea1ca61a2136a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -1101177579192414875
-    second: A_P_empty_JUMPUP
+      74: -1794460981648006821
+    second: A_P_common_JUMP
   - first:
-      74: 9026813570451024544
-    second: A_P_empty_JUMPDOWN
+      74: 4570140848650255469
+    second: A_P_common_FALL
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: A_P_empty_JUMPUP
-      takeName: A_P_empty_JUMP3
+      name: A_P_common_JUMP
+      takeName: A_P_common_JUMP2
       internalID: 0
-      firstFrame: 5
-      lastFrame: 26
+      firstFrame: 8
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -68,11 +68,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A_P_empty_JUMPDOWN
-      takeName: A_P_empty_JUMP3
+      name: A_P_common_FALL
+      takeName: A_P_common_JUMP2
       internalID: 0
       firstFrame: 20
-      lastFrame: 37
+      lastFrame: 38
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
