@@ -81,7 +81,7 @@ namespace SuraSang
             foreach (var hit in result)
             {
                 Debug.Log(hit.transform.gameObject.name);
-                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward));
+                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward,_player.CurrentEmotion));
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
