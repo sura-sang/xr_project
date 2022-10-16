@@ -20,9 +20,7 @@ namespace SuraSang
 
         private List<Collider> _hitTargetContainer = new List<Collider>();//인식한 물체 보관하는 리스트
 
-        private float _horizontalViewHalfAngle = 0f; //시야각의 절반 값
         private bool _isFind;
-        private float _timer;
 
         [SerializeField] private Renderer _renderer;
         private Material _defaultMaterial;
@@ -90,7 +88,6 @@ namespace SuraSang
                 {
                     if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
                     {
-                        _timer = 0;
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
 
                         switch (CurrentEmotion)
@@ -126,7 +123,6 @@ namespace SuraSang
         {
             _renderer.material = _defaultMaterial;
             CurrentEmotion = Emotion.Default;
-            _timer = 0;
         }
     }
 }

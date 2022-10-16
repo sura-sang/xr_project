@@ -58,7 +58,6 @@ namespace SuraSang
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
 
-
             _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Hold)?.Invoke(false);
@@ -128,31 +127,9 @@ namespace SuraSang
             return Vector3Extentions.InputToTransformSpace(input, _cameraTransform);
         }
 
-        
-
-
-        public bool Crouch(bool active)
-        {
-            if (active)
-            {
-                Controller.height = CharacterCrouchHeight;
-            }
-            else
-            {
-                if (IsHeadblocked())
-                {
-                    return false;
-                }
-
-                Controller.height = CharacterHeight;
-            }
-
-            return true;
-        }
-
         public bool IsHeadblocked()
         {
-            var headPos = transform.position + Vector3.up * (CharacterHeight * 0.5f);
+            var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
             return Physics.OverlapSphere(headPos, 0.1f, HeadCheckLayer).Length > 0;
         }
 

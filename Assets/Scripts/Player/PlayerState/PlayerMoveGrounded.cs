@@ -12,11 +12,7 @@ namespace SuraSang
         public PlayerMoveGrounded(CharacterMove characterMove) : base(characterMove) { }
 
         private float _lastGroundTime;
-
         private float _speed;
-
-        private bool _isCrouch;
-        private bool _isCrouchFailed = false;
         private bool _isDancing = false;
 
         public override void InitializeState()
@@ -25,7 +21,6 @@ namespace SuraSang
             _player.SetAbsorbAction();
 
             _player.SetAction(ButtonActions.Run, OnRun);
-            //_characterMove.SetAction(ButtonActions.Crouch, OnCrouch);
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.SetAction(ButtonActions.Skill, OnSkill);
             _player.SetAction(ButtonActions.Dance, OnDance);
@@ -35,10 +30,6 @@ namespace SuraSang
 
         public override void UpdateState()
         {
-            //if (_isCrouchFailed)
-            //{
-            //    OnCrouch(_isCrouch);
-            //}
 
             if (!_controller.isGrounded)
             {
@@ -71,27 +62,12 @@ namespace SuraSang
 
         }
 
-        public override void ClearState()
-        {
-            _player.Crouch(false);
-        }
+        public override void ClearState() { }
 
 
         private void OnRun(bool isOn)
         {
-            _player.Crouch(false);
             _speed = isOn ? _player.Speed * _player.RunMultiplier : _player.Speed;
-        }
-
-        private void OnCrouch(bool isOn)
-        {
-            _isCrouch = isOn;
-            if (_player.Crouch(isOn))
-            {
-                _isCrouchFailed = true;
-                return;
-            }
-            _speed = isOn ? _player.Speed * _player.CrouchMultiplier : _player.Speed;
         }
 
         private void OnJump(bool isOn)

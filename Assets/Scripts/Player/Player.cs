@@ -12,25 +12,21 @@ namespace SuraSang
     public partial class Player : CharacterMove
     {
         public CharacterController Controller { get; private set; }
+        public Animator Animator { get; private set; }
 
         public LayerMask HeadCheckLayer;
         public LayerMask DetectedEdge;//매달리기 레이어 설정
-        public LayerMask DetectedObject; //잡기 레이어 설정
 
         // 슬픔 스킬용
         public SadEye[] SadEyes => _sadEyes;
         [SerializeField] private SadEye[] _sadEyes;
         
         // TODO : 다른곳으로 옮기자
-        public float CharacterHeight;
-        public float CharacterCrouchHeight;
-
         public float Gravity;
         public float FallingGravityMultiplier;// 떨어질때의 중력
         public float GravityLimit;
 
         public float RunMultiplier;
-        public float CrouchMultiplier;
         public float Speed;
 
         public float SlowSpeed;
@@ -47,13 +43,7 @@ namespace SuraSang
         public float EdgeDetectLength;//매달리기 거리
         public float MoveToLedgeSpeed;//매달리기 거리 보다 멀어 질려고 할때 다시 붙는 속도
 
-        public HappySkill HappySkill;
-        public AngerSkill AngerSkill;
-        public SadSkill SadSkill;
-
         private Transform _cameraTransform;
-
-        public Animator Animator;
         public GameObject CurrentCharacter;
 
         [SerializeField] private GameObject _characterDefault;
@@ -71,6 +61,7 @@ namespace SuraSang
         private void Awake()
         {
             Controller = GetComponent<CharacterController>();
+            Animator = GetComponentInChildren<Animator>();
 
             if (SceneMaster.SceneInstance != null)
             {
