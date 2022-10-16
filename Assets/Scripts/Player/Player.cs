@@ -147,9 +147,7 @@ namespace SuraSang
                     CurrentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-
-                    //Animator.Play("Change", 0, 0.4f);
-                    //Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
