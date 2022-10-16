@@ -75,7 +75,7 @@ namespace SuraSang
             if (SceneMaster.SceneInstance != null)
             {
                 Controller.enabled = false;
-                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.SpawnPosition();
+                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.SpawnPos.position;
                 ReturnEmotion();
                 Controller.enabled = true;
             }

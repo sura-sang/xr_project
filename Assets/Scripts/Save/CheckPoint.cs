@@ -7,6 +7,7 @@ namespace SuraSang
     public class CheckPoint : MonoBehaviour
     {
         public float CheckPointRadius = 5f;
+        public Transform SpawnPos;
 
         private SphereCollider _cpRaius;
         private bool _isCurCheckPoint;
@@ -45,12 +46,6 @@ namespace SuraSang
                 gameObject.GetComponent<Renderer>().material.color = Color.red;
                 _isCurCheckPoint = false;
             }
-        }
-
-        public Vector3 SpawnPosition()
-        {
-            var spawnPos = new Vector3(transform.position.x - 2f, transform.position.y + 1f, transform.position.z);
-            return spawnPos;
         }
 
         private void OnTriggerStay(Collider other)
