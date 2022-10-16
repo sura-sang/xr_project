@@ -20,9 +20,9 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
-            if (context.SkillEmotion == Emotion.Sadness && !isNotify)
+            if (context.SkillEmotion == Emotion.Sadness && !IsNotify)
             {
-                isNotify = true;
+                IsNotify = true;
                 StartCoroutine(GrowUp());
                 Debug.Log("광대 버섯 퍼즐 실행");
             }
