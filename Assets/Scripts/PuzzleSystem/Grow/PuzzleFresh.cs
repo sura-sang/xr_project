@@ -18,8 +18,12 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
-            StartCoroutine(GrowUp());
-            Debug.Log("갓버섯 퍼즐 실행");
+            if (context.SkillEmotion == Emotion.Sadness && !isNotify)
+            {
+                isNotify = true;
+                StartCoroutine(GrowUp());
+                Debug.Log("갓버섯 퍼즐 실행");
+            }
         }
      
         IEnumerator GrowUp()
