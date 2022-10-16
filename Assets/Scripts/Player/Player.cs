@@ -98,6 +98,8 @@ namespace SuraSang
         protected new void Update()
         {
             SetAction(ButtonActions.Reset, OnReset);
+            SetAction(ButtonActions.CheckPointInteraction, OnCheckPointClick);
+
             base.Update();
 
             UpdateInputs();
@@ -254,6 +256,11 @@ namespace SuraSang
         private void OnReset(bool isOn)
         {
             IsReset = isOn;
+        }
+
+        private void OnCheckPointClick(bool isOn)
+        {
+            IsCheckPointClick = isOn;
         }
     }
 }
