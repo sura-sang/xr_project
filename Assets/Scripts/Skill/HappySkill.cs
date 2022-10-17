@@ -25,7 +25,7 @@ namespace SuraSang
             _player = player;
             _controller = controller;
             _monsterList = new List<Monster>();
-            _speed = _player.Speed;
+            _speed = _player.PlayerData.Speed;
             SkillTarget = LayerMask.GetMask("Monster");
         }
 
@@ -47,7 +47,7 @@ namespace SuraSang
             _player.SmoothRotation(dir);
 
             dir *= _speed;
-            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
+            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
         }
 
