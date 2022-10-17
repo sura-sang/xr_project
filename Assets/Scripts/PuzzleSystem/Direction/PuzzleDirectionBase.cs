@@ -17,7 +17,8 @@ namespace SuraSang
 
     public abstract class PuzzleDirectionBase : PuzzleElements
     {
-        [SerializeField] private float StartAngle = 0;
+        public float StartAngle => _startAngle;
+        [SerializeField] private float _startAngle = 0;
         protected const int DirCount = 6;
 
         protected PuzzleContextDirection _context;
@@ -56,14 +57,14 @@ namespace SuraSang
 
             for (int i = 0; i < DirCount; i++)
             {
-                var result = StartAngle + i * plusAngle;
+                var result = _startAngle + i * plusAngle;
                 if (Mathf.Abs(result - angle) < plusAngle * 0.5f)
                 {
                     return result;
                 }
             }
 
-            return StartAngle;
+            return _startAngle;
         }
 
         protected void OnDrawGizmos()
@@ -74,7 +75,7 @@ namespace SuraSang
 
             for (int i = 0; i < DirCount; i++)
             {
-                var dir = GetVector((StartAngle + i * plusAngle) * Mathf.Deg2Rad).normalized * 3;
+                var dir = GetVector((_startAngle + i * plusAngle) * Mathf.Deg2Rad).normalized * 3;
                 Gizmos.DrawLine(transform.position, transform.position + dir);
             }
         }
