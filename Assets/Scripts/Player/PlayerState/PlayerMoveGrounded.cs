@@ -25,7 +25,7 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Skill, OnSkill);
             _player.SetAction(ButtonActions.Dance, OnDance);
 
-            _speed = _player.Speed;
+            _speed = _player.PlayerData.Speed;
         }
 
         public override void UpdateState()
@@ -33,7 +33,7 @@ namespace SuraSang
 
             if (!_controller.isGrounded)
             {
-                if (Time.time - _lastGroundTime > _player.CoyoteTime)
+                if (Time.time - _lastGroundTime > _player.PlayerData.CoyoteTime)
                 {
                     _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
                 }
@@ -67,7 +67,7 @@ namespace SuraSang
 
         private void OnRun(bool isOn)
         {
-            _speed = isOn ? _player.Speed * _player.RunMultiplier : _player.Speed;
+            _speed = isOn ? _player.PlayerData.Speed * _player.PlayerData.RunMultiplier : _player.PlayerData.Speed;
         }
 
         private void OnJump(bool isOn)
@@ -88,7 +88,7 @@ namespace SuraSang
             }
 
             dir *= _speed;
-            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
+            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
             
             if (input != Vector2.zero) _player.Animator.SetFloat("Speed", _speed);

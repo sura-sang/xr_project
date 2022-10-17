@@ -8,6 +8,9 @@ namespace SuraSang
     public class PlayerData : ScriptableObject
     {
         [Header("레이어 마스크")]
+        [SerializeField] private LayerMask _headCheckLayer;
+        public LayerMask HeadCheckLayer => _headCheckLayer; // 머리 체크
+        
         [SerializeField] private LayerMask _edgeCheckLayer;
         public LayerMask EdgeCheckLayer => _edgeCheckLayer; // 잡기 체크
         

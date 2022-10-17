@@ -31,8 +31,8 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-        public bool IsSkill;
-        public bool IsReset = false;
+        [ReadOnly] public bool IsSkill;
+        [ReadOnly] public bool IsReset = false;
 
         private void InitInputs()
         {
@@ -130,17 +130,17 @@ namespace SuraSang
         public bool IsHeadblocked()
         {
             var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
-            return Physics.OverlapSphere(headPos, 0.1f, HeadCheckLayer).Length > 0;
+            return Physics.OverlapSphere(headPos, 0.1f, PlayerData.HeadCheckLayer).Length > 0;
         }
 
         public bool IsEdgeDetected()
         {
-            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge);
+            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer);
         }
 
         public (bool, RaycastHit) GetEdgeDetectInfo()
         {
-            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge), edgeHit);
+            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace SuraSang
         {
             if (!_controller.isGrounded)
             {
-                if (Time.time - _lastGroundTime > _player.CoyoteTime)
+                if (Time.time - _lastGroundTime > _player.PlayerData.CoyoteTime)
                 {
                     _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
                 }

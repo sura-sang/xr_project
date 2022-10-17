@@ -30,13 +30,13 @@ namespace SuraSang
         {
             var dir = _player.MoveDir;
 
-            var y = dir.y - _player.Gravity * _player.FallingGravityMultiplier * Time.deltaTime;
-            y = Mathf.Max(y, -_player.GravityLimit);
+            var y = dir.y - _player.PlayerData.Gravity * _player.PlayerData.FallingGravityMultiplier * Time.deltaTime;
+            y = Mathf.Max(y, -_player.PlayerData.GravityLimit);
 
             dir.y = 0;
 
-            var inputDir = _player.InputToCameraSpace(input) * _player.Speed;
-            dir = Vector3.MoveTowards(dir, inputDir, _player.AirControl * Time.deltaTime);
+            var inputDir = _player.InputToCameraSpace(input) * _player.PlayerData.Speed;
+            dir = Vector3.MoveTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime);
 
             dir.y = y;
 

@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217311112}
   m_LocalRotation: {x: 0.06582495, y: 0.92283165, z: -0.18255576, w: 0.33274955}
-  m_LocalPosition: {x: 0.20999908, y: 0.8800001, z: 2.8999996}
+  m_LocalPosition: {x: 0.20999908, y: 0.8799999, z: 2.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -235,8 +235,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024799159}
-  m_LocalRotation: {x: -0.005290911, y: 0.9885768, z: -0.14632191, w: -0.035746343}
-  m_LocalPosition: {x: 0.20999908, y: 0.8800001, z: 2.8999996}
+  m_LocalRotation: {x: -0.005290911, y: 0.9885768, z: -0.14632186, w: -0.035746347}
+  m_LocalPosition: {x: 0.20999908, y: 0.8799999, z: 2.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -468,8 +468,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5222263743718531406}
-  m_LocalRotation: {x: -0.005290911, y: 0.9885768, z: -0.14632191, w: -0.035746343}
-  m_LocalPosition: {x: 0.20999908, y: 0.8800001, z: 2.8999996}
+  m_LocalRotation: {x: -0.005290911, y: 0.9885768, z: -0.14632186, w: -0.035746347}
+  m_LocalPosition: {x: 0.20999908, y: 0.8799999, z: 2.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -641,52 +641,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
-  CurrentEmotion: 0
-  _debugMode: 0
-  _ViewAngle: 160
-  _viewRadius: 2.72
-  _viewTargetMask:
-    serializedVersion: 2
-    m_Bits: 512
-  _viewObstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _renderer: {fileID: 678797433139413194}
-  HeadCheckLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  DetectedEdge:
-    serializedVersion: 2
-    m_Bits: 64
-  DetectedObject:
-    serializedVersion: 2
-    m_Bits: 128
-  _sadEyes:
-  - {fileID: 7362189885339072302}
-  - {fileID: 7362189886396816935}
-  CharacterHeight: 0.92
-  CharacterCrouchHeight: 1
-  Gravity: 50
-  FallingGravityMultiplier: 1.5
-  GravityLimit: 200
-  RunMultiplier: 1.5
-  CrouchMultiplier: 0.5
-  Speed: 7
-  SlowSpeed: 3
-  CoyoteTime: 0.25
-  VariableJumpTime: 0.1
-  AirControl: 15
-  JumpPower: 10
-  ClimbPower: 1
-  ForceMagnitude: 0.1
-  EdgeDetectLength: 1
-  MoveToLedgeSpeed: 1
-  Animator: {fileID: 7362189885273058772}
-  CurrentCharacter: {fileID: 7704156342913165026}
   _characterDefault: {fileID: 7704156342913165026}
   _characterAnger: {fileID: 7704156343465842033}
   _characterHappy: {fileID: 7704156342393577629}
   _characterSad: {fileID: 7704156342913165026}
+  _debugMode: 0
+  _playerData: {fileID: 11400000, guid: 257db9c9563e942c2ae42559a612653a, type: 2}
+  _sadEyes:
+  - {fileID: 7362189885339072302}
+  - {fileID: 7362189886396816935}
   _camera: {fileID: 2024799161}
   _cart: {fileID: 1217311114}
   CanMove: 1
@@ -1163,7 +1126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9044472774956007460}
   m_LocalRotation: {x: 0.06582495, y: 0.92283165, z: -0.18255576, w: 0.33274955}
-  m_LocalPosition: {x: 0.20999908, y: 0.8800001, z: 2.8999996}
+  m_LocalPosition: {x: 0.20999908, y: 0.8799999, z: 2.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1651,11 +1614,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59eab5f6bee13994bb579499342d4093, type: 3}
---- !u!137 &678797433139413194 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1206874426333947015, guid: 59eab5f6bee13994bb579499342d4093, type: 3}
-  m_PrefabInstance: {fileID: 7362189885620640691}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7035038013161290840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 59eab5f6bee13994bb579499342d4093, type: 3}

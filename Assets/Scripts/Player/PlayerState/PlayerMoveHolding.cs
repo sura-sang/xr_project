@@ -20,7 +20,7 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _speed = _player.SlowSpeed;
+            _speed = _player.PlayerData.Speed * _player.PlayerData.GrabMultiplier;
 
             _player.OnMove = OnMove;
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
@@ -50,8 +50,8 @@ namespace SuraSang
                 if (dot > Mathf.Cos(45))
                 {
                     _player.Animator.SetFloat("Forward", 1);
-                    dir = Vector3.MoveTowards(dir, -normalVector, _player.AirControl * Time.deltaTime);
-                    dir.y = _player.ClimbPower;
+                    dir = Vector3.MoveTowards(dir, -normalVector, _player.PlayerData.AirControl * Time.deltaTime);
+                    dir.y = _player.PlayerData.ClimbPower;
                     _player.MoveDir = dir;
                 }
                 else

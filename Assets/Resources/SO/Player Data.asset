@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99c55da473c1477ba50e70bc1cf789d, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
+  _headCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _edgeCheckLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -24,7 +27,7 @@ MonoBehaviour:
   _gravity: 50
   _fallingGravityMultiplier: 1.5
   _gravityLimit: 200
-  _jumpPower: 1
+  _jumpPower: 10
   _coyoteTime: 0.3
   _variableJumpTime: 0.1
   _airControl: 15
