@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Lumin;
+using UnityEngine.UI;
 
 namespace SuraSang
 {
@@ -14,7 +15,7 @@ namespace SuraSang
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == _interactionLayer)
+            if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
                 EventManager.Instance.OpenDoor(_id);
             }
@@ -22,7 +23,7 @@ namespace SuraSang
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.layer == _interactionLayer)
+            if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
                 EventManager.Instance.CloseDoor(_id);
             }
