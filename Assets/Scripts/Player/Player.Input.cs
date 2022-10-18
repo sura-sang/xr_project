@@ -32,9 +32,9 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-        public bool IsSkill;
-        public bool IsReset = false;
-        public bool IsCheckPointClick = false;
+
+        [ReadOnly] public bool IsSkill;
+        [ReadOnly] public bool IsReset = false;
 
         private void InitInputs()
         {
@@ -59,7 +59,6 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Catch, _inputActions.Player.Catch);
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
-
 
             _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
@@ -134,42 +133,20 @@ namespace SuraSang
             return Vector3Extentions.InputToTransformSpace(input, _cameraTransform);
         }
 
-        
-
-
-        public bool Crouch(bool active)
-        {
-            if (active)
-            {
-                Controller.height = CharacterCrouchHeight;
-            }
-            else
-            {
-                if (IsHeadblocked())
-                {
-                    return false;
-                }
-
-                Controller.height = CharacterHeight;
-            }
-
-            return true;
-        }
-
         public bool IsHeadblocked()
         {
-            var headPos = transform.position + Vector3.up * (CharacterHeight * 0.5f);
-            return Physics.OverlapSphere(headPos, 0.1f, HeadCheckLayer).Length > 0;
+            var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
+            return Physics.OverlapSphere(headPos, 0.1f, PlayerData.HeadCheckLayer).Length > 0;
         }
 
         public bool IsEdgeDetected()
         {
-            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge);
+            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer);
         }
 
         public (bool, RaycastHit) GetEdgeDetectInfo()
         {
-            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge), edgeHit);
+            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
         }
     }
 }

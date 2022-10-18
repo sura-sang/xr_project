@@ -22,7 +22,7 @@ namespace SuraSang
             _player.Animator.SetBool("IsJumping", true);
 
             var dir = _player.MoveDir;
-            dir.y = _player.JumpPower;
+            dir.y = _player.PlayerData.JumpPower;
             _player.MoveDir = dir;
         }
 
@@ -46,14 +46,14 @@ namespace SuraSang
             var dir = _player.MoveDir;
             var y = dir.y;
 
-            if (!_isJumpEnd && Time.time - _jumpStartTime < _player.VariableJumpTime)
+            if (!_isJumpEnd && Time.time - _jumpStartTime < _player.PlayerData.VariableJumpTime)
             {
-                y = _player.JumpPower;
+                y = _player.PlayerData.JumpPower;
             }
             else
             {
-                y -= _player.Gravity * Time.deltaTime;
-                y = Mathf.Max(y, -_player.GravityLimit);
+                y -= _player.PlayerData.Gravity * Time.deltaTime;
+                y = Mathf.Max(y, -_player.PlayerData.GravityLimit);
 
                 if (y < 0)
                 {
@@ -68,8 +68,8 @@ namespace SuraSang
 
             dir.y = 0;
 
-            var inputDir = _player.InputToCameraSpace(input) * _player.Speed;
-            dir = Vector3.MoveTowards(dir, inputDir, _player.AirControl * Time.deltaTime);
+            var inputDir = _player.InputToCameraSpace(input) * _player.PlayerData.Speed;
+            dir = Vector3.MoveTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime);
 
             dir.y = y;
 
