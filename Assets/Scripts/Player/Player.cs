@@ -91,6 +91,13 @@ namespace SuraSang
             }
         }
 
+        public override void MovePosition(Vector3 pos)
+        {
+            Controller.enabled = false;
+            transform.position = pos;
+            Controller.enabled = true;
+        }
+
         //private void OnControllerColliderHit(ControllerColliderHit hit)
         //{
         //    var rig = hit.collider.attachedRigidbody;

@@ -43,5 +43,7 @@ namespace SuraSang
 
             transform.rotation = Quaternion.Slerp(transform.rotation, target, _rotationSpeed * Time.deltaTime);
         }
+
+        public abstract void MovePosition(Vector3 pos);
     }
 }
