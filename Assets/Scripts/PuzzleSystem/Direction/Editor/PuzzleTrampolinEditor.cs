@@ -74,7 +74,7 @@ namespace SuraSang
 
             for (int j = 0; j < _dirCount; j++)
             {
-                var dir = GetVector((_component.StartAngle + j * plusAngle) * Mathf.Deg2Rad).normalized * 3;
+                var dir = GetVector((_component.StartAngle + j * plusAngle) * Mathf.Deg2Rad).normalized;
                 var velocity = dir * _component.JumpVelocity;
                 velocity.y = vel;
 
@@ -82,9 +82,16 @@ namespace SuraSang
 
                 for (int i = 1; i < _debugLineLength + 1; i++)
                 {
-                    velocity.y -= (_component._playerData.Gravity *
-                                   (velocity.y < 0 ? _component._playerData.FallingGravityMultiplier : 1)) * _delta;
-                    velocity.y = Mathf.Max(velocity.y, -_component._playerData.GravityLimit);
+                    var y = velocity.y;
+
+                    y -= (_component._playerData.Gravity *
+                                   (y < 0 ? _component._playerData.FallingGravityMultiplier : 1)) * _delta;
+                    y = Mathf.Max(y, -_component._playerData.GravityLimit);
+
+                    velocity.y = 0;
+                    velocity = Vector3.MoveTowards(velocity, Vector3.zero, _component._playerData.AirControl * _delta);
+
+                    velocity.y = y;
 
                     Handles.DrawDottedLine(pos, pos + velocity * _delta, 3);
                     pos += velocity * _delta;

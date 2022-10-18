@@ -26,10 +26,10 @@ namespace SuraSang
         private float _minVelocity;
         private float _lastJumpTime;
 
-        private void Awake()
+        private void Update()
         {
             var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
-            _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight) * PowerReduction;
+            _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight);
         }
 
         public override void OnNotify(PuzzleContext context)
@@ -59,11 +59,12 @@ namespace SuraSang
 
             jumpDir.y = Mathf.Max(_minVelocity, -_context.Dir.y) * PowerReduction;
 
-            Debug.LogError(jumpDir);
-
             var character = _context.Character;
             character.ChangeState(new PlayerMoveJumping(character, jumpDir));
-            character.MovePosition(JumpPoint.position);
+
+            var pos = character.transform.position;
+            pos.y = JumpPoint.position.y;
+            character.MovePosition(pos);
         }
 
         private void OnDrawGizmos() { }// override용
