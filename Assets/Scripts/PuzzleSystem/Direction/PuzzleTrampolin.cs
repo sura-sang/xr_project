@@ -15,12 +15,16 @@ namespace SuraSang
         public Transform JumpPoint => _jumpPoint;
         [SerializeField] private Transform _jumpPoint;
 
+
+        public float Cooltime;
+
         public float MinHeight;
 
         public float JumpVelocity; // 횡으로 이동하는 속도
         public float PowerReduction; // Y속도 줄이기
 
         private float _minVelocity;
+        private float _lastJumpTime;
 
         private void Awake()
         {
@@ -30,6 +34,7 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
+
             base.OnNotify(context);
 
             if (_context == null)
@@ -42,18 +47,34 @@ namespace SuraSang
                 return; // 몬스터도 트램펄린 띄우고 싶다...
             }
 
-            var angle = GetNearestAngle(GetAngle(_context.Dir)) + 180;
-            var jumpDir = GetVector(angle * Mathf.Deg2Rad) * JumpVelocity;
+            if(Time.time - _lastJumpTime < Cooltime)
+            {
+                return;
+            }
 
+            _lastJumpTime = Time.time;
+
+            var angle = GetNearestAngle(GetAngle(_context.Dir));
+            var jumpDir = GetVector(angle * Mathf.Deg2Rad) * JumpVelocity;
 
             jumpDir.y = Mathf.Max(_minVelocity, -_context.Dir.y) * PowerReduction;
 
-            var character = _context.Character;
+            Debug.LogError(jumpDir);
 
-            character.MovePosition(JumpPoint.position);
+            var character = _context.Character;
             character.ChangeState(new PlayerMoveJumping(character, jumpDir));
+            character.MovePosition(JumpPoint.position);
         }
 
         private void OnDrawGizmos() { }// override용
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
+            {
+                OnNotify(new PuzzleContextDirection(player, player.MoveDir));
+            }
+
+        }
     }
 }

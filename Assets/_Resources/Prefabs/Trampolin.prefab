@@ -113,11 +113,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startAngle: 0
   DebugHeight:
-  - 1.0847058
-  - 3.946379
+  - 2.2251067
+  - 3.3045485
+  - 4.3398333
   _playerData: {fileID: 11400000, guid: 257db9c9563e942c2ae42559a612653a, type: 2}
   _jumpPoint: {fileID: 8514280265155238081}
-  JumpVelocity: 3.4225805
+  Cooltime: 0.1
+  MinHeight: 1.3636377
+  JumpVelocity: 7
   PowerReduction: 0.7
 --- !u!1 &8514280265155238080
 GameObject:

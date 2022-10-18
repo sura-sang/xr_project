@@ -86,7 +86,7 @@ namespace SuraSang
                                    (velocity.y < 0 ? _component._playerData.FallingGravityMultiplier : 1)) * _delta;
                     velocity.y = Mathf.Max(velocity.y, -_component._playerData.GravityLimit);
 
-                    Handles.DrawLine(pos, pos + velocity * _delta, 3);
+                    Handles.DrawDottedLine(pos, pos + velocity * _delta, 3);
                     pos += velocity * _delta;
                 }
             }
