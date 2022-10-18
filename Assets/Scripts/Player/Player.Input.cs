@@ -32,9 +32,10 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-        public bool IsSkill;
-        public bool IsReset = false;
-        public bool IsCheckPointClick = false;
+
+        [ReadOnly] public bool IsSkill;
+        [ReadOnly] public bool IsReset = false;
+        [ReadOnly] public bool IsCheckPointClick = false;
 
         private void InitInputs()
         {
