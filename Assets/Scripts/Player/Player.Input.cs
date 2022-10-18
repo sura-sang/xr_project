@@ -138,17 +138,17 @@ namespace SuraSang
         public bool IsHeadblocked()
         {
             var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
-            return Physics.OverlapSphere(headPos, 0.1f,_playerData.HeadCheckLayer).Length > 0;
+            return Physics.OverlapSphere(headPos, 0.1f, PlayerData.HeadCheckLayer).Length > 0;
         }
 
         public bool IsEdgeDetected()
         {
-            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, _playerData.EdgeDetectLength, _playerData.EdgeCheckLayer);
+            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer);
         }
 
         public (bool, RaycastHit) GetEdgeDetectInfo()
         {
-            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, _playerData.EdgeDetectLength, _playerData.EdgeCheckLayer), edgeHit);
+            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
         }
     }
 }
