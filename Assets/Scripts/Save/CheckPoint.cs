@@ -7,6 +7,7 @@ namespace SuraSang
     public class CheckPoint : MonoBehaviour
     {
         public float CheckPointRadius = 5f;
+        public Transform SpawnPos;
 
         private SphereCollider _cpRaius;
         private bool _isCurCheckPoint;
@@ -38,21 +39,22 @@ namespace SuraSang
                 GameManager.Instance.Player.ReturnEmotion();
                 GameManager.Instance.Player.ChangeCharacter();
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
+                _isCurCheckPoint = true;
             }
             else
             {
                 gameObject.GetComponent<Renderer>().material.color = Color.red;
+                _isCurCheckPoint = false;
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if(!_isCurCheckPoint)
             {
-                if (other.CompareTag("Player"))
+                if (other.CompareTag("Player") && GameManager.Instance.Player.IsCheckPointClick)
                 {
                     OnCheckPointHit(gameObject.name);
-                    _isCurCheckPoint = true;
                     Debug.Log("체크포인트 접촉");
                 }
             }

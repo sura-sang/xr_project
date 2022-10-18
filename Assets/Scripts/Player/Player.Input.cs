@@ -18,6 +18,7 @@ namespace SuraSang
         Skill,
         Reset,
         Dance,
+        CheckPointInteraction,
     }
 
     public partial class Player
@@ -31,8 +32,10 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
+
         [ReadOnly] public bool IsSkill;
         [ReadOnly] public bool IsReset = false;
+        [ReadOnly] public bool IsCheckPointClick = false;
 
         private void InitInputs()
         {
@@ -58,6 +61,7 @@ namespace SuraSang
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
 
+
             _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
             _inputActions.Player.Hold.canceled += (x) => GetAction(ButtonActions.Hold)?.Invoke(false);
@@ -77,6 +81,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Dance, _inputActions.Player.Dance);
             _inputActions.Player.Dance.performed += (x) => GetAction(ButtonActions.Dance)?.Invoke(true);
             _inputActions.Player.Dance.canceled += (x) => GetAction(ButtonActions.Dance)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.CheckPointInteraction, _inputActions.Player.CheckPointInteraction);
+            _inputActions.Player.CheckPointInteraction.performed += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(true);
+            _inputActions.Player.CheckPointInteraction.canceled += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(false);
         }
 
         private void UpdateInputs()

@@ -19,25 +19,28 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
-            if (!_rigidbody.isKinematic)
+            if (context.SkillEmotion == Emotion.Anger)
             {
-                return;
+                if (!_rigidbody.isKinematic)
+                {
+                    return;
+                }
+
+                base.OnNotify(context);
+
+                if (_context == null)
+                {
+                    return;
+                }
+
+                var angle = GetNearestAngle(GetAngle(_context.Dir));
+                var vector = GetVector(angle * Mathf.Deg2Rad);
+
+                _joint.axis = new Vector3(-vector.z, 0, vector.x);
+
+                _rigidbody.isKinematic = false;
+                _rigidbody.AddForceAtPosition(vector * _pushPower, _rigidbody.centerOfMass + Vector3.up);
             }
-
-            base.OnNotify(context);
-
-            if (_context == null)
-            {
-                return;
-            }
-
-            var angle = GetNearestAngle(GetAngle(_context.Dir));
-            var vector = GetVector(angle * Mathf.Deg2Rad);
-
-            _joint.axis = new Vector3(-vector.z, 0, vector.x);
-
-            _rigidbody.isKinematic = false;
-            _rigidbody.AddForceAtPosition(vector * _pushPower, _rigidbody.centerOfMass + Vector3.up);
         }
     }
 }

@@ -6,21 +6,20 @@ namespace SuraSang
 {
     public class PuzzleContextDirection : PuzzleContext
     {
-        public CharacterMove Character { get; private set; }
         public Vector3 Dir { get; private set; }
+        public CharacterMove Character { get; private set; }
 
-        public PuzzleContextDirection(CharacterMove character, Vector3 dir)
+        public PuzzleContextDirection(Vector3 dir, CharacterMove character, Emotion emotion) : base(emotion)
         {
-            Character = character;
             Dir = dir;
+            Character = character;
         }
     }
 
 
     public abstract class PuzzleDirectionBase : PuzzleElements
     {
-        public float StartAngle => _startAngle;
-        [SerializeField] private float _startAngle = 0;
+        [SerializeField] private float StartAngle = 0;
         protected const int DirCount = 6;
 
         protected PuzzleContextDirection _context;
@@ -52,21 +51,21 @@ namespace SuraSang
         {
             var plusAngle = 360f / DirCount;
 
-            if(angle < 0)
+            if (angle < 0)
             {
                 angle += 360f;
             }
 
             for (int i = 0; i < DirCount; i++)
             {
-                var result = _startAngle + i * plusAngle;
+                var result = StartAngle + i * plusAngle;
                 if (Mathf.Abs(result - angle) < plusAngle * 0.5f)
                 {
                     return result;
                 }
             }
 
-            return _startAngle;
+            return StartAngle;
         }
 
         protected void OnDrawGizmos()
@@ -77,7 +76,7 @@ namespace SuraSang
 
             for (int i = 0; i < DirCount; i++)
             {
-                var dir = GetVector((_startAngle + i * plusAngle) * Mathf.Deg2Rad).normalized * 3;
+                var dir = GetVector((StartAngle + i * plusAngle) * Mathf.Deg2Rad).normalized * 3;
                 Gizmos.DrawLine(transform.position, transform.position + dir);
             }
         }

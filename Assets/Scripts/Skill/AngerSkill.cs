@@ -49,13 +49,13 @@ namespace SuraSang
             _player.EulerRotation(dir);
             _player.MoveDir = Vector3.zero;*/
         }
-        
+
         public void InitializeSkill()
         {
             _dir = _player.MoveDir;
             _dir.y = 0;
 
-            if(_dir == Vector3.zero)
+            if (_dir == Vector3.zero)
             {
                 _dir = _player.transform.forward;
                 _dir.y = 0;
@@ -81,7 +81,7 @@ namespace SuraSang
             foreach (var hit in result)
             {
                 Debug.Log(hit.transform.gameObject.name);
-                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player, _player.transform.forward));
+                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward, _player, _player.CurrentEmotion));
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
@@ -93,7 +93,7 @@ namespace SuraSang
 
         public void ClearSkill()
         {
-            
+
         }
 
         public float[] LimitRot(Vector3 v)

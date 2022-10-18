@@ -12,18 +12,19 @@ namespace SuraSang
     public partial class Player : CharacterMove
     {
         [SerializeField] private bool _debugMode = false;
-        
+
         public CharacterController Controller { get; private set; }
         public Animator Animator { get; private set; }
         public PlayerData PlayerData => _playerData;
         [SerializeField] private PlayerData _playerData;
-        
+
         // 슬픔 스킬용
         public SadEye[] SadEyes => _sadEyes;
         [SerializeField] private SadEye[] _sadEyes;
 
 
-        [Header("Change Avater Camera")] [SerializeField]
+        [Header("Change Avater Camera")]
+        [SerializeField]
         private CinemachineVirtualCamera _camera;
 
         [SerializeField] private CinemachineDollyCart _cart;
@@ -42,7 +43,7 @@ namespace SuraSang
             if (SceneMaster.SceneInstance != null)
             {
                 Controller.enabled = false;
-                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.SpawnPos.position;
                 ReturnEmotion();
                 Controller.enabled = true;
             }
@@ -65,6 +66,8 @@ namespace SuraSang
         protected new void Update()
         {
             SetAction(ButtonActions.Reset, OnReset);
+            SetAction(ButtonActions.CheckPointInteraction, OnCheckPointClick);
+
             base.Update();
 
             UpdateInputs();
@@ -121,9 +124,7 @@ namespace SuraSang
                     _currentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-
-                    //Animator.Play("Change", 0, 0.4f);
-                    //Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -232,6 +233,11 @@ namespace SuraSang
         private void OnReset(bool isOn)
         {
             IsReset = isOn;
+        }
+
+        private void OnCheckPointClick(bool isOn)
+        {
+            IsCheckPointClick = isOn;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace SuraSang
                 return; // 몬스터도 트램펄린 띄우고 싶다...
             }
 
-            if(Time.time - _lastJumpTime < Cooltime)
+            if (Time.time - _lastJumpTime < Cooltime)
             {
                 return;
             }
@@ -73,7 +73,7 @@ namespace SuraSang
         {
             if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
-                OnNotify(new PuzzleContextDirection(player, player.MoveDir));
+                OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion));
             }
 
         }
