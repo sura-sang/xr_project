@@ -32,9 +32,9 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-
-        [ReadOnly] public bool IsSkill;
-        [ReadOnly] public bool IsReset = false;
+        public bool IsSkill;
+        public bool IsReset = false;
+        public bool IsCheckPointClick = false;
 
         private void InitInputs()
         {
@@ -59,6 +59,7 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Catch, _inputActions.Player.Catch);
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
+
 
             _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
@@ -136,17 +137,17 @@ namespace SuraSang
         public bool IsHeadblocked()
         {
             var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
-            return Physics.OverlapSphere(headPos, 0.1f, PlayerData.HeadCheckLayer).Length > 0;
+            return Physics.OverlapSphere(headPos, 0.1f,_playerData.HeadCheckLayer).Length > 0;
         }
 
         public bool IsEdgeDetected()
         {
-            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer);
+            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, _playerData.EdgeDetectLength, _playerData.EdgeCheckLayer);
         }
 
         public (bool, RaycastHit) GetEdgeDetectInfo()
         {
-            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
+            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, _playerData.EdgeDetectLength, _playerData.EdgeCheckLayer), edgeHit);
         }
     }
 }
