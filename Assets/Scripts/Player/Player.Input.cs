@@ -35,6 +35,7 @@ namespace SuraSang
 
         [ReadOnly] public bool IsSkill;
         [ReadOnly] public bool IsReset = false;
+        [ReadOnly] public bool IsCheckPointClick = false;
 
         private void InitInputs()
         {
@@ -59,6 +60,7 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Catch, _inputActions.Player.Catch);
             _inputActions.Player.Catch.performed += (x) => GetAction(ButtonActions.Catch)?.Invoke(true);
             _inputActions.Player.Catch.canceled += (x) => GetAction(ButtonActions.Catch)?.Invoke(false);
+
 
             _buttonActions.Add(ButtonActions.Hold, _inputActions.Player.Hold);
             _inputActions.Player.Hold.performed += (x) => GetAction(ButtonActions.Hold)?.Invoke(true);
