@@ -16,7 +16,7 @@ namespace SuraSang
     
     public abstract class PuzzleElements : MonoBehaviour
     {
-        public bool IsNotify = false;
+        public bool IsNotify { get; protected set; }
         //상태 update 메서드
         public abstract void OnNotify(PuzzleContext context);
     }
