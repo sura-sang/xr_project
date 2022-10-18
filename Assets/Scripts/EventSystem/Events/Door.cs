@@ -15,7 +15,7 @@ namespace SuraSang
 
         private Vector3 _firstPos;
         private Vector3 _lastPos;
-        private bool IsOpen = false;
+        private bool _isOpen = false;
 
         private void Start()
         {
@@ -34,7 +34,7 @@ namespace SuraSang
 
         private void Update()
         {
-            if (IsOpen == true)
+            if (_isOpen == true)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _lastPos, _speed * Time.deltaTime);
             }
@@ -48,7 +48,7 @@ namespace SuraSang
         {
             if (id == this._id)
             {
-                IsOpen = true;
+                _isOpen = true;
             }
         }
 
@@ -56,7 +56,7 @@ namespace SuraSang
         {
             if (id == this._id)
             {
-                IsOpen = false;
+                _isOpen = false;
             }
         }
     }
