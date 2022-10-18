@@ -8,8 +8,8 @@ namespace SuraSang
 {
     public class CameraSwitcher : MonoBehaviour
     {
-        static List<CinemachineVirtualCamera> _cameras = new List<CinemachineVirtualCamera>();
-        public static CinemachineVirtualCamera ActiveCamera = null;
+        private static List<CinemachineVirtualCamera> _cameras = new List<CinemachineVirtualCamera>();
+        private static CinemachineVirtualCamera _activeCamera = null;
 
         public static void RegisterCamera(CinemachineVirtualCamera camera)
         {
@@ -24,7 +24,7 @@ namespace SuraSang
         public static void SwitchCamera(CinemachineVirtualCamera camera)
         {
             camera.Priority = 10;
-            ActiveCamera = camera;
+            _activeCamera = camera;
 
             foreach (CinemachineVirtualCamera i in _cameras)
             {
@@ -34,7 +34,7 @@ namespace SuraSang
 
         public static bool IsActiveCamera(CinemachineVirtualCamera camera)
         {
-            return camera == ActiveCamera;
+            return camera == _activeCamera;
         }
     }
 }

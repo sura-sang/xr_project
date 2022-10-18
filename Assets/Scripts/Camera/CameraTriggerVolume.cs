@@ -12,8 +12,8 @@ namespace SuraSang
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private Vector3 _boxSize;
 
-        BoxCollider _box;
-        Rigidbody _rb;
+        private BoxCollider _box;
+        private Rigidbody _rb;
 
 
         private void Awake()
@@ -37,7 +37,7 @@ namespace SuraSang
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                if (CameraSwitcher.ActiveCamera != _camera) CameraSwitcher.SwitchCamera(_camera);
+                if (!CameraSwitcher.IsActiveCamera(_camera)) CameraSwitcher.SwitchCamera(_camera);
             }
         }
     }
