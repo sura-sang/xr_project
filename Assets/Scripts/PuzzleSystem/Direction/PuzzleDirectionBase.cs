@@ -6,10 +6,12 @@ namespace SuraSang
 {
     public class PuzzleContextDirection : PuzzleContext
     {
-        public Vector3 Dir;
+        public CharacterMove Character { get; private set; }
+        public Vector3 Dir { get; private set; }
 
-        public PuzzleContextDirection(Vector3 dir)
+        public PuzzleContextDirection(CharacterMove character, Vector3 dir)
         {
+            Character = character;
             Dir = dir;
         }
     }
