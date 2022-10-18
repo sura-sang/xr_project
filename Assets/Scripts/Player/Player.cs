@@ -42,7 +42,7 @@ namespace SuraSang
             if (SceneMaster.SceneInstance != null)
             {
                 Controller.enabled = false;
-                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.transform.position;
+                transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.SpawnPos.position;
                 ReturnEmotion();
                 Controller.enabled = true;
             }
@@ -65,6 +65,8 @@ namespace SuraSang
         protected new void Update()
         {
             SetAction(ButtonActions.Reset, OnReset);
+            SetAction(ButtonActions.CheckPointInteraction, OnCheckPointClick);
+
             base.Update();
 
             UpdateInputs();
@@ -114,9 +116,7 @@ namespace SuraSang
                     _currentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-
-                    //Animator.Play("Change", 0, 0.4f);
-                    //Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -225,6 +225,11 @@ namespace SuraSang
         private void OnReset(bool isOn)
         {
             IsReset = isOn;
+        }
+
+        private void OnCheckPointClick(bool isOn)
+        {
+            IsCheckPointClick = isOn;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace SuraSang
         Skill,
         Reset,
         Dance,
+        CheckPointInteraction,
     }
 
     public partial class Player
@@ -31,6 +32,7 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
+
         [ReadOnly] public bool IsSkill;
         [ReadOnly] public bool IsReset = false;
 
@@ -77,6 +79,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Dance, _inputActions.Player.Dance);
             _inputActions.Player.Dance.performed += (x) => GetAction(ButtonActions.Dance)?.Invoke(true);
             _inputActions.Player.Dance.canceled += (x) => GetAction(ButtonActions.Dance)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.CheckPointInteraction, _inputActions.Player.CheckPointInteraction);
+            _inputActions.Player.CheckPointInteraction.performed += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(true);
+            _inputActions.Player.CheckPointInteraction.canceled += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(false);
         }
 
         private void UpdateInputs()

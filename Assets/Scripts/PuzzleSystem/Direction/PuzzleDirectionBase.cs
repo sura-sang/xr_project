@@ -8,7 +8,7 @@ namespace SuraSang
     {
         public Vector3 Dir;
 
-        public PuzzleContextDirection(Vector3 dir)
+        public PuzzleContextDirection(Vector3 dir, Emotion emotion) : base(emotion)
         {
             Dir = dir;
         }
