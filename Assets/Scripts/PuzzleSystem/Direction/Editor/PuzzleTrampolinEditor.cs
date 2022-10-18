@@ -20,6 +20,8 @@ namespace SuraSang
 
         void OnSceneGUI()
         {
+            EditorGUI.BeginChangeCheck();
+
             _component = target as PuzzleTrampolin;
 
             // 거리
@@ -30,7 +32,6 @@ namespace SuraSang
 
             _component.JumpVelocity = Handles.ScaleValueHandle(_component.JumpVelocity, handlePos,
                 Quaternion.Euler(0, -_component.StartAngle + 90, 0), 3, Handles.ConeHandleCap, 1);
-
 
             //최소 높이
             Handles.color = Color.white;
@@ -57,6 +58,12 @@ namespace SuraSang
                     Quaternion.Euler(-90, 0, 0), 3, Handles.SphereHandleCap, 1);
 
                 DrawArcs(_component.DebugHeight[i]);
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                EditorUtility.SetDirty(target);
+                Undo.RecordObject(target, "Trampolin");
             }
         }
 
