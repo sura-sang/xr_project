@@ -14,9 +14,19 @@ namespace SuraSang
 
         public Transform JumpPoint => _jumpPoint;
         [SerializeField] private Transform _jumpPoint;
-        
+
+        public float MinHeight;
+
         public float JumpVelocity; // 횡으로 이동하는 속도
         public float PowerReduction; // Y속도 줄이기
+
+        private float _minVelocity;
+
+        private void Awake()
+        {
+            var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
+            _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight) * PowerReduction;
+        }
 
         public override void OnNotify(PuzzleContext context)
         {
@@ -27,10 +37,21 @@ namespace SuraSang
                 return;
             }
 
+            if (!(_context.Character is Player))
+            {
+                return; // 몬스터도 트램펄린 띄우고 싶다...
+            }
+
             var angle = GetNearestAngle(GetAngle(_context.Dir)) + 180;
-            var vector = GetVector(angle * Mathf.Deg2Rad);
-            
-            
+            var jumpDir = GetVector(angle * Mathf.Deg2Rad) * JumpVelocity;
+
+
+            jumpDir.y = Mathf.Max(_minVelocity, -_context.Dir.y) * PowerReduction;
+
+            var character = _context.Character;
+
+            character.MovePosition(JumpPoint.position);
+            character.ChangeState(new PlayerMoveJumping(character, jumpDir));
         }
 
         private void OnDrawGizmos() { }// override용
