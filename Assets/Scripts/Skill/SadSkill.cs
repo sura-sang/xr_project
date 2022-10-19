@@ -26,8 +26,8 @@ namespace SuraSang
 
             _player.SmoothRotation(dir);
 
-            dir *= _skillInUse ? 0 : _player.Speed;
-            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.Gravity * Time.deltaTime;
+            dir *= _skillInUse ? 0 : _player.PlayerData.Speed;
+            dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
 
             // 실행 순서 상 OnMove가 UpdateSkill보다 뒤 임
@@ -43,7 +43,7 @@ namespace SuraSang
 
             foreach (var hit in hits)
             {
-                hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(null);
+                hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContext(_player.CurrentEmotion));
             }
         }
 

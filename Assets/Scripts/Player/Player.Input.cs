@@ -18,6 +18,7 @@ namespace SuraSang
         Skill,
         Reset,
         Dance,
+        CheckPointInteraction,
     }
 
     public partial class Player
@@ -31,8 +32,10 @@ namespace SuraSang
         private InputAction _moveInputAction;
 
         public Vector3 MoveDir { get; set; }
-        public bool IsSkill;
-        public bool IsReset = false;
+
+        [ReadOnly] public bool IsSkill;
+        [ReadOnly] public bool IsReset = false;
+        [ReadOnly] public bool IsCheckPointClick = false;
 
         private void InitInputs()
         {
@@ -78,6 +81,10 @@ namespace SuraSang
             _buttonActions.Add(ButtonActions.Dance, _inputActions.Player.Dance);
             _inputActions.Player.Dance.performed += (x) => GetAction(ButtonActions.Dance)?.Invoke(true);
             _inputActions.Player.Dance.canceled += (x) => GetAction(ButtonActions.Dance)?.Invoke(false);
+
+            _buttonActions.Add(ButtonActions.CheckPointInteraction, _inputActions.Player.CheckPointInteraction);
+            _inputActions.Player.CheckPointInteraction.performed += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(true);
+            _inputActions.Player.CheckPointInteraction.canceled += (x) => GetAction(ButtonActions.CheckPointInteraction)?.Invoke(false);
         }
 
         private void UpdateInputs()
@@ -128,42 +135,20 @@ namespace SuraSang
             return Vector3Extentions.InputToTransformSpace(input, _cameraTransform);
         }
 
-        
-
-
-        public bool Crouch(bool active)
-        {
-            if (active)
-            {
-                Controller.height = CharacterCrouchHeight;
-            }
-            else
-            {
-                if (IsHeadblocked())
-                {
-                    return false;
-                }
-
-                Controller.height = CharacterHeight;
-            }
-
-            return true;
-        }
-
         public bool IsHeadblocked()
         {
-            var headPos = transform.position + Vector3.up * (CharacterHeight * 0.5f);
-            return Physics.OverlapSphere(headPos, 0.1f, HeadCheckLayer).Length > 0;
+            var headPos = transform.position + Vector3.up * (Controller.height * 0.5f);
+            return Physics.OverlapSphere(headPos, 0.1f, PlayerData.HeadCheckLayer).Length > 0;
         }
 
         public bool IsEdgeDetected()
         {
-            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge);
+            return Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer);
         }
 
         public (bool, RaycastHit) GetEdgeDetectInfo()
         {
-            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, EdgeDetectLength, DetectedEdge), edgeHit);
+            return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
         }
     }
 }
