@@ -18,7 +18,7 @@ namespace SuraSang
         private PuzzleTrampolin _component;
 
 
-        void OnSceneGUI()
+        private void OnSceneGUI()
         {
             EditorGUI.BeginChangeCheck();
 
