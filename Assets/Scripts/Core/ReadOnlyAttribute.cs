@@ -7,7 +7,8 @@ namespace SuraSang
     {
  
     }
- 
+
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer
     {
@@ -26,4 +27,5 @@ namespace SuraSang
             GUI.enabled = true;
         }
     }
+#endif
 }
