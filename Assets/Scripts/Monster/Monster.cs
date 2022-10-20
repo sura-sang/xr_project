@@ -35,5 +35,11 @@ namespace SuraSang
         {
             // TODO 공용으로 사용하는 상태의 경우 다음 상태를 어케 해야할지?
         }
+
+        public override void MovePosition(Vector3 pos)
+        {
+            transform.position = pos;
+            Agent.Move(pos);
+        }
     }
 }

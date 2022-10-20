@@ -8,6 +8,12 @@ namespace SuraSang
     {
         public PlayerMoveJumping(CharacterMove characterMove) : base(characterMove) { }
 
+        public PlayerMoveJumping(CharacterMove characterMove, Vector3 overrideJumpDir) : base(characterMove)
+        {
+            _overrideJumpDir = overrideJumpDir;
+        }
+
+        private Vector3 _overrideJumpDir = Vector3.zero;
         private bool _isJumpEnd = false;
         private bool _isHolding;
         private float _jumpStartTime;
@@ -21,9 +27,16 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.Animator.SetBool("IsJumping", true);
 
-            var dir = _player.MoveDir;
-            dir.y = _player.PlayerData.JumpPower;
-            _player.MoveDir = dir;
+            if (_overrideJumpDir == Vector3.zero)
+            {
+                var dir = _player.MoveDir;
+                dir.y = _player.PlayerData.JumpPower;
+                _player.MoveDir = dir;
+            }
+            else
+            {
+                _player.MoveDir = _overrideJumpDir;
+            }
         }
 
         public override void UpdateState() { }
@@ -60,7 +73,7 @@ namespace SuraSang
                     _characterMove.ChangeState(new PlayerMoveFalling(_characterMove));
                 }
             }
-            
+
             if (_player.IsEdgeDetected() && _isHolding)
             {
                 _characterMove.ChangeState(new PlayerMoveHolding(_characterMove));

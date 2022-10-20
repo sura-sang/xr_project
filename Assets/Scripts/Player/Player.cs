@@ -12,18 +12,19 @@ namespace SuraSang
     public partial class Player : CharacterMove
     {
         [SerializeField] private bool _debugMode = false;
-        
+
         public CharacterController Controller { get; private set; }
         public Animator Animator { get; private set; }
         public PlayerData PlayerData => _playerData;
         [SerializeField] private PlayerData _playerData;
-        
+
         // 슬픔 스킬용
         public SadEye[] SadEyes => _sadEyes;
         [SerializeField] private SadEye[] _sadEyes;
 
 
-        [Header("Change Avater Camera")] [SerializeField]
+        [Header("Change Avater Camera")]
+        [SerializeField]
         private CinemachineVirtualCamera _camera;
 
         [SerializeField] private CinemachineDollyCart _cart;
@@ -91,6 +92,13 @@ namespace SuraSang
             {
                 Destroy(HappyEffect);
             }
+        }
+
+        public override void MovePosition(Vector3 pos)
+        {
+            Controller.enabled = false;
+            transform.position = pos;
+            Controller.enabled = true;
         }
 
         //private void OnControllerColliderHit(ControllerColliderHit hit)

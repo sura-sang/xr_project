@@ -6,19 +6,23 @@ namespace SuraSang
 {
     public class PuzzleContextDirection : PuzzleContext
     {
-        public Vector3 Dir;
+        public Vector3 Dir { get; private set; }
+        public CharacterMove Character { get; private set; }
 
-        public PuzzleContextDirection(Vector3 dir, Emotion emotion) : base(emotion)
+        public PuzzleContextDirection(Vector3 dir, CharacterMove character, Emotion emotion) : base(emotion)
         {
             Dir = dir;
+            Character = character;
         }
     }
 
 
     public abstract class PuzzleDirectionBase : PuzzleElements
     {
-        [SerializeField] private float StartAngle = 0;
         protected const int DirCount = 6;
+        
+        public float StartAngle => _startAngle;
+        [SerializeField] private float _startAngle = 0;
 
         protected PuzzleContextDirection _context;
 
@@ -49,7 +53,7 @@ namespace SuraSang
         {
             var plusAngle = 360f / DirCount;
 
-            if(angle < 0)
+            if (angle < 0)
             {
                 angle += 360f;
             }
