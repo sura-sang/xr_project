@@ -193,6 +193,7 @@ namespace SuraSang
             _cart.m_Position = 0f;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (_debugMode)
@@ -221,6 +222,7 @@ namespace SuraSang
                 Gizmos.DrawWireSphere(transform.position, HappySkill.CheckRange);
             }
         }
+#endif
 
         private void OnReset(bool isOn)
         {
