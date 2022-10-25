@@ -15,7 +15,7 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _player = GameManager.Instance.Player;
+            _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
 
             _chaseStartTime = Time.time;

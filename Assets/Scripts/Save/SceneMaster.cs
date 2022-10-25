@@ -11,8 +11,11 @@ namespace SuraSang
         public CheckPoint CurrentCheckPoint;
         public string[] LevelArr;
 
-        private string _levelID;
         public string LevelID { get { return _levelID; } }
+        private string _levelID;
+
+        public Player Player => _player;
+        [SerializeField] private Player _player;
 
         private void Awake()
         {
@@ -38,6 +41,8 @@ namespace SuraSang
                 SceneInstance = this;
                 DontDestroyOnLoad(this);
             }
+
+            Global.Instance.SetCurrentSceneMaster(this);
         }
 
         public void LoadLevel(int num)

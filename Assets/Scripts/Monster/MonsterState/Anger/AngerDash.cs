@@ -20,7 +20,7 @@ namespace SuraSang
 
         public override void InitializeState()
         {
-            _player = GameManager.Instance.Player;
+            _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
 
             _dir = (_player.transform.position - _anger.transform.position).normalized;

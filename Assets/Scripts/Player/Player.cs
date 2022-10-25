@@ -86,11 +86,12 @@ namespace SuraSang
             if (IsSkill)
             {
                 if (CurrentEmotion == Emotion.Happiness && HappyEffect == null)
-                    HappyEffect = Instantiate(GameManager.Instance.HappySkillEffect, transform);
+                    HappyEffect = Global.Instance.ResourceManager.GetObject(Constant.HappySkillEffectPath, transform);
             }
-            else
+            else if(HappyEffect != null)
             {
-                Destroy(HappyEffect);
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappySkillEffectPath, HappyEffect);
+                HappyEffect = null;
             }
         }
 
@@ -159,21 +160,25 @@ namespace SuraSang
 
         public void TransEffect()
         {
+            GameObject obj;
             switch (CurrentEmotion)
             {
                 case Emotion.Anger:
                     CanMove = false;
-                    Instantiate(GameManager.Instance.AngerTrans, transform);
+                    obj = Global.Instance.ResourceManager.GetObject(Constant.AngerTransEffectPath, transform);
+                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerTransEffectPath, obj);
                     break;
 
                 case Emotion.Sadness:
                     CanMove = false;
-                    Instantiate(GameManager.Instance.SadTrans, transform);
+                    obj = Global.Instance.ResourceManager.GetObject(Constant.SadTransEffectPath, transform);
+                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadTransEffectPath, obj);
                     break;
 
                 case Emotion.Happiness:
                     CanMove = false;
-                    Instantiate(GameManager.Instance.HappyTrans, transform);
+                    obj = Global.Instance.ResourceManager.GetObject(Constant.HappyTransEffectPath, transform);
+                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyTransEffectPath, obj);
                     break;
             }
         }
