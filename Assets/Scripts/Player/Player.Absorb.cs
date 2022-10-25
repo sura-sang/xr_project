@@ -73,24 +73,25 @@ namespace SuraSang
                     {
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
 
+                        GameObject obj;
                         switch (CurrentEmotion)
                         {
                             case Emotion.Anger:
-                                var AngerObj = Instantiate(GameManager.Instance.AngerAB, transform);
-                                Destroy(AngerObj, AngerObj.GetComponent<ParticleSystem>().duration);
-                                gameObject.GetComponent<Renderer>().material.color = Color.red;// 임시 색상 변경
+                                obj = Global.Instance.ResourceManager.GetObject(Constant.AngerAbsorbEffectPath, transform);
+                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);
+                                //gameObject.GetComponent<Renderer>().material.color = Color.red;// 임시 색상 변경
                                 break;
 
                             case Emotion.Happiness:
-                                var HappyObj = Instantiate(GameManager.Instance.HappyAB, transform);
-                                Destroy(HappyObj, HappyObj.GetComponent<ParticleSystem>().duration);
-                                gameObject.GetComponent<Renderer>().material.color = Color.yellow;// 임시 색상 변경
+                                obj = Global.Instance.ResourceManager.GetObject(Constant.HappyAbsorbEffectPath, transform);
+                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyAbsorbEffectPath, obj);
+                                //gameObject.GetComponent<Renderer>().material.color = Color.yellow;// 임시 색상 변경
                                 break;
 
                             case Emotion.Sadness:
-                                var SadObj = Instantiate(GameManager.Instance.SadAB, transform);
-                                Destroy(SadObj, SadObj.GetComponent<ParticleSystem>().duration);
-                                gameObject.GetComponent<Renderer>().material.color = Color.blue;// 임시 색상 변경
+                                obj = Global.Instance.ResourceManager.GetObject(Constant.SadAbsorbEffectPath, transform);
+                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
+                                //gameObject.GetComponent<Renderer>().material.color = Color.blue;// 임시 색상 변경
                                 break;
                         }
 
