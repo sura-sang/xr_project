@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb7edfc3d7c43b46a30f9e7c47ac512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartAngle: 0
+  _startAngle: 0
   _pushPower: 1
 --- !u!1 &426691910
 GameObject:
@@ -907,6 +907,7 @@ MonoBehaviour:
   CurrentCheckPoint: {fileID: 896175332}
   LevelArr:
   - InteractionTestScene
+  _player: {fileID: 881067832}
 --- !u!4 &468134404
 Transform:
   m_ObjectHideFlags: 0
@@ -2548,11 +2549,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024799160, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0357465
+      value: -0.035746515
       objectReference: {fileID: 0}
     - target: {fileID: 2024799160, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.005290932
+      value: -0.0052909344
       objectReference: {fileID: 0}
     - target: {fileID: 2024799160, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2576,11 +2577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5065353645319505468, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0357465
+      value: -0.035746515
       objectReference: {fileID: 0}
     - target: {fileID: 5065353645319505468, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.005290932
+      value: -0.0052909344
       objectReference: {fileID: 0}
     - target: {fileID: 5065353645319505468, guid: c80b782ac9cb429488f6cfec22a8beb3, type: 3}
       propertyPath: m_LocalRotation.z
