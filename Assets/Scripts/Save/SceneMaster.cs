@@ -38,6 +38,8 @@ namespace SuraSang
                 SceneInstance = this;
                 DontDestroyOnLoad(this);
             }
+
+            Global.Instance.SetCurrentSceneMaster(this);
         }
 
         public void LoadLevel(int num)
