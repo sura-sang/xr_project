@@ -19,8 +19,8 @@ namespace SuraSang
 
         private void Start()
         {
-            EventManager.Instance.SharpMoveAction += ShapeMove;
-            EventManager.Instance.SharpReturnAction += SharpReturn;
+            EventManager.Instance.ShapeMoveAction += ShapeMove;
+            EventManager.Instance.ShapeReturnAction += ShapeReturn;
 
             _firstPos = transform.position;
             _lastPos = transform.position + _movePoint;
@@ -28,8 +28,8 @@ namespace SuraSang
 
         private void OnDisable()
         {
-            EventManager.Instance.SharpMoveAction -= ShapeMove;
-            EventManager.Instance.SharpReturnAction -= SharpReturn;
+            EventManager.Instance.ShapeMoveAction -= ShapeMove;
+            EventManager.Instance.ShapeReturnAction -= ShapeReturn;
         }
 
         private void Update()
@@ -52,7 +52,7 @@ namespace SuraSang
             }
         }
 
-        private void SharpReturn(int id)
+        private void ShapeReturn(int id)
         {
             if (id == this._id)
             {

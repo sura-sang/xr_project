@@ -9,8 +9,8 @@ namespace SuraSang
     {
         public static EventManager Instance { get; private set; } = null;
 
-        public event Action<int> SharpMoveAction;
-        public event Action<int> SharpReturnAction;
+        public event Action<int> ShapeMoveAction;
+        public event Action<int> ShapeReturnAction;
 
         private void Awake()
         {
@@ -27,12 +27,12 @@ namespace SuraSang
 
         public void ShapeMove(int id)
         {
-            SharpMoveAction?.Invoke(id);
+            ShapeMoveAction?.Invoke(id);
         }
 
-        public void SharpReturn(int id)
+        public void ShapeReturn(int id)
         {
-            SharpReturnAction?.Invoke(id);
+            ShapeReturnAction?.Invoke(id);
         }
     }
 }

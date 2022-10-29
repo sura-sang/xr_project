@@ -19,7 +19,7 @@ namespace SuraSang
         {
             if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
-                EventManager.Instance.SharpReturn(_id);
+                EventManager.Instance.ShapeReturn(_id);
             }
         }
     }
