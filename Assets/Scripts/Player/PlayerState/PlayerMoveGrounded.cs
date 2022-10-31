@@ -68,6 +68,8 @@ namespace SuraSang
         private void OnRun(bool isOn)
         {
             _speed = isOn ? _player.PlayerData.Speed * _player.PlayerData.RunMultiplier : _player.PlayerData.Speed;
+            if (isOn) _player.Animator.SetBool("IsRunning", true);
+            else _player.Animator.SetBool("IsWalking", true);
         }
 
         private void OnJump(bool isOn)
@@ -90,9 +92,9 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
-            
-            if (input != Vector2.zero) _player.Animator.SetFloat("Speed", _speed);
-            else _player.Animator.SetFloat("Speed", 0f);
+
+            if (input != Vector2.zero) _player.Animator.SetBool("IsWalking", true);
+            else _player.Animator.SetBool("IsWalking", false);
         }
 
         private void OnSkill(bool isOn)
