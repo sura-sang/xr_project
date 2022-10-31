@@ -87,6 +87,7 @@ namespace SuraSang
             if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
             {
                 _player.IsSkill = false;
+                _player.Animator.SetTrigger("IsCollide");
                 _isStopAble = true;
             }
         }

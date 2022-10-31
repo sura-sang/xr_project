@@ -69,7 +69,7 @@ namespace SuraSang
         {
             _speed = isOn ? _player.PlayerData.Speed * _player.PlayerData.RunMultiplier : _player.PlayerData.Speed;
             if (isOn) _player.Animator.SetBool("IsRunning", true);
-            else _player.Animator.SetBool("IsWalking", true);
+            else _player.Animator.SetBool("IsRunning", false);
         }
 
         private void OnJump(bool isOn)
