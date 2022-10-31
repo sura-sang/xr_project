@@ -50,7 +50,7 @@ namespace SuraSang
 
             if (_isDancing && _player.CurrentEmotion == Emotion.Happiness && _player.CanMove)
             {
-                _player.Animator.SetTrigger("IsDance");
+                _player.Animator.SetTrigger("Dance");
                 _player.cantMove();
             }
 

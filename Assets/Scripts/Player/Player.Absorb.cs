@@ -91,7 +91,7 @@ namespace SuraSang
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
                                 break;
                         }
-                        Animator.SetTrigger("IsChange");
+                        Animator.SetTrigger("Change");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                     }
                 }
