@@ -12,8 +12,8 @@ namespace SuraSang
         public PlayerMoveGrounded(CharacterMove characterMove) : base(characterMove) { }
 
         private float _lastGroundTime;
-        private float _speed;
         private bool _isDancing = false;
+        private bool _isRunning = false;
 
         public override void InitializeState()
         {
@@ -24,8 +24,6 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.SetAction(ButtonActions.Skill, OnSkill);
             _player.SetAction(ButtonActions.Dance, OnDance);
-
-            _speed = _player.PlayerData.Speed;
         }
 
         public override void UpdateState()
@@ -67,7 +65,7 @@ namespace SuraSang
 
         private void OnRun(bool isOn)
         {
-            _speed = isOn ? _player.PlayerData.Speed * _player.PlayerData.RunMultiplier : _player.PlayerData.Speed;
+            _isRunning = isOn;
             if (isOn) _player.Animator.SetBool("IsRunning", true);
             else _player.Animator.SetBool("IsRunning", false);
         }
@@ -89,7 +87,14 @@ namespace SuraSang
                 _player.SmoothRotation(dir);
             }
 
-            dir *= _speed;
+            var speed = _player.GetPlayerSpeed();
+
+            if (_isRunning)
+            {
+                speed *= _player.PlayerData.RunMultiplier;
+            }
+
+            dir *= speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
 

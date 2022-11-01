@@ -150,5 +150,17 @@ namespace SuraSang
         {
             return (Physics.Raycast(transform.position, transform.forward, out var edgeHit, PlayerData.EdgeDetectLength, PlayerData.EdgeCheckLayer), edgeHit);
         }
+
+        public float GetPlayerSpeed()
+        {
+            var speed = PlayerData.Speed;
+
+            if (CurrentEmotion != Emotion.Default)
+            {
+                speed *= PlayerData.EmotionDatas[(int)CurrentEmotion - 1].SpeedMultiplier;
+            }
+
+            return speed;
+        }
     }
 }
