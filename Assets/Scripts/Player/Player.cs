@@ -125,7 +125,6 @@ namespace SuraSang
                     _currentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Anger:
@@ -134,7 +133,6 @@ namespace SuraSang
                     _characterAnger.SetActive(true);
                     Animator.avatar = _characterAnger.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
                 case Emotion.Happiness:
@@ -143,17 +141,41 @@ namespace SuraSang
                     _characterHappy.SetActive(true);
                     Animator.avatar = _characterHappy.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
                     break;
 
-                //TO DO : 아직 슬픔 모델 안나옴.
                 case Emotion.Sadness:
                     _currentCharacter.SetActive(false);
                     _currentCharacter = _characterDefault;
                     _characterDefault.SetActive(true);
                     Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
-                    Animator.SetFloat("Emotion", (int)CurrentEmotion);
+                    break;
+            }
+        }
+
+        public void SwitchAnimatorLayer()
+        {
+            switch (CurrentEmotion)
+            {
+                case Emotion.Happiness:
+                    Animator.SetLayerWeight(0, 0f);
+                    Animator.SetLayerWeight(1, 1f);
+                    Animator.SetLayerWeight(2, 0f);
+                    Animator.SetLayerWeight(3, 0f);
+                    break;
+
+                case Emotion.Anger:
+                    Animator.SetLayerWeight(0, 0f);
+                    Animator.SetLayerWeight(1, 0f);
+                    Animator.SetLayerWeight(2, 1f);
+                    Animator.SetLayerWeight(3, 0f);
+                    break;
+
+                case Emotion.Sadness:
+                    Animator.SetLayerWeight(0, 0f);
+                    Animator.SetLayerWeight(1, 0f);
+                    Animator.SetLayerWeight(2, 0f);
+                    Animator.SetLayerWeight(3, 1f);
                     break;
             }
         }

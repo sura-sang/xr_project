@@ -78,25 +78,20 @@ namespace SuraSang
                         {
                             case Emotion.Anger:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.AngerAbsorbEffectPath, transform);
-                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);
-                                //gameObject.GetComponent<Renderer>().material.color = Color.red;// 임시 색상 변경
+                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);     
                                 break;
 
                             case Emotion.Happiness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.HappyAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyAbsorbEffectPath, obj);
-                                //gameObject.GetComponent<Renderer>().material.color = Color.yellow;// 임시 색상 변경
                                 break;
 
                             case Emotion.Sadness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.SadAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
-                                //gameObject.GetComponent<Renderer>().material.color = Color.blue;// 임시 색상 변경
                                 break;
                         }
-
-                        //임시 흡수 애니메이션 재생
-                        Animator.SetTrigger("IsChange");
+                        Animator.SetTrigger("Change");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                     }
                 }

@@ -50,7 +50,7 @@ namespace SuraSang
 
             if (_isDancing && _player.CurrentEmotion == Emotion.Happiness && _player.CanMove)
             {
-                _player.Animator.SetTrigger("IsDance");
+                _player.Animator.SetTrigger("Dance");
                 _player.cantMove();
             }
 
@@ -68,6 +68,8 @@ namespace SuraSang
         private void OnRun(bool isOn)
         {
             _speed = isOn ? _player.PlayerData.Speed * _player.PlayerData.RunMultiplier : _player.PlayerData.Speed;
+            if (isOn) _player.Animator.SetBool("IsRunning", true);
+            else _player.Animator.SetBool("IsRunning", false);
         }
 
         private void OnJump(bool isOn)
@@ -90,9 +92,9 @@ namespace SuraSang
             dir *= _speed;
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
-            
-            if (input != Vector2.zero) _player.Animator.SetFloat("Speed", _speed);
-            else _player.Animator.SetFloat("Speed", 0f);
+
+            if (input != Vector2.zero) _player.Animator.SetBool("IsWalking", true);
+            else _player.Animator.SetBool("IsWalking", false);
         }
 
         private void OnSkill(bool isOn)
