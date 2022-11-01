@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class Door : MonoBehaviour
+    public class MoveShape : MonoBehaviour
     {
         [SerializeField] private Vector3 _movePoint;
         [SerializeField] private int _id;
@@ -19,8 +19,8 @@ namespace SuraSang
 
         private void Start()
         {
-            EventManager.Instance.OpenDoorAction += OnOpenDoor;
-            EventManager.Instance.CloseDoorAction += OnCloseDoor;
+            EventManager.Instance.ShapeMoveAction += ShapeMove;
+            EventManager.Instance.ShapeReturnAction += ShapeReturn;
 
             _firstPos = transform.position;
             _lastPos = transform.position + _movePoint;
@@ -28,8 +28,8 @@ namespace SuraSang
 
         private void OnDisable()
         {
-            EventManager.Instance.OpenDoorAction -= OnOpenDoor;
-            EventManager.Instance.CloseDoorAction -= OnCloseDoor;
+            EventManager.Instance.ShapeMoveAction -= ShapeMove;
+            EventManager.Instance.ShapeReturnAction -= ShapeReturn;
         }
 
         private void Update()
@@ -44,7 +44,7 @@ namespace SuraSang
             }
         }
 
-        private void OnOpenDoor(int id)
+        private void ShapeMove(int id)
         {
             if (id == this._id)
             {
@@ -52,7 +52,7 @@ namespace SuraSang
             }
         }
 
-        private void OnCloseDoor(int id)
+        private void ShapeReturn(int id)
         {
             if (id == this._id)
             {

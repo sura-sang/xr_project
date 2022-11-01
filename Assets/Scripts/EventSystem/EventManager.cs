@@ -9,8 +9,8 @@ namespace SuraSang
     {
         public static EventManager Instance { get; private set; } = null;
 
-        public event Action<int> OpenDoorAction;
-        public event Action<int> CloseDoorAction;
+        public event Action<int> ShapeMoveAction;
+        public event Action<int> ShapeReturnAction;
 
         private void Awake()
         {
@@ -25,14 +25,14 @@ namespace SuraSang
             }
         }
 
-        public void OpenDoor(int id)
+        public void ShapeMove(int id)
         {
-            OpenDoorAction?.Invoke(id);
+            ShapeMoveAction?.Invoke(id);
         }
 
-        public void CloseDoor(int id)
+        public void ShapeReturn(int id)
         {
-            CloseDoorAction?.Invoke(id);
+            ShapeReturnAction?.Invoke(id);
         }
     }
 }

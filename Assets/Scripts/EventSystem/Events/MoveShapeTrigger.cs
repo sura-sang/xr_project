@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class DoorTrigger : MonoBehaviour
+    public class MoveShapeTrigger : MonoBehaviour
     {
         [SerializeField] private int _id;
         [SerializeField] private LayerMask _interactionLayer;
@@ -11,7 +11,7 @@ namespace SuraSang
         {
             if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
-                EventManager.Instance.OpenDoor(_id);
+                EventManager.Instance.ShapeMove(_id);
             }
         }
 
@@ -19,7 +19,7 @@ namespace SuraSang
         {
             if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
-                EventManager.Instance.CloseDoor(_id);
+                EventManager.Instance.ShapeReturn(_id);
             }
         }
     }
