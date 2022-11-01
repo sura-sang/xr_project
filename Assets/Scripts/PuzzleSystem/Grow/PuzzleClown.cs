@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SuraSang
@@ -9,39 +10,25 @@ namespace SuraSang
         public float Size = 5f;
         public float GrowSpeed = 1f;
         private float _time;
-        public Vector3 _upSize;
-        private Vector3 _originScale;
+        [SerializeField]
+        private Transform _hat;
+        [SerializeField]
+        private PuzzleTrampolin _trampolin;
 
         private void Start()
         {
-            _originScale = transform.Find("Cap").localScale;
             PuzzleManager.Instance.AddObserver(this);
+            _trampolin.enabled = false;
         }
 
         public override void OnNotify(PuzzleContext context)
         {
             if (context.SkillEmotion == Emotion.Sadness && !IsNotify)
             {
+                _trampolin.enabled = true;
                 IsNotify = true;
-                StartCoroutine(GrowUp());
+                _hat.transform.DOScale(new Vector3(Size, Size, Size), GrowSpeed);
                 Debug.Log("광대 버섯 퍼즐 실행");
-            }
-        }
-
-        IEnumerator GrowUp()
-        {
-            while (transform.Find("Cap").localScale.x < Size)
-            {
-                transform.Find("Cap").localScale += _upSize * (_time * GrowSpeed);
-
-                _time += Time.deltaTime;
-
-                if (transform.Find("Cap").localScale.x >= Size)
-                {
-                    _time = 0;
-                    break;
-                }
-                yield return null;
             }
         }
     }

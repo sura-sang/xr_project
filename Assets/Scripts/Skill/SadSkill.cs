@@ -43,7 +43,13 @@ namespace SuraSang
 
             foreach (var hit in hits)
             {
-                hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContext(_player.CurrentEmotion));
+                var info = hit.collider.GetComponentInParent<Monster>();
+
+                if (info != null)
+                {
+                    if (info.IsSleep)
+                        hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContext(_player.CurrentEmotion));
+                }
             }
         }
 

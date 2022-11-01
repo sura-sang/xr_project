@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5671860409645682101}
   - component: {fileID: 5671860409645682097}
   - component: {fileID: 5671860409645682096}
+  - component: {fileID: 1565566290}
   m_Layer: 9
   m_Name: Sadness
   m_TagString: Untagged
@@ -86,6 +87,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1565566290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671860409645682058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bf95835afae01478fc19892e7f748b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 3
+  GrowSpeed: 1
 --- !u!1 &6406351312968981845
 GameObject:
   m_ObjectHideFlags: 0
