@@ -15,8 +15,7 @@ namespace SuraSang
 
         public CharacterController Controller { get; private set; }
         public Animator Animator { get; private set; }
-        public PlayerData PlayerData => _playerData;
-        [SerializeField] private PlayerData _playerData;
+        public PlayerData PlayerData { get; private set; }
 
         // 슬픔 스킬용
         public SadEye[] SadEyes => _sadEyes;
@@ -36,6 +35,8 @@ namespace SuraSang
 
         private void Awake()
         {
+            PlayerData = Global.Instance.SODataManager.GetData<PlayerData>();
+
             Controller = GetComponent<CharacterController>();
             Animator = GetComponentInChildren<Animator>();
             _currentCharacter = _characterDefault;

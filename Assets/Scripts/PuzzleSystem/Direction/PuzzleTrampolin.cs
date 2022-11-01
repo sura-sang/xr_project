@@ -10,14 +10,11 @@ namespace SuraSang
     {
         [Header("높이 체크 (디버그용)")]
         public float[] DebugHeight; // 특정 높이에서 떨어졌을 때 얼마나 튀어오르는지 씬 GUI로 보여주기 위해
-        public PlayerData _playerData;
 
         public Transform JumpPoint => _jumpPoint;
         [SerializeField] private Transform _jumpPoint;
 
-
         public float Cooltime;
-
         public float MinHeight;
 
         public float JumpVelocity; // 횡으로 이동하는 속도
@@ -26,15 +23,15 @@ namespace SuraSang
         private float _minVelocity;
         private float _lastJumpTime;
 
-        private void Update()
+        private void Awake()
         {
-            var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
+            var data = Global.Instance.SODataManager.GetData<PlayerData>();
+            var gravity = data.Gravity * data.FallingGravityMultiplier;
             _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight);
         }
 
         public override void OnNotify(PuzzleContext context)
         {
-
             base.OnNotify(context);
 
             if (_context == null)
@@ -51,6 +48,13 @@ namespace SuraSang
             {
                 return;
             }
+
+#if UNITY_EDITOR
+            // 에디터에서 MinHeight를 계속 수정하는 경우를 반영
+            var data = Global.Instance.SODataManager.GetData<PlayerData>();
+            var gravity = data.Gravity * data.FallingGravityMultiplier;
+            _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight);
+#endif
 
             _lastJumpTime = Time.time;
 
