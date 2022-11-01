@@ -6,9 +6,10 @@ namespace SuraSang
 {
     public class Global
     {
-        private Global() 
+        private Global()
         {
             _resourceManager = new ResourceManager();
+            _soDataManager = new SODataManager();
         }
 
         private static Global _instance = null;
@@ -33,9 +34,11 @@ namespace SuraSang
         public SceneMaster SceneMaster => _sceneMaster;
         private SceneMaster _sceneMaster;
 
-
         public ResourceManager ResourceManager => _resourceManager;
         private ResourceManager _resourceManager;
+
+        public SODataManager SODataManager => _soDataManager;
+        private SODataManager _soDataManager;
 
     }
 }
