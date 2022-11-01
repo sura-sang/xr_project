@@ -10,7 +10,6 @@ namespace SuraSang
         public float Size = 3f;
         public float GrowSpeed = 1f;
         private float _time; 
-        public Vector3 _upSize;
         public BoxCollider platform;
 
         [SerializeField]
