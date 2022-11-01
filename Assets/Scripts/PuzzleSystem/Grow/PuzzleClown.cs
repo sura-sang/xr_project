@@ -12,16 +12,20 @@ namespace SuraSang
         private float _time;
         [SerializeField]
         private Transform _hat;
+        [SerializeField]
+        private PuzzleTrampolin _trampolin;
 
         private void Start()
         {
             PuzzleManager.Instance.AddObserver(this);
+            _trampolin.enabled = false;
         }
 
         public override void OnNotify(PuzzleContext context)
         {
             if (context.SkillEmotion == Emotion.Sadness && !IsNotify)
             {
+                _trampolin.enabled = true;
                 IsNotify = true;
                 _hat.transform.DOScale(new Vector3(Size, Size, Size), GrowSpeed);
                 Debug.Log("광대 버섯 퍼즐 실행");

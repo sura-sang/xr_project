@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79343302c4ddd234d940717e0b93366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: 5
-  GrowSpeed: 1
+  Size: 3
+  GrowSpeed: 3
   _hat: {fileID: 8238478606801107114}
+  _trampolin: {fileID: 2111227946}
 --- !u!1 &7661926279573490901
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +268,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7741476414775145047, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.516
+      objectReference: {fileID: 0}
+    - target: {fileID: -7741476414775145047, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.054
+      objectReference: {fileID: 0}
+    - target: {fileID: -7741476414775145047, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -325,6 +338,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
+--- !u!1 &2484973558272372456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2486420778618896525, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
+  m_PrefabInstance: {fileID: 9151898492624769435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2111227947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484973558272372456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1228416, y: 1, z: 1}
+  m_Center: {x: -0.080304354, y: -0.00000000239294, z: -0.0000000012765956}
+--- !u!114 &2111227946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484973558272372456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5193480c5b64b44d9ac084a77cc23d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startAngle: 0
+  DebugHeight:
+  - 2.2251067
+  - 3.3045485
+  - 4.3398333
+  _playerData: {fileID: 11400000, guid: 257db9c9563e942c2ae42559a612653a, type: 2}
+  _jumpPoint: {fileID: 8238478606801107114}
+  Cooltime: 0.1
+  MinHeight: 1.3636377
+  JumpVelocity: 12.575165
+  PowerReduction: 1.25
 --- !u!4 &8238478606801107114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 961210195233335601, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
