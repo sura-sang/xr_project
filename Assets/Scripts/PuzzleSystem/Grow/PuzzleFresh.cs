@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace SuraSang
 {
@@ -10,6 +11,9 @@ namespace SuraSang
         public float GrowSpeed = 1f;
         private float _time; 
         public Vector3 _upSize;
+
+        [SerializeField]
+        private Transform _body;
 
         private void Start()
         {
@@ -21,29 +25,8 @@ namespace SuraSang
             if (context.SkillEmotion == Emotion.Sadness && !IsNotify)
             {
                 IsNotify = true;
-                StartCoroutine(GrowUp());
+                _body.transform.DOMoveY(Size, GrowSpeed, false);
                 Debug.Log("갓버섯 퍼즐 실행");
-            }
-        }
-     
-        IEnumerator GrowUp()
-        {
-            while (transform.Find("Body").localScale.y < Size)
-            {
-                var pos = transform.Find("Cap").localPosition;
-
-                transform.Find("Body").localScale += _upSize * (_time * GrowSpeed);
-                pos.y = transform.Find("Body").localScale.y;
-                transform.Find("Cap").localPosition = pos;
-
-                _time += Time.deltaTime;
-
-                if (transform.Find("Body").localScale.y >= Size)
-                {
-                    _time = 0;
-                    break;
-                }
-                yield return null;
             }
         }
     }
