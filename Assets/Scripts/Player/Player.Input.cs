@@ -23,6 +23,8 @@ namespace SuraSang
 
     public partial class Player
     {
+        private readonly int MoveSpeedParam = Animator.StringToHash("MoveSpeed");
+
         // 벡터를 넘겨주기 위해 move만 따로 처리
         public UnityAction<Vector2> OnMove { get; set; }
         private Dictionary<ButtonActions, InputAction> _buttonActions;
@@ -92,6 +94,8 @@ namespace SuraSang
             var moveInput = _moveInputAction.ReadValue<Vector2>();
 
             OnMove?.Invoke(moveInput);
+
+            Animator.SetFloat(MoveSpeedParam, moveInput.magnitude);
         }
 
         private void OnEnable()
