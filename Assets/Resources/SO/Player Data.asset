@@ -25,7 +25,7 @@ MonoBehaviour:
   _runMultiplier: 1.5
   _grabMultiplier: 0.5
   _gravity: 50
-  _fallingGravityMultiplier: 1.5
+  _fallingGravityMultiplier: 1
   _gravityLimit: 200
   _jumpPower: 10
   _coyoteTime: 0.3
@@ -36,3 +36,10 @@ MonoBehaviour:
   _moveToLedgeSpeed: 1
   _absorbAngle: 160
   _absorbRange: 2.75
+  _emotionDatas:
+  - _emotion: 1
+    _speedMultiplier: 1.5
+  - _emotion: 2
+    _speedMultiplier: 1
+  - _emotion: 3
+    _speedMultiplier: 0.5

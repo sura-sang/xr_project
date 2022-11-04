@@ -17,9 +17,16 @@ namespace SuraSang
 
         private PuzzleTrampolin _component;
 
+        private PlayerData _playerData;
+
+        private void Awake()
+        {
+            _playerData = Global.Instance.SODataManager.GetData<PlayerData>();
+        }
 
         private void OnSceneGUI()
         {
+
             EditorGUI.BeginChangeCheck();
 
             _component = target as PuzzleTrampolin;
@@ -44,7 +51,7 @@ namespace SuraSang
             DrawArcs(_component.MinHeight);
 
             // 높이 (그냥 표시용)
-            var gravity = _component._playerData.Gravity * _component._playerData.FallingGravityMultiplier;
+            var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
 
             for (int i = 0; i < _component.DebugHeight.Length; i++)
             {
@@ -74,7 +81,7 @@ namespace SuraSang
 
         private void DrawArcs(float height)
         {
-            var gravity = _component._playerData.Gravity * _component._playerData.FallingGravityMultiplier;
+            var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
             float vel = Mathf.Sqrt(gravity * 2 * height) * _component.PowerReduction;
 
             var plusAngle = 360f / _dirCount;
@@ -91,12 +98,12 @@ namespace SuraSang
                 {
                     var y = velocity.y;
 
-                    y -= (_component._playerData.Gravity *
-                                   (y < 0 ? _component._playerData.FallingGravityMultiplier : 1)) * _delta;
-                    y = Mathf.Max(y, -_component._playerData.GravityLimit);
+                    y -= (_playerData.Gravity *
+                                   (y < 0 ? _playerData.FallingGravityMultiplier : 1)) * _delta;
+                    y = Mathf.Max(y, -_playerData.GravityLimit);
 
                     velocity.y = 0;
-                    velocity = Vector3.MoveTowards(velocity, Vector3.zero, _component._playerData.AirControl * _delta);
+                    velocity = Vector3.MoveTowards(velocity, Vector3.zero, _playerData.AirControl * _delta);
 
                     velocity.y = y;
 
