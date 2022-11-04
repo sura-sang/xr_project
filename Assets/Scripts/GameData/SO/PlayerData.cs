@@ -7,7 +7,7 @@ namespace SuraSang
     [System.Serializable]
     public class EmotionData
     {
-        [ReadOnly][SerializeField] private Emotion _emotion;
+        [SerializeField] private Emotion _emotion;
 
         public float SpeedMultiplier => _speedMultiplier;
         [SerializeField] private float _speedMultiplier = 1;
@@ -93,12 +93,12 @@ namespace SuraSang
         public EmotionData[] EmotionDatas => _emotionDatas;
 
 
-        private void Awake()
-        {
-            _emotionDatas = new EmotionData[3];
-            _emotionDatas[0] = new EmotionData((Emotion)1);
-            _emotionDatas[1] = new EmotionData((Emotion)2);
-            _emotionDatas[2] = new EmotionData((Emotion)3);
-        }
+        //private void Awake()
+        //{
+        //    _emotionDatas = new EmotionData[3];
+        //    _emotionDatas[0] = new EmotionData((Emotion)1);
+        //    _emotionDatas[1] = new EmotionData((Emotion)2);
+        //    _emotionDatas[2] = new EmotionData((Emotion)3);
+        //}
     }
 }
