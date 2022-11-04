@@ -22,7 +22,7 @@ namespace SuraSang
             _rb = GetComponent<Rigidbody>();
 
             _box.isTrigger = true;
-            _box.size = _boxSize;
+            // _box.size = _boxSize;
 
             _rb.isKinematic = true;
         }
