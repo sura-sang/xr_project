@@ -19,7 +19,7 @@ namespace SuraSang
 
         void Update()
         {
-            _yPos = _target.transform.position.y;
+            _yPos = _target.transform.position.y + 0.5f;
             _angle += _angularVelocity * Time.deltaTime;
             var offset = Quaternion.Euler(0.0f, _angle, 0.0f) * new Vector3(0.0f, 0.0f, _radius);
             transform.position = new Vector3(_target.transform.position.x, _yPos, _target.transform.position.z) + offset;
