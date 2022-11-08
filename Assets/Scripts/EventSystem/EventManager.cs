@@ -11,6 +11,8 @@ namespace SuraSang
 
         public event Action<int> ShapeMoveAction;
         public event Action<int> ShapeReturnAction;
+        public event Action ObjectActivateAction;
+        public event Action ObjectDeActivateAction;
 
         private void Awake()
         {
@@ -33,6 +35,16 @@ namespace SuraSang
         public void ShapeReturn(int id)
         {
             ShapeReturnAction?.Invoke(id);
+        }
+
+        public void ObjectActivate()
+        {
+            ObjectActivateAction?.Invoke();
+        }
+
+        public void ObjectDeActivate()
+        {
+            ObjectDeActivateAction?.Invoke();
         }
     }
 }
