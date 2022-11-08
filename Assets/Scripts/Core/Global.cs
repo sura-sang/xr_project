@@ -6,10 +6,14 @@ namespace SuraSang
 {
     public class Global
     {
+        private const string UIManagerPath = "UIManager";
+
         private Global()
         {
             _resourceManager = new ResourceManager();
             _soDataManager = new SODataManager();
+
+            _uiManager = GameObject.Instantiate(Resources.Load<GameObject>(UIManagerPath)).GetComponent<UIManager>();
         }
 
         private static Global _instance = null;
@@ -30,7 +34,6 @@ namespace SuraSang
             _sceneMaster = sceneMaster;
         }
 
-
         public SceneMaster SceneMaster => _sceneMaster;
         private SceneMaster _sceneMaster;
 
@@ -40,5 +43,8 @@ namespace SuraSang
         public SODataManager SODataManager => _soDataManager;
         private SODataManager _soDataManager;
 
+
+        public UIManager UIManager => _uiManager;
+        private UIManager _uiManager;
     }
 }
