@@ -41,7 +41,7 @@ namespace SuraSang
             Animator = GetComponentInChildren<Animator>();
             _currentCharacter = _characterDefault;
 
-            if (SceneMaster.SceneInstance != null)
+            if (SceneMaster.SceneInstance != null && !SceneMaster.SceneInstance.isDebug)
             {
                 Controller.enabled = false;
                 transform.position = SceneMaster.SceneInstance.CurrentCheckPoint.SpawnPos.position;
