@@ -6,7 +6,7 @@ namespace SuraSang
 {
     public class ObjectActivateArea : MonoBehaviour
     {
-        [SerializeField] private GameObject[] objects;
+        [SerializeField] private GameObject[] _objects;
         [SerializeField] private LayerMask _interactionLayer;
         private void Start()
         {
@@ -38,7 +38,7 @@ namespace SuraSang
 
         private void ObjectActivate()
         {
-            foreach (GameObject obj in objects)
+            foreach (GameObject obj in _objects)
             {
                 obj.SetActive(true);
             }
@@ -46,7 +46,7 @@ namespace SuraSang
 
         private void ObjectDeActivate()
         {
-            foreach (GameObject obj in objects)
+            foreach (GameObject obj in _objects)
             {
                 obj.SetActive(false);
             }
