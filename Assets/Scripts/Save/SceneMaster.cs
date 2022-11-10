@@ -7,6 +7,7 @@ namespace SuraSang
 {
     public class SceneMaster : MonoBehaviour
     {
+        public bool isDebug = false;
         public static SceneMaster SceneInstance;
         public CheckPoint CurrentCheckPoint;
         public string[] LevelArr;

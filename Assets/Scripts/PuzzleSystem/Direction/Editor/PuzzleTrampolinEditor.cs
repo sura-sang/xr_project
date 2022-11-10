@@ -8,8 +8,6 @@ namespace SuraSang
     [CustomEditor(typeof(PuzzleTrampolin))]
     public class ExampleInspector : Editor
     {
-        private const int _dirCount = 6;
-
         private const float _debugLineLength = 50;
         private const float _delta = 0.01f;
 
@@ -84,9 +82,9 @@ namespace SuraSang
             var gravity = _playerData.Gravity * _playerData.FallingGravityMultiplier;
             float vel = Mathf.Sqrt(gravity * 2 * height) * _component.PowerReduction;
 
-            var plusAngle = 360f / _dirCount;
+            var plusAngle = 360f / _component.DirCount;
 
-            for (int j = 0; j < _dirCount; j++)
+            for (int j = 0; j < _component.DirCount; j++)
             {
                 var dir = GetVector((_component.StartAngle + j * plusAngle) * Mathf.Deg2Rad).normalized;
                 var velocity = dir * _component.JumpVelocity;
