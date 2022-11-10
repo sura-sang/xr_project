@@ -155,10 +155,7 @@ namespace SuraSang
         {
             var speed = PlayerData.Speed;
 
-            if (CurrentEmotion != Emotion.Default)
-            {
-                speed *= PlayerData.EmotionDatas[(int)CurrentEmotion - 1].SpeedMultiplier;
-            }
+            speed *= PlayerData.EmotionDatas[(int)CurrentEmotion].SpeedMultiplier;
 
             return speed;
         }

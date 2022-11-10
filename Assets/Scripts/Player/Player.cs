@@ -11,7 +11,11 @@ namespace SuraSang
 {
     public partial class Player : CharacterMove
     {
+        private readonly int MoveSpeedParam = Animator.StringToHash("MoveSpeed");
+
+
         [SerializeField] private bool _debugMode = false;
+
 
         public CharacterController Controller { get; private set; }
         public Animator Animator { get; private set; }
@@ -77,6 +81,8 @@ namespace SuraSang
             if (CanMove)
             {
                 Controller.Move(MoveDir * Time.deltaTime);
+
+                Animator.SetFloat(MoveSpeedParam, new Vector2(Controller.velocity.x, Controller.velocity.z).magnitude);
             }
 
             if (IsReset)
