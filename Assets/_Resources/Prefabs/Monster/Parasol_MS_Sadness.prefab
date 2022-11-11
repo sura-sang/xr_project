@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3755298197125833409}
   - component: {fileID: 3755298197125833420}
-  - component: {fileID: 3755298197125833408}
   - component: {fileID: 3755298197125833411}
   - component: {fileID: 426969444}
+  - component: {fileID: 266342226}
   m_Layer: 9
-  m_Name: Anger
+  m_Name: Parasol_MS_Sadness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,27 +51,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &3755298197125833408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3755298197125833421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a02bb79a093a6409ad03bc0b812891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSpeed: 10
-  ChaseRange: 8
-  SkillRange: 4
-  SkillCooltime: 3
-  DashCheckLayerMask:
-    serializedVersion: 2
-    m_Bits: 4352
-  DashSpeed: 15
-  MaxDashTime: 3
 --- !u!195 &3755298197125833411
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -110,6 +89,20 @@ MonoBehaviour:
   GrowSpeed: 5
   Platform: {fileID: 794447689}
   _body: {fileID: 6290689165795810238}
+--- !u!114 &266342226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755298197125833421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d4f3d8ae2e3e14b9a60cb6f8946794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 10
+  IsFollow: 0
 --- !u!1 &3977731242479825603
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +147,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.284652, b: 1, a: 1}
   m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
