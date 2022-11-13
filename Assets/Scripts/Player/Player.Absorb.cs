@@ -91,6 +91,7 @@ namespace SuraSang
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
                                 break;
                         }
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
                         Animator.SetTrigger("Change");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[i].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
