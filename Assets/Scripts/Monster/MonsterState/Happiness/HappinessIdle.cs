@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Transactions;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace SuraSang
 {
@@ -42,12 +39,10 @@ namespace SuraSang
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_destination);
-                _animator.SetBool("IsWalking", true);
             }
             else
             {
                 _agent.isStopped = true;
-                _animator.SetBool("IsWalking", false);
             }
         }
 
@@ -86,7 +81,7 @@ namespace SuraSang
 
             return navHit.position;
         }
-        
+
         private bool CanMove()
         {
             if (Vector3.Distance(_moveRange.transform.position, _destination) <= _radius)

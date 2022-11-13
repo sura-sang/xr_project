@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3755298197125833409}
-  - component: {fileID: 5240838018259504908}
   - component: {fileID: 3755298197125833420}
   - component: {fileID: 3755298197125833411}
-  - component: {fileID: 266342226}
   - component: {fileID: 426969444}
+  - component: {fileID: 266342226}
   m_Layer: 9
   m_Name: Parasol_MS_Sadness
   m_TagString: Untagged
@@ -38,26 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5240838018259504908
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3755298197125833421}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4b119ab3d54d11d49881c15575d972f7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &3755298197125833420
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -94,20 +73,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &266342226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3755298197125833421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d4f3d8ae2e3e14b9a60cb6f8946794, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSpeed: 10
-  IsFollow: 0
 --- !u!114 &426969444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +89,20 @@ MonoBehaviour:
   GrowSpeed: 5
   Platform: {fileID: 794447689}
   _body: {fileID: 6290689165795810238}
+--- !u!114 &266342226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755298197125833421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d4f3d8ae2e3e14b9a60cb6f8946794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 10
+  IsFollow: 0
 --- !u!1 &3977731242479825603
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,6 @@ namespace SuraSang
             }
             else
             {
-                _animator.SetBool("IsWalking", false);
                 _monster.ChangeState(new SadnessIdle(_monster, _sadness));
             }
         }
