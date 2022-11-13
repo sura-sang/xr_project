@@ -17,6 +17,7 @@ namespace SuraSang
         {
             if (_sadness.IsFollow)
             {
+                _animator.SetBool("IsWalking", true);
                 _monster.ChangeState(new SadnessMove(_monster,_sadness));
             }
         }

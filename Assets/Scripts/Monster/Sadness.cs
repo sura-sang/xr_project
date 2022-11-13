@@ -13,7 +13,8 @@ namespace SuraSang
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            
+            Animator = GetComponent<Animator>();
+
             ChangeState(new SadnessIdle(this,this));
         }
     }

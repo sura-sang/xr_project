@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ namespace SuraSang
     {
         protected Monster _monster;
         protected NavMeshAgent _agent;
+        protected Animator _animator;
         
         public MonsterMoveState(CharacterMove characterMove) : base(characterMove) 
         {
@@ -18,6 +20,7 @@ namespace SuraSang
             }
             else
             {
+                _animator = _monster.Animator;
                 _agent = _monster.Agent;
             }
         }
