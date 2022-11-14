@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MEffect_joy_pang06
+  m_Shader: {fileID: 4800000, guid: 36071b61363f3ed4e813b19247a918fd, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Maintex:
+        m_Texture: {fileID: 2800000, guid: 83bf81012c636ee419201df4372277b1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Manifold11512x512:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoPanTex:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseAlphaTex:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Nosie:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TEffect_joy_alpha03:
+        m_Texture: {fileID: 2800000, guid: d10672e27fb19704aab064daaf49d2db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: b849f14c5d6f8884180f9b5383dafac4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: 20891f753af34774a9be08de0040fb45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0
+    - _AlphaCutoff: 0.5
+    - _AlphaTil: 10
+    - _Lenght: 18.35
+    - _Length: 3
+    - _Noise: 0
+    - _NoiseAlpha: 0
+    - _POW: 1.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Scale: 0.74
+    - _ToggleSwitch0: 1
+    - _inten: 3
+    m_Colors:
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 0.765763, b: 0.5529412, a: 0}
+    - _Panner: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
