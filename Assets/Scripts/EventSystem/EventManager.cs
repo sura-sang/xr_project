@@ -13,6 +13,8 @@ namespace SuraSang
         public event Action<int> ShapeReturnAction;
         public event Action ObjectActivateAction;
         public event Action ObjectDeActivateAction;
+        public event Action TimelineStartAction;
+        public event Action TimelineStopAction;
 
         private void Awake()
         {
@@ -45,6 +47,16 @@ namespace SuraSang
         public void ObjectDeActivate()
         {
             ObjectDeActivateAction?.Invoke();
+        }
+
+        public void TimelineStart()
+        {
+            TimelineStartAction?.Invoke();
+        }
+
+        public void TimelineStop()
+        {
+            TimelineStopAction?.Invoke();
         }
     }
 }
