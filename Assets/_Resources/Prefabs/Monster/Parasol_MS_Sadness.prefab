@@ -277,6 +277,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_Monster_gm
       objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.771
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000062523336
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0000029440498
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00027348768
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875507264435059564, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.031
+      objectReference: {fileID: 0}
     - target: {fileID: 5155639091126715956, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.352
@@ -299,8 +335,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21999985, y: 0.7685375, z: 0.6759491}
-  m_Center: {x: 0.00000007237317, y: 0.037034374, z: -0.023150565}
+  m_Size: {x: 0.21999985, y: 1.0445714, z: 0.9180229}
+  m_Center: {x: 0.000000072993565, y: 0.115773514, z: -0.01280081}
 --- !u!4 &4182112153743968243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
