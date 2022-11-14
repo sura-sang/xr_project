@@ -15,6 +15,6 @@ namespace SuraSang
         public const string HappyTransEffectPath = "Effect/Prefab/PREffect_joy/E_P_PR_joy_TRANS";
         public const string SadTransEffectPath = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_TRANS";
 
-        public const string HappySkillEffectPath = "Effect/Prefab/PREffect_joy/PREffect_joy_SKILL1009";
+        public const string HappySkillEffectPath = "Effect/Prefab/PREffect_joy/E_P_PR_joy_SKILL";
     }
 }
