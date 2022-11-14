@@ -13,7 +13,7 @@ namespace SuraSang
         [SerializeField] private float _angularVelocity = 100.0f;
         private float _angle = 0.0f;
         private Transform _contactTransform;
-        private float maxDist = 1.5f;
+        private float _maxDist = 1.5f;
 
         [SerializeField] private bool _onWall = false;
 
@@ -37,7 +37,7 @@ namespace SuraSang
                 transform.position = _contactTransform.position;
             }
 
-            if (Vector3.Distance(transform.position, _target.position) > maxDist)
+            if (Vector3.Distance(transform.position, _target.position) > _maxDist)
             {
                 var offset = Quaternion.Euler(0.0f, _angle, 0.0f) * new Vector3(0.0f, 0.0f, _radius);
                 transform.position = new Vector3(_target.transform.position.x, _yPos, _target.transform.position.z) + offset;
