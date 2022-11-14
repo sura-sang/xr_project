@@ -1,11 +1,17 @@
 fileFormatVersion: 2
-guid: 38cc45a07046b2a4682cf01413aa0ec6
+guid: ec0dccc0b4f7eea419e236784845ee48
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -9151599385873993166
-    second: A_MS1_ang_SKILL_2
+      74: 6073723064871718638
+    second: gm_sleep+loop
+  - first:
+      74: 8520584927755560275
+    second: A_MS2_common_SLEEP_LOOP
+  - first:
+      74: 8883390376187909676
+    second: A_MS2_common_SLEEP
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +42,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: A_MS1_ang_SKILL_2
-      takeName: A_MS1_ang_SKILLdd
+      name: A_MS2_common_SLEEP
+      takeName: gm_sleep+loop
       internalID: 0
-      firstFrame: 99
-      lastFrame: 126
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -48,6 +54,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MS2_common_SLEEP_LOOP
+      takeName: gm_sleep+loop
+      internalID: 0
+      firstFrame: 30
+      lastFrame: 105
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
