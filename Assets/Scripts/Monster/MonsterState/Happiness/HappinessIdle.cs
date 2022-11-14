@@ -12,7 +12,6 @@ namespace SuraSang
     {
         public HappinessIdle(CharacterMove characterMove) : base(characterMove) { }
 
-        private Vector3 _destination;
         private float _timer;
         private float _radius;
         private Transform _moveRange;
@@ -22,10 +21,10 @@ namespace SuraSang
         {
             FineNearestTag();
 
-            _radius = _moveRange.GetComponent<HappyMoveRange>().MoveRadius;         
+            _radius = _moveRange.GetComponent<MoveRange>().MoveRadius;         
             _randomSec = 1f;
 
-            _destination = RandomNavSphere(_monster.transform.position, _radius, -1);
+            _monster.RandomNavSphere(_moveRange.position, _radius);
         }
 
         public override void UpdateState() 
@@ -34,21 +33,13 @@ namespace SuraSang
 
             if (_timer >= _randomSec)
             {
-                _destination = RandomNavSphere(_monster.transform.position, _radius, -1);
+                _monster.RandomNavSphere(_moveRange.position, _radius);
                 _timer = 0;
             }
 
-            if (CanMove())
-            {
-                _agent.isStopped = false;
-                _agent.SetDestination(_destination);
-                _animator.SetBool("IsWalking", true);
-            }
-            else
-            {
-                _agent.isStopped = true;
-                _animator.SetBool("IsWalking", false);
-            }
+            _animator?.SetBool("IsWalking", _agent.isStopped);
+
+            _monster.SmoothRotation(_agent.velocity);
         }
 
         public override void ClearState() 
@@ -76,28 +67,5 @@ namespace SuraSang
                 }             
             }
         }
-
-        private Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
-        {
-            Vector3 randDirection = Random.insideUnitSphere * dist;
-            randDirection += origin;
-            NavMeshHit navHit;
-            NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
-            return navHit.position;
-        }
-        
-        private bool CanMove()
-        {
-            if (Vector3.Distance(_moveRange.transform.position, _destination) <= _radius)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
     }
 }
