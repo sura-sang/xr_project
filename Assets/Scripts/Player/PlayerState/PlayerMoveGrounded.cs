@@ -57,15 +57,6 @@ namespace SuraSang
             {
                 _player.canMove();
             }
-
-            // TO DO : 나중에 수정해야 될지도?
-            // (강제로 Grounded 스테이트에서 CanMove가 false일 경우 Change 트리거 실행 시켜줌)
-            if(!_player.CanMove)
-            {
-                _player.Animator.SetTrigger("Change");
-                _player.Animator.SetBool("IsRunning", false);
-                _player.Animator.SetBool("IsWalking", false);
-            }
         }
 
         public override void ClearState() { }
