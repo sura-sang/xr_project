@@ -57,6 +57,11 @@ namespace SuraSang
             {
                 return;
             }
+            
+            if(_context.SkillEmotion == Emotion.Anger && _context.Player.IsSkill)
+            {
+                return;
+            }
 
 #if UNITY_EDITOR
             // 에디터에서 MinHeight를 계속 수정하는 경우를 반영
@@ -86,7 +91,7 @@ namespace SuraSang
         {
             if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
-                OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion));
+                OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion, player));
             }
 
         }

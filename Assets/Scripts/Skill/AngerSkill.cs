@@ -82,7 +82,7 @@ namespace SuraSang
             foreach (var hit in result)
             {
                 Debug.Log(hit.transform.gameObject.name);
-                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward, _player, _player.CurrentEmotion));
+                hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward, _player, _player.CurrentEmotion, _player));
                 
                 _player.EffectTransform.position = hit.ClosestPoint(_player.transform.position);
                 _angerSkillCrashEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerSkillCrashEffectPath, _player.EffectTransform);
