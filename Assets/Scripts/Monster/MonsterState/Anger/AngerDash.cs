@@ -7,7 +7,6 @@ namespace SuraSang
 {
     public class AngerDash : MonsterMoveState
     {
-        private Player _player;
         private Anger _anger;
 
         private Vector3 _dir;
@@ -16,14 +15,14 @@ namespace SuraSang
 
         private float _radius;
 
-        public AngerDash(CharacterMove characterMove) : base(characterMove) { }
+        public AngerDash(CharacterMove characterMove, Vector3 dir) : base(characterMove) 
+        {
+            _dir = dir;
+        }
 
         public override void InitializeState()
         {
-            _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
-
-            _dir = (_player.transform.position - _anger.transform.position).normalized;
 
             _dashStartTime = Time.time;
 

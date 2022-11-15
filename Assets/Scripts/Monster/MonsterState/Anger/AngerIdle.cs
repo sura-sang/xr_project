@@ -36,7 +36,7 @@ namespace SuraSang
                 _timer = 0;
             }
 
-            _animator.SetBool("IsWalking", _agent.isStopped);
+            _animator.SetBool("IsWalking", _agent.velocity.sqrMagnitude > 0.1f);
 
 
             if (Vector3.Distance(_monster.transform.position, _player.transform.position) < _anger.ChaseRange)

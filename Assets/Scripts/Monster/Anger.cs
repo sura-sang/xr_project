@@ -7,6 +7,9 @@ namespace SuraSang
 {
     public class Anger : Monster
     {
+        [SerializeField] private Transform _moveDummy;
+        public Transform MoveDummy => _moveDummy;
+
         public override Emotion Emotion => Emotion.Anger;
 
         public float ChaseRange;

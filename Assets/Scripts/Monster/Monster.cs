@@ -40,7 +40,7 @@ namespace SuraSang
         public override void MovePosition(Vector3 pos)
         {
             transform.position = pos;
-            Agent.Move(pos);
+            Agent.SetDestination(pos);
         }
 
         public void RandomNavSphere(Vector3 origin, float dist, int layermask = NavMesh.AllAreas)

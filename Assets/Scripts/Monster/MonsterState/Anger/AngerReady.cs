@@ -12,6 +12,9 @@ namespace SuraSang
 
         private float _readyStartTime;
 
+        private Vector3 _startPos;
+        private Vector3 _dir;
+
         public AngerReady(CharacterMove characterMove) : base(characterMove) { }
 
         public override void InitializeState()
@@ -22,7 +25,11 @@ namespace SuraSang
             _readyStartTime = Time.time;
 
             _agent.SetDestination(_anger.transform.position);
+            _startPos = _anger.transform.position;
 
+            _dir = (_player.transform.position - _anger.transform.position).normalized;
+
+            _animator.SetBool("IsWalking", false);
             _animator.SetTrigger("Ready");
         }
 
@@ -30,12 +37,12 @@ namespace SuraSang
         {
             if (Time.time - _readyStartTime > _anger.DashReadyTime)
             {
-                _anger.ChangeState(new AngerDash(_characterMove));
+                _anger.ChangeState(new AngerDash(_characterMove, _dir));
             }
 
-            var dir = (_player.transform.position - _anger.transform.position).normalized;
+            //_anger.SmoothRotation(dir);
 
-            _anger.SmoothRotation(dir);
+            _anger.MovePosition(_startPos + (_anger.transform.rotation * _anger.MoveDummy.localPosition));
         }
 
         public override void ClearState() { }

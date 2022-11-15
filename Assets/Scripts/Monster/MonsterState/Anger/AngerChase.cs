@@ -15,6 +15,8 @@ namespace SuraSang
         {
             _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
+
+            _animator.SetBool("IsWalking", true);
         }
 
         public override void UpdateState()
