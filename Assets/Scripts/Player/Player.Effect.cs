@@ -15,7 +15,9 @@ namespace SuraSang
 
         private GameObject _angerWalkEffect;
         private GameObject _happyWalkEffect;
-       
+
+        private GameObject _angerRunEffect;
+        private GameObject _happyRunEffect;
 
         private bool _isMakeEffect = false;
 
@@ -78,6 +80,20 @@ namespace SuraSang
                     _happyWalkEffect = null;
                     _isMakeEffect = false;
                 }
+
+                if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Run") && !_isMakeEffect)
+                {
+                    _happyRunEffect = Global.Instance.ResourceManager.GetObject(Constant.HappyRunEffect, transform);
+                    _happyRunEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    _happyRunEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(1).IsName("Run") && _happyRunEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.HappyRunEffect, _happyRunEffect);
+                    _happyRunEffect = null;
+                    _isMakeEffect = false;
+                }
             }
             else if(_happyIdleEffect != null)
             {
@@ -85,6 +101,19 @@ namespace SuraSang
                 _happyIdleEffect = null;
                 _isMakeEffect = false;
             }
+            else if (_happyWalkEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyWalkEffect);
+                _happyWalkEffect = null;
+                _isMakeEffect = false;
+            }
+            else if (_happyRunEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyRunEffect);
+                _happyRunEffect = null;
+                _isMakeEffect = false;
+            }
+
 
             if (CurrentEmotion == Emotion.Anger)
             {
@@ -105,7 +134,6 @@ namespace SuraSang
                 {
                     _angerWalkEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerWalkEffect, transform);
                     _angerWalkEffect.transform.localPosition = new Vector3(0, -1f, 0);
-                    //_angerWalkEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
                     _isMakeEffect = true;
                 }
                 else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Walk") && _angerWalkEffect != null)
@@ -114,11 +142,37 @@ namespace SuraSang
                     _angerWalkEffect = null;
                     _isMakeEffect = false;
                 }
+
+                if (Animator.GetCurrentAnimatorStateInfo(2).IsName("Run") && !_isMakeEffect)
+                {
+                    _angerRunEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerRunEffect, transform);
+                    _angerRunEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    _angerRunEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Run") && _angerRunEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerRunEffect, _angerRunEffect);
+                    _angerRunEffect = null;
+                    _isMakeEffect = false;
+                }
             }
             else if (_angerIdleEffect != null)
             {
                 Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
                 _angerIdleEffect = null;
+                _isMakeEffect = false;
+            }
+            else if (_angerWalkEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerWalkEffect);
+                _angerWalkEffect = null;
+                _isMakeEffect = false;
+            }
+            else if (_angerRunEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.AngerRunEffect, _angerRunEffect);
+                _angerRunEffect = null;
                 _isMakeEffect = false;
             }
         }

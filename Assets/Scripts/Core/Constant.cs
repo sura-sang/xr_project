@@ -41,8 +41,8 @@ namespace SuraSang
         public const string HappyWalk2Effect = "Effect/Prefab/PREffect_joy/E_MS_PR_joy_WALK "; //O
 
         //Run 이펙트
-        public const string AngerRunEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust";
-        public const string HappyRunEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_joy_RUN";
+        public const string AngerRunEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
+        public const string HappyRunEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_RUN"; //O
 
         //슬픔 몬스터가 기쁜 스킬에 들어갔을 때 쓰는 이펙트 (둘이 한세트)
         public const string HappyFloorAuraEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_FloorAura";
