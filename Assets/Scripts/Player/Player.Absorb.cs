@@ -157,8 +157,8 @@ namespace SuraSang
                                 obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
                                 break;
                         }
-                        //Animator.SetTrigger("Change");
-                        Animator.SetBool("test", true);
+                        Animator.SetTrigger("Change");
+                        //Animator.SetBool("test", true);
                         _hitTargetContainer[0].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[0].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
                     }
