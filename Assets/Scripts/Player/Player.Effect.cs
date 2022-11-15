@@ -13,6 +13,10 @@ namespace SuraSang
         private GameObject _angerIdleEffect;
         private GameObject _happyIdleEffect;
 
+        private GameObject _angerWalkEffect;
+        private GameObject _happyWalkEffect;
+       
+
         private bool _isMakeEffect = false;
 
         private void ChangeEffect()
@@ -45,75 +49,77 @@ namespace SuraSang
 
         public void ChangeStateEffect()
         {
-            switch(CurrentEmotion)
+            if (CurrentEmotion == Emotion.Happiness)
             {
-                case Emotion.Default:
+                if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Idle") && !_isMakeEffect)
+                {
+                    _happyIdleEffect = Global.Instance.ResourceManager.GetObject(Constant.HappyIdleEffect, transform);
+                    _happyIdleEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    _happyIdleEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(1).IsName("Idle") && _happyIdleEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyIdleEffect);
+                    _happyIdleEffect = null;
+                    _isMakeEffect = false;
+                }
 
-                    if (_angerIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
-                        _angerIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
+                if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Walk") && !_isMakeEffect)
+                {
+                    _happyWalkEffect = Global.Instance.ResourceManager.GetObject(Constant.HappyWalkEffect, transform);
+                    _happyWalkEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    _happyWalkEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(1).IsName("Walk") && _happyWalkEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.HappyWalkEffect, _happyWalkEffect);
+                    _happyWalkEffect = null;
+                    _isMakeEffect = false;
+                }
+            }
+            else if(_happyIdleEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyIdleEffect);
+                _happyIdleEffect = null;
+                _isMakeEffect = false;
+            }
 
-                    if (_happyIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyIdleEffect);
-                        _happyIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
-                    break;
+            if (CurrentEmotion == Emotion.Anger)
+            {
+                if (Animator.GetCurrentAnimatorStateInfo(2).IsName("Idle") && !_isMakeEffect)
+                {
+                    _angerIdleEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerIdleEffect, transform);
+                    _angerIdleEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Idle") && _angerIdleEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
+                    _angerIdleEffect = null;
+                    _isMakeEffect = false;
+                }
 
-                case Emotion.Sadness:
-                    if (_angerIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
-                        _angerIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
-
-                    if (_happyIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyIdleEffect);
-                        _happyIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
-                    break;
-
-                case Emotion.Happiness:
-                    if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Idle") && !_isMakeEffect)
-                    {
-                        _happyIdleEffect.SetActive(true);
-                        _happyIdleEffect = Global.Instance.ResourceManager.GetObject(Constant.HappyIdleEffect, transform);
-                        _happyIdleEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
-                        _happyIdleEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
-                        _isMakeEffect = true;
-                    }
-                    else
-                        _happyIdleEffect.SetActive(false);
-
-                    if(_angerIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
-                        _angerIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
-                    break;
-
-                case Emotion.Anger:
-                    if (Animator.GetCurrentAnimatorStateInfo(2).IsName("Idle") && !_isMakeEffect)
-                    {
-                        _angerIdleEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerIdleEffect, transform);
-                        _angerIdleEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
-                        _isMakeEffect = true;
-                    }
-                    if (_happyIdleEffect != null)
-                    {
-                        Global.Instance.ResourceManager.ReturnObject(Constant.HappyIdleEffect, _happyIdleEffect);
-                        _happyIdleEffect = null;
-                        _isMakeEffect = false;
-                    }
-                    break;
+                if (Animator.GetCurrentAnimatorStateInfo(2).IsName("Walk") && !_isMakeEffect)
+                {
+                    _angerWalkEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerWalkEffect, transform);
+                    _angerWalkEffect.transform.localPosition = new Vector3(0, -1f, 0);
+                    //_angerWalkEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _isMakeEffect = true;
+                }
+                else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Walk") && _angerWalkEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerWalkEffect, _angerWalkEffect);
+                    _angerWalkEffect = null;
+                    _isMakeEffect = false;
+                }
+            }
+            else if (_angerIdleEffect != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.AngerIdleEffect, _angerIdleEffect);
+                _angerIdleEffect = null;
+                _isMakeEffect = false;
             }
         }
 

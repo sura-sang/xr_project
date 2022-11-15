@@ -32,13 +32,13 @@ namespace SuraSang
         public const string AngerDizzyEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_STAR";
 
         //IDLE 이펙트
-        public const string AngerIdleEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_idle";
-        public const string HappyIdleEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_IDLE";
+        public const string AngerIdleEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_idle"; //O
+        public const string HappyIdleEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_IDLE"; //O
 
         //Walk 이펙트
-        public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust";
-        public const string HappyWalkEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_joy_WALK";
-        public const string HappyWalk2Effect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_WALK";
+        public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
+        public const string HappyWalkEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_WALK"; //O
+        public const string HappyWalk2Effect = "Effect/Prefab/PREffect_joy/E_MS_PR_joy_WALK "; //O
 
         //Run 이펙트
         public const string AngerRunEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust";
