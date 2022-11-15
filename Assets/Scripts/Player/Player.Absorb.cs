@@ -71,7 +71,7 @@ namespace SuraSang
 
                 for (int i = 0; i < _hitTargetContainer.Count; i++)
                 {
-                    if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
+                    if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
                         CurrentEmotion = _hitTargetContainer[i].gameObject.GetComponent<Monster>().Emotion;
 
@@ -81,16 +81,19 @@ namespace SuraSang
                             case Emotion.Anger:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.AngerAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);     
+                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
                                 break;
 
                             case Emotion.Happiness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.HappyAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyAbsorbEffectPath, obj);
+                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
                                 break;
 
                             case Emotion.Sadness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.SadAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
+                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
                                 break;
                         }
                         Animator.SetTrigger("Change");
