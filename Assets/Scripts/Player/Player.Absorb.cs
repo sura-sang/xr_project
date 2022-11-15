@@ -129,7 +129,7 @@ namespace SuraSang
                 }
                 else
                 {
-                    if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
+                     if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
                         CurrentEmotion = _hitTargetContainer[0].gameObject.GetComponent<Monster>().Emotion;
 
