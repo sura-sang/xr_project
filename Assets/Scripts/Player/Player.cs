@@ -25,6 +25,8 @@ namespace SuraSang
         public SadEye[] SadEyes => _sadEyes;
         [SerializeField] private SadEye[] _sadEyes;
 
+        // 분노 스킬 이펙트용
+        public Transform EffectTransform;
 
         [Header("Change Avater Camera")]
         [SerializeField]
@@ -144,9 +146,9 @@ namespace SuraSang
 
                 case Emotion.Sadness:
                     _currentCharacter.SetActive(false);
-                    _currentCharacter = _characterDefault;
-                    _characterDefault.SetActive(true);
-                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
+                    _currentCharacter = _characterSad;
+                    _characterSad.SetActive(true);
+                    Animator.avatar = _characterSad.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
                     break;
             }

@@ -8,7 +8,6 @@ namespace SuraSang
     {
         private GameObject _happyEffect;
         private GameObject _angerSkillRushEffect;
-        private GameObject _angerSkillCrashEffect;
 
         private GameObject _angerIdleEffect;
         private GameObject _happyIdleEffect;

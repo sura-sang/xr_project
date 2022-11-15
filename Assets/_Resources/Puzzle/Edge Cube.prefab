@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8103734032051152249
 Transform:
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.1143856}
+  m_Center: {x: -0.0000000013871383, y: 0, z: 0.0571925}
 --- !u!1001 &3989394259744112640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,6 +184,10 @@ PrefabInstance:
     - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
       propertyPath: m_Name
       value: Edge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070441877208543207, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57694ff92f65a2a4f9a422cd0eb888db, type: 3}

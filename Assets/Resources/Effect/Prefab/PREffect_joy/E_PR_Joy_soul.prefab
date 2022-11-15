@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 2126638740041239466}
   - component: {fileID: 2126638740041239465}
   - component: {fileID: 2126638740041239464}
+  - component: {fileID: 6843739942874603722}
   m_Layer: 0
   m_Name: E_PR_Joy_soul
   m_TagString: Untagged
@@ -9627,6 +9628,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6843739942874603722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126638740041239479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9f1394cf178b6468d8a88a10f9ad7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _yPos: 0
+  _radius: 1
+  _angularVelocity: 100
+  _onWall: 0
 --- !u!1 &2126638740058677253
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8427602762557609658}
   - component: {fileID: 4944587847015573297}
   - component: {fileID: 8860596216923006956}
+  - component: {fileID: 4213744067705090831}
   m_Layer: 0
   m_Name: E_P_PR_SAD_SOUL
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6381737034621816862}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8860596217128537298}
@@ -3672,7 +3673,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 0
     collisionMode: 0
@@ -4889,6 +4890,23 @@ PlayableDirector:
   m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
+--- !u!114 &4213744067705090831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6381737034621816862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9f1394cf178b6468d8a88a10f9ad7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _yPos: 0
+  _radius: 1
+  _angularVelocity: 100
+  _onWall: 0
 --- !u!1 &8860596215509871738
 GameObject:
   m_ObjectHideFlags: 0
@@ -4916,7 +4934,7 @@ Transform:
   m_GameObject: {fileID: 8860596215509871738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8860596216242066258}

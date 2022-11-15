@@ -31,6 +31,7 @@ namespace SuraSang
 
         private float _dashStartTime;
 
+        private GameObject _angerSkillCrashEffect;
 
         public AngerSkill(Player player, CharacterController controller)
         {
@@ -82,6 +83,10 @@ namespace SuraSang
             {
                 Debug.Log(hit.transform.gameObject.name);
                 hit.GetComponent<Collider>()?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContextDirection(_player.transform.forward, _player, _player.CurrentEmotion));
+                
+                _player.EffectTransform.position = hit.ClosestPoint(_player.transform.position);
+                _angerSkillCrashEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerSkillCrashEffectPath, _player.EffectTransform);
+                _angerSkillCrashEffect.transform.localRotation = Quaternion.Euler(0, _player.transform.rotation.y, 0);
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > SkillRunningTime)
@@ -89,6 +94,13 @@ namespace SuraSang
                 _player.IsSkill = false;
                 _player.Animator.SetTrigger("Collide");
                 _isStopAble = true;
+
+                if (_angerSkillCrashEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerDizzyEffect, _angerSkillCrashEffect);
+                    _angerSkillCrashEffect = null;
+                }
+
             }
         }
 

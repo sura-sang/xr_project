@@ -24,9 +24,9 @@ namespace SuraSang
         public const string AngerSkillCrashEffectPath = "Effect/Prefab/PREffect_ang/E_P_ang_SKILL2";
 
         //정령 이펙트
-        public const string AngerSoulEffect = "Effect/Prefab/PREffect_ang/E_ang_soul";
-        public const string HappySoulEffect = "Effect/Prefab/PREffect_joy/E_PR_Joy_soul";
-        public const string SadSoulEffect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_SOUL";
+        public const string AngerSoulEffect = "Effect/Prefab/PREffect_ang/E_ang_soul"; //O
+        public const string HappySoulEffect = "Effect/Prefab/PREffect_joy/E_PR_Joy_soul"; //O
+        public const string SadSoulEffect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_SOUL"; //O
 
         //분노 헤롱헤롱 이펙트 
         public const string AngerDizzyEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_STAR";
