@@ -26,8 +26,8 @@ namespace SuraSang
             _dir = (_player.transform.position - _anger.transform.position).normalized;
 
             _dashStartTime = Time.time;
-            
-            
+
+            _animator.SetTrigger("Attack");
 
             _radius = _agent.radius;
         }
@@ -48,12 +48,14 @@ namespace SuraSang
             {
                 // 충돌 행동
                 Debug.Log(hit.transform.gameObject.name);
+
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > _anger.MaxDashTime)
             {
                 _agent.SetDestination(_anger.transform.position);
-                _anger.ChangeState(new AngerIdle(_characterMove));
+
+                _anger.ChangeState(new AngerStun(_characterMove));
             }
         }
 

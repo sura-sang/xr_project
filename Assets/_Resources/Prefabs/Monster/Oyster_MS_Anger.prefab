@@ -113,8 +113,10 @@ MonoBehaviour:
   DashCheckLayerMask:
     serializedVersion: 2
     m_Bits: 4352
+  DashReadyTime: 3
   DashSpeed: 15
-  MaxDashTime: 3
+  MaxDashTime: 0.9
+  StunTime: 3
 --- !u!114 &1565566290
 MonoBehaviour:
   m_ObjectHideFlags: 0

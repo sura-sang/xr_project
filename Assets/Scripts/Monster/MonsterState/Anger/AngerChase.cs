@@ -35,7 +35,7 @@ namespace SuraSang
             }
             else if (distance < _anger.SkillRange && (Time.time - _chaseStartTime) > _anger.SkillCooltime)
             {
-                _anger.ChangeState(new AngerDash(_characterMove));
+                _anger.ChangeState(new AngerReady(_characterMove));
             }
         }
 

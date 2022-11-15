@@ -15,13 +15,18 @@ namespace SuraSang
 
         public LayerMask DashCheckLayerMask;
 
+        public float DashReadyTime;
         public float DashSpeed;
         public float MaxDashTime;
+
+        public float StunTime;
 
 
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
+            Animator = GetComponent<Animator>();
+
             Agent.updateRotation = false;
 
             ChangeState(new AngerIdle(this));
