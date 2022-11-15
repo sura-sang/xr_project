@@ -8,8 +8,6 @@ namespace SuraSang
     {
         private Player _player;
         private Anger _anger;
-
-        private float _chaseStartTime;
         
         public AngerChase(CharacterMove characterMove) : base(characterMove) { }
 
@@ -17,8 +15,6 @@ namespace SuraSang
         {
             _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
-
-            _chaseStartTime = Time.time;
         }
 
         public override void UpdateState()
@@ -33,7 +29,7 @@ namespace SuraSang
             {
                 _anger.ChangeState(new AngerIdle(_characterMove));
             }
-            else if (distance < _anger.SkillRange && (Time.time - _chaseStartTime) > _anger.SkillCooltime)
+            else if (distance < _anger.SkillRange)
             {
                 _anger.ChangeState(new AngerReady(_characterMove));
             }

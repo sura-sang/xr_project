@@ -18,8 +18,10 @@ namespace SuraSang
         {
             _player = Global.Instance.SceneMaster.Player;
             _anger = _monster as Anger;
-
+            
             _readyStartTime = Time.time;
+
+            _agent.SetDestination(_anger.transform.position);
 
             _animator.SetTrigger("Ready");
         }
