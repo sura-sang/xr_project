@@ -20,6 +20,8 @@ namespace SuraSang
 
         private bool _isMakeEffect = false;
 
+        private GameObject _obj = null;
+
         private void ChangeEffect()
         {
             if (IsSkill)
@@ -185,7 +187,7 @@ namespace SuraSang
                     CanMove = false;
                     obj = Global.Instance.ResourceManager.GetObject(Constant.AngerTransEffectPath, transform);
                     Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerTransEffectPath, obj);
-                    obj.transform.localPosition = new Vector3(0, -1, 0);
+                    obj.transform.localPosition = new Vector3(0, -1, 0.5f);
                     break;
 
                 case Emotion.Sadness:
