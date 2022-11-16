@@ -95,6 +95,7 @@ namespace SuraSang
                         }
                         Animator.SetTrigger("Change");
                         _hitTargetContainer[i].gameObject.GetComponent<Monster>().Absorbed();
+                        _hitTargetContainer[i].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
                     }
                 }
             }
