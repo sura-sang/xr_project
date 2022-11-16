@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5671860409645682102}
-  - component: {fileID: 1936242415088071107}
   - component: {fileID: 5671860409645682101}
   - component: {fileID: 5671860409645682096}
-  - component: {fileID: 1483862950}
   - component: {fileID: 1565566290}
+  - component: {fileID: 1483862950}
   m_Layer: 9
   m_Name: Oyster_MS_Anger
   m_TagString: Untagged
@@ -38,26 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1936242415088071107
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5671860409645682058}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0d6cba9a2c6aa204883707b97a68d7d6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4f58b6700a26bf846be1506154b05d36, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &5671860409645682101
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -94,6 +73,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1565566290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671860409645682058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bf95835afae01478fc19892e7f748b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 3
+  GrowSpeed: 1
 --- !u!114 &1483862950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,20 +108,6 @@ MonoBehaviour:
     m_Bits: 4352
   DashSpeed: 15
   MaxDashTime: 3
---- !u!114 &1565566290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5671860409645682058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79bf95835afae01478fc19892e7f748b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Size: 3
-  GrowSpeed: 1
 --- !u!1 &6406351312968981845
 GameObject:
   m_ObjectHideFlags: 0

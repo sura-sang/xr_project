@@ -357,13 +357,13 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
-  HasPlatforms: 0
+  HasSourceProject: 1
+  HasPlatforms: 1
   sourceProjectPath: "../\uC0AC\uC6B4\uB4DC/moshu/moshu.fspro"
-  sourceBankPath: Assets/Plugins/FMOD/Banks/Desktop
+  sourceBankPath: "../\uC0AC\uC6B4\uB4DC/moshu/Build"
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
-  ShowBankRefreshWindow: 0
+  ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -383,9 +383,7 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks:
-  - TestBank
-  - TestBank2
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
