@@ -31,6 +31,7 @@ namespace SuraSang
         private CinemachineVirtualCamera _camera;
 
         [SerializeField] private CinemachineDollyCart _cart;
+        [SerializeField] private float _cartSpeed;
 
         [ReadOnly] public bool CanMove = true;
         private GameObject HappyEffect;
@@ -224,15 +225,17 @@ namespace SuraSang
 
         public void CameraStart()
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
             _camera.m_Priority = 11;
-            _cart.m_Speed = 0.25f;
+
+            _cart.m_Position = 0f;
+            _cart.m_Speed = _cartSpeed;
         }
 
         public void CameraStop()
         {
             _camera.m_Priority = 9;
-            _cart.m_Speed = 0f;
-            _cart.m_Position = 0f;
         }
 
 #if UNITY_EDITOR
