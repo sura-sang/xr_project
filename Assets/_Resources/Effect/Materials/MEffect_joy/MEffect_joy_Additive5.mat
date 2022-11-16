@@ -20,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _TEffect_joy_Alpha04:
+        m_Texture: {fileID: 2800000, guid: bdfa5a3e424390e41bfc30538954424b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Tex_01:
         m_Texture: {fileID: 2800000, guid: 9d54d64b0eb039d44aa85e0454c89115, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -34,6 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TextureSample1:
         m_Texture: {fileID: 2800000, guid: 401b72306be28ba4fab6623afcd2d617, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -51,15 +59,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _Float1: 11.6
-    - _MAINPOW: 5
-    - _OPACITY: 1.77
+    - _Float1: 26.3
+    - _MAINPOW: 1.69
+    - _OPACITY: 2.4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _U: 0
-    - _V: 0.15
+    - _V: 0.07
     m_Colors:
     - _Color0: {r: 1, g: 0.9041064, b: 0.35294116, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 0.7992379, b: 0.35294113, a: 1}
+    - _MainColor: {r: 1, g: 0.6941403, b: 0.34509802, a: 1}
   m_BuildTextureStacks: []

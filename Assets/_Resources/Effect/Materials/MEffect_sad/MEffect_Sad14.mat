@@ -22,7 +22,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MEffect_Sad14
   m_Shader: {fileID: 4800000, guid: 4912c4cd234069d43b2de2f4bd0f7cd0, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _KEYWORD0_ON
+  - _KEYWORD1_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -57,6 +59,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MAIN:
+        m_Texture: {fileID: 2800000, guid: 25777655ff4b9344b937a4f179c58346, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -78,11 +84,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
-        m_Texture: {fileID: 2800000, guid: 0f757346a3381ef47a7036340f224839, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32951545fd803a34fbdb8f813fc9bc7b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample1:
-        m_Texture: {fileID: 2800000, guid: 40bb89f55ec539646b708928cc7f12f7, type: 3}
+        m_Texture: {fileID: 2800000, guid: d37a5c56d498d2843a2d6fdec9a2c351, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample2:
+        m_Texture: {fileID: 2800000, guid: 0f757346a3381ef47a7036340f224839, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _dissilvetexture:
+        m_Texture: {fileID: 2800000, guid: ae854d8ab73a89d47a4604af8897290b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -107,19 +125,26 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DISSOLVE: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _Dissolve: 0.19
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Float1: 30
+    - _Float1: 30.4
+    - _Float2: 0
+    - _Float3: 0.15
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _INS: 38
+    - _Keyword0: 1
+    - _Keyword1: 1
     - _MAINPOW: 5
     - _Metallic: 0
+    - _NOISE: 3.27
     - _OP: 0.38
-    - _OPACITY: 4.7837133
+    - _OPACITY: 3.68
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -131,13 +156,18 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _U: 0
-    - _V: 0.15
+    - _V: 0.02
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _dis_u: 0.28
+    - _dis_v: 0.15
+    - _dissolve: -0.19
+    - _ins: 50
+    - _pow: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.4481132, g: 0.68571705, b: 1, a: 1}
+    - _Color0: {r: 0.44811308, g: 0.68571705, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

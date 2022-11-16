@@ -65,8 +65,10 @@ namespace SuraSang
         {
             FindViewTargets();
 
-            if (isOn && _hitTargetContainer.Count != 0)
+            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded)
             {
+                CanMove = false;
+
                 for (int i = 0; i < _hitTargetContainer.Count; i++)
                 {
                     if (!_hitTargetContainer[i].gameObject.GetComponent<Monster>().IsSleep)
