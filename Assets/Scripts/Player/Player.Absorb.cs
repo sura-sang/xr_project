@@ -123,9 +123,9 @@ namespace SuraSang
                                 break;
                         }
 
-                        Animator.SetTrigger("Change");
+                        //Animator.SetTrigger("Change");
                         // TO DO : 트리거 대신 Bool로 파라미터 지정해주니까 문제 해결됨. 혹시 몰라서 애니메이터는 안만질게요.
-                        //Animator.SetBool("test", true);
+                        Animator.SetBool("Change", true);
                         _hitTargetContainer[index].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[index].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
                     }
@@ -157,8 +157,8 @@ namespace SuraSang
                                 obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
                                 break;
                         }
-                        Animator.SetTrigger("Change");
-                        //Animator.SetBool("test", true);
+                        //Animator.SetTrigger("Change");
+                        Animator.SetBool("Change", true);
                         _hitTargetContainer[0].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[0].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
                     }

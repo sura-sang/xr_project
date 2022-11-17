@@ -6,9 +6,6 @@ namespace SuraSang
 {
     public partial class Player
     {
-        private GameObject _happyEffect;
-        private GameObject _angerSkillRushEffect;
-
         private GameObject _angerIdleEffect;
         private GameObject _happyIdleEffect;
 
@@ -20,33 +17,34 @@ namespace SuraSang
 
         private bool _isMakeEffect = false;
 
-        private GameObject _obj = null;
+        private GameObject _Skillobj;
+        private GameObject _Animobj;
 
         private void ChangeEffect()
         {
             if (IsSkill)
             {
-                if (CurrentEmotion == Emotion.Happiness && _happyEffect == null)
+                if (CurrentEmotion == Emotion.Happiness && _Skillobj == null)
                 {
-                    _happyEffect = Global.Instance.ResourceManager.GetObject(Constant.HappySkillEffectPath, transform);
-                    _happyEffect.transform.localPosition = new Vector3(0, -1, 0);
+                    _Skillobj = Global.Instance.ResourceManager.GetObject(Constant.HappySkillEffectPath, transform);
+                    _Skillobj.transform.localPosition = new Vector3(0, -1, 0);
                 }
-                else if (CurrentEmotion == Emotion.Anger && _angerSkillRushEffect == null)
+                else if (CurrentEmotion == Emotion.Anger && _Skillobj == null)
                 {
-                    _angerSkillRushEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerSkillRushEffectPath, transform);
-                    _angerSkillRushEffect.transform.localPosition = new Vector3(0, -0.4f, -0.2f);
-                    _angerSkillRushEffect.transform.localRotation = Quaternion.Euler(0, transform.rotation.y, 0);
+                    _Skillobj = Global.Instance.ResourceManager.GetObject(Constant.AngerSkillRushEffectPath, transform);
+                    _Skillobj.transform.localPosition = new Vector3(0, -0.4f, -0.2f);
+                    _Skillobj.transform.localRotation = Quaternion.Euler(0, transform.rotation.y, 0);
                 }
             }
-            else if (_happyEffect != null)
+            else if (CurrentEmotion == Emotion.Happiness && _Skillobj != null)
             {
-                Global.Instance.ResourceManager.ReturnObject(Constant.HappySkillEffectPath, _happyEffect);
-                _happyEffect = null;
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappySkillEffectPath, _Skillobj);
+                _Skillobj = null;
             }
-            else if (_angerSkillRushEffect != null)
+            else if (CurrentEmotion == Emotion.Anger && _Skillobj != null)
             {
-                Global.Instance.ResourceManager.ReturnObject(Constant.AngerSkillRushEffectPath, _angerSkillRushEffect);
-                _angerSkillRushEffect = null;
+                Global.Instance.ResourceManager.ReturnObject(Constant.AngerSkillRushEffectPath, _Skillobj);
+                _Skillobj = null;
             }
         }
 

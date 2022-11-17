@@ -184,6 +184,7 @@ namespace SuraSang
         public void canMove()
         {
             CanMove = true;
+            Animator.SetBool("Change", false);
         }
 
         public void cantMove()
