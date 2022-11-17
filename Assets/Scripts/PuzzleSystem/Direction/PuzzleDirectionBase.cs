@@ -9,10 +9,13 @@ namespace SuraSang
         public Vector3 Dir { get; private set; }
         public CharacterMove Character { get; private set; }
 
-        public PuzzleContextDirection(Vector3 dir, CharacterMove character, Emotion emotion) : base(emotion)
+        public Player Player { get; private set; }
+
+        public PuzzleContextDirection(Vector3 dir, CharacterMove character, Emotion emotion, Player player) : base(emotion)
         {
             Dir = dir;
             Character = character;
+            Player = player;
         }
     }
 

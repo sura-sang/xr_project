@@ -23,17 +23,21 @@ namespace SuraSang
         private float _minVelocity;
         private float _lastJumpTime;
 
+        [SerializeField]
+        private Monster _monster;
+
         private void Awake()
         {
             var data = Global.Instance.SODataManager.GetData<PlayerData>();
             var gravity = data.Gravity * data.FallingGravityMultiplier;
             _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight);
+            _monster = GetComponentInParent<Monster>();
         }
 
         public override void OnNotify(PuzzleContext context)
         {
             base.OnNotify(context);
-
+            
             if (_context == null)
             {
                 return;
@@ -45,6 +49,16 @@ namespace SuraSang
             }
 
             if (Time.time - _lastJumpTime < Cooltime)
+            {
+                return;
+            }
+
+            if(!_monster.IsSleep)
+            {
+                return;
+            }
+            
+            if(_context.SkillEmotion == Emotion.Anger && _context.Player.IsSkill)
             {
                 return;
             }
@@ -77,7 +91,7 @@ namespace SuraSang
         {
             if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
-                OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion));
+                OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion, player));
             }
 
         }

@@ -25,6 +25,8 @@ namespace SuraSang
         public SadEye[] SadEyes => _sadEyes;
         [SerializeField] private SadEye[] _sadEyes;
 
+        // 분노 스킬 이펙트용
+        public Transform EffectTransform;
 
         [Header("Change Avater Camera")]
         [SerializeField]
@@ -34,7 +36,6 @@ namespace SuraSang
         [SerializeField] private float _cartSpeed;
 
         [ReadOnly] public bool CanMove = true;
-        private GameObject HappyEffect;
 
         private Transform _cameraTransform;
 
@@ -91,16 +92,8 @@ namespace SuraSang
                 SceneMaster.SceneInstance.LoadLevel(0);
             }
 
-            if (IsSkill)
-            {
-                if (CurrentEmotion == Emotion.Happiness && HappyEffect == null)
-                    HappyEffect = Global.Instance.ResourceManager.GetObject(Constant.HappySkillEffectPath, transform);
-            }
-            else if(HappyEffect != null)
-            {
-                Global.Instance.ResourceManager.ReturnObject(Constant.HappySkillEffectPath, HappyEffect);
-                HappyEffect = null;
-            }
+            ChangeEffect();
+            ChangeStateEffect();
         }
 
         public override void MovePosition(Vector3 pos)
@@ -153,9 +146,9 @@ namespace SuraSang
 
                 case Emotion.Sadness:
                     _currentCharacter.SetActive(false);
-                    _currentCharacter = _characterDefault;
-                    _characterDefault.SetActive(true);
-                    Animator.avatar = _characterDefault.GetComponent<Animator>().avatar;
+                    _currentCharacter = _characterSad;
+                    _characterSad.SetActive(true);
+                    Animator.avatar = _characterSad.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
                     break;
             }
@@ -188,34 +181,10 @@ namespace SuraSang
             }
         }
 
-        public void TransEffect()
-        {
-            GameObject obj;
-            switch (CurrentEmotion)
-            {
-                case Emotion.Anger:
-                    CanMove = false;
-                    obj = Global.Instance.ResourceManager.GetObject(Constant.AngerTransEffectPath, transform);
-                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerTransEffectPath, obj);
-                    break;
-
-                case Emotion.Sadness:
-                    CanMove = false;
-                    obj = Global.Instance.ResourceManager.GetObject(Constant.SadTransEffectPath, transform);
-                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadTransEffectPath, obj);
-                    break;
-
-                case Emotion.Happiness:
-                    CanMove = false;
-                    obj = Global.Instance.ResourceManager.GetObject(Constant.HappyTransEffectPath, transform);
-                    Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyTransEffectPath, obj);
-                    break;
-            }
-        }
-
         public void canMove()
         {
             CanMove = true;
+            Animator.SetBool("Change", false);
         }
 
         public void cantMove()

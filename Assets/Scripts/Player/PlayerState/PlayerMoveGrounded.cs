@@ -57,7 +57,6 @@ namespace SuraSang
             {
                 _player.canMove();
             }
-
         }
 
         public override void ClearState() { }
@@ -65,9 +64,13 @@ namespace SuraSang
 
         private void OnRun(bool isOn)
         {
-            _isRunning = isOn;
-            if (isOn && _player.CurrentEmotion != Emotion.Sadness) _player.Animator.SetBool("IsRunning", true);
-            else _player.Animator.SetBool("IsRunning", false);
+            if (isOn && _player.CurrentEmotion != Emotion.Sadness && _player.CanMove)
+            {
+                _isRunning = isOn;
+                _player.Animator.SetBool("IsRunning", true);
+            }
+            else
+                _player.Animator.SetBool("IsRunning", false);
         }
 
         private void OnJump(bool isOn)
@@ -98,7 +101,7 @@ namespace SuraSang
             dir.y = _controller.isGrounded ? -1 : _player.MoveDir.y - _player.PlayerData.Gravity * Time.deltaTime;
             _player.MoveDir = dir;
 
-            if (input != Vector2.zero) _player.Animator.SetBool("IsWalking", true);
+            if (input != Vector2.zero && _player.CanMove) _player.Animator.SetBool("IsWalking", true);
             else _player.Animator.SetBool("IsWalking", false);
         }
 

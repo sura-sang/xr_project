@@ -32,9 +32,7 @@ namespace SuraSang
             return (T)result;
         }
 
-
         // 오브젝트 풀
-
         private Dictionary<string, Queue<GameObject>> _objectPools = new Dictionary<string, Queue<GameObject>>();
         private Transform _poolTransform = null;
 
@@ -71,9 +69,8 @@ namespace SuraSang
             }
 
             var result = queue.Dequeue();
-
             result.transform.SetParent(parent);
-            result.transform.localPosition = Vector3.zero;
+            result.transform.localPosition = new Vector3(0, 0, 0);
             result.SetActive(true);
 
             return result;

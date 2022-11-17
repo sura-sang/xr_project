@@ -25,7 +25,8 @@ namespace SuraSang
 
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
             _player.SetAction(ButtonActions.Jump, OnJump);
-            _player.Animator.SetBool("IsJumping", true);
+            if (_player.CanMove)
+                _player.Animator.SetBool("IsJumping", true);
 
             if (_overrideJumpDir == Vector3.zero)
             {
@@ -48,7 +49,7 @@ namespace SuraSang
 
         private void OnJump(bool isOn)
         {
-            if (!isOn)
+            if (!isOn && _player.CanMove)
             {
                 _isJumpEnd = true;
             }
