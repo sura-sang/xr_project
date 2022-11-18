@@ -64,13 +64,8 @@ namespace SuraSang
 
         private void OnRun(bool isOn)
         {
-            if (isOn && _player.CurrentEmotion != Emotion.Sadness && _player.CanMove)
-            {
-                _isRunning = isOn;
-                _player.Animator.SetBool("IsRunning", true);
-            }
-            else
-                _player.Animator.SetBool("IsRunning", false);
+            _isRunning = isOn && _player.CurrentEmotion != Emotion.Sadness && _player.CanMove;
+            _player.Animator.SetBool("IsRunning", _isRunning);
         }
 
         private void OnJump(bool isOn)
