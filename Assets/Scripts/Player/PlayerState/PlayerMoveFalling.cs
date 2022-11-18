@@ -9,19 +9,19 @@ namespace SuraSang
         // TODO : 여기서 메달리기 상태로 이어지게 만들면 될 듯
 
         private bool _isHolding;
-        
+
         public PlayerMoveFalling(CharacterMove characterMove) : base(characterMove) { }
 
         public override void InitializeState()
         {
-            _player.OnMove = OnMove;            
+            _player.OnMove = OnMove;
             _player.SetAction(ButtonActions.Hold, isOn => _isHolding = isOn);
             _player.Animator.SetBool("IsFalling", true);
         }
 
         public override void UpdateState() { }
 
-        public override void ClearState() 
+        public override void ClearState()
         {
             _player.Animator.SetBool("IsFalling", false);
         }
@@ -35,8 +35,10 @@ namespace SuraSang
 
             dir.y = 0;
 
-            var inputDir = _player.InputToCameraSpace(input) * _player.PlayerData.Speed;
-            dir = Vector3.MoveTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime);
+            var inputDir = _player.InputToCameraSpace(input);
+            inputDir.y = 0;
+            inputDir.Normalize();
+            dir = Vector3.RotateTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime, 0);
 
             dir.y = y;
 
