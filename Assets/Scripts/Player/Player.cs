@@ -13,9 +13,7 @@ namespace SuraSang
     {
         private readonly int MoveSpeedParam = Animator.StringToHash("MoveSpeed");
 
-
         [SerializeField] private bool _debugMode = false;
-
 
         public CharacterController Controller { get; private set; }
         public Animator Animator { get; private set; }
@@ -134,6 +132,7 @@ namespace SuraSang
                     _characterAnger.SetActive(true);
                     Animator.avatar = _characterAnger.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
+                    Animator.SetBool("Change", false);
                     break;
 
                 case Emotion.Happiness:
@@ -142,6 +141,7 @@ namespace SuraSang
                     _characterHappy.SetActive(true);
                     Animator.avatar = _characterHappy.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
+                    Animator.SetBool("Change", false);
                     break;
 
                 case Emotion.Sadness:
@@ -150,6 +150,7 @@ namespace SuraSang
                     _characterSad.SetActive(true);
                     Animator.avatar = _characterSad.GetComponent<Animator>().avatar;
                     Animator.Play("Change", 0, 0.4f);
+                    Animator.SetBool("Change", false);
                     break;
             }
         }
@@ -184,7 +185,6 @@ namespace SuraSang
         public void canMove()
         {
             CanMove = true;
-            Animator.SetBool("Change", false);
         }
 
         public void cantMove()
