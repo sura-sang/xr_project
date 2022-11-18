@@ -113,6 +113,15 @@ namespace SuraSang
             return null;
         }
 
+        public bool GetActionValue(ButtonActions type)
+        {
+            if (_buttonActions.TryGetValue(type, out var input))
+            {
+                return input.IsPressed();
+            }
+            return false;
+        }
+
         public void SetAction(ButtonActions type, UnityAction<bool> action)
         {
             if (!_buttonEvents.ContainsKey(type))

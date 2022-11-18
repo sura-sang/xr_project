@@ -30,7 +30,7 @@ namespace SuraSang
 
             if (_overrideJumpDir == Vector3.zero)
             {
-                var dir = _player.MoveDir;
+                var dir = _player.MoveDir * (_player.GetActionValue(ButtonActions.Run) ? _player.PlayerData.JumpRunMultiplier : 1);
                 dir.y = _player.PlayerData.JumpPower;
                 _player.MoveDir = dir;
             }
