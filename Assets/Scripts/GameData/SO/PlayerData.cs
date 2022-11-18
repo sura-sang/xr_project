@@ -43,6 +43,10 @@ namespace SuraSang
         public float GrabMultiplier => _grabMultiplier; // 절벽 잡고 움직일 때 속도에 곱해지는 값
 
 
+        [SerializeField] private float _jumpRunMultiplier;
+        public float JumpRunMultiplier => _jumpRunMultiplier; // 달리면서 점프할 때 속도에 곱해지는 값 
+
+
         [Header("중력")]
         [SerializeField] private float _gravity;
         public float Gravity => _gravity;
