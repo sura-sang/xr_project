@@ -82,8 +82,10 @@ namespace SuraSang
 
             dir.y = 0;
 
-            var inputDir = _player.InputToCameraSpace(input) * _player.PlayerData.Speed;
-            dir = Vector3.MoveTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime);
+            var inputDir = _player.InputToCameraSpace(input);
+            inputDir.y = 0;
+            inputDir.Normalize();
+            dir = Vector3.RotateTowards(dir, inputDir, _player.PlayerData.AirControl * Time.deltaTime, 0);
 
             dir.y = y;
 
