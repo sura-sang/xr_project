@@ -67,8 +67,6 @@ namespace SuraSang
 
             if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded)
             {
-                CanMove = false;
-
                 if (_hitTargetContainer.Count != 1)
                 {
                     var temp = 0f;
@@ -78,27 +76,32 @@ namespace SuraSang
 
                     for (int i = 0; i < _hitTargetContainer.Count; i++)
                     {
-                        if(i == 0)
+                        if (!_hitTargetContainer[index].gameObject.GetComponent<Monster>().IsSleep)
                         {
-                            temp = Vector3.Distance(transform.position, _hitTargetContainer[i].transform.position);
-                            index = i;
-                            continue;
-                        }
-                        else
-                        {
-                            temp2 = Vector3.Distance(transform.position, _hitTargetContainer[i].transform.position);
-                            index2 = i;
-                        }
+                            if (i == 0)
+                            {
+                                temp = Vector3.Distance(transform.position, _hitTargetContainer[i].transform.position);
+                                index = i;
+                                continue;
+                            }
+                            else
+                            {
+                                temp2 = Vector3.Distance(transform.position, _hitTargetContainer[i].transform.position);
+                                index2 = i;
+                            }
 
-                        if(temp>temp2)
-                        {
-                            temp = temp2;
-                            index = index2;
+                            if (temp > temp2)
+                            {
+                                temp = temp2;
+                                index = index2;
+                            }
                         }
                     }
 
                     if (!_hitTargetContainer[index].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
+                        CanMove = false;
+
                         CurrentEmotion = _hitTargetContainer[index].gameObject.GetComponent<Monster>().Emotion;
 
                         GameObject obj;
@@ -124,7 +127,6 @@ namespace SuraSang
                         }
 
                         //Animator.SetTrigger("Change");
-                        // TO DO : 트리거 대신 Bool로 파라미터 지정해주니까 문제 해결됨. 혹시 몰라서 애니메이터는 안만질게요.
                         Animator.SetBool("Change", true);
                         _hitTargetContainer[index].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[index].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
@@ -132,8 +134,10 @@ namespace SuraSang
                 }
                 else
                 {
-                     if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
+                    if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
+                        CanMove = false;
+
                         CurrentEmotion = _hitTargetContainer[0].gameObject.GetComponent<Monster>().Emotion;
 
                         GameObject obj;

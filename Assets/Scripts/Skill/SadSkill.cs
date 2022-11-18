@@ -73,7 +73,6 @@ namespace SuraSang
             }
         }
 
-
         private List<RaycastHit> GetLastSadHits()
         {
             List<RaycastHit> raycastHits = new();

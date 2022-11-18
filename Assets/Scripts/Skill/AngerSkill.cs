@@ -97,10 +97,9 @@ namespace SuraSang
 
                 if (_angerSkillCrashEffect != null)
                 {
-                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerDizzyEffect, _angerSkillCrashEffect);
+                    Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.AngerSkillCrashEffectPath, _angerSkillCrashEffect,0.5f);
                     _angerSkillCrashEffect = null;
                 }
-
             }
         }
 
