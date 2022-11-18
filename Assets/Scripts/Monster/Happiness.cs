@@ -15,6 +15,8 @@ namespace SuraSang
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
 
+            Agent.updateRotation = false;
+
             FineNearestTag();
 
             ChangeState(new HappinessIdle(this));

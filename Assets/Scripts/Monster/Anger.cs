@@ -7,6 +7,9 @@ namespace SuraSang
 {
     public class Anger : Monster
     {
+        [SerializeField] private Transform _moveDummy;
+        public Transform MoveDummy => _moveDummy;
+
         public override Emotion Emotion => Emotion.Anger;
 
         public float ChaseRange;
@@ -15,13 +18,18 @@ namespace SuraSang
 
         public LayerMask DashCheckLayerMask;
 
+        public float DashReadyTime;
         public float DashSpeed;
         public float MaxDashTime;
+
+        public float StunTime;
 
 
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
+            Animator = GetComponent<Animator>();
+
             Agent.updateRotation = false;
 
             ChangeState(new AngerIdle(this));

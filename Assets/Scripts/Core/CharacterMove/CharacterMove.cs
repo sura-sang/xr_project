@@ -9,7 +9,7 @@ namespace SuraSang
 {
     public abstract class CharacterMove : MonoBehaviour
     {
-        [SerializeField] private float _rotationSpeed;
+        [SerializeField] private float _rotationSpeed = 10;
 
         private CharacterMoveState _currentState;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SuraSang
 {
-    public class HappyMoveRange : MonoBehaviour
+    public class MoveRange : MonoBehaviour
     {
         public float MoveRadius = 5f;
 
@@ -16,7 +16,7 @@ namespace SuraSang
         {
             Gizmos.color = Color.yellow;
 
-            Gizmos.DrawWireSphere(transform.position, MoveRadius);
+            Gizmos.DrawWireSphere(transform.position, MoveRadius * 2);
         }
     }
 }
