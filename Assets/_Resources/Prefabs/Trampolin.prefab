@@ -111,17 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5193480c5b64b44d9ac084a77cc23d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dirCount: 4
   _startAngle: 0
   DebugHeight:
   - 2.2251067
   - 3.3045485
   - 4.3398333
-  _playerData: {fileID: 11400000, guid: 257db9c9563e942c2ae42559a612653a, type: 2}
   _jumpPoint: {fileID: 8514280265155238081}
   Cooltime: 0.1
   MinHeight: 1.3636377
   JumpVelocity: 7
   PowerReduction: 0.7
+  _monster: {fileID: 0}
+  _debugMode: 1
 --- !u!1 &8514280265155238080
 GameObject:
   m_ObjectHideFlags: 0
