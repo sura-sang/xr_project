@@ -92,6 +92,8 @@ namespace SuraSang
 
             ChangeEffect();
             ChangeStateEffect();
+
+            DetermineTerrain();
         }
 
         public override void MovePosition(Vector3 pos)
