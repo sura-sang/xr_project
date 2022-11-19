@@ -130,6 +130,9 @@ namespace SuraSang
                         Animator.SetBool("Change", true);
                         _hitTargetContainer[index].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[index].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
+
+                        Debug.Log("흡수 사운드 실행");
+                        AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_AB);
                     }
                 }
                 else
@@ -165,6 +168,9 @@ namespace SuraSang
                         Animator.SetBool("Change", true);
                         _hitTargetContainer[0].gameObject.GetComponent<Monster>().Absorbed();
                         _hitTargetContainer[0].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
+
+                        Debug.Log("흡수 사운드 실행");
+                        AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_AB);
                     }
                 }
             }

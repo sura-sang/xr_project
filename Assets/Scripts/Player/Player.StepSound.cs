@@ -55,7 +55,6 @@ namespace SuraSang
         {
             if (CurrentEmotion == Emotion.Default)
             {
-                Debug.Log("디폴트 스텝");
                 switch (_currentTerrain)
                 {
                     case CURRENT_TERRAIN.GRASS:
@@ -78,7 +77,6 @@ namespace SuraSang
         {
             if (CurrentEmotion != Emotion.Default)
             {
-                Debug.Log("감정 스텝");
                 switch (_currentTerrain)
                 {
                     case CURRENT_TERRAIN.GRASS:
