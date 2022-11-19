@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 namespace SuraSang
 {
@@ -9,14 +8,15 @@ namespace SuraSang
     {
         public float Size = 3f;
         public float GrowSpeed = 1f;
-        private float _time; 
+        private float _time;
+        private Animator _animator;
+        private Sadness _sadness;
         public BoxCollider Platform;
-
-        [SerializeField]
-        private Transform _body;
 
         private void Start()
         {
+            _sadness = GetComponent<Sadness>();
+            _animator = GetComponent<Animator>();
             PuzzleManager.Instance.AddObserver(this);
             Platform.enabled = false;
         }
@@ -25,11 +25,16 @@ namespace SuraSang
         {
             if (context.SkillEmotion == Emotion.Sadness && !IsNotify)
             {
-                Platform.enabled = true;
                 IsNotify = true;
-                _body.transform.DOMoveY(Size, GrowSpeed, false);
+                _animator.SetBool("Growth",true);
                 Debug.Log("갓버섯 퍼즐 실행");
             }
+        }
+
+        private void Update()
+        {
+            if (_sadness.IsSleep)
+                Platform.enabled = true;
         }
     }
 }
