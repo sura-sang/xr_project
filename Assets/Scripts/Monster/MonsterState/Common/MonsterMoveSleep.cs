@@ -10,7 +10,10 @@ namespace SuraSang
 
         //아무것도 안하고 아무것도 할 수 없음
 
-        public override void InitializeState() { }
+        public override void InitializeState()
+        {
+
+        }
 
         public override void UpdateState()
         { 
