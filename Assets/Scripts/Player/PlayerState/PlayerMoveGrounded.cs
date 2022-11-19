@@ -72,6 +72,8 @@ namespace SuraSang
         {
             if (isOn && !_player.IsHeadblocked())
             {
+                AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Jump);
+
                 _characterMove.ChangeState(new PlayerMoveJumping(_characterMove));
             }
         }

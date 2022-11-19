@@ -20,6 +20,8 @@ namespace SuraSang
 
         public override void InitializeState()
         {
+            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Hang);
+
             _speed = _player.PlayerData.Speed * _player.PlayerData.GrabMultiplier;
 
             _player.OnMove = OnMove;

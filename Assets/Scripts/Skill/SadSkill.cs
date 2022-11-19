@@ -57,6 +57,8 @@ namespace SuraSang
         {
             _skillInUse = true;
 
+            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Cry);
+
             foreach (var eye in _player.SadEyes)
             {
                 eye.ResetTears();

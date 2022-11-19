@@ -61,6 +61,8 @@ namespace SuraSang
         public FMODUnity.EventReference CS_OP;
         public FMODUnity.EventReference CS_ED;
 
+        public FMOD.Studio.EventInstance PlayerState;
+
         private void Awake()
         {
             if (Instance == null)
@@ -85,6 +87,12 @@ namespace SuraSang
         public void SoundOneShot3D(EventReference audioEvent, Transform transform)
         {
             RuntimeManager.PlayOneShot(audioEvent, transform.position);
+        }
+
+        public void GameStart()
+        {
+            PlayerState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
+            PlayerState.start();
         }
     }
 }

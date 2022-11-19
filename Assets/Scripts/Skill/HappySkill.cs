@@ -37,7 +37,7 @@ namespace SuraSang
         //}
         public void InitializeSkill()
         {
-
+            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Dance);
         }
 
         public void OnMove(Vector2 input)
