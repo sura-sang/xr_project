@@ -10,6 +10,7 @@ namespace SuraSang
         private Anger _anger;
 
         private float _stunStartTime;
+        private GameObject _stunEffect;
 
         public AngerStun(CharacterMove characterMove) : base(characterMove) { }
 
@@ -20,6 +21,8 @@ namespace SuraSang
             _stunStartTime = Time.time;
 
             _animator.SetTrigger("Stun");
+            _stunEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerDizzyEffect, _anger.transform);
+            _stunEffect.transform.localPosition = new Vector3(0, 2, 0);
         }
 
         public override void UpdateState()
@@ -27,6 +30,11 @@ namespace SuraSang
             if (Time.time - _stunStartTime > _anger.StunTime)
             {
                 _anger.ChangeState(new AngerIdle(_characterMove));
+
+                if(_stunEffect != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.AngerDizzyEffect, _stunEffect);
+                }
             }
         }
 

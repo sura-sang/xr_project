@@ -29,14 +29,13 @@ namespace SuraSang
         public const string SadSoulEffect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_SOUL"; //O
 
         //분노 헤롱헤롱 이펙트 
-        public const string AngerDizzyEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_STAR";
+        public const string AngerDizzyEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_STAR"; //O
 
         //IDLE 이펙트
         public const string AngerIdleEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_idle"; //O
         public const string HappyIdleEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_IDLE"; //O
 
         //Walk 이펙트
-        public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
         public const string HappyWalkEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_WALK"; //O
         public const string HappyWalk2Effect = "Effect/Prefab/PREffect_joy/E_MS_PR_joy_WALK "; //O
 
@@ -45,14 +44,16 @@ namespace SuraSang
         public const string HappyRunEffect = "Effect/Prefab/PREffect_joy/E_P_PR_joy_RUN"; //O
 
         //슬픔 몬스터가 기쁜 스킬에 들어갔을 때 쓰는 이펙트 (둘이 한세트)
-        public const string HappyFloorAuraEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_FloorAura";
-        public const string HappyMuEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_MU";
+        public const string HappyFloorAuraEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_FloorAura"; //O
+        public const string HappyMuEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_MU"; //O
 
-        //기쁨 몬스터 스마일?
-        public const string HappySmileEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_Joy_Smile";
+        //기쁨 몬스터 이펙트
+        public const string HappySmileEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_Joy_Smile"; //O
 
-        //???뭔지 모르겠는 이펙트
-        public const string SadPoolEffect = "Effect/Prefab/PREffect_sad/E_MS_PR_SAD_POOL";
-        public const string SadPool2Effect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_POOL";
+        //슬픔 몬스터 이펙트
+        public const string SadPoolEffect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_POOL"; //O
+
+        //분노 몬스터 이펙트
+        public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
     }
 }

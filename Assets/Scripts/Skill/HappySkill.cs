@@ -66,7 +66,6 @@ namespace SuraSang
         
         public void ClearSkill()
         {
-            
         }
 
         void CheckMonster()
