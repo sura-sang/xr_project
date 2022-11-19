@@ -10,12 +10,13 @@ namespace SuraSang
         public float GrowSpeed = 1f;
         private float _time;
         private Vector3 _originScale;
-        private Sadness _sadness;
+        private Monster _monster;
+        private Anger _anger;
         public CapsuleCollider CapsuleCol;
 
         private void Start()
         {
-            _sadness = GetComponent<Sadness>();
+            _monster = GetComponent<Monster>();
             _originScale = transform.localScale;
             PuzzleManager.Instance.AddObserver(this);
         }
@@ -32,7 +33,7 @@ namespace SuraSang
         
         private void Update()
         {
-            if (_sadness.IsSleep)
+            if (_monster.IsSleep)
                 CapsuleCol.enabled = false;
         }
 

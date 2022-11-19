@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
   _moveDummy: {fileID: 1101278121}
-  ChaseRange: 8
+  ChaseRange: 6
   SkillRange: 4
   SkillCooltime: 3
   DashCheckLayerMask:
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: 3
   GrowSpeed: 1
+  CapsuleCol: {fileID: 5671860409645682101}
 --- !u!1 &6406351312968981845
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,3 +346,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8a1188b058a4824ca890cda1ec8fa67, type: 3}
   m_PrefabInstance: {fileID: 2168077072645781009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8265452094803771671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7827896613639157510, guid: d8a1188b058a4824ca890cda1ec8fa67, type: 3}
+  m_PrefabInstance: {fileID: 2168077072645781009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &945353438
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8265452094803771671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.83
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
