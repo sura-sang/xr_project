@@ -10,9 +10,12 @@ namespace SuraSang
         public float GrowSpeed = 1f;
         private float _time;
         private Vector3 _originScale;
+        private Sadness _sadness;
+        public CapsuleCollider CapsuleCol;
 
         private void Start()
         {
+            _sadness = GetComponent<Sadness>();
             _originScale = transform.localScale;
             PuzzleManager.Instance.AddObserver(this);
         }
@@ -25,6 +28,12 @@ namespace SuraSang
                 StartCoroutine(GrowUp());
                 Debug.Log("새송이 버섯 퍼즐 실행");
             }
+        }
+        
+        private void Update()
+        {
+            if (_sadness.IsSleep)
+                CapsuleCol.enabled = false;
         }
 
         IEnumerator GrowUp()
