@@ -26,18 +26,25 @@ namespace SuraSang
         [SerializeField]
         private Monster _monster;
 
+        [SerializeField]
+        [Space(30)]
+        [Header("트램펄린 테스트 용")]
+        private bool _debugMode = false;
+
         private void Awake()
         {
             var data = Global.Instance.SODataManager.GetData<PlayerData>();
             var gravity = data.Gravity * data.FallingGravityMultiplier;
             _minVelocity = Mathf.Sqrt(gravity * 2 * MinHeight);
-            _monster = GetComponentInParent<Monster>();
+
+            if (!_debugMode)
+                _monster = GetComponentInParent<Monster>();
         }
 
         public override void OnNotify(PuzzleContext context)
         {
             base.OnNotify(context);
-            
+
             if (_context == null)
             {
                 return;
@@ -53,9 +60,12 @@ namespace SuraSang
                 return;
             }
 
-            if(!_monster.IsSleep)
+            if (!_debugMode)
             {
-                return;
+                if (!_monster.IsSleep)
+                {
+                    return;
+                }
             }
             
             if(_context.SkillEmotion == Emotion.Anger && _context.Player.IsSkill)
