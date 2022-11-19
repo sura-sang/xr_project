@@ -25,9 +25,7 @@ namespace SuraSang
 
         public void Absorbed()
         {
-            //Material material = Resources.Load<Material>("Sleep");
             ChangeState(new MonsterMoveSleep(this));
-            //this.gameObject.GetComponentInChildren<Renderer>().material = material;
             this.gameObject.GetComponentInChildren<Light>().enabled = false;
             this.gameObject.GetComponent<NavMeshAgent>().enabled = false;
             IsSleep = true;

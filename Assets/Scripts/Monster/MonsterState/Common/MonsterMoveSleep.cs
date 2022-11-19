@@ -12,7 +12,10 @@ namespace SuraSang
 
         public override void InitializeState() { }
 
-        public override void UpdateState() { }
+        public override void UpdateState()
+        { 
+            
+        }
 
         public override void ClearState() { }
     }

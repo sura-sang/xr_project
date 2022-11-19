@@ -13,6 +13,7 @@ namespace SuraSang
         }
 
         public override void InitializeState() { }
+
         public override void UpdateState()
         {
             if (_sadness.IsFollow)
