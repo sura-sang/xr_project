@@ -16,15 +16,21 @@ namespace SuraSang
         private float _radius;
         private Transform _moveRange;
         private float _randomSec;
+        private Happiness _happiness;
+
+        private GameObject _HappyEff;
 
         public override void InitializeState() 
         {
+            _happiness = _monster as Happiness;
             FineNearestTag();
 
             _radius = _moveRange.GetComponent<MoveRange>().MoveRadius;         
             _randomSec = 1f;
 
             _monster.RandomNavSphere(_moveRange.position, _radius);
+
+            _HappyEff = Global.Instance.ResourceManager.GetObject(Constant.HappySmileEffect, _happiness.transform);
         }
 
         public override void UpdateState() 
@@ -44,7 +50,11 @@ namespace SuraSang
 
         public override void ClearState() 
         {
-            
+            if(_HappyEff != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.HappySmileEffect, _HappyEff);
+                _happiness = null;
+            }
         }
 
         private void FineNearestTag()

@@ -15,7 +15,7 @@ namespace SuraSang
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
 
-            ChangeState(new SadnessIdle(this,this));
+            ChangeState(new SadnessIdle(this));
         }
     }
 }

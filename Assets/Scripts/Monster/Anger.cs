@@ -24,7 +24,6 @@ namespace SuraSang
 
         public float StunTime;
 
-
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
@@ -33,6 +32,12 @@ namespace SuraSang
             Agent.updateRotation = false;
 
             ChangeState(new AngerIdle(this));
+        }
+
+        public void WalkEffect()
+        {
+            var obj = Global.Instance.ResourceManager.GetObject(Constant.AngerWalkEffect, transform);
+            Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerWalkEffect, obj);
         }
     }
 }
