@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4463663849568099339}
   - component: {fileID: 746969761569395630}
   - component: {fileID: 3294719868063819620}
+  - component: {fileID: 9153328846021471794}
   m_Layer: 0
   m_Name: PR_Cliff_01_Main
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9153328846021471794
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943409670348211889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2232952877369940510, guid: 6000ab7ca94bcc1499f3cf3d6b65242f, type: 3}

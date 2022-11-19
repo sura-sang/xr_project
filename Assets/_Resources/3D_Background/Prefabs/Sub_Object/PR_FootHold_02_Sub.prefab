@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2316151416265527076}
   - component: {fileID: 1696525431928864897}
   - component: {fileID: 3490205794540565579}
+  - component: {fileID: 2341383938016720069}
   m_Layer: 0
   m_Name: PR_FootHold_02_Sub
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2341383938016720069
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129808079172277662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4539796557464232175, guid: 2a688812b1abb4742ba48ba2a3ca295f, type: 3}
