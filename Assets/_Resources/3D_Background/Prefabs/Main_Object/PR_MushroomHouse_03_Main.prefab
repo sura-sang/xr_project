@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8757186696826445999}
   - component: {fileID: 5631783711605452554}
   - component: {fileID: 7623725810838543296}
+  - component: {fileID: -502830612506743842}
   m_Layer: 0
   m_Name: PR_MushroomHouse_03_Main
   m_TagString: Untagged
@@ -85,6 +86,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-502830612506743842
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272011129680411157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1593516742145161634, guid: 918dee20f487b4f49abfd30d26ed927e, type: 3}
 --- !u!1001 &1687991340966879204
 PrefabInstance:
   m_ObjectHideFlags: 0

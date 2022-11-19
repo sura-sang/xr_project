@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 751183759219701726}
   - component: {fileID: 751183759219701724}
   - component: {fileID: 751183759219701727}
+  - component: {fileID: 1162635297234689762}
   m_Layer: 0
   m_Name: PR_CheckPoint_Sub
   m_TagString: Untagged
@@ -167,3 +168,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!64 &1162635297234689762
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255450784044848651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2128599272216676504, guid: 8104502c09eedf649afbfb1613db79ae, type: 3}
