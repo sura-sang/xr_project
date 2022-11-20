@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Dissolve_T:
-        m_Texture: {fileID: 2800000, guid: 4e2d0cd87c2b5404ab080167fc3f3f44, type: 3}
+        m_Texture: {fileID: 2800000, guid: d37a5c56d498d2843a2d6fdec9a2c351, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -67,7 +67,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 32951545fd803a34fbdb8f813fc9bc7b, type: 3}
+        m_Texture: {fileID: 2800000, guid: d37a5c56d498d2843a2d6fdec9a2c351, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTexture:
@@ -79,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NOISETEXTURE:
-        m_Texture: {fileID: 2800000, guid: 401b72306be28ba4fab6623afcd2d617, type: 3}
+        m_Texture: {fileID: 2800000, guid: 50c6ddecefefa484fba03cf4ae293c7f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -116,7 +116,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DISSOLVE: 0.52
+    - _DISSOLVE: 0.15
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Dis_U: 0
@@ -127,17 +127,17 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _INS: 50
+    - _INS: 25.1
     - _Keyword0: 1
     - _Keyword1: 0
     - _MASKPOW: 1
-    - _Mainstr: 1.96
+    - _Mainstr: 1.76
     - _Metallic: 0
-    - _NoiseVal: 1.52
+    - _NoiseVal: 0.45
     - _Noise_U: 0
     - _Noise_V: 0.09
     - _OcclusionStrength: 1
-    - _POW: 1
+    - _POW: 1.27
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -148,7 +148,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UP: 0
-    - _VP: 0.107
+    - _VP: -0.03
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
