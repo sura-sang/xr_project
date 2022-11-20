@@ -9,6 +9,7 @@ namespace SuraSang
     {
         public override Emotion Emotion => Emotion.Sadness;
         public bool IsFollow;
+        public bool IsDisableAgent = false;
 
         private void Awake()
         {
