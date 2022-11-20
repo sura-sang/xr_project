@@ -29,11 +29,6 @@ namespace SuraSang
                 _agent.isStopped = false;
                 _agent.SetDestination(Global.Instance.SceneMaster.Player.transform.position);
             }
-            else if(_player.CurrentEmotion == Emotion.Happiness && !_player.IsSkill)
-            {
-                _animator.SetBool("IsWalking", false);
-                _monster.ChangeState(new SadnessIdle(_monster));
-            }
             else
             {
                 _animator.SetBool("IsWalking", false);
@@ -65,6 +60,12 @@ namespace SuraSang
                     Global.Instance.ResourceManager.ReturnObject(Constant.HappyMuEffect, _eff2);
                     _eff2 = null;
                 }
+            }
+
+            if (_player.CurrentEmotion == Emotion.Happiness && !_player.IsSkill)
+            {
+                _animator.SetBool("IsWalking", false);
+                _monster.ChangeState(new SadnessIdle(_monster));
             }
         }
 
