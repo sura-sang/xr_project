@@ -24,6 +24,8 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Jump, OnJump);
             _player.SetAction(ButtonActions.Skill, OnSkill);
             _player.SetAction(ButtonActions.Dance, OnDance);
+
+            _player.PlayDropSound();
         }
 
         public override void UpdateState()

@@ -49,5 +49,10 @@ namespace SuraSang
                 }
             }
         }
+
+        public void SleepSound()
+        {
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Sleep, transform);
+        }
     }
 }

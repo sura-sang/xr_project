@@ -102,6 +102,8 @@ namespace SuraSang
             if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
                 OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion, player));
+
+                AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_POP, _monster.transform);
             }
 
         }

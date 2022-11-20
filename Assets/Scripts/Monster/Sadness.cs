@@ -17,5 +17,10 @@ namespace SuraSang
 
             ChangeState(new SadnessIdle(this));
         }
+
+        public void SleepSound()
+        {
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Sleep, transform);
+        }
     }
 }

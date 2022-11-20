@@ -23,6 +23,8 @@ namespace SuraSang
             _animator.SetTrigger("Stun");
             _stunEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerDizzyEffect, _anger.transform);
             _stunEffect.transform.localPosition = new Vector3(0, 2, 0);
+
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Crash, _anger.transform);
         }
 
         public override void UpdateState()

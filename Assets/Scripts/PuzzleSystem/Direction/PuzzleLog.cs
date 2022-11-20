@@ -40,6 +40,8 @@ namespace SuraSang
 
                 _rigidbody.isKinematic = false;
                 _rigidbody.AddForceAtPosition(vector * _pushPower, _rigidbody.centerOfMass + Vector3.up);
+
+                AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_Tree_Fall, transform);
             }
         }
     }
