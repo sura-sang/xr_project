@@ -41,9 +41,13 @@ namespace SuraSang
             {
                 _time += Time.deltaTime;
             }
-            else
+            else if(_time >= _duration)
             {
                 _animator.SetFloat("Speed", -1);
+                _animator.SetBool("Growth", false);
+                _animator.Play("Growth");
+
+                _sadness.UnAbsorbed(_sadness);
             }
         }
     }

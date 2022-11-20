@@ -31,6 +31,27 @@ namespace SuraSang
             IsSleep = true;
         }
 
+        public void UnAbsorbed(Monster monster)
+        {
+            switch(monster)
+            {
+                case Sadness:
+                    ChangeState(new SadnessIdle(monster));
+                    break;
+
+                case Anger:
+                    ChangeState(new AngerIdle(monster));
+                    break;
+
+                case Happiness:
+                    ChangeState(new HappinessIdle(monster));
+                    break;
+            }
+
+            this.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+            IsSleep = false;
+        }
+
         public virtual void NextState()
         {
             // TODO 공용으로 사용하는 상태의 경우 다음 상태를 어케 해야할지?
