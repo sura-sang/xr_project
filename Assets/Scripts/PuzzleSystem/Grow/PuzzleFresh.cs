@@ -43,6 +43,7 @@ namespace SuraSang
             }
             else if(_time >= _duration)
             {
+                _time = 0f;
                 _animator.SetBool("Growth", false);
                 _animator.SetTrigger("Reverse");
 
