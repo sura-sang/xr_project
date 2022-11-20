@@ -33,7 +33,10 @@ namespace SuraSang
 
         public void UnAbsorbed(Monster monster)
         {
-            switch(monster)
+            this.GetComponent<NavMeshAgent>().enabled = true;
+            IsSleep = false;
+
+            switch (monster)
             {
                 case Sadness:
                     ChangeState(new SadnessIdle(monster));
@@ -47,9 +50,6 @@ namespace SuraSang
                     ChangeState(new HappinessIdle(monster));
                     break;
             }
-
-            monster.GetComponent<NavMeshAgent>().enabled = true;
-            monster.IsSleep = false;
         }
 
         public virtual void NextState()
