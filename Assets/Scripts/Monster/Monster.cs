@@ -48,8 +48,8 @@ namespace SuraSang
                     break;
             }
 
-            this.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-            IsSleep = false;
+            monster.GetComponent<NavMeshAgent>().enabled = true;
+            monster.IsSleep = false;
         }
 
         public virtual void NextState()
