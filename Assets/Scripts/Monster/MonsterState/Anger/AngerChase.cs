@@ -10,7 +10,7 @@ namespace SuraSang
         private Anger _anger;
         
         public AngerChase(CharacterMove characterMove) : base(characterMove) { }
-
+        
         public override void InitializeState()
         {
             _player = Global.Instance.SceneMaster.Player;

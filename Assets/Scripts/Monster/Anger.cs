@@ -39,5 +39,10 @@ namespace SuraSang
             var obj = Global.Instance.ResourceManager.GetObject(Constant.AngerWalkEffect, transform);
             Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerWalkEffect, obj);
         }
+
+        public void SleepSound()
+        {
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Sleep, transform);
+        }
     }
 }
