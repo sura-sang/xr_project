@@ -36,22 +36,7 @@ namespace SuraSang
             var obj = monster as Sadness;
             if (!obj.IsDisableAgent)
                 this.GetComponent<NavMeshAgent>().enabled = true;
-            IsSleep = false;
-
-            switch (monster)
-            {
-                case Sadness:
-                    ChangeState(new SadnessIdle(monster));
-                    break;
-
-                case Anger:
-                    ChangeState(new AngerIdle(monster));
-                    break;
-
-                case Happiness:
-                    ChangeState(new HappinessIdle(monster));
-                    break;
-            }
+            IsSleep = true;
         }
 
         public virtual void NextState()
