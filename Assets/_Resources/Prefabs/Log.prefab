@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb7edfc3d7c43b46a30f9e7c47ac512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartAngle: 0
+  _dirCount: 4
+  _startAngle: 0
   _pushPower: 7
 --- !u!1001 &4313144215064476345
 PrefabInstance:
@@ -152,6 +153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e8f5b47545bc2de48a3e4a09aafb6d82, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46173089709ca66498ac2580a291b770, type: 2}
     - target: {fileID: 919132149155446097, guid: e8f5b47545bc2de48a3e4a09aafb6d82, type: 3}
       propertyPath: m_Name
       value: SM_Log_Main
