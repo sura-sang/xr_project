@@ -15,6 +15,7 @@ namespace SuraSang
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
 
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Cry, transform);
             ChangeState(new SadnessIdle(this));
         }
 
