@@ -26,9 +26,30 @@ namespace SuraSang
         public void Absorbed()
         {
             ChangeState(new MonsterMoveSleep(this));
-            this.gameObject.GetComponentInChildren<Light>().enabled = false;
+            //this.gameObject.GetComponentInChildren<Light>().enabled = false;
             this.gameObject.GetComponent<NavMeshAgent>().enabled = false;
             IsSleep = true;
+        }
+
+        public void UnAbsorbed(Monster monster)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
+            IsSleep = false;
+
+            switch (monster)
+            {
+                case Sadness:
+                    ChangeState(new SadnessIdle(monster));
+                    break;
+
+                case Anger:
+                    ChangeState(new AngerIdle(monster));
+                    break;
+
+                case Happiness:
+                    ChangeState(new HappinessIdle(monster));
+                    break;
+            }
         }
 
         public virtual void NextState()

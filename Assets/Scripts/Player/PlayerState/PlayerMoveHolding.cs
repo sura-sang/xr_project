@@ -45,11 +45,13 @@ namespace SuraSang
             if (_isHolding && _isEdgeDetected)
             {
                 var normalVector = _edgeHit.normal;
-                var dir = new Vector3(input.x, 0, input.y);
-                var dot = Vector3.Dot(-normalVector, -dir);
+                //var dir = new Vector3(input.x, 0, input.y);
+                var dir = Vector3Extentions.InputToTransformSpace(new Vector2(input.x, 0), _player.transform);
+
+                //var dot = Vector3.Dot(-normalVector, -dir);
 
                 dir -= normalVector;
-                if (dot > Mathf.Cos(45))
+                if (/*dot > Mathf.Cos(45)*/input.y == 1)
                 {
                     _player.Animator.SetFloat("Forward", 1);
                     dir = Vector3.MoveTowards(dir, -normalVector, _player.PlayerData.AirControl * Time.deltaTime);
