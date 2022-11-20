@@ -8,7 +8,8 @@ namespace SuraSang
     {
         public float Size = 3f;
         public float GrowSpeed = 1f;
-        private float _time;
+        [SerializeField] private float _time = 0f;
+        [SerializeField] private float _duration = 5f;
         private Animator _animator;
         private Sadness _sadness;
         public BoxCollider Platform;
@@ -35,6 +36,15 @@ namespace SuraSang
         {
             if (_sadness.IsSleep)
                 Platform.enabled = true;
+
+            if(IsNotify && _time <= _duration)
+            {
+                _time += Time.deltaTime;
+            }
+            else
+            {
+                _animator.SetFloat("Speed", -1);
+            }
         }
     }
 }
