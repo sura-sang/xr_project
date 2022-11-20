@@ -17,8 +17,8 @@ GameObject:
   m_Name: SM_House_LightingBall_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2771972745091597027
 Transform:
@@ -96,7 +96,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.87111247, g: 0.3726415, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7978682, b: 0.37254906, a: 1}
   m_Intensity: 4.69
   m_Range: 10
   m_SpotAngle: 30
@@ -183,8 +183,8 @@ GameObject:
   m_Name: Sm_Lamp_Sub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7771961410963197346
 Transform:
@@ -290,7 +290,7 @@ Transform:
   m_GameObject: {fileID: 7787078147477005968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.46, y: -2.43, z: -5.46}
-  m_LocalScale: {x: 2.3363366, y: 2.3363366, z: 2.3363366}
+  m_LocalScale: {x: 2.3363369, y: 2.3363366, z: 2.3363369}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2771972745091597027}
