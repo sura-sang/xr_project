@@ -33,7 +33,9 @@ namespace SuraSang
 
         public void UnAbsorbed(Monster monster)
         {
-            this.GetComponent<NavMeshAgent>().enabled = true;
+            var obj = monster as Sadness;
+            if (!obj.IsDisableAgent)
+                this.GetComponent<NavMeshAgent>().enabled = true;
             IsSleep = false;
 
             switch (monster)
