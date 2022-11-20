@@ -16,7 +16,7 @@ namespace SuraSang
             _sadEff = Global.Instance.ResourceManager.GetObject(Constant.SadPoolEffect, _sadness.transform);
             _sadEff.transform.localScale = _sadness.transform.localScale / 2;
 
-            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Cry, _sadness.transform);
+            //AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Cry, _sadness.transform);
         }
 
         public override void UpdateState()
