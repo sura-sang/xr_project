@@ -24,7 +24,7 @@ namespace SuraSang
         {
             _happiness = _monster as Happiness;
             FineNearestTag();
-
+            
             _radius = _moveRange.GetComponent<MoveRange>().MoveRadius;         
             _randomSec = 1f;
 
@@ -75,8 +75,9 @@ namespace SuraSang
 
                 if (dist <= shortDis)
                 {
-                    _moveRange = mRange.transform;                 
-                }             
+                    _moveRange = mRange.transform;
+                    shortDis = dist;
+                }
             }
         }
     }

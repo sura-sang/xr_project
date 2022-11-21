@@ -8,7 +8,8 @@ namespace SuraSang
     public class Happiness : Monster
     {
         public override Emotion Emotion => Emotion.Happiness;
-        private Transform _moveRange;
+        
+        [SerializeField] private Transform _moveRange;
 
         private void Awake()
         {
@@ -46,6 +47,7 @@ namespace SuraSang
                 if (dist <= shortDis)
                 {
                     _moveRange = mRange.transform;
+                    shortDis = dist;
                 }
             }
         }
