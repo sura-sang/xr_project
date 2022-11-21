@@ -50,6 +50,11 @@ namespace SuraSang
                 // 충돌 행동
                 Debug.Log(hit.transform.gameObject.name);
 
+                if(hit.transform.gameObject.tag == "Player")
+                {
+                    hit.transform.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+                }
+
             }
 
             if (result.Length != 0 || (Time.time - _dashStartTime) > _anger.MaxDashTime)
