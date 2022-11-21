@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14274593, y: 1.189622, z: 1.2473907}
-  m_Center: {x: 0.13172336, y: -0.14571069, z: 0.07037277}
+  m_Size: {x: 0.14274639, y: 1.254797, z: 0.8667253}
+  m_Center: {x: 0.13172315, y: -0.33174643, z: 0.068615586}
 --- !u!1 &3755298197125833421
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
   IsFollow: 0
+  IsDisableAgent: 0
 --- !u!114 &426969444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: 5
   GrowSpeed: 5
+  _time: 0
+  _duration: 5
   Platform: {fileID: 1533447354}
 --- !u!1001 &754548362846747515
 PrefabInstance:
