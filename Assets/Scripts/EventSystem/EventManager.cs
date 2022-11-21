@@ -10,11 +10,14 @@ namespace SuraSang
         public static EventManager Instance { get; private set; } = null;
 
         public event Action<int> ShapeMoveAction;
+        public event Action<int> PlatformMoveAction;
         public event Action<int> ShapeReturnAction;
         public event Action ObjectActivateAction;
         public event Action ObjectDeActivateAction;
         public event Action TimelineStartAction;
         public event Action TimelineStopAction;
+
+        public Emotion PEmotion { get; set; }
 
         private void Awake()
         {
@@ -27,6 +30,11 @@ namespace SuraSang
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        public void PlatformMove(int id)
+        {
+            PlatformMoveAction?.Invoke(id);
         }
 
         public void ShapeMove(int id)
