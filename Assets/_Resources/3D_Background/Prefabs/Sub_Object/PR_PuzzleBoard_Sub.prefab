@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 4133868266420490820}
   - component: {fileID: 6272490171741870939}
   - component: {fileID: 5412428103219300403}
+  - component: {fileID: 4165183644739601795}
   m_Layer: 0
   m_Name: Step_Board
   m_TagString: Untagged
@@ -246,6 +247,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4165183644739601795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250630282212110152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0a6285308de3747a9fa12b39c4ec6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movePoint: {x: 0, y: -0.1, z: 0}
+  _id: 0
+  _speed: 0.5
 --- !u!1 &8477522803549386382
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ namespace SuraSang
     {
         [SerializeField] private Vector3 _movePoint;
         [SerializeField] private int _id;
-        [SerializeField] private int _speed;
+        [SerializeField] private float _speed;
 
         private Vector3 _firstPos;
         private Vector3 _lastPos;
