@@ -21,7 +21,7 @@ namespace SuraSang
         public void Test_PressAnyKey()
         {
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_PressKey);
-            AudioManager.Instance.GameStart();
+            AudioManager.Instance.PlayBGM(AudioManager.Instance.BGM_Nonhighlight);
         }
 
         public void Test_LevelCMS()
