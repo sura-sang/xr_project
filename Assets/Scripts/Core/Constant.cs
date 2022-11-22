@@ -55,5 +55,8 @@ namespace SuraSang
 
         //분노 몬스터 이펙트
         public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
+
+        //체크 포인트 이펙트
+        public const string CheckPointEffect = "Effect/E_BG_KEY/PR/PR_E_ KEY";
     }
 }

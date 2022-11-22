@@ -15,6 +15,10 @@ namespace SuraSang
         public delegate void UpdateCheckpointDel(string cpName);
         public static event UpdateCheckpointDel OnCheckPointHit;
 
+        private GameObject _Effectobj = null;
+
+        public static bool IsOnCheckPoint = false;
+
         private void OnEnable()
         {
             OnCheckPointHit += UpdateCheckpoint;
@@ -38,11 +42,19 @@ namespace SuraSang
                 SceneMaster.SceneInstance.CurrentCheckPoint = this;
                 Global.Instance.SceneMaster.Player.ReturnEmotion();
                 Global.Instance.SceneMaster.Player.ChangeCharacter();
+                _Effectobj = Global.Instance.ResourceManager.GetObject(Constant.CheckPointEffect, transform);
+                _Effectobj.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+
                 gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
                 _isCurCheckPoint = true;
             }
             else
             {
+                if (_Effectobj != null)
+                {
+                    Global.Instance.ResourceManager.ReturnObject(Constant.CheckPointEffect, _Effectobj);
+                    _Effectobj = null;
+                }
                 gameObject.GetComponentInChildren<Renderer>().material.color = Color.red;
                 _isCurCheckPoint = false;
             }
@@ -52,6 +64,9 @@ namespace SuraSang
         {
             if(!_isCurCheckPoint)
             {
+                IsOnCheckPoint = true;
+                Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
+
                 if (other.CompareTag("Player") && Global.Instance.SceneMaster.Player.IsCheckPointClick)
                 {
                     OnCheckPointHit(gameObject.name);
@@ -60,6 +75,12 @@ namespace SuraSang
                     Global.Instance.UIManager.Get<UISavingPopupModel>().Init();
                 }
             }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            IsOnCheckPoint = false;
+            Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
         }
 
         private void OnDrawGizmos()

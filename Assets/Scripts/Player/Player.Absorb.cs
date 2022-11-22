@@ -65,7 +65,7 @@ namespace SuraSang
         {
             FindViewTargets();
 
-            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded)
+            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded && !CheckPoint.IsOnCheckPoint)
             {
                 if (_hitTargetContainer.Count != 1)
                 {
