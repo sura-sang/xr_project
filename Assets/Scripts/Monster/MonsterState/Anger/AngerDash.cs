@@ -15,7 +15,7 @@ namespace SuraSang
 
         private float _radius;
 
-        public AngerDash(CharacterMove characterMove, Vector3 dir) : base(characterMove) 
+        public AngerDash(CharacterMove characterMove, Vector3 dir) : base(characterMove)
         {
             _dir = dir;
         }
@@ -28,7 +28,7 @@ namespace SuraSang
 
             _animator.SetTrigger("Attack");
 
-            _radius = _agent.radius;
+            _radius = _agent.radius * 2;
 
             AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Rush, _anger.transform);
         }
@@ -41,7 +41,7 @@ namespace SuraSang
 
             var capsulePoint1 = _anger.transform.position - Vector3.up * _agent.baseOffset;
             var capsulePoint2 = capsulePoint1 + Vector3.up * _agent.height;
-            
+
             var result = Physics.CapsuleCastAll(capsulePoint1, capsulePoint2,
                 _radius, _dir, _anger.DashSpeed * Time.deltaTime, _anger.DashCheckLayerMask);
 
@@ -50,8 +50,9 @@ namespace SuraSang
                 // 충돌 행동
                 Debug.Log(hit.transform.gameObject.name);
 
-                if(hit.transform.gameObject.tag == "Player")
+                if (hit.transform.gameObject.tag == "Player")
                 {
+                    Debug.LogError("플레이어 맞음");
                     hit.transform.gameObject.GetComponent<Animator>().SetTrigger("Hit");
                 }
 

@@ -12,7 +12,7 @@ namespace SuraSang
         public bool IsStopAble => _isStopAble;
         private bool _isStopAble = false;
 
-        private static readonly LayerMask CheckMask = ~LayerMask.GetMask("Player", "CameraArea");
+        private static readonly LayerMask CheckMask = LayerMask.GetMask("Default", "Wall", "Monster");
 
         private Player _player;
         private CharacterController _controller;
