@@ -89,9 +89,10 @@ namespace SuraSang
             RuntimeManager.PlayOneShot(audioEvent, transform.position);
         }
 
-        public void GameStart()
+        public void PlayBGM(EventReference audioEvent)
         {
-            PlayerState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
+            PlayerState.release();
+            PlayerState = FMODUnity.RuntimeManager.CreateInstance(audioEvent);
             PlayerState.start();
         }
     }
