@@ -8,7 +8,7 @@ namespace SuraSang
     public class TitleScene : MonoBehaviour
     {
         [SerializeField] private GameObject _titleObject;
-        [SerializeField] private GameObject _storyObject;
+        [SerializeField] private GameObject _menuObject;
 
         private int _sequence = 0;
 
@@ -16,7 +16,7 @@ namespace SuraSang
         {
             _sequence = 0;
             _titleObject.SetActive(true);
-            _storyObject.SetActive(false);
+            _menuObject.SetActive(false);
         }
 
         private void Update()
@@ -27,14 +27,25 @@ namespace SuraSang
                 {
                     case 0:
                         _titleObject.SetActive(false);
-                        _storyObject.SetActive(true);
-                        break;
-                    case 1:
-                        //씬 이동
-                        SceneManager.LoadScene(1);
+                        _menuObject.SetActive(true);
                         break;
                 }
             }
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene(1);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
+        public void OpenCredit()
+        {
+            Debug.Log("열려라 크레딧");
         }
     }
 }
