@@ -14,6 +14,7 @@ namespace SuraSang
             _soDataManager = new SODataManager();
 
             _uiManager = GameObject.Instantiate(Resources.Load<GameObject>(UIManagerPath)).GetComponent<UIManager>();
+            GameObject.DontDestroyOnLoad(_uiManager);
         }
 
         private static Global _instance = null;
