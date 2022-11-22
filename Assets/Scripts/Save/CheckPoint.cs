@@ -17,6 +17,8 @@ namespace SuraSang
 
         private GameObject _Effectobj = null;
 
+        public static bool IsOnCheckPoint = false;
+
         private void OnEnable()
         {
             OnCheckPointHit += UpdateCheckpoint;
@@ -62,6 +64,9 @@ namespace SuraSang
         {
             if(!_isCurCheckPoint)
             {
+                IsOnCheckPoint = true;
+                Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
+
                 if (other.CompareTag("Player") && Global.Instance.SceneMaster.Player.IsCheckPointClick)
                 {
                     OnCheckPointHit(gameObject.name);
@@ -70,6 +75,12 @@ namespace SuraSang
                     Global.Instance.UIManager.Get<UISavingPopupModel>().Init();
                 }
             }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            IsOnCheckPoint = false;
+            Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
         }
 
         private void OnDrawGizmos()
