@@ -36,11 +36,6 @@ namespace SuraSang
 
         public UIState State { get; private set; } = UIState.None;
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
-
         #region Get
 
         public T Get<T>() where T : UIModelBase
