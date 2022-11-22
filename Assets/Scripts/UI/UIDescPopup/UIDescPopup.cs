@@ -11,18 +11,17 @@ namespace SuraSang
     public enum DescType
     {
         WASD,
-        ML,
-        MR
+        Shift,
+        Space,
+        Hold,
+        Absorb,
+        Skill
     }
 
     public class UIDescPopup : UIPopupBase
     {
         [SerializeField] private GameObject[] _icons;
         public GameObject[] Icons => _icons;
-
-
-        [SerializeField] private Image _desc;
-        public Image Desc => _desc;
     }
 
     public class UIDescPopupModel : UIModelBase
@@ -38,7 +37,7 @@ namespace SuraSang
             base.OnCreate(view);
         }
 
-        public async void Init(DescType type, Sprite sprite, float releaseTime = -1)
+        public async void Init(DescType type, float releaseTime = -1)
         {
             var descPopup = UIView as UIDescPopup;
 
@@ -46,9 +45,6 @@ namespace SuraSang
             {
                 descPopup.Icons[i].SetActive(i == (int)type);
             }
-
-            descPopup.Desc.sprite = sprite;
-            descPopup.Desc.SetNativeSize();
 
             if (releaseTime != -1)
             {
