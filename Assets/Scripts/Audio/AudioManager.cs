@@ -9,6 +9,8 @@ namespace SuraSang
     {
         public static AudioManager Instance { get; private set; }
 
+        [BankRef] public List<string> Banks;
+
         [Header("Player")]
         public FMODUnity.EventReference SFX_P_Footstep;
         public FMODUnity.EventReference SFX_P_Jump;
@@ -65,6 +67,18 @@ namespace SuraSang
 
         private void Awake()
         {
+            foreach (var bankRef in Banks)
+            {
+                try
+                {
+                    RuntimeManager.LoadBank(bankRef, false);
+                }
+                catch (BankLoadException e)
+                {
+                    RuntimeUtils.DebugLogException(e);
+                }
+            }
+
             if (Instance == null)
             {
                 Instance = this;
