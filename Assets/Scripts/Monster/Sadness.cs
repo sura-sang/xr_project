@@ -11,6 +11,8 @@ namespace SuraSang
         public bool IsFollow;
         public bool IsDisableAgent = false;
 
+        public Transform SleepPos;
+
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();

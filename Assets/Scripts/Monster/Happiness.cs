@@ -8,7 +8,8 @@ namespace SuraSang
     public class Happiness : Monster
     {
         public override Emotion Emotion => Emotion.Happiness;
-        
+        public Transform SleepPos;
+
         [SerializeField] private Transform _moveRange;
 
         private void Awake()

@@ -24,6 +24,8 @@ namespace SuraSang
 
         public float StunTime;
 
+        public Transform SleepPos;
+
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();

@@ -22,7 +22,7 @@ namespace SuraSang
 
         private void ChangeEffect()
         {
-            if (IsSkill)
+            if (IsSkill && CanMove)
             {
                 if (CurrentEmotion == Emotion.Happiness && _Skillobj == null)
                 {
@@ -35,6 +35,12 @@ namespace SuraSang
                     _Skillobj.transform.localPosition = new Vector3(0, -0.4f, -0.2f);
                     _Skillobj.transform.localRotation = Quaternion.Euler(0, transform.rotation.y, 0);
                 }
+                else if(CurrentEmotion == Emotion.Sadness && _Skillobj == null)
+                {
+                    _Skillobj = Global.Instance.ResourceManager.GetObject(Constant.SadPool, transform);
+                    _Skillobj.transform.localPosition = new Vector3(0, -1, 0);
+                    _Skillobj.transform.localScale = new Vector3(2, 2, 2);
+                }
             }
             else if (CurrentEmotion == Emotion.Happiness && _Skillobj != null)
             {
@@ -44,6 +50,11 @@ namespace SuraSang
             else if (CurrentEmotion == Emotion.Anger && _Skillobj != null)
             {
                 Global.Instance.ResourceManager.ReturnObject(Constant.AngerSkillRushEffectPath, _Skillobj);
+                _Skillobj = null;
+            }
+            else if(CurrentEmotion == Emotion.Sadness && _Skillobj != null)
+            {
+                Global.Instance.ResourceManager.ReturnObject(Constant.SadPool, _Skillobj);
                 _Skillobj = null;
             }
         }
