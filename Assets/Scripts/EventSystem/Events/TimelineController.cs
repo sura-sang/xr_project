@@ -29,6 +29,7 @@ namespace SuraSang
             EventManager.Instance.TimelineStartAction += TimelineStart;
             EventManager.Instance.TimelineStopAction += TimelineStop;
 
+            _director.Pause();
             _director.playOnAwake = false;
             _camera.SetActive(false);
         }
