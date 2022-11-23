@@ -22,7 +22,7 @@ namespace SuraSang
 
         private void ChangeEffect()
         {
-            if (IsSkill)
+            if (IsSkill && CanMove)
             {
                 if (CurrentEmotion == Emotion.Happiness && _Skillobj == null)
                 {
