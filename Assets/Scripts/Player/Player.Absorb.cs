@@ -112,11 +112,12 @@ namespace SuraSang
 
                 void Absorb()
                 {
-                    if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
+                    var monster = _hitTargetContainer[0].gameObject.GetComponent<Monster>();
+                    if (!monster.IsSleep && monster.IsAbsorbAble && Controller.isGrounded)
                     {
                         CanMove = false;
 
-                        CurrentEmotion = _hitTargetContainer[0].gameObject.GetComponent<Monster>().Emotion;
+                        CurrentEmotion = monster.Emotion;
 
                         GameObject obj;
                         switch (CurrentEmotion)
@@ -159,7 +160,7 @@ namespace SuraSang
 
                         //Animator.SetTrigger("Change");
                         Animator.SetBool("Change", true);
-                        _hitTargetContainer[0].gameObject.GetComponent<Monster>().Absorbed();
+                        monster.Absorbed();
                         _hitTargetContainer[0].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
 
                         Debug.Log("흡수 사운드 실행");
