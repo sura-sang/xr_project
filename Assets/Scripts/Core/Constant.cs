@@ -58,5 +58,11 @@ namespace SuraSang
 
         //체크 포인트 이펙트
         public const string CheckPointEffect = "Effect/E_BG_KEY/PR/PR_E_ KEY";
+
+        //통나무 쓰러지는 이펙트
+        public const string LogEffect = "Effect/Prefab/PREffect_ang/E_bg_log";
+
+        //잠 이펙트
+        public const string SleepEffect = "Effect/E_M_SLEEP/PR/p_sleep";
     }
 }

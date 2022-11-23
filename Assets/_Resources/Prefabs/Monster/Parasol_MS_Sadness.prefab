@@ -153,6 +153,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   IsFollow: 0
   IsDisableAgent: 0
+  SleepPos: {fileID: 517445739342254666}
 --- !u!114 &426969444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ MonoBehaviour:
   Size: 5
   GrowSpeed: 5
   _time: 0
-  _duration: 5
+  _duration: 3
   Platform: {fileID: 1533447354}
 --- !u!1001 &754548362846747515
 PrefabInstance:
@@ -227,6 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+--- !u!4 &517445739342254666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 961210195233335601, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+  m_PrefabInstance: {fileID: 754548362846747515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1004875294091795600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
