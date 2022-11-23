@@ -22,7 +22,7 @@ namespace SuraSang
         {
             Scene scene = SceneManager.GetActiveScene();
             _levelID = scene.name;
-
+            
             //다른 레벨에 있던 씬 마스터 삭제
             if (SceneInstance != null)
             {
@@ -46,6 +46,13 @@ namespace SuraSang
             Global.Instance.SetCurrentSceneMaster(this);
         }
 
+        private void Update()
+        {
+            if (_player == null)
+            {
+                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            }
+        }
         public void LoadLevel(int num)
         {
             SceneManager.LoadScene(LevelArr[num]);
