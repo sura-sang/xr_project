@@ -32,6 +32,11 @@ namespace SuraSang
             //this.gameObject.GetComponentInChildren<Light>().enabled = false;
             this.gameObject.GetComponent<NavMeshAgent>().enabled = false;
             IsSleep = true;
+
+            foreach(var renderer in this.gameObject.GetComponentsInChildren<Renderer>())
+            {
+                renderer.material.SetFloat("_UseOutline", 0);
+            }
         }
 
         public void UnAbsorbed(Monster monster)
