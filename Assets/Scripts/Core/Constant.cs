@@ -51,7 +51,7 @@ namespace SuraSang
         public const string HappySmileEffect = "Effect/Prefab/PREffect_joy/E_MS_PR_Joy_Smile"; //O
 
         //슬픔 몬스터 이펙트
-        public const string SadPoolEffect = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_POOL"; //O
+        public const string SadPoolEffect = "Effect/Prefab/PREffect_sad/E_MS_PR_SAD_POOL"; //O
 
         //분노 몬스터 이펙트
         public const string AngerWalkEffect = "Effect/Prefab/PREffect_ang/E_MS_ang_dust"; //O
@@ -64,5 +64,8 @@ namespace SuraSang
 
         //잠 이펙트
         public const string SleepEffect = "Effect/E_M_SLEEP/PR/p_sleep";
+
+        //슬픔 플레이어 이펙트
+        public const string SadPool = "Effect/Prefab/PREffect_sad/E_P_PR_SAD_POOL";
     }
 }
