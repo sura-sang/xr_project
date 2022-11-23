@@ -48,6 +48,12 @@ namespace SuraSang
                         model.UIView.transform.SetParent(panelParent);
                         break;
                     case UIType.Popup:
+
+                        if(model.UIView.transform.parent == popupParent)
+                        {
+                            ReleasePopup(model);
+                        }
+
                         model.UIView.transform.SetParent(popupParent);
                         model.UIView.transform.SetAsLastSibling();
 
@@ -133,11 +139,6 @@ namespace SuraSang
 
         private void ReleasePopup(UIModelBase model)
         {
-            if(!_popupStack.Contains(model))
-            {
-                return;
-            }
-
             if (_popupStack.Peek().Equals(model))
             {
                 _popupStack.Pop();
