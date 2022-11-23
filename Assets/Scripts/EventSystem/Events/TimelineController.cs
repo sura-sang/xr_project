@@ -84,6 +84,10 @@ namespace SuraSang
         {
             if (_director == aDirector)
             {
+                _director.time = 0;
+                _director.Stop();
+                _director.Evaluate();
+                _camera.SetActive(false);
                 Destroy(gameObject);
             }
         }
