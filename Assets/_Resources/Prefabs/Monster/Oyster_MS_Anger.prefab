@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
+  _isAbsorbAble: 1
   _moveDummy: {fileID: 1101278121}
   ChaseRange: 6
   SkillRange: 4
@@ -711,6 +712,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.03225504
       objectReference: {fileID: 0}
+    - target: {fileID: 165875848304344042, guid: d8a1188b058a4824ca890cda1ec8fa67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc937a0f0eb100b4da9dd07ea16424f7, type: 2}
     - target: {fileID: 908276781140129939, guid: d8a1188b058a4824ca890cda1ec8fa67, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.18341675

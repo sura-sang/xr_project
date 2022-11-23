@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
+  _isAbsorbAble: 1
   IsFollow: 0
   IsDisableAgent: 0
   SleepPos: {fileID: 517445739342254666}
@@ -222,10 +223,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7205043253081587385, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4819223349682164798, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1762483103825564906, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53fd0c30fcf97dc4592b50efb14b2b72, type: 2}
+    - target: {fileID: -1206874426333947015, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53fd0c30fcf97dc4592b50efb14b2b72, type: 2}
     - target: {fileID: 919132149155446097, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
       propertyPath: m_Name
       value: C_MS2
       objectReference: {fileID: 0}
+    - target: {fileID: 1806455235375228090, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162059691212091134, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53fd0c30fcf97dc4592b50efb14b2b72, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9ca9594fbb1b04d89782149cdfb8f9, type: 3}
 --- !u!4 &517445739342254666 stripped
