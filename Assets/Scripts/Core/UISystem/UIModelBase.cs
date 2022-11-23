@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace SuraSang
 {
     public abstract class UIModelBase
@@ -28,6 +30,13 @@ namespace SuraSang
         public virtual void ReleaseUI()
         {
             Global.Instance.UIManager.Release(this);
+        }
+
+        public async void ReleaseWithDelay(float releaseTime)
+        {
+            await Task.Delay((int)(1000 * releaseTime));
+
+            ReleaseUI();
         }
     }
 }
