@@ -174,6 +174,23 @@ namespace SuraSang
                 _angerRunEffect = null;
                 _isMakeEffect = false;
             }
+
+            GameObject obj = null;
+
+            if (CurrentEmotion == Emotion.Sadness)
+            {
+                if (Animator.GetCurrentAnimatorStateInfo(3).IsName("Idle") && !_isMakeEffect)
+                {
+                    obj = Global.Instance.ResourceManager.GetObject(Constant.SadPool, transform);
+                    obj.transform.localPosition = new Vector3(0, -1, 0);
+                    _isMakeEffect = true;
+                }
+            }
+            else if (obj != null)
+            {
+                _isMakeEffect = false;
+                Global.Instance.ResourceManager.ReturnObject(Constant.SadPool, obj);
+            }
         }
 
         public void TransEffect()
