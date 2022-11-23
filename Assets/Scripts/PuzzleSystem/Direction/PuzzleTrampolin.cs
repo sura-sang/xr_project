@@ -43,6 +43,11 @@ namespace SuraSang
 
         public override void OnNotify(PuzzleContext context)
         {
+            if (!Enable)
+            {
+                return;
+            }
+
             base.OnNotify(context);
 
             if (_context == null)
@@ -67,8 +72,8 @@ namespace SuraSang
                     return;
                 }
             }
-            
-            if(_context.SkillEmotion == Emotion.Anger && _context.Player.IsSkill)
+
+            if (_context.SkillEmotion == Emotion.Anger && _context.Player.IsSkill)
             {
                 return;
             }
@@ -99,7 +104,7 @@ namespace SuraSang
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
+            if (Enable && other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
                 OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion, player));
 

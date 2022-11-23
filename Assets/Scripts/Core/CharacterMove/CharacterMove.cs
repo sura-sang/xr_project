@@ -32,12 +32,12 @@ namespace SuraSang
 
         public void SmoothRotation(Vector3 dir)
         {
+            dir.y = 0;
+
             if (dir == Vector3.zero)
             {
                 return;
             }
-
-            dir.y = 0;
 
             var target = Quaternion.LookRotation(dir, Vector3.up);
 
