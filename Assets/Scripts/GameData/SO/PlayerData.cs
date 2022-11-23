@@ -91,6 +91,9 @@ namespace SuraSang
         [SerializeField] private float _absorbRange;
         public float AbsorbRange => _absorbRange;
 
+        [SerializeField] private float _skillDescWaitTime;
+        public float SkillDescWaitTime => _skillDescWaitTime;
+
 
         [Header("감정 데이터")]
         [SerializeField] private EmotionData[] _emotionDatas = new EmotionData[3];
