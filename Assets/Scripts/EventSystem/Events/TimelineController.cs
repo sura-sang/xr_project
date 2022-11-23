@@ -14,7 +14,15 @@ namespace SuraSang
         [SerializeField] private LayerMask _interactionLayer;
 
         [SerializeField] private bool _onlyOne;
+        [SerializeField] private bool _enddingDestroy;
 
+        private void OnEnable()
+        {
+            if (_enddingDestroy)
+            {
+                _director.stopped += OnPlayableDirectorStopped;
+            }
+        }
 
         private void Start()
         {
@@ -29,6 +37,11 @@ namespace SuraSang
         {
             EventManager.Instance.TimelineStartAction -= TimelineStart;
             EventManager.Instance.TimelineStopAction -= TimelineStop;
+
+            if (_enddingDestroy)
+            {
+                _director.stopped -= OnPlayableDirectorStopped;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -60,7 +73,18 @@ namespace SuraSang
             _director.Evaluate();
             _camera.SetActive(false);
 
-            if (_onlyOne) Destroy(gameObject);
+            if (_onlyOne)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        void OnPlayableDirectorStopped(PlayableDirector aDirector)
+        {
+            if (_director == aDirector)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
