@@ -34,8 +34,14 @@ namespace SuraSang
             base.OnCreate(view);
         }
 
-        public void Init(SkillDescType type)
+        public async void Init(SkillDescType type, float waitTime = 5)
         {
+            UIView.gameObject.SetActive(false);
+
+            await Task.Delay((int)(1000 * waitTime));
+
+            UIView.gameObject.SetActive(true);
+
             var descPopup = UIView as UISkillDescPopup;
 
             for (int i = 0; i < descPopup.Descs.Length; i++)
@@ -45,10 +51,12 @@ namespace SuraSang
 
 
             var inputActions = new global::CharacterActions();
+            inputActions.Enable();
             inputActions.Player.Jump.performed += (x) =>
             {
                 UIView.GetComponent<Animator>().SetTrigger("Release");
-                ReleaseWithDelay(0.3f);
+                ReleaseWithDelay(1);
+                inputActions.Dispose();
             };
         }
     }
