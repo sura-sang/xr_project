@@ -40,7 +40,7 @@ namespace SuraSang
                 _anger.ChangeState(new AngerDash(_characterMove, _dir));
             }
 
-            //_anger.SmoothRotation(dir);
+            _anger.SmoothRotation(_dir);
 
             _anger.MovePosition(_startPos + (_anger.transform.rotation * _anger.MoveDummy.localPosition));
         }
