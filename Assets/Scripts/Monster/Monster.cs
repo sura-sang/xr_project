@@ -16,6 +16,9 @@ namespace SuraSang
 {
     public abstract class Monster : CharacterMove
     {
+        [SerializeField] private bool _isAbsorbAble = true;
+        public bool IsAbsorbAble => _isAbsorbAble;
+
         public NavMeshAgent Agent { get; protected set; }
         public Animator Animator { get; protected set; }
 
