@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -15,6 +14,8 @@ namespace SuraSang
 
         [SerializeField] private bool _onlyOne;
         [SerializeField] private bool _enddingDestroy;
+
+        [SerializeField] private bool _dontMoveWhilePlaying;
 
         private void OnEnable()
         {
@@ -65,6 +66,20 @@ namespace SuraSang
         {
             _camera.SetActive(true);
             _director.Play(_timeline);
+
+            if (_dontMoveWhilePlaying)
+            {
+                StopAllCoroutines();
+                StartCoroutine(WaitForEnding());
+            }
+        }
+
+        private IEnumerator WaitForEnding()
+        {
+            Global.Instance.SceneMaster.Player.CanMove = false;
+            yield return new WaitForSeconds((float)_timeline.duration);
+
+            Global.Instance.SceneMaster.Player.CanMove = true;
         }
 
         private void TimelineStop()
