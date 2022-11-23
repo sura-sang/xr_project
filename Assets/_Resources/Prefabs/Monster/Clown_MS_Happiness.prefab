@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
+  _isAbsorbAble: 1
   SleepPos: {fileID: 8238478606801107114}
   _moveRange: {fileID: 0}
 --- !u!114 &932676155
@@ -257,7 +258,7 @@ PrefabInstance:
     - target: {fileID: -5565890878685070197, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a18bf78e15b7c054db030958b8cc8202, type: 2}
+      objectReference: {fileID: 2100000, guid: 761efcf43b7ab4d47abacafcfd202d4e, type: 2}
     - target: {fileID: -1062776968823465622, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
@@ -285,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 321053733762881476, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a18bf78e15b7c054db030958b8cc8202, type: 2}
+      objectReference: {fileID: 2100000, guid: 761efcf43b7ab4d47abacafcfd202d4e, type: 2}
     - target: {fileID: 919132149155446097, guid: 17f2018e7bcbdfc499407d57cb12729d, type: 3}
       propertyPath: m_Name
       value: C_Monster_gdm
