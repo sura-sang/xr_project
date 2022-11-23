@@ -48,14 +48,14 @@ namespace SuraSang
                         model.UIView.transform.SetParent(panelParent);
                         break;
                     case UIType.Popup:
-                        _popupStack.Push(model);
                         model.UIView.transform.SetParent(popupParent);
+                        model.UIView.transform.SetAsLastSibling();
                         break;
                     case UIType.Page:
                         model.UIView.transform.SetParent(pageParent);
                         break;
                 }
-                
+
                 return (T) model;
             }
 
@@ -68,6 +68,7 @@ namespace SuraSang
                     break;
                 case UIType.Popup:
                     view = OpenPopup(model);
+                    view.transform.SetAsLastSibling();
                     break;
                 case UIType.Page:
                     view = OpenPage(model);
@@ -97,6 +98,7 @@ namespace SuraSang
 
             var go = GameObject.Instantiate(Resources.Load<GameObject>(PopupPrefabPath + model.PrefabPath), popupParent);
             var view = go.GetComponent<UIPopupBase>();
+
             return view;
         }
 
@@ -129,6 +131,11 @@ namespace SuraSang
 
         private void ReleasePopup(UIModelBase model)
         {
+            if(!_popupStack.Contains(model))
+            {
+                return;
+            }
+
             if (_popupStack.Peek().Equals(model))
             {
                 _popupStack.Pop();
