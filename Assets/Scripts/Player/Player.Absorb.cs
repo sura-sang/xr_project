@@ -9,7 +9,7 @@ namespace SuraSang
     public partial class Player
     {
         public Emotion CurrentEmotion { get; private set; }
-        
+
         //변신 모델
         private GameObject _currentCharacter;
         [SerializeField] private GameObject _characterDefault;
@@ -18,6 +18,8 @@ namespace SuraSang
         [SerializeField] private GameObject _characterSad;
 
         private List<Collider> _hitTargetContainer = new List<Collider>();//인식한 물체 보관하는 리스트
+
+        private HashSet<Emotion> _isAbsorbed = new HashSet<Emotion>();
 
         private bool _isFind;
 
@@ -33,7 +35,7 @@ namespace SuraSang
         {
             SetAction(ButtonActions.Absorb, OnAbsorb);
         }
-        
+
         private void FindViewTargets()
         {
             _hitTargetContainer.Clear();
@@ -100,42 +102,15 @@ namespace SuraSang
 
                     if (!_hitTargetContainer[index].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
-                        CanMove = false;
-
-                        CurrentEmotion = _hitTargetContainer[index].gameObject.GetComponent<Monster>().Emotion;
-
-                        GameObject obj;
-                        switch (CurrentEmotion)
-                        {
-                            case Emotion.Anger:
-                                obj = Global.Instance.ResourceManager.GetObject(Constant.AngerAbsorbEffectPath, transform);
-                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);
-                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                                break;
-
-                            case Emotion.Happiness:
-                                obj = Global.Instance.ResourceManager.GetObject(Constant.HappyAbsorbEffectPath, transform);
-                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyAbsorbEffectPath, obj);
-                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                                break;
-
-                            case Emotion.Sadness:
-                                obj = Global.Instance.ResourceManager.GetObject(Constant.SadAbsorbEffectPath, transform);
-                                Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
-                                obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                                break;
-                        }
-
-                        //Animator.SetTrigger("Change");
-                        Animator.SetBool("Change", true);
-                        _hitTargetContainer[index].gameObject.GetComponent<Monster>().Absorbed();
-                        _hitTargetContainer[index].gameObject.GetComponent<Animator>().SetTrigger("Absorbed");
-
-                        Debug.Log("흡수 사운드 실행");
-                        AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_AB);
+                        Absorb();
                     }
                 }
                 else
+                {
+                    Absorb();
+                }
+
+                void Absorb()
                 {
                     if (!_hitTargetContainer[0].gameObject.GetComponent<Monster>().IsSleep && Controller.isGrounded)
                     {
@@ -150,20 +125,38 @@ namespace SuraSang
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.AngerAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.AngerAbsorbEffectPath, obj);
                                 obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+                                if (!_isAbsorbed.Contains(Emotion.Anger))
+                                {
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Anger, PlayerData.SkillDescWaitTime);
+                                }
                                 break;
 
                             case Emotion.Happiness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.HappyAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.HappyAbsorbEffectPath, obj);
                                 obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+                                if (!_isAbsorbed.Contains(Emotion.Happiness))
+                                {
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Happy, PlayerData.SkillDescWaitTime);
+                                }
                                 break;
 
                             case Emotion.Sadness:
                                 obj = Global.Instance.ResourceManager.GetObject(Constant.SadAbsorbEffectPath, transform);
                                 Global.Instance.ResourceManager.ReturnParticleSystem(Constant.SadAbsorbEffectPath, obj);
                                 obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+                                if (!_isAbsorbed.Contains(Emotion.Sadness))
+                                {
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Sad, PlayerData.SkillDescWaitTime);
+                                }
                                 break;
                         }
+
+                        _isAbsorbed.Add(CurrentEmotion);
+
                         //Animator.SetTrigger("Change");
                         Animator.SetBool("Change", true);
                         _hitTargetContainer[0].gameObject.GetComponent<Monster>().Absorbed();
