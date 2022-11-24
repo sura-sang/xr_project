@@ -88,7 +88,7 @@ namespace SuraSang
         {
             StopAllPlayerEvents();
 
-            // 6. 유니티 객체가 비활성화 되었을 때 리스소르르 해제하는 방법입니다.
+            // 6. 유니티 객체가 비활성화 되었을 때 리소스를 해제하는 방법입니다.
             playerState.release();
         }
 

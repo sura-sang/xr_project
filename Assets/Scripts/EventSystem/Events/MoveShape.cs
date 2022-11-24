@@ -1,4 +1,5 @@
 using Cinemachine.Utility;
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
@@ -16,6 +17,12 @@ namespace SuraSang
         private Vector3 _firstPos;
         private Vector3 _lastPos;
         private bool _isOpen = false;
+
+        [Header("Sound")]
+        [SerializeField] private bool _move;
+        [SerializeField] private FMODUnity.EventReference _moveSound;
+        [SerializeField] private bool _retrun;
+        [SerializeField] private FMODUnity.EventReference _returnSound;
 
         private void Start()
         {
@@ -49,6 +56,11 @@ namespace SuraSang
             if (id == this._id)
             {
                 _isOpen = true;
+
+                if (_move)
+                {
+                    AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                }
             }
         }
 
@@ -57,6 +69,11 @@ namespace SuraSang
             if (id == this._id)
             {
                 _isOpen = false;
+
+                if (_retrun)
+                {
+                    AudioManager.Instance.SoundOneShot3D(_returnSound, gameObject.transform);
+                }
             }
         }
     }

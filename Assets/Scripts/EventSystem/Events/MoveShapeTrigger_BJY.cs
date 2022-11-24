@@ -9,12 +9,21 @@ namespace SuraSang
         [SerializeField] private LayerMask _interactionLayer;
         public NavMeshAgent DisableAgent;
 
+        [Header("Sound Play")]
+        [SerializeField] private bool _enter;
+
         private void OnTriggerEnter(Collider other)
         {
             if (((1 << other.gameObject.layer) & _interactionLayer) != 0)
             {
+
                 EventManager.Instance.ShapeMove(_id);
                 DisableAgent.enabled = false;
+
+                if (_enter)
+                {
+                    AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_Pad, gameObject.transform);
+                }
             }
         }
 

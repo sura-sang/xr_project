@@ -58,6 +58,8 @@ namespace SuraSang
                 ReleaseWithDelay(1);
                 inputActions.Dispose();
             };
+
+            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Helper);
         }
     }
 }

@@ -73,6 +73,8 @@ namespace SuraSang
                     Debug.Log("체크포인트 접촉");
 
                     Global.Instance.UIManager.Get<UISavingPopupModel>().Init();
+
+                    AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_SavePoint, other.transform);
                 }
             }
         }

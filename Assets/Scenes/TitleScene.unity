@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 542987715}
   - component: {fileID: 542987714}
   - component: {fileID: 542987718}
+  - component: {fileID: 542987719}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -633,6 +634,19 @@ PlayableDirector:
   m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
+--- !u!114 &542987719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542987713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 542987713}
 --- !u!1 &855822345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1676,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5783132567794640171}
-  - component: {fileID: 5783132567794640170}
   - component: {fileID: 5783132567794640169}
   m_Layer: 0
   m_Name: AudioManager
@@ -1683,6 +1696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112e2b9a7c1e86a4ab52ff9fe7747658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Banks:
+  - Master
+  - Title
+  - Opening
+  - Stage
+  - Ending
   SFX_P_Footstep:
     Guid:
       Data1: -1509964534
@@ -1711,20 +1730,6 @@ MonoBehaviour:
       Data3: 730335402
       Data4: -1115426659
     Path: event:/SFX/PC/Common/SFX_P_Hang
-  SFX_P_Intro_Fall:
-    Guid:
-      Data1: -1477617931
-      Data2: 1143561862
-      Data3: 2033547702
-      Data4: -1188530516
-    Path: event:/SFX/PC/Common/SFX_P_Intro_Fall_X
-  SFX_P_Intro_Drop:
-    Guid:
-      Data1: 788544496
-      Data2: 1269598132
-      Data3: 770663307
-      Data4: -1188942927
-    Path: event:/SFX/PC/Common/SFX_P_Intro_Drop_X
   SFX_P_AB:
     Guid:
       Data1: 167206396
@@ -1816,13 +1821,6 @@ MonoBehaviour:
       Data3: 2075845546
       Data4: -120038275
     Path: event:/SFX/Object/SFX_OB_Tree_Flight
-  SFX_OB_Tree_Drop:
-    Guid:
-      Data1: -751555074
-      Data2: 1182596553
-      Data3: -1138796362
-      Data4: 133873639
-    Path: event:/SFX/Object/SFX_OB_Tree_Drop_X
   SFX_OB_Zamiwa:
     Guid:
       Data1: -1926647404
@@ -1844,6 +1842,34 @@ MonoBehaviour:
       Data3: -1539804491
       Data4: -42644617
     Path: event:/SFX/Object/SFX_OB_Waterfall
+  SFX_OB_SavePoint:
+    Guid:
+      Data1: 236635588
+      Data2: 1254412338
+      Data3: 1243793821
+      Data4: -1793571076
+    Path: event:/SFX/Object/SFX_OB_SavePoint
+  SFX_OB_Pad:
+    Guid:
+      Data1: -1625869864
+      Data2: 1177515198
+      Data3: -1519718232
+      Data4: -813687757
+    Path: event:/SFX/Object/SFX_OB_Pad
+  SFX_OB_RockMove:
+    Guid:
+      Data1: -1450567198
+      Data2: 1136672701
+      Data3: -1867927399
+      Data4: 917258117
+    Path: event:/SFX/Object/SFX_OB_RockMove
+  SFX_OB_RockPile:
+    Guid:
+      Data1: -988237214
+      Data2: 1215978429
+      Data3: -1962156886
+      Data4: 1443564310
+    Path: event:/SFX/Object/SFX_OB_RockPile
   SFX_UI_Helper:
     Guid:
       Data1: -1100476145
@@ -1881,10 +1907,10 @@ MonoBehaviour:
     Path: event:/AMB/AMB_Forest_1
   AMB_Forest_2:
     Guid:
-      Data1: 134192438
-      Data2: 1276608112
-      Data3: 472154550
-      Data4: 1376320259
+      Data1: -668030113
+      Data2: 1266769125
+      Data3: 682061739
+      Data4: -600434378
     Path: event:/AMB/AMB_Forest_2
   AMB_Wind:
     Guid:
@@ -1893,13 +1919,6 @@ MonoBehaviour:
       Data3: -71364719
       Data4: 1827723243
     Path: event:/AMB/AMB_Wind
-  AMB_Zamiwa:
-    Guid:
-      Data1: -668030113
-      Data2: 1266769125
-      Data3: 682061739
-      Data4: -600434378
-    Path: event:/AMB/AMB_Zamiwa
   BGM_Full:
     Guid:
       Data1: 1973402470
@@ -1921,41 +1940,6 @@ MonoBehaviour:
       Data3: -623279693
       Data4: 156640573
     Path: event:/BGM/BGM_Nonhighlight
-  CS_OP:
-    Guid:
-      Data1: 547251908
-      Data2: 1210594116
-      Data3: 842050749
-      Data4: 2089922885
-    Path: event:/CutScene/CS_OP
-  CS_ED:
-    Guid:
-      Data1: -834223272
-      Data2: 1203638421
-      Data3: 336321696
-      Data4: 961048095
-    Path: event:/CutScene/CS_ED
---- !u!114 &5783132567794640170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5783132567794640168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadEvent: 1
-  UnloadEvent: 2
-  Banks:
-  - Master
-  - Title
-  - Stage
-  - Ending
-  CollisionTag: 
-  PreloadSamples: 0
 --- !u!4 &5783132567794640171
 Transform:
   m_ObjectHideFlags: 0

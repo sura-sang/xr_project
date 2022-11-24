@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 namespace SuraSang
 {
@@ -20,8 +21,6 @@ namespace SuraSang
             _sequence = 0;
             _titleObject.SetActive(true);
             _menuObject.SetActive(false);
-
-            AudioManager.Instance.PlayBGM(AudioManager.Instance.BGM_Nonhighlight);
         }
 
         private void Update()
@@ -53,13 +52,21 @@ namespace SuraSang
         public void QuitGame()
         {
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
+            AudioManager.Instance.StopAllSoundEvents();
             Application.Quit();
         }
 
         public void OpenCredit()
         {
+            AudioManager.Instance.GameState.setParameterByName("EQ", 1);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
             Debug.Log("열려라 크레딧");
+        }
+
+        public void CloseCredit()
+        {
+            AudioManager.Instance.GameState.setParameterByName("EQ", 0);
+            Debug.Log("죽어라 크레딧");
         }
     }
 }
