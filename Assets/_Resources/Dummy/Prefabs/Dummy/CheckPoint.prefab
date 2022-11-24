@@ -108,6 +108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2339831278143853098}
     m_Modifications:
+    - target: {fileID: 751183759219701724, guid: 5ddb1c17c9d76db4cb16e68764215282, type: 3}
+      propertyPath: m_Intensity
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1255450784044848651, guid: 5ddb1c17c9d76db4cb16e68764215282, type: 3}
       propertyPath: m_Name
       value: PR_CheckPoint_Sub
@@ -126,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1884634924486151345, guid: 5ddb1c17c9d76db4cb16e68764215282, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1884634924486151345, guid: 5ddb1c17c9d76db4cb16e68764215282, type: 3}
       propertyPath: m_LocalRotation.w
