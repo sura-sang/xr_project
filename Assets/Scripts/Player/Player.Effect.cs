@@ -144,6 +144,7 @@ namespace SuraSang
                 {
                     _angerWalkEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerWalkEffect, transform);
                     _angerWalkEffect.transform.localPosition = new Vector3(0, -1f, 0);
+                    _angerWalkEffect.transform.localRotation = Quaternion.Euler(-140, 0, 0);
                     _isMakeEffect = true;
                 }
                 else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Walk") && _angerWalkEffect != null)
@@ -157,7 +158,7 @@ namespace SuraSang
                 {
                     _angerRunEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerRunEffect, transform);
                     _angerRunEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
-                    _angerRunEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    _angerRunEffect.transform.localRotation = Quaternion.Euler(-140, 0, 0);
                     _isMakeEffect = true;
                 }
                 else if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("Run") && _angerRunEffect != null)
