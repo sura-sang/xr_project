@@ -13,8 +13,16 @@ namespace SuraSang
             _resourceManager = new ResourceManager();
             _soDataManager = new SODataManager();
 
+#if UNITY_EDITOR
+            if (Application.isPlaying)
+            {
+                _uiManager = GameObject.Instantiate(Resources.Load<GameObject>(UIManagerPath)).GetComponent<UIManager>();
+                GameObject.DontDestroyOnLoad(_uiManager);
+            }
+#else
             _uiManager = GameObject.Instantiate(Resources.Load<GameObject>(UIManagerPath)).GetComponent<UIManager>();
             GameObject.DontDestroyOnLoad(_uiManager);
+#endif
         }
 
         private static Global _instance = null;

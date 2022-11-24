@@ -17,13 +17,9 @@ namespace SuraSang
 
         private PlayerData _playerData;
 
-        private void Awake()
-        {
-            _playerData = Global.Instance.SODataManager.GetData<PlayerData>();
-        }
-
         private void OnSceneGUI()
         {
+            _playerData = Global.Instance.SODataManager.GetData<PlayerData>();
 
             EditorGUI.BeginChangeCheck();
 
