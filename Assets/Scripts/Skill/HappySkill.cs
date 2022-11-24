@@ -20,6 +20,8 @@ namespace SuraSang
 
         private float _speed;
 
+        private FMOD.Studio.EventInstance _danceState;
+
         public HappySkill(Player player, CharacterController controller)
         {
             _player = player;
@@ -37,7 +39,10 @@ namespace SuraSang
         //}
         public void InitializeSkill()
         {
-            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Dance);
+            _danceState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Dance);
+            _danceState.start();
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(_danceState, _player.transform);
+            AudioManager.Instance.GameState.setParameterByName("EQ", 1);
         }
 
         public void OnMove(Vector2 input)
@@ -66,6 +71,10 @@ namespace SuraSang
         
         public void ClearSkill()
         {
+            _danceState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _danceState.release();
+            _danceState.clearHandle();
+            AudioManager.Instance.GameState.setParameterByName("EQ", 0);
         }
 
         void CheckMonster()

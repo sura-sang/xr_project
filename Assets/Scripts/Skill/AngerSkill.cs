@@ -70,7 +70,7 @@ namespace SuraSang
             _dashStartTime = Time.time;
             _isStopAble = false;
 
-            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Rush);
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_Rush, _player.transform);
         }
 
         public void UpdateSkill()
@@ -98,7 +98,7 @@ namespace SuraSang
                 _player.Animator.SetTrigger("Collide");
                 _isStopAble = true;
 
-                AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_M_Crash);
+                AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Crash, _player.transform);
 
                 if (_angerSkillCrashEffect != null)
                 {

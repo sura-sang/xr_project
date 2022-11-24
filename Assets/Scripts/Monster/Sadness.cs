@@ -18,11 +18,6 @@ namespace SuraSang
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
 
-            FMOD.Studio.EventInstance inst = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/NPC/SFX_M_Cry_X");
-            inst.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-            inst.start();
-            inst.release();
-
             ChangeState(new SadnessIdle(this));
         }
 

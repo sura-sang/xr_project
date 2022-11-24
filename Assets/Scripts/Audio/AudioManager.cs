@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace SuraSang
 {
@@ -16,8 +18,8 @@ namespace SuraSang
         public FMODUnity.EventReference SFX_P_Jump;
         public FMODUnity.EventReference SFX_P_Drop;
         public FMODUnity.EventReference SFX_P_Hang;
-        public FMODUnity.EventReference SFX_P_Intro_Fall;
-        public FMODUnity.EventReference SFX_P_Intro_Drop;
+        // public FMODUnity.EventReference SFX_P_Intro_Fall;
+        // public FMODUnity.EventReference SFX_P_Intro_Drop;
         public FMODUnity.EventReference SFX_P_AB;
 
         [Header("SKill")]
@@ -37,10 +39,14 @@ namespace SuraSang
         [Header("Object")]
         public FMODUnity.EventReference SFX_OB_Tree_Fall;
         public FMODUnity.EventReference SFX_OB_Tree_Flight;
-        public FMODUnity.EventReference SFX_OB_Tree_Drop;
+        // public FMODUnity.EventReference SFX_OB_Tree_Drop;
         public FMODUnity.EventReference SFX_OB_Zamiwa;
         public FMODUnity.EventReference SFX_OB_Water;
         public FMODUnity.EventReference SFX_OB_Waterfall;
+        public FMODUnity.EventReference SFX_OB_SavePoint;
+        public FMODUnity.EventReference SFX_OB_Pad;
+        public FMODUnity.EventReference SFX_OB_RockMove;
+        public FMODUnity.EventReference SFX_OB_RockPile;
 
         [Header("UI")]
         public FMODUnity.EventReference SFX_UI_Helper;
@@ -52,7 +58,7 @@ namespace SuraSang
         public FMODUnity.EventReference AMB_Forest_1;
         public FMODUnity.EventReference AMB_Forest_2;
         public FMODUnity.EventReference AMB_Wind;
-        public FMODUnity.EventReference AMB_Zamiwa;
+        // public FMODUnity.EventReference AMB_Zamiwa;
 
         [Header("BGM")]
         public FMODUnity.EventReference BGM_Full;
@@ -60,10 +66,10 @@ namespace SuraSang
         public FMODUnity.EventReference BGM_Nonhighlight;
 
         [Header("CutScene")]
-        public FMODUnity.EventReference CS_OP;
-        public FMODUnity.EventReference CS_ED;
+        // public FMODUnity.EventReference CS_OP;
+        // public FMODUnity.EventReference CS_ED;
 
-        public FMOD.Studio.EventInstance PlayerState;
+        public FMOD.Studio.EventInstance GameState;
 
         private void Awake()
         {
@@ -79,6 +85,7 @@ namespace SuraSang
                 }
             }
 
+
             if (Instance == null)
             {
                 Instance = this;
@@ -93,6 +100,13 @@ namespace SuraSang
             }
         }
 
+        private void Start()
+        {
+            GameState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
+            GameState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            GameState.start();
+        }
+
         public void SoundOneShot2D(EventReference audioEvent)
         {
             RuntimeManager.PlayOneShot(audioEvent);
@@ -103,11 +117,28 @@ namespace SuraSang
             RuntimeManager.PlayOneShot(audioEvent, transform.position);
         }
 
-        public void PlayBGM(EventReference audioEvent)
+        public void SoundOneShot3DAttributes(EventReference audioEvent, Transform transform)
         {
-            PlayerState.release();
-            PlayerState = FMODUnity.RuntimeManager.CreateInstance(audioEvent);
-            PlayerState.start();
+            FMOD.Studio.EventInstance temp = FMODUnity.RuntimeManager.CreateInstance(audioEvent);
+            temp.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            temp.start();
+            temp.release();
+        }
+
+        public void SoundOneShot3DOverrideDistance(EventReference audioEvent, Transform transform, float min, float max)
+        {
+            FMOD.Studio.EventInstance temp = FMODUnity.RuntimeManager.CreateInstance(audioEvent);
+            temp.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            temp.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, min);
+            temp.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, max);
+            temp.start();
+            temp.release();
+        }
+
+        public void StopAllSoundEvents()
+        {
+            FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/player");
+            playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 }

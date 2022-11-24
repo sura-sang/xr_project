@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6885527673934445245}
+  - component: {fileID: 8537019295836367947}
   m_Layer: 0
   m_Name: PR_Jamiwa
   m_TagString: Untagged
@@ -66,6 +67,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8537019295836367947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885527673934445244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1926647404
+      Data2: 1121407669
+      Data3: -124155997
+      Data4: 414714529
+    Path: event:/SFX/Object/SFX_OB_Zamiwa
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6304570573794399251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -614,6 +645,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 913621ee31d22e943a97828d4317d905, type: 3}
   m_PrefabInstance: {fileID: 6885527673280858108}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &2593489722630158560
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003059855106652845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8371029326486709000, guid: 913621ee31d22e943a97828d4317d905, type: 3}
 --- !u!108 &6885527673280858105
 Light:
   m_ObjectHideFlags: 0
@@ -696,20 +741,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!64 &2593489722630158560
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003059855106652845}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8371029326486709000, guid: 913621ee31d22e943a97828d4317d905, type: 3}
 --- !u!4 &6342466362081435671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 913621ee31d22e943a97828d4317d905, type: 3}
@@ -2874,6 +2905,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0923655b696184db32bea0ad65a1a4, type: 3}
   m_PrefabInstance: {fileID: 6885527674573191091}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1448508235992017406
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003059854116342498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5291269537841946079, guid: 3c0923655b696184db32bea0ad65a1a4, type: 3}
 --- !u!108 &6885527673793183017
 Light:
   m_ObjectHideFlags: 0
@@ -2956,20 +3001,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!64 &1448508235992017406
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003059854116342498}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5291269537841946079, guid: 3c0923655b696184db32bea0ad65a1a4, type: 3}
 --- !u!4 &6342466360755556440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c0923655b696184db32bea0ad65a1a4, type: 3}

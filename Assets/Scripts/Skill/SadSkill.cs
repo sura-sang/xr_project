@@ -14,6 +14,8 @@ namespace SuraSang
 
         private bool _skillInUse = false;
 
+        private FMOD.Studio.EventInstance _cryState;
+
         public SadSkill(Player player, CharacterController controller)
         {
             _player = player;
@@ -61,7 +63,9 @@ namespace SuraSang
         {
             _skillInUse = true;
 
-            AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Cry);
+            _cryState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Cry);
+            _cryState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(_player.transform));
+            _cryState.start();
 
             foreach (var eye in _player.SadEyes)
             {
@@ -72,6 +76,10 @@ namespace SuraSang
         public void ClearSkill()
         {
             _skillInUse = false;
+
+            _cryState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _cryState.release();
+            _cryState.clearHandle();
 
             foreach (var eye in _player.SadEyes)
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace SuraSang
 {
@@ -10,11 +11,17 @@ namespace SuraSang
         public SadnessIdle(CharacterMove characterMove) : base(characterMove) { }
         private GameObject _sadEff;
 
+        private FMOD.Studio.EventInstance _cryState;
+
         public override void InitializeState() 
         {
             _sadness = _monster as Sadness;
             _sadEff = Global.Instance.ResourceManager.GetObject(Constant.SadPoolEffect, _sadness.transform);
             _sadEff.transform.localScale = _sadness.transform.localScale / 2;
+
+            _cryState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_M_Cry);
+            _cryState.start();
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(_cryState, _sadness.transform);
         }
 
         public override void UpdateState()
@@ -27,8 +34,12 @@ namespace SuraSang
         }
 
         public override void ClearState() 
-        { 
-            if(_sadEff != null)
+        {
+            _cryState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _cryState.release();
+            _cryState.clearHandle();
+
+            if (_sadEff != null)
             {
                 Global.Instance.ResourceManager.ReturnObject(Constant.SadPoolEffect, _sadEff);
                 _sadEff = null;

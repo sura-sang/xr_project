@@ -21,7 +21,7 @@ namespace SuraSang
         public void Test_PressAnyKey()
         {
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_PressKey);
-            AudioManager.Instance.PlayBGM(AudioManager.Instance.BGM_Nonhighlight);
+            // AudioManager.Instance.PlayBGM(AudioManager.Instance.BGM_Nonhighlight);
         }
 
         public void Test_LevelCMS()
@@ -31,12 +31,12 @@ namespace SuraSang
 
         public void Test_EQ0()
         {
-            AudioManager.Instance.PlayerState.setParameterByName("EQ", 0);
+            // AudioManager.Instance.PlayerState.setParameterByName("EQ", 0);
         }
 
         public void Test_EQ1()
         {
-            AudioManager.Instance.PlayerState.setParameterByName("EQ", 1);
+            // AudioManager.Instance.PlayerState.setParameterByName("EQ", 1);
         }
 
         public void Test_Helper()
