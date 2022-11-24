@@ -88,6 +88,7 @@ namespace SuraSang
                 
                 _player.EffectTransform.position = hit.ClosestPoint(_player.transform.position);
                 _angerSkillCrashEffect = Global.Instance.ResourceManager.GetObject(Constant.AngerSkillCrashEffectPath, _player.EffectTransform);
+                _angerSkillCrashEffect.transform.localPosition = new Vector3(0, -0.25f, 1);
                 _angerSkillCrashEffect.transform.localRotation = Quaternion.Euler(0, _player.transform.rotation.y, 0);
             }
 
