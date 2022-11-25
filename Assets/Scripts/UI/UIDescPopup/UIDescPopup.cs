@@ -51,6 +51,11 @@ namespace SuraSang
             {
                 await Task.Delay((int)(releaseTime * 1000));
 
+                if (UIView == null)
+                {
+                    return;
+                }
+
                 UIView.GetComponent<Animator>().SetTrigger("Release");
                 ReleaseWithDelay(1);
             }

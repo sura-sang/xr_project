@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Playables;
+using UnityEngine.Video;
 
 namespace SuraSang
 {
@@ -14,10 +14,17 @@ namespace SuraSang
         private AsyncOperation _operation;
         private Animator _animator;
 
+        private VideoPlayer _videoPlayer;
+
+        private AsyncOperation _asyncOperation;
+
         private void Awake()
         {
             _sequence = 0;
             _animator = GetComponent<Animator>();
+            _videoPlayer = GetComponent<VideoPlayer>();
+
+            _videoPlayer.Prepare();
         }
 
         private void Update()
@@ -28,6 +35,9 @@ namespace SuraSang
                 {
                     case 0:
                         AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_PressKey);
+                        _animator.SetTrigger("PressKey");
+                        break;
+                    case 1:
                         _animator.SetTrigger("PressKey");
                         break;
                 }
@@ -43,8 +53,38 @@ namespace SuraSang
         {
             AudioManager.Instance.StopEventInstance(AudioManager.Instance.TitleState);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
-            SceneManager.LoadSceneAsync(1);
+;
+            _videoPlayer.waitForFirstFrame = true;
+            _videoPlayer.Play();
+
+            StartCoroutine(LoadScene((float)_videoPlayer.length));
         }
+
+        private IEnumerator LoadScene(float waitTime)
+        {
+            _asyncOperation = SceneManager.LoadSceneAsync(1);
+            _asyncOperation.allowSceneActivation = false;
+
+            yield return new WaitForSeconds(waitTime);
+
+            _asyncOperation.allowSceneActivation = true;
+        }
+
+        public void SkipIntro()
+        {
+            StopAllCoroutines();
+
+            if (_asyncOperation != null)
+            {
+                _asyncOperation.allowSceneActivation = true;
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync(1);
+            }
+        }
+
+
 
         public void QuitGame()
         {
