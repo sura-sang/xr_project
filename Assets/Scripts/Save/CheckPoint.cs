@@ -45,7 +45,7 @@ namespace SuraSang
                 _Effectobj = Global.Instance.ResourceManager.GetObject(Constant.CheckPointEffect, transform);
                 _Effectobj.transform.localRotation = Quaternion.Euler(-90, 0, 0);
 
-                gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
+                //gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
                 _isCurCheckPoint = true;
             }
             else
@@ -55,7 +55,7 @@ namespace SuraSang
                     Global.Instance.ResourceManager.ReturnObject(Constant.CheckPointEffect, _Effectobj);
                     _Effectobj = null;
                 }
-                gameObject.GetComponentInChildren<Renderer>().material.color = Color.red;
+                //gameObject.GetComponentInChildren<Renderer>().material.color = Color.red;
                 _isCurCheckPoint = false;
             }
         }
