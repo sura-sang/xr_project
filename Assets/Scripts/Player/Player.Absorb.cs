@@ -129,7 +129,8 @@ namespace SuraSang
 
                                 if (!_isAbsorbed.Contains(Emotion.Anger))
                                 {
-                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Anger, PlayerData.SkillDescWaitTime);
+                                    Global.Instance.UIManager.ReleaseAllPopups();
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Anger, PlayerData.SkillDescWaitTime, _isAbsorbed.Count == 0);
                                 }
                                 break;
 
@@ -140,7 +141,8 @@ namespace SuraSang
 
                                 if (!_isAbsorbed.Contains(Emotion.Happiness))
                                 {
-                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Happy, PlayerData.SkillDescWaitTime);
+                                    Global.Instance.UIManager.ReleaseAllPopups();
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Happy, PlayerData.SkillDescWaitTime, _isAbsorbed.Count == 0);
                                 }
                                 break;
 
@@ -151,7 +153,8 @@ namespace SuraSang
 
                                 if (!_isAbsorbed.Contains(Emotion.Sadness))
                                 {
-                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Sad, PlayerData.SkillDescWaitTime);
+                                    Global.Instance.UIManager.ReleaseAllPopups();
+                                    Global.Instance.UIManager.Get<UISkillDescPopupModel>().Init(SkillDescType.Sad, PlayerData.SkillDescWaitTime, _isAbsorbed.Count == 0);
                                 }
                                 break;
                         }
