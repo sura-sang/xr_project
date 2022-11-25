@@ -15,7 +15,8 @@ namespace SuraSang
         Space,
         Hold,
         Absorb,
-        Skill
+        Skill,
+        CheckPoint
     }
 
     public class UIDescPopup : UIPopupBase
