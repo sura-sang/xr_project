@@ -130,6 +130,10 @@ namespace SuraSang
                     break;
                 case UIType.Popup:
                     ReleasePopup(model);
+                    if (model.UIView && !model.UIView.UsePooling)
+                    {
+                        GameObject.Destroy(model.UIView);
+                    }
                     break;
                 case UIType.Page:
                     model.UIView.transform.SetParent(deActiveParent);
@@ -139,7 +143,7 @@ namespace SuraSang
 
         private void ReleasePopup(UIModelBase model)
         {
-            if (_popupStack.Peek().Equals(model))
+            if (_popupStack.Count != 0 && _popupStack.Peek().Equals(model))
             {
                 _popupStack.Pop();
                 model.UIView.transform.SetParent(deActiveParent);
@@ -156,6 +160,15 @@ namespace SuraSang
                         return;
                     }
                 }
+            }
+        }
+
+        public void ReleaseAllPopups()
+        {
+            while (_popupStack.Count > 0)
+            {
+                var last = _popupStack.Pop();
+                last.UIView.transform.SetParent(deActiveParent);
             }
         }
 
