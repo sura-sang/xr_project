@@ -42,7 +42,16 @@ namespace SuraSang
             _danceState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Dance);
             _danceState.start();
             FMODUnity.RuntimeManager.AttachInstanceToGameObject(_danceState, _player.transform);
-            AudioManager.Instance.GameState.setParameterByName("EQ", 1);
+
+            if (AudioManager.Instance.ForestOneState.isValid())
+            {
+                AudioManager.Instance.ForestOneState.setParameterByName("Volume", 1);
+            }
+
+            if (AudioManager.Instance.ForestTwoState.isValid())
+            {
+                AudioManager.Instance.ForestTwoState.setParameterByName("Volume", 1);
+            }
         }
 
         public void OnMove(Vector2 input)
@@ -74,7 +83,16 @@ namespace SuraSang
             _danceState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             _danceState.release();
             _danceState.clearHandle();
-            AudioManager.Instance.GameState.setParameterByName("EQ", 0);
+
+            if (AudioManager.Instance.ForestOneState.isValid())
+            {
+                AudioManager.Instance.ForestOneState.setParameterByName("Volume", 0);
+            }
+
+            if (AudioManager.Instance.ForestTwoState.isValid())
+            {
+                AudioManager.Instance.ForestTwoState.setParameterByName("Volume", 0);
+            }
         }
 
         void CheckMonster()

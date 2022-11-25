@@ -15,11 +15,13 @@ namespace SuraSang
 
         private FMOD.Studio.EventInstance footstep;
 
+        public bool PlayerInWater;
+
         private void DetermineTerrain()
         {
             RaycastHit[] hit;
 
-            hit = Physics.RaycastAll(transform.position, Vector3.down, 10.0f);
+            hit = Physics.RaycastAll(transform.position, Vector3.down, 2.0f);
 
             foreach (RaycastHit rayhit in hit)
             {
@@ -40,6 +42,11 @@ namespace SuraSang
                     _currentTerrain = CURRENT_TERRAIN.WATER;
                 }
             }
+
+            if (PlayerInWater)
+            {
+                _currentTerrain = CURRENT_TERRAIN.WATER;
+            }
         }
 
         private void PlayFootStep(int terrain)
@@ -54,7 +61,7 @@ namespace SuraSang
         private void PlayDropSound(int terrain)
         {
             footstep = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/PC/Common/SFX_P_Drop");
-            footstep.setParameterByName("Material", terrain);
+            footstep.setParameterByName("Jump_Type", terrain);
             footstep.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
             footstep.start();
             footstep.release();
@@ -69,14 +76,18 @@ namespace SuraSang
                 {
                     case CURRENT_TERRAIN.GRASS:
                         PlayFootStep(0);
+                        Debug.Log("흙 걷기");
                         break;
                     case CURRENT_TERRAIN.WOODEN:
+                        Debug.Log("나무 걷기");
                         PlayFootStep(1);
                         break;
                     case CURRENT_TERRAIN.STONE:
+                        Debug.Log("돌 걷기");
                         PlayFootStep(2);
                         break;
                     case CURRENT_TERRAIN.WATER:
+                        Debug.Log("물 걷기");
                         PlayFootStep(3);
                         break;
                 }
@@ -91,14 +102,18 @@ namespace SuraSang
                 {
                     case CURRENT_TERRAIN.GRASS:
                         PlayFootStep(0);
+                        Debug.Log("흙 걷기");
                         break;
                     case CURRENT_TERRAIN.WOODEN:
+                        Debug.Log("나무 걷기");
                         PlayFootStep(1);
                         break;
                     case CURRENT_TERRAIN.STONE:
+                        Debug.Log("돌 걷기");
                         PlayFootStep(2);
                         break;
                     case CURRENT_TERRAIN.WATER:
+                        Debug.Log("물 걷기");
                         PlayFootStep(3);
                         break;
                 }
@@ -113,15 +128,19 @@ namespace SuraSang
             {
                 case CURRENT_TERRAIN.GRASS:
                     PlayDropSound(0);
+                    Debug.Log("흙 드롭");
                     break;
                 case CURRENT_TERRAIN.WOODEN:
                     PlayDropSound(1);
+                    Debug.Log("나무 드롭");
                     break;
                 case CURRENT_TERRAIN.STONE:
                     PlayDropSound(2);
+                    Debug.Log("돌 드롭");
                     break;
                 case CURRENT_TERRAIN.WATER:
                     PlayDropSound(3);
+                    Debug.Log("물 드롭");
                     break;
             }
         }

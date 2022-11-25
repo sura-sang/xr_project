@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1695,6 +1695,13 @@ MonoBehaviour:
       Data3: 1526734987
       Data4: -1821256548
     Path: event:/SFX/PC/Skill/SFX_P_AB
+  SFX_P_AB_2:
+    Guid:
+      Data1: 1434506467
+      Data2: 1113324983
+      Data3: 2127724958
+      Data4: 1930217072
+    Path: event:/SFX/PC/Skill/SFX_P_AB_2
   SFX_P_Crash:
     Guid:
       Data1: 904783202
@@ -1779,13 +1786,6 @@ MonoBehaviour:
       Data3: 2075845546
       Data4: -120038275
     Path: event:/SFX/Object/SFX_OB_Tree_Flight
-  SFX_OB_Zamiwa:
-    Guid:
-      Data1: -1926647404
-      Data2: 1121407669
-      Data3: -124155997
-      Data4: 414714529
-    Path: event:/SFX/Object/SFX_OB_Zamiwa
   SFX_OB_Water:
     Guid:
       Data1: 869251297
@@ -1814,6 +1814,13 @@ MonoBehaviour:
       Data3: -1519718232
       Data4: -813687757
     Path: event:/SFX/Object/SFX_OB_Pad
+  SFX_OB_Pad2:
+    Guid:
+      Data1: 1611115178
+      Data2: 1311017206
+      Data3: 1657322421
+      Data4: -1856051358
+    Path: event:/SFX/Object/SFX_OB_Pad_2
   SFX_OB_RockMove:
     Guid:
       Data1: -1450567198

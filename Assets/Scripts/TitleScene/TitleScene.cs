@@ -41,6 +41,7 @@ namespace SuraSang
 
         public void StartGame()
         {
+            AudioManager.Instance.StopEventInstance(AudioManager.Instance.TitleState);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
             SceneManager.LoadSceneAsync(1);
         }
@@ -54,14 +55,14 @@ namespace SuraSang
 
         public void OpenCredit()
         {
-            AudioManager.Instance.GameState.setParameterByName("EQ", 1);
+            AudioManager.Instance.TitleState.setParameterByName("EQ", 1);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
             Debug.Log("열려라 크레딧");
         }
 
         public void CloseCredit()
         {
-            AudioManager.Instance.GameState.setParameterByName("EQ", 0);
+            AudioManager.Instance.TitleState.setParameterByName("EQ", 0);
             Debug.Log("죽어라 크레딧");
         }
     }

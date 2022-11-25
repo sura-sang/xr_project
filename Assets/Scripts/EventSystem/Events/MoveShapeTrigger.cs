@@ -32,7 +32,7 @@ namespace SuraSang
 
                 if (_exit)
                 {
-                    AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_Pad, gameObject.transform);
+                    AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_Pad2, gameObject.transform);
                 }
             }
         }

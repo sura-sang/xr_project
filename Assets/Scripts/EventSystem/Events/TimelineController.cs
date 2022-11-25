@@ -69,17 +69,8 @@ namespace SuraSang
 
             if (_dontMoveWhilePlaying)
             {
-                StopAllCoroutines();
-                StartCoroutine(WaitForEnding());
+                Global.Instance.SceneMaster.Player.CanMove = false;
             }
-        }
-
-        private IEnumerator WaitForEnding()
-        {
-            Global.Instance.SceneMaster.Player.CanMove = false;
-            yield return new WaitForSeconds((float)_timeline.duration);
-
-            Global.Instance.SceneMaster.Player.CanMove = true;
         }
 
         private void TimelineStop()
@@ -88,6 +79,7 @@ namespace SuraSang
             _director.Stop();
             _director.Evaluate();
             _camera.SetActive(false);
+            Global.Instance.SceneMaster.Player.CanMove = true;
 
             if (_onlyOne)
             {
@@ -103,6 +95,7 @@ namespace SuraSang
                 _director.Stop();
                 _director.Evaluate();
                 _camera.SetActive(false);
+                Global.Instance.SceneMaster.Player.CanMove = true;
                 Destroy(gameObject);
             }
         }

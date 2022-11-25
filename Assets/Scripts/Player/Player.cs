@@ -155,6 +155,8 @@ namespace SuraSang
                     Animator.SetBool("Change", false);
                     break;
             }
+
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_AB_2, gameObject.transform);
         }
 
         public void SwitchAnimatorLayer()
