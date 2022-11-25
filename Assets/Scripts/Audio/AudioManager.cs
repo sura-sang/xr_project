@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using FMOD.Studio;
 
 namespace SuraSang
 {
@@ -21,6 +22,7 @@ namespace SuraSang
         // public FMODUnity.EventReference SFX_P_Intro_Fall;
         // public FMODUnity.EventReference SFX_P_Intro_Drop;
         public FMODUnity.EventReference SFX_P_AB;
+        public FMODUnity.EventReference SFX_P_AB_2;
 
         [Header("SKill")]
         public FMODUnity.EventReference SFX_P_Crash;
@@ -40,11 +42,12 @@ namespace SuraSang
         public FMODUnity.EventReference SFX_OB_Tree_Fall;
         public FMODUnity.EventReference SFX_OB_Tree_Flight;
         // public FMODUnity.EventReference SFX_OB_Tree_Drop;
-        public FMODUnity.EventReference SFX_OB_Zamiwa;
+        // public FMODUnity.EventReference SFX_OB_Zamiwa;
         public FMODUnity.EventReference SFX_OB_Water;
         public FMODUnity.EventReference SFX_OB_Waterfall;
         public FMODUnity.EventReference SFX_OB_SavePoint;
         public FMODUnity.EventReference SFX_OB_Pad;
+        public FMODUnity.EventReference SFX_OB_Pad2;
         public FMODUnity.EventReference SFX_OB_RockMove;
         public FMODUnity.EventReference SFX_OB_RockPile;
 
@@ -69,7 +72,9 @@ namespace SuraSang
         // public FMODUnity.EventReference CS_OP;
         // public FMODUnity.EventReference CS_ED;
 
-        public FMOD.Studio.EventInstance GameState;
+        public FMOD.Studio.EventInstance TitleState;
+        public FMOD.Studio.EventInstance ForestOneState;
+        public FMOD.Studio.EventInstance ForestTwoState;
 
         private void Awake()
         {
@@ -102,9 +107,15 @@ namespace SuraSang
 
         private void Start()
         {
-            GameState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
-            GameState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            GameState.start();
+            TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
+            TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            TitleState.start();
+
+            ForestOneState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
+            ForestOneState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+
+            ForestTwoState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_2);
+            ForestTwoState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
         }
 
         public void SoundOneShot2D(EventReference audioEvent)
@@ -133,6 +144,21 @@ namespace SuraSang
             temp.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, max);
             temp.start();
             temp.release();
+        }
+
+        public void StartInstance(EventInstance inst, EventReference audioEvent)
+        {
+            inst = FMODUnity.RuntimeManager.CreateInstance(audioEvent);
+            inst.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            inst.start();
+        }
+
+        public void StopEventInstance(EventInstance inst)
+        {
+            inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            inst.release();
+            inst.clearHandle();
+            
         }
 
         public void StopAllSoundEvents()

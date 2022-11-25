@@ -113,7 +113,9 @@ MonoBehaviour:
   _id: 0
   _interactionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  _enter: 1
+  _exit: 0
 --- !u!1 &604024345641518882
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +264,22 @@ MonoBehaviour:
   _movePoint: {x: 0, y: -0.1, z: 0}
   _id: 0
   _speed: 0.5
+  _move: 0
+  _moveSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _retrun: 0
+  _returnSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8477522803549386382
 GameObject:
   m_ObjectHideFlags: 0

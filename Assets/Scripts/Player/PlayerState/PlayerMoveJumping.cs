@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Recorder.Input;
 using UnityEngine;
 
 namespace SuraSang
@@ -38,6 +39,8 @@ namespace SuraSang
             {
                 _player.MoveDir = _overrideJumpDir;
             }
+
+            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_Jump, _player.transform);
         }
 
         public override void UpdateState() { }
