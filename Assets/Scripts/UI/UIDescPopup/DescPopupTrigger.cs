@@ -15,6 +15,7 @@ namespace SuraSang
         {
             if (!_isUsed && other.CompareTag("Player"))
             {
+                Global.Instance.UIManager.ReleaseAllPopups();
                 Global.Instance.UIManager.Get<UIDescPopupModel>().Init(_descType, _releaseTime);
                 _isUsed = true;
             }

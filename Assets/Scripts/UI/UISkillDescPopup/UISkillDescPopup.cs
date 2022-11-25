@@ -25,6 +25,9 @@ namespace SuraSang
     {
         public override UIType UIType => UIType.Popup;
         public override string PrefabPath => "SkillDescPopup";
+
+        private bool _showSkillDesc;
+
         public override void SetState(UIState state)
         {
         }
@@ -34,8 +37,24 @@ namespace SuraSang
             base.OnCreate(view);
         }
 
-        public async void Init(SkillDescType type, float waitTime = 5)
+        public override void ReleaseUI()
         {
+            base.ReleaseUI();
+
+            if (_showSkillDesc)
+            {
+                if (_showSkillDesc)
+                {
+                    Global.Instance.UIManager.ReleaseAllPopups();
+                    Global.Instance.UIManager.Get<UIDescPopupModel>().Init(DescType.Skill, 5);
+                }
+            }
+        }
+
+        public async void Init(SkillDescType type, float waitTime = 5, bool ShowDescPopup = false)
+        {
+            _showSkillDesc = ShowDescPopup;
+
             UIView.gameObject.SetActive(false);
 
             await Task.Delay((int)(1000 * waitTime));
@@ -48,7 +67,6 @@ namespace SuraSang
             {
                 descPopup.Descs[i].SetActive(i == (int)type);
             }
-
 
             var inputActions = new global::CharacterActions();
             inputActions.Enable();
