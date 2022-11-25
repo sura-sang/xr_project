@@ -9,18 +9,15 @@ namespace SuraSang
 {
     public class TitleScene : MonoBehaviour
     {
-        [SerializeField] private GameObject _titleObject;
-        [SerializeField] private GameObject _menuObject;
-
         private int _sequence = 0;
 
         private AsyncOperation _operation;
+        private Animator _animator;
 
         private void Awake()
         {
             _sequence = 0;
-            _titleObject.SetActive(true);
-            _menuObject.SetActive(false);
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -31,8 +28,7 @@ namespace SuraSang
                 {
                     case 0:
                         AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_PressKey);
-                        _titleObject.SetActive(false);
-                        _menuObject.SetActive(true);
+                        _animator.SetTrigger("PressKey");
                         break;
                 }
             }
