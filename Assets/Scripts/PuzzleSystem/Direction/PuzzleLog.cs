@@ -42,33 +42,33 @@ namespace SuraSang
                 _rigidbody.isKinematic = false;
                 _rigidbody.AddForceAtPosition(vector * _pushPower, _rigidbody.centerOfMass + Vector3.up);
 
-                _effectPos.localPosition = new Vector3(-vector.x, 3.5f, -vector.z);
+                _effectPos.localPosition = new Vector3(0, 2, 0);
 
                 var effect = Global.Instance.ResourceManager.GetObject(Constant.LogEffect, _effectPos);
                 effect.transform.localScale = new Vector3(1, 1, 2.8f);
 
                 switch(angle)
                 {
-
                     case 0:
-                        effect.transform.localRotation = Quaternion.Euler(90, 0, 180);
+                        effect.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.LogEffect, effect, 2f);
                         break;
 
                     case 90:
-                        effect.transform.localRotation = Quaternion.Euler(90, 90, 0);
+                        effect.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                        Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.LogEffect, effect, 2f);
                         break;
 
                     case 180:
-                        effect.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                        effect.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.LogEffect, effect, 2f);
                         break;
 
                     case 270:
-                        effect.transform.localRotation = Quaternion.Euler(90, 90, -180);
+                        effect.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                        Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.LogEffect, effect, 2f);
                         break;
                 }
-
-                Debug.Log("angle" + angle);
-                //Global.Instance.ResourceManager.ReturnObjectWithDelay(Constant.LogEffect,effect, 2f);
 
                 AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_OB_Tree_Fall, transform);
             }
