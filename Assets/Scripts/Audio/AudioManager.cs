@@ -12,6 +12,10 @@ namespace SuraSang
     {
         public static AudioManager Instance { get; private set; }
 
+        [Header("Debug")]
+        [SerializeField] private bool _bgmOff;
+
+        [Header("Link Banks")]
         [BankRef] public List<string> Banks;
 
         [Header("Player")]
@@ -118,6 +122,33 @@ namespace SuraSang
             ForestTwoState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
         }
 
+        private void Update()
+        {
+            if (_bgmOff)
+            {
+                if (TitleState.isValid())
+                {
+                    TitleState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    TitleState.release();
+                    TitleState.clearHandle();
+                }
+
+                if (ForestTwoState.isValid())
+                {
+                    ForestTwoState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    ForestTwoState.release();
+                    ForestTwoState.clearHandle();
+                }
+
+                if (ForestTwoState.isValid())
+                {
+                    ForestTwoState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    ForestTwoState.release();
+                    ForestTwoState.clearHandle();
+                }
+            }
+        }
+
         public void SoundOneShot2D(EventReference audioEvent)
         {
             RuntimeManager.PlayOneShot(audioEvent);
@@ -157,8 +188,7 @@ namespace SuraSang
         {
             inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             inst.release();
-            inst.clearHandle();
-            
+            inst.clearHandle();           
         }
 
         public void StopAllSoundEvents()

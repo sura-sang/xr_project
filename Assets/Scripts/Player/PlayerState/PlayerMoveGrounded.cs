@@ -74,8 +74,11 @@ namespace SuraSang
         {
             if (isOn && !_player.IsHeadblocked())
             {
-                AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_P_Jump);
-
+                AnimatorStateInfo state = _player.Animator.GetCurrentAnimatorStateInfo(0);
+                if (!state.IsName("Change") && !state.IsName("Absorb"))
+                {
+                    AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_Jump, _player.transform);
+                }
                 _characterMove.ChangeState(new PlayerMoveJumping(_characterMove));
             }
         }

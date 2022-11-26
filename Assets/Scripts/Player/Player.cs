@@ -156,7 +156,10 @@ namespace SuraSang
                     break;
             }
 
-            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_AB_2, gameObject.transform);
+            if (CurrentEmotion != Emotion.Default)
+            {
+                AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_P_AB_2, gameObject.transform);
+            }
         }
 
         public void SwitchAnimatorLayer()

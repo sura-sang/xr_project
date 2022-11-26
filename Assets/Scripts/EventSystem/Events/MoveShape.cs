@@ -24,6 +24,14 @@ namespace SuraSang
         [SerializeField] private bool _retrun;
         [SerializeField] private FMODUnity.EventReference _returnSound;
 
+        [Header("Config")]
+        [SerializeField] private bool _oneShot;
+        [SerializeField] private bool _overrideDistance;
+        [SerializeField] private float min;
+        [SerializeField] private float max;
+
+        private int _count = 0;
+
         private void Start()
         {
             EventManager.Instance.ShapeMoveAction += ShapeMove;
@@ -59,7 +67,34 @@ namespace SuraSang
 
                 if (_move)
                 {
-                    AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                    if (_oneShot && _count == 0)
+                    {
+                        if (_overrideDistance)
+                        {
+                            AudioManager.Instance.SoundOneShot3DOverrideDistance(_moveSound, gameObject.transform, min, max);
+                        }
+                        else
+                        {
+                            AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                        }
+
+                        _count++;
+                    }
+
+                    if (!_oneShot)
+                    {
+                        if (transform.position != _lastPos)
+                        {
+                            if (_overrideDistance)
+                            {
+                                AudioManager.Instance.SoundOneShot3DOverrideDistance(_moveSound, gameObject.transform, min, max);
+                            }
+                            else
+                            {
+                                AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -72,8 +107,45 @@ namespace SuraSang
 
                 if (_retrun)
                 {
-                    AudioManager.Instance.SoundOneShot3D(_returnSound, gameObject.transform);
+                    if (_oneShot && _count == 0)
+                    {
+                        if (_overrideDistance)
+                        {
+                            AudioManager.Instance.SoundOneShot3DOverrideDistance(_moveSound, gameObject.transform, min, max);
+                        }
+                        else
+                        {
+                            AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                        }
+
+                        _count++;
+                    }
+
+                    if (!_oneShot)
+                    {
+                        if (transform.position != _firstPos)
+                        {
+                            if (_overrideDistance)
+                            {
+                                AudioManager.Instance.SoundOneShot3DOverrideDistance(_moveSound, gameObject.transform, min, max);
+                            }
+                            else
+                            {
+                                AudioManager.Instance.SoundOneShot3D(_moveSound, gameObject.transform);
+                            }
+                        }
+                    }
                 }
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (_overrideDistance)
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawWireSphere(transform.position, min);
+                Gizmos.DrawWireSphere(transform.position, max);
             }
         }
     }
