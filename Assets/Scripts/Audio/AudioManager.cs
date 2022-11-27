@@ -113,7 +113,7 @@ namespace SuraSang
         {
             TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
             TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            // TitleState.start();
+            TitleState.start();
 
             ForestOneState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
             ForestOneState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
