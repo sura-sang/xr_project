@@ -37,6 +37,8 @@ namespace SuraSang
         {
             _player = player;
             _controller = controller;
+
+            _player.Animator.ResetTrigger("Collide");
         }
 
         public void OnMove(Vector2 input)
