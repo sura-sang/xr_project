@@ -55,6 +55,7 @@ namespace SuraSang
         }
         public void LoadLevel(int num)
         {
+            AudioManager.Instance.StopAllSoundEvents();
             SceneManager.LoadScene(LevelArr[num]);
         }
     }

@@ -32,6 +32,8 @@ namespace SuraSang
                     case Type.WATER:
                         Global.Instance.SceneMaster.Player.PlayerInWater = true;
                         break;
+                    default:
+                        break;
                 }
             }
         }
@@ -53,6 +55,8 @@ namespace SuraSang
                         break;
                     case Type.WATER:
                         Global.Instance.SceneMaster.Player.PlayerInWater = false;
+                        break;
+                    default:
                         break;
                 }
             }

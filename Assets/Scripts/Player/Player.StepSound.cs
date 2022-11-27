@@ -41,6 +41,10 @@ namespace SuraSang
                 {
                     _currentTerrain = CURRENT_TERRAIN.WATER;
                 }
+                else
+                {
+                    _currentTerrain = CURRENT_TERRAIN.GRASS;
+                }
             }
 
             if (PlayerInWater)
