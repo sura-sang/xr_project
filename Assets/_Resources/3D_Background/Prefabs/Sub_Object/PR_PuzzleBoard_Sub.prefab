@@ -116,6 +116,8 @@ MonoBehaviour:
     m_Bits: 256
   _enter: 1
   _exit: 0
+  _count: 0
+  _currentCount: 0
 --- !u!1 &604024345641518882
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +179,7 @@ GameObject:
   - component: {fileID: 6272490171741870939}
   - component: {fileID: 5412428103219300403}
   - component: {fileID: 4165183644739601795}
+  - component: {fileID: 3600591293126591531}
   m_Layer: 0
   m_Name: Step_Board
   m_TagString: Untagged
@@ -280,6 +283,24 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _oneShot: 0
+  _overrideDistance: 0
+  min: 0
+  max: 0
+--- !u!64 &3600591293126591531
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250630282212110152}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 690106047850165013, guid: ac4940605788a1d46984748a1cfc6aee, type: 3}
 --- !u!1 &8477522803549386382
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +312,7 @@ GameObject:
   - component: {fileID: 2392137612163612022}
   - component: {fileID: 1399539875160604802}
   - component: {fileID: 9096474572975158664}
+  - component: {fileID: 3187022457576993662}
   m_Layer: 0
   m_Name: Frame_Board
   m_TagString: Untagged
@@ -363,3 +385,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3187022457576993662
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477522803549386382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3292925553009838691, guid: ac4940605788a1d46984748a1cfc6aee, type: 3}
