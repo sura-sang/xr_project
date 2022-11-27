@@ -80,7 +80,7 @@ namespace SuraSang
         
         public void ClearSkill()
         {
-            _danceState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _danceState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             _danceState.release();
             _danceState.clearHandle();
 
