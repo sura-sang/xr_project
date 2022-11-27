@@ -122,7 +122,7 @@ namespace SuraSang
             return false;
         }
 
-        public void SetAction(ButtonActions type, UnityAction<bool> action)
+        public void SetAction(ButtonActions type, UnityAction<bool> action, bool update = true)
         {
             if (!_buttonEvents.ContainsKey(type))
             {
@@ -133,7 +133,7 @@ namespace SuraSang
                 _buttonEvents[type] = action;
             }
             
-            if (_buttonActions.TryGetValue(type, out var input))
+            if (update && _buttonActions.TryGetValue(type, out var input))
             {
                 action?.Invoke(input.IsPressed());
             }
