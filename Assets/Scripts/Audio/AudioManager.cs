@@ -113,7 +113,7 @@ namespace SuraSang
         {
             TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
             TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            TitleState.start();
+            // TitleState.start();
 
             ForestOneState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
             ForestOneState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
@@ -193,8 +193,15 @@ namespace SuraSang
 
         public void StopAllSoundEvents()
         {
-            FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/player");
+            FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/");
             playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+
+        public bool IsPlaying(EventInstance inst)
+        {
+            FMOD.Studio.PLAYBACK_STATE state;
+            inst.getPlaybackState(out state);
+            return state != FMOD.Studio.PLAYBACK_STATE.STOPPED;
         }
     }
 }
