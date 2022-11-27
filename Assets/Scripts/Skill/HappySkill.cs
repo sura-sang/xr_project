@@ -43,14 +43,9 @@ namespace SuraSang
             _danceState.start();
             FMODUnity.RuntimeManager.AttachInstanceToGameObject(_danceState, _player.transform);
 
-            if (AudioManager.Instance.ForestOneState.isValid())
+            if (AudioManager.Instance.StageState.isValid())
             {
-                AudioManager.Instance.ForestOneState.setParameterByName("Volume", 1);
-            }
-
-            if (AudioManager.Instance.ForestTwoState.isValid())
-            {
-                AudioManager.Instance.ForestTwoState.setParameterByName("Volume", 1);
+                AudioManager.Instance.StageState.setParameterByName("Volume", 1);
             }
         }
 
@@ -84,14 +79,9 @@ namespace SuraSang
             _danceState.release();
             _danceState.clearHandle();
 
-            if (AudioManager.Instance.ForestOneState.isValid())
+            if (AudioManager.Instance.StageState.isValid())
             {
-                AudioManager.Instance.ForestOneState.setParameterByName("Volume", 0);
-            }
-
-            if (AudioManager.Instance.ForestTwoState.isValid())
-            {
-                AudioManager.Instance.ForestTwoState.setParameterByName("Volume", 0);
+                AudioManager.Instance.StageState.setParameterByName("Volume", 0);
             }
         }
 

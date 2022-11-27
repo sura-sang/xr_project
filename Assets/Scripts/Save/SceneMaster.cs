@@ -17,6 +17,7 @@ namespace SuraSang
 
         public Player Player => _player;
         [SerializeField] private Player _player;
+        public int _replyCount = 0;
 
         private void Awake()
         {
@@ -44,6 +45,15 @@ namespace SuraSang
             }
 
             Global.Instance.SetCurrentSceneMaster(this);
+
+            if (SceneInstance._replyCount == 0)
+            {
+                GameObject.Find("IntroObject").transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                GameObject.Find("IntroObject").transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
 
         private void Update()
@@ -55,6 +65,7 @@ namespace SuraSang
         }
         public void LoadLevel(int num)
         {
+            SceneInstance._replyCount++;
             AudioManager.Instance.StopAllSoundEvents();
             SceneManager.LoadScene(LevelArr[num]);
         }
