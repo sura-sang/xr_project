@@ -52,8 +52,6 @@ namespace SuraSang
                     if (info.IsSleep)
                     {
                         hit.collider?.GetComponentInParent<PuzzleElements>()?.OnNotify(new PuzzleContext(_player.CurrentEmotion));
-
-                        AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Grow, hit.transform);
                     }                    
                 }
             }

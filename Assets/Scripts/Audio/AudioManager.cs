@@ -22,7 +22,7 @@ namespace SuraSang
         public FMODUnity.EventReference SFX_P_Footstep;
         public FMODUnity.EventReference SFX_P_Jump;
         public FMODUnity.EventReference SFX_P_Drop;
-        public FMODUnity.EventReference SFX_P_Hang;
+        // public FMODUnity.EventReference SFX_P_Hang;
         // public FMODUnity.EventReference SFX_P_Intro_Fall;
         // public FMODUnity.EventReference SFX_P_Intro_Drop;
         public FMODUnity.EventReference SFX_P_AB;
@@ -36,10 +36,10 @@ namespace SuraSang
 
         [Header("Monster")]
         public FMODUnity.EventReference SFX_M_Crash;
-        public FMODUnity.EventReference SFX_M_Cry;
-        public FMODUnity.EventReference SFX_M_Rush;
+        // public FMODUnity.EventReference SFX_M_Cry;
+        // public FMODUnity.EventReference SFX_M_Rush;
         public FMODUnity.EventReference SFX_M_Sleep;
-        public FMODUnity.EventReference SFX_M_Grow;
+        // public FMODUnity.EventReference SFX_M_Grow;
         public FMODUnity.EventReference SFX_M_POP;
 
         [Header("Object")]
@@ -64,7 +64,7 @@ namespace SuraSang
         [Header("AMB")]
         public FMODUnity.EventReference AMB_Forest_1;
         public FMODUnity.EventReference AMB_Forest_2;
-        public FMODUnity.EventReference AMB_Wind;
+        // public FMODUnity.EventReference AMB_Wind;
         // public FMODUnity.EventReference AMB_Zamiwa;
 
         [Header("BGM")]
