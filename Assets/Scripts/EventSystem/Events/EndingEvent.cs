@@ -14,7 +14,7 @@ namespace SuraSang
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private VideoClip _clip;
         [SerializeField] private GameObject _videoPlayer;
-        [SerializeField] private GameObject _animator;
+        [SerializeField] private GameObject _fadeImage;
         [SerializeField] private GameObject _canvas;
         [SerializeField] private GameObject _rawImage;
 
@@ -32,8 +32,8 @@ namespace SuraSang
         {
             if (_canvas.activeSelf == true)
             {
-                if (_animator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ending") &&
-                    _animator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && !_on)
+                if (_fadeImage.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ending") &&
+                    _fadeImage.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && !_on)
                 {
                     PlayEnding();
                     _rawImage.SetActive(true);
@@ -75,6 +75,7 @@ namespace SuraSang
 
         public void ReturnTitle()
         {
+            AudioManager.Instance.TitleState.start();
             SceneManager.LoadScene(0);
         }
     }

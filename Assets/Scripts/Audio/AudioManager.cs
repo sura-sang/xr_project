@@ -194,7 +194,7 @@ namespace SuraSang
         public void StopAllSoundEvents()
         {
             FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/");
-            playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
         public bool IsPlaying(EventInstance inst)

@@ -41,10 +41,6 @@ namespace SuraSang
                 {
                     _currentTerrain = CURRENT_TERRAIN.WATER;
                 }
-                else
-                {
-                    _currentTerrain = CURRENT_TERRAIN.GRASS;
-                }
             }
 
             if (PlayerInWater)
@@ -57,7 +53,7 @@ namespace SuraSang
         {
             if (CanMove)
             {
-                footstep = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Footstep);
+                footstep = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/PC/Common/SFX_P_Footstep");
                 footstep.setParameterByName("Material", terrain);
                 footstep.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 footstep.start();
@@ -69,7 +65,7 @@ namespace SuraSang
         {
             if (CanMove)
             {
-                footstep = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Drop);
+                footstep = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/PC/Common/SFX_P_Drop");
                 footstep.setParameterByName("Jump_Type", terrain);
                 footstep.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 footstep.start();
