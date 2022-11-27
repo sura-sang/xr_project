@@ -25,19 +25,19 @@ namespace SuraSang
 
             foreach (RaycastHit rayhit in hit)
             {
-                if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Material_Grass"))
+                if (rayhit.transform.gameObject.tag == "Material_Grass")
                 {
                     _currentTerrain = CURRENT_TERRAIN.GRASS;
                 }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Material_Wooden"))
+                else if (rayhit.transform.gameObject.tag == "Material_Wooden")
                 {
                     _currentTerrain = CURRENT_TERRAIN.WOODEN;
                 }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Material_Stone"))
+                else if (rayhit.transform.gameObject.tag == "Material_Stone")
                 {
                     _currentTerrain = CURRENT_TERRAIN.STONE;
                 }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Material_Water"))
+                else if (rayhit.transform.gameObject.tag == "Material_Water")
                 {
                     _currentTerrain = CURRENT_TERRAIN.WATER;
                 }
@@ -57,7 +57,7 @@ namespace SuraSang
         {
             if (CanMove)
             {
-                footstep = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/PC/Common/SFX_P_Footstep");
+                footstep = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Footstep);
                 footstep.setParameterByName("Material", terrain);
                 footstep.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 footstep.start();
@@ -69,7 +69,7 @@ namespace SuraSang
         {
             if (CanMove)
             {
-                footstep = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/PC/Common/SFX_P_Drop");
+                footstep = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_P_Drop);
                 footstep.setParameterByName("Jump_Type", terrain);
                 footstep.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 footstep.start();
