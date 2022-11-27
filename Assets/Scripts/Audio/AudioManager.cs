@@ -77,8 +77,7 @@ namespace SuraSang
         // public FMODUnity.EventReference CS_ED;
 
         public FMOD.Studio.EventInstance TitleState;
-        public FMOD.Studio.EventInstance ForestOneState;
-        public FMOD.Studio.EventInstance ForestTwoState;
+        public FMOD.Studio.EventInstance StageState;
 
         private void Awake()
         {
@@ -115,11 +114,8 @@ namespace SuraSang
             TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
             TitleState.start();
 
-            ForestOneState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
-            ForestOneState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-
-            ForestTwoState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_2);
-            ForestTwoState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            StageState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
+            StageState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
         }
 
         private void Update()
@@ -133,18 +129,11 @@ namespace SuraSang
                     TitleState.clearHandle();
                 }
 
-                if (ForestTwoState.isValid())
+                if (StageState.isValid())
                 {
-                    ForestTwoState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                    ForestTwoState.release();
-                    ForestTwoState.clearHandle();
-                }
-
-                if (ForestTwoState.isValid())
-                {
-                    ForestTwoState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                    ForestTwoState.release();
-                    ForestTwoState.clearHandle();
+                    StageState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    StageState.release();
+                    StageState.clearHandle();
                 }
             }
         }
