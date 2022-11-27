@@ -37,9 +37,6 @@ namespace SuraSang
                         AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_PressKey);
                         _animator.SetTrigger("PressKey");
                         break;
-                    case 1:
-                        _animator.SetTrigger("PressKey");
-                        break;
                 }
             }
         }
@@ -51,11 +48,14 @@ namespace SuraSang
 
         public void StartGame()
         {
+            _animator.SetTrigger("PressKey");
+
             AudioManager.Instance.StopEventInstance(AudioManager.Instance.TitleState);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
 ;
-            _videoPlayer.waitForFirstFrame = true;
-            _videoPlayer.Play();
+            //_videoPlayer.waitForFirstFrame = true;
+            //_videoPlayer.Play();
+            _videoPlayer.enabled = true;
 
             StartCoroutine(LoadScene((float)_videoPlayer.length));
         }
