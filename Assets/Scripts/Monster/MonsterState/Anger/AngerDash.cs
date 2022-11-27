@@ -29,8 +29,6 @@ namespace SuraSang
             _animator.SetTrigger("Attack");
 
             _radius = _agent.radius * 2;
-
-            AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Rush, _anger.transform);
         }
 
         public override void UpdateState()
