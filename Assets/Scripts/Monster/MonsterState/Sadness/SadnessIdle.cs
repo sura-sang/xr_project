@@ -18,10 +18,6 @@ namespace SuraSang
             _sadness = _monster as Sadness;
             _sadEff = Global.Instance.ResourceManager.GetObject(Constant.SadPoolEffect, _sadness.transform);
             _sadEff.transform.localScale = _sadness.transform.localScale / 2;
-
-            _cryState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.SFX_M_Cry);
-            _cryState.start();
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(_cryState, _sadness.transform);
         }
 
         public override void UpdateState()
@@ -35,10 +31,6 @@ namespace SuraSang
 
         public override void ClearState() 
         {
-            _cryState.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            _cryState.release();
-            _cryState.clearHandle();
-
             if (_sadEff != null)
             {
                 Global.Instance.ResourceManager.ReturnObject(Constant.SadPoolEffect, _sadEff);
