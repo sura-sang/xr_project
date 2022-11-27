@@ -10,6 +10,9 @@ namespace SuraSang
         public static CheckPointManager CpManager;
         private string _levelID;
 
+        [ReadOnly]
+        public string CurrentCheckPointName = "";
+
         public string LevelID { get { return _levelID; } }
 
         private void Awake()

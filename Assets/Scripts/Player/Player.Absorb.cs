@@ -23,6 +23,9 @@ namespace SuraSang
 
         private bool _isFind;
 
+        [ReadOnly]
+        public bool IsOnCheckPoint = false;
+
         private void InitAbsorb()
         {
         }
@@ -67,7 +70,8 @@ namespace SuraSang
         {
             FindViewTargets();
 
-            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded && !CheckPoint.IsOnCheckPoint)
+            //범위 안에 있는 체크포인트의 IsOnCheckPoint를 가져와야 함.
+            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded && !IsOnCheckPoint)
             {
                 if (_hitTargetContainer.Count != 1)
                 {

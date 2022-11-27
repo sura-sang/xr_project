@@ -17,8 +17,6 @@ namespace SuraSang
 
         private GameObject _Effectobj = null;
 
-        public static bool IsOnCheckPoint = false;
-
         private void OnEnable()
         {
             OnCheckPointHit += UpdateCheckpoint;
@@ -35,6 +33,7 @@ namespace SuraSang
             _cpRaius.radius = CheckPointRadius;
         }
 
+
         public void UpdateCheckpoint(string cpName)
         {
             if (gameObject.name == cpName)
@@ -44,9 +43,9 @@ namespace SuraSang
                 Global.Instance.SceneMaster.Player.ChangeCharacter();
                 _Effectobj = Global.Instance.ResourceManager.GetObject(Constant.CheckPointEffect, transform);
                 _Effectobj.transform.localRotation = Quaternion.Euler(-90, 0, 0);
-
-                //gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
                 _isCurCheckPoint = true;
+                Global.Instance.SceneMaster.Player.IsOnCheckPoint = false;
+                CheckPointManager.CpManager.CurrentCheckPointName = gameObject.name;
             }
             else
             {
@@ -55,17 +54,16 @@ namespace SuraSang
                     Global.Instance.ResourceManager.ReturnObject(Constant.CheckPointEffect, _Effectobj);
                     _Effectobj = null;
                 }
-                //gameObject.GetComponentInChildren<Renderer>().material.color = Color.red;
+
                 _isCurCheckPoint = false;
             }
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if(!_isCurCheckPoint)
+            if (!_isCurCheckPoint && CheckPointManager.CpManager.CurrentCheckPointName != gameObject.name)
             {
-                IsOnCheckPoint = true;
-                Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
+                Global.Instance.SceneMaster.Player.IsOnCheckPoint = true;
 
                 if (other.CompareTag("Player") && Global.Instance.SceneMaster.Player.IsCheckPointClick)
                 {
@@ -81,8 +79,7 @@ namespace SuraSang
 
         private void OnTriggerExit(Collider other)
         {
-            IsOnCheckPoint = false;
-            Debug.Log("IsOnCheckPoint : " + IsOnCheckPoint);
+            Global.Instance.SceneMaster.Player.IsOnCheckPoint = false;
         }
 
         private void OnDrawGizmos()
