@@ -18,6 +18,8 @@ namespace SuraSang
 
         private AsyncOperation _asyncOperation;
 
+        [SerializeField] private GameObject _credit;
+
         private void Awake()
         {
             _sequence = 0;
@@ -97,13 +99,19 @@ namespace SuraSang
         {
             AudioManager.Instance.TitleState.setParameterByName("EQ", 1);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
-            Debug.Log("열려라 크레딧");
+            _credit.SetActive(true);
+            _animator.SetTrigger("Credit");
         }
 
         public void CloseCredit()
         {
             AudioManager.Instance.TitleState.setParameterByName("EQ", 0);
-            Debug.Log("죽어라 크레딧");
+            _credit.SetActive(false);
+        }
+
+        public void BackTitle()
+        {
+            _animator.SetTrigger("BackTitle");
         }
     }
 }
