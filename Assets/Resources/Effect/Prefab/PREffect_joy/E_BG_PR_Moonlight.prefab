@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9137178121416281016}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.0861814, y: -0.015888676, z: -0.056386583, w: 0.9945557}
+  m_LocalPosition: {x: 28.17, y: -5.13, z: 6.59}
+  m_LocalScale: {x: 0.9671607, y: 1.070336, z: 1.070336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9137178122065248515}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -9.975, y: -1.273, z: -6.379}
 --- !u!198 &9137178121416280998
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9137178121416281016}
   serializedVersion: 8
-  lengthInSec: 10
+  lengthInSec: 8.42
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
