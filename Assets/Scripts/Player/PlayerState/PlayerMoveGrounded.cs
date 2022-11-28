@@ -72,7 +72,7 @@ namespace SuraSang
 
         private void OnJump(bool isOn)
         {
-            if (isOn && !_player.IsHeadblocked())
+            if (isOn && _player.CanMove && !_player.IsHeadblocked())
             {
                 AnimatorStateInfo state = _player.Animator.GetCurrentAnimatorStateInfo(0);
                 if (!state.IsName("Change") && !state.IsName("Absorb"))

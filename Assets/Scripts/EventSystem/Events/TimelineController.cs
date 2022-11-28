@@ -30,9 +30,19 @@ namespace SuraSang
             EventManager.Instance.TimelineStartAction += TimelineStart;
             EventManager.Instance.TimelineStopAction += TimelineStop;
 
-            _director.Pause();
-            _director.playOnAwake = false;
-            _camera.SetActive(false);
+            if (_director.playOnAwake)
+            {
+                if (_dontMoveWhilePlaying)
+                {
+                    Global.Instance.SceneMaster.Player.CanMove = false;
+                    Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().Init(TimelineStop);
+                }
+            }
+            else
+            {
+                _director.Pause();
+                _camera.SetActive(false);
+            }
         }
 
         private void OnDisable()
@@ -64,39 +74,57 @@ namespace SuraSang
 
         private void TimelineStart()
         {
-            _camera.SetActive(true);
+            if (_camera != null)
+            {
+                _camera.SetActive(true);
+            }
+
             _director.Play(_timeline);
 
             if (_dontMoveWhilePlaying)
             {
                 Global.Instance.SceneMaster.Player.CanMove = false;
+                Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().Init(TimelineStop);
             }
         }
 
         private void TimelineStop()
         {
-            _director.time = 0;
-            _director.Stop();
+            _director.time = _director.playableAsset.duration;
             _director.Evaluate();
-            _camera.SetActive(false);
-            Global.Instance.SceneMaster.Player.CanMove = true;
+            _director.Stop();
+
+            if (_camera != null)
+            {
+                _camera.SetActive(false);
+            }
 
             if (_onlyOne)
             {
-                Destroy(gameObject);
+                Destroy(this.gameObject);
             }
+
+            Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().ReleaseUI();
+            Global.Instance.SceneMaster.Player.CanMove = true;
         }
 
         void OnPlayableDirectorStopped(PlayableDirector aDirector)
         {
             if (_director == aDirector)
             {
-                _director.time = 0;
-                _director.Stop();
-                _director.Evaluate();
-                _camera.SetActive(false);
-                Global.Instance.SceneMaster.Player.CanMove = true;
+                //_director.time = _director.playableAsset.duration;
+                //_director.Stop();
+                //_director.Evaluate();
+
+                if (_camera != null)
+                {
+                    _camera.SetActive(false);
+                }
+
                 Destroy(gameObject);
+
+                Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().ReleaseUI();
+                Global.Instance.SceneMaster.Player.CanMove = true;
             }
         }
     }

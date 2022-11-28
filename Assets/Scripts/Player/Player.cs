@@ -78,12 +78,9 @@ namespace SuraSang
             UpdateInputs();
             UpdateAbsorb();
 
-            if (CanMove)
-            {
-                Controller.Move(MoveDir * Time.deltaTime);
+            Controller.Move(MoveDir * Time.deltaTime);
 
-                Animator.SetFloat(MoveSpeedParam, new Vector2(Controller.velocity.x, Controller.velocity.z).magnitude);
-            }
+            Animator.SetFloat(MoveSpeedParam, new Vector2(Controller.velocity.x, Controller.velocity.z).magnitude);
 
             if (IsReset)
             {
