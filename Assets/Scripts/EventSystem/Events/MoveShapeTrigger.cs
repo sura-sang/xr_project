@@ -1,5 +1,3 @@
-using System.Diagnostics.PerformanceData;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 namespace SuraSang
