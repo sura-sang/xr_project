@@ -61,14 +61,13 @@ namespace SuraSang
 
         private void OnTriggerStay(Collider other)
         {
-            if (!_isCurCheckPoint && CheckPointManager.CpManager.CurrentCheckPointName != gameObject.name)
+            if (!_isCurCheckPoint && CheckPointManager.CpManager.CurrentCheckPointName != gameObject.name && other.CompareTag("Player"))
             {
                 Global.Instance.SceneMaster.Player.IsOnCheckPoint = true;
 
                 if (other.CompareTag("Player") && Global.Instance.SceneMaster.Player.IsCheckPointClick)
                 {
                     OnCheckPointHit(gameObject.name);
-                    Debug.Log("체크포인트 접촉");
 
                     Global.Instance.UIManager.Get<UISavingPopupModel>().Init();
 
