@@ -112,9 +112,9 @@ namespace SuraSang
         {
             if (_director == aDirector)
             {
-                _director.time = 0;
-                _director.Stop();
-                _director.Evaluate();
+                //_director.time = _director.playableAsset.duration;
+                //_director.Stop();
+                //_director.Evaluate();
 
                 if (_camera != null)
                 {
