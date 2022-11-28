@@ -26,6 +26,7 @@ namespace SuraSang
             _player.SetAction(ButtonActions.Dance, OnDance);
 
             _player.PlayDropSound();
+            _player._isTrampolin = false;
         }
 
         public override void UpdateState()

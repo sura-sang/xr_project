@@ -37,6 +37,9 @@ namespace SuraSang
 
         private Transform _cameraTransform;
 
+        // 사운드 버그때문에 트램펄린 체크 용도
+        public bool _isTrampolin = false;
+
         private void Awake()
         {
             PlayerData = Global.Instance.SODataManager.GetData<PlayerData>();

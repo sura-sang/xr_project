@@ -66,12 +66,14 @@ namespace SuraSang
         public void PlayEnding()
         {
             _on = true;
+            AudioManager.Instance.TitleState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            AudioManager.Instance.StageState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             SceneMaster.SceneInstance._replyCount = 0;
-            AudioManager.Instance.StopAllSoundEvents();
         }
 
         public void ReturnTitle()
         {
+            AudioManager.Instance.TitleState.start();
             SceneMaster.SceneInstance.LoadLevel(1);
         }
     }
