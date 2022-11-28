@@ -53,7 +53,7 @@ namespace SuraSang
         {
             _animator.SetTrigger("PressKey");
 
-            AudioManager.Instance.TitleState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            AudioManager.Instance.StopEventInstance(AudioManager.Instance.TitleState);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
 ;
             StartCoroutine(LoadSequence((float)_videoPlayer.length));
