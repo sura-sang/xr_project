@@ -71,7 +71,7 @@ namespace SuraSang
             FindViewTargets();
 
             //범위 안에 있는 체크포인트의 IsOnCheckPoint를 가져와야 함.
-            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded && !IsOnCheckPoint)
+            if (isOn && _hitTargetContainer.Count != 0 && Controller.isGrounded && !IsOnCheckPoint && CanMove)
             {
                 if (_hitTargetContainer.Count != 1)
                 {
