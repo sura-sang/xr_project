@@ -31,7 +31,7 @@ namespace SuraSang
             _monster.RandomNavSphere(_moveRange.position, _radius);
 
             _HappyEff = Global.Instance.ResourceManager.GetObject(Constant.HappySmileEffect, _happiness.transform);
-            _HappyEff.transform.localPosition = new Vector3(-0.7f, 1.56f, 0);
+            _HappyEff.transform.localPosition = new Vector3(-0.7f, 1.0f, 0);
             _HappyEff.transform.localRotation = Quaternion.Euler(-36, -90, 0);
         }
 
