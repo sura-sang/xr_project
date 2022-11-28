@@ -89,7 +89,7 @@ namespace SuraSang
 
         private void UpdateInputs()
         {
-            var moveInput = _moveInputAction.ReadValue<Vector2>();
+            var moveInput = CanMove ? _moveInputAction.ReadValue<Vector2>() : Vector2.zero;
 
             OnMove?.Invoke(moveInput);
         }
