@@ -25,5 +25,25 @@ namespace SuraSang
         {
             AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_Sleep, transform);
         }
+
+        public override void Absorbed()
+        {
+            base.Absorbed();
+
+            if (TryGetComponent<Rigidbody>(out var rig))
+            {
+                rig.isKinematic = false;
+            }
+        }
+
+        public override void UnAbsorbed(Monster monster)
+        {
+            base.UnAbsorbed(monster);
+
+            if (TryGetComponent<Rigidbody>(out var rig))
+            {
+                rig.isKinematic = true;
+            }
+        }
     }
 }

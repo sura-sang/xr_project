@@ -26,7 +26,7 @@ namespace SuraSang
 
         public bool IsSleep { get; private set; } = false;
 
-        public void Absorbed()
+        public virtual void Absorbed()
         {
             ChangeState(new MonsterMoveSleep(this));
             //this.gameObject.GetComponentInChildren<Light>().enabled = false;
@@ -39,7 +39,7 @@ namespace SuraSang
             }
         }
 
-        public void UnAbsorbed(Monster monster)
+        public virtual void UnAbsorbed(Monster monster)
         {
             var obj = monster as Sadness;
             if (!obj.IsDisableAgent)
