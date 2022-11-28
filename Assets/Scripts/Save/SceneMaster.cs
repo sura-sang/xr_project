@@ -61,6 +61,11 @@ namespace SuraSang
             if (_player == null)
             {
                 _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+                if (_player == null)//타이틀 씬을 위한 예외 ㅎ
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         public void LoadLevel(int num)
