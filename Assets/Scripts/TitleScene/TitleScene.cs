@@ -19,6 +19,7 @@ namespace SuraSang
         private AsyncOperation _asyncOperation;
 
         [SerializeField] private GameObject _credit;
+        [SerializeField] private float _introDelay;
 
         private void Awake()
         {
@@ -55,15 +56,18 @@ namespace SuraSang
             AudioManager.Instance.StopEventInstance(AudioManager.Instance.TitleState);
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Click);
 ;
-            //_videoPlayer.waitForFirstFrame = true;
-            //_videoPlayer.Play();
-            _videoPlayer.enabled = true;
-
-            StartCoroutine(LoadScene((float)_videoPlayer.length));
+            StartCoroutine(LoadSequence((float)_videoPlayer.length));
         }
 
-        private IEnumerator LoadScene(float waitTime)
+        private IEnumerator LoadSequence(float waitTime)
         {
+            _videoPlayer.Prepare();
+
+            yield return new WaitForSeconds(_introDelay);
+
+            _videoPlayer.enabled = true;
+            _videoPlayer.Play();
+
             _asyncOperation = SceneManager.LoadSceneAsync(1);
             _asyncOperation.allowSceneActivation = false;
 
