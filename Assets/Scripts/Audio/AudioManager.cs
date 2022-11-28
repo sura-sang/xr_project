@@ -178,6 +178,18 @@ namespace SuraSang
             inst.clearHandle();           
         }
 
+        public void StopAllBGMEvents()
+        {
+            FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/BGM");
+            playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        public void StopAllSFXEvents()
+        {
+            FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+            playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
         public void StopAllSoundEvents()
         {
             FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/");

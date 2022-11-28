@@ -71,7 +71,7 @@ namespace SuraSang
         public void LoadLevel(int num)
         {
             SceneInstance._replyCount++;
-            AudioManager.Instance.StopAllSoundEvents();
+            AudioManager.Instance.StopAllSFXEvents();
             SceneManager.LoadScene(LevelArr[num]);
         }
     }
