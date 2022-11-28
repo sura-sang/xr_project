@@ -91,7 +91,6 @@ namespace SuraSang
                 }
             }
 
-
             if (Instance == null)
             {
                 Instance = this;
@@ -108,12 +107,7 @@ namespace SuraSang
 
         private void Start()
         {
-            TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
-            TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            TitleState.start();
-
-            StageState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
-            StageState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            Init();
         }
 
         private void Update()
@@ -134,6 +128,16 @@ namespace SuraSang
                     StageState.clearHandle();
                 }
             }
+        }
+
+        public void Init()
+        {
+            TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
+            TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            TitleState.start();
+
+            StageState = FMODUnity.RuntimeManager.CreateInstance(AMB_Forest_1);
+            StageState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
         }
 
         public void SoundOneShot2D(EventReference audioEvent)
@@ -175,7 +179,7 @@ namespace SuraSang
         {
             inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             inst.release();
-            inst.clearHandle();           
+            inst.clearHandle();
         }
 
         public void StopAllBGMEvents()
