@@ -110,8 +110,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217311112}
-  m_LocalRotation: {x: -0.000000029802319, y: -1, z: -0.000000054948025, w: -0.00000002235174}
-  m_LocalPosition: {x: 0.0000016540289, y: -0.42000532, z: 5.940002}
+  m_LocalRotation: {x: -0.000000022351742, y: 1, z: -0.000000011175871, w: -0.000000029802322}
+  m_LocalPosition: {x: -0.0000021457672, y: -0.42000103, z: 5.9400005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -479,8 +479,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5454909474940326498}
-  m_LocalRotation: {x: 0.019314012, y: -0.99919057, z: -0.03528127, w: -0.0006818398}
-  m_LocalPosition: {x: 0.0000016540289, y: -0.42000532, z: 5.940004}
+  m_LocalRotation: {x: -0.13400267, y: 0.99035245, z: 0.034968864, w: 0.004731744}
+  m_LocalPosition: {x: -0.0000021457672, y: -0.42000103, z: 5.9400005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -656,6 +656,7 @@ MonoBehaviour:
   _characterAnger: {fileID: 7704156343465842033}
   _characterHappy: {fileID: 7704156342393577629}
   _characterSad: {fileID: 8613926563909662309}
+  IsOnCheckPoint: 0
   _debugMode: 0
   _sadEyes:
   - {fileID: 5541838256803518688}
