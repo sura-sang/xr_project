@@ -21,9 +21,6 @@ namespace SuraSang
             {
                 switch (_type)
                 {
-                    case Type.TITLE:
-                        AudioManager.Instance.TitleState.start();
-                        break;
                     case Type.FOREST1:
                         if (!AudioManager.Instance.IsPlaying(AudioManager.Instance.StageState))
                         {
@@ -34,7 +31,9 @@ namespace SuraSang
                         }
                         break;
                     case Type.FOREST2:
-                        if (AudioManager.Instance.IsPlaying(AudioManager.Instance.StageState) && SceneMaster.SceneInstance._replyCount == 0)
+                        if (AudioManager.Instance.IsPlaying(AudioManager.Instance.StageState) 
+                            && SceneMaster.SceneInstance._replyCount == 0 &&
+                            SceneMaster.SceneInstance.Player.IsTrampolin == false)
                         {
                             AudioManager.Instance.StageState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                             AudioManager.Instance.StageState = FMODUnity.RuntimeManager.CreateInstance(AudioManager.Instance.AMB_Forest_2);

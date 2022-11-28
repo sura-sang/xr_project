@@ -106,6 +106,7 @@ namespace SuraSang
         {
             if (Enable && other.CompareTag("Player") && other.TryGetComponent<Player>(out var player))
             {
+                SceneMaster.SceneInstance.Player.IsTrampolin = true;
                 AudioManager.Instance.SoundOneShot3D(AudioManager.Instance.SFX_M_POP, _monster.transform);
                 OnNotify(new PuzzleContextDirection(player.MoveDir, player, player.CurrentEmotion, player));
             }

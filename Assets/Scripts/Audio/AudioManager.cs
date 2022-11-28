@@ -79,17 +79,17 @@ namespace SuraSang
 
         private void Awake()
         {
-            foreach (var bankRef in Banks)
-            {
-                try
-                {
-                    RuntimeManager.LoadBank(bankRef, false);
-                }
-                catch (BankLoadException e)
-                {
-                    RuntimeUtils.DebugLogException(e);
-                }
-            }
+            //foreach (var bankRef in Banks)
+            //{
+            //    try
+            //    {
+            //        RuntimeManager.LoadBank(bankRef, false);
+            //    }
+            //    catch (BankLoadException e)
+            //    {
+            //        RuntimeUtils.DebugLogException(e);
+            //    }
+            //}
 
 
             if (Instance == null)
@@ -107,6 +107,11 @@ namespace SuraSang
         }
 
         private void Start()
+        {
+            Init();
+        }
+
+        private void Init()
         {
             TitleState = FMODUnity.RuntimeManager.CreateInstance(BGM_Nonhighlight);
             TitleState.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
