@@ -11,8 +11,8 @@ namespace SuraSang
         private float _time;
         private Vector3 _originScale;
         private Monster _monster;
+        private Anger _anger;
         public CapsuleCollider CapsuleCol;
-        private Rigidbody _rigidbody;
 
         private void Start()
         {
@@ -31,11 +31,13 @@ namespace SuraSang
             }
         }
         
+
         private void Update()
         {
             if (_monster.IsSleep)
                 CapsuleCol.enabled = false;
         }
+
 
         IEnumerator GrowUp()
         {
@@ -50,13 +52,7 @@ namespace SuraSang
                     break;
                 }
                 yield return null;
-            }
-
-            if (_monster.Emotion == Emotion.Sadness)
-            {
-                _rigidbody = GetComponent<Rigidbody>();
-                _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            }
+            }        
         }
     }
 }
