@@ -31,11 +31,13 @@ namespace SuraSang
             }
         }
         
+
         private void Update()
         {
             if (_monster.IsSleep)
                 CapsuleCol.enabled = false;
         }
+
 
         IEnumerator GrowUp()
         {

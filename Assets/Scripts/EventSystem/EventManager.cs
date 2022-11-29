@@ -12,6 +12,8 @@ namespace SuraSang
         public event Action<int> ShapeMoveAction;
         public event Action<int> PlatformMoveAction;
         public event Action<int> ShapeReturnAction;
+        public event Action<int> DisableKinematic;
+
         public event Action ObjectActivateAction;
         public event Action ObjectDeActivateAction;
         public event Action TimelineStartAction;
@@ -30,6 +32,11 @@ namespace SuraSang
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        public void OffKinematic(int id)
+        {
+            DisableKinematic?.Invoke(id);
         }
 
         public void PlatformMove(int id)

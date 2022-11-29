@@ -18,7 +18,9 @@ namespace SuraSang
             {
 
                 EventManager.Instance.ShapeMove(_id);
-                DisableAgent.enabled = false;
+
+                if (DisableAgent != null)
+                    DisableAgent.enabled = false;
 
                 if (_enter)
                 {
