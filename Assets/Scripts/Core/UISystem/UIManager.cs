@@ -183,5 +183,15 @@ namespace SuraSang
                 ui.Value.SetState(state);
             }
         }
+
+        public bool IsUIActive<T>() where T : UIModelBase
+        {
+            if (_allUI.TryGetValue(typeof(T), out var model))
+            {
+                return model.UIView.gameObject.activeInHierarchy;
+            }
+
+            return false;
+        }
     }
 }

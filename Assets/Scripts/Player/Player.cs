@@ -163,7 +163,7 @@ namespace SuraSang
             }
         }
 
-        public void SwitchAnimatorLayer()
+        public void AbsorbFinished()
         {
             switch (CurrentEmotion)
             {
@@ -187,6 +187,11 @@ namespace SuraSang
                     Animator.SetLayerWeight(2, 0f);
                     Animator.SetLayerWeight(3, 1f);
                     break;
+            }
+
+            if (!Global.Instance.UIManager.IsUIActive<UISkillDescPopupModel>())
+            {
+                CanMove = true;
             }
         }
 

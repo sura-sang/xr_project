@@ -74,7 +74,6 @@ namespace SuraSang
                 UIView.GetComponent<Animator>().SetTrigger("Release");
                 ReleaseWithDelay(1);
                 inputActions.Dispose();
-                Global.Instance.SceneMaster.Player.CanMove = false;
             };
 
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Helper);
