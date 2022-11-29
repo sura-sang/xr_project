@@ -67,14 +67,22 @@ namespace SuraSang
         {
             _on = true;
             SceneMaster.SceneInstance._replyCount = 0;
+            SceneMaster.SceneInstance.CurrentCheckPoint = GameObject.Find("Start").GetComponent<CheckPoint>();
             AudioManager.Instance.TitleState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             AudioManager.Instance.StageState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            SceneManager.MoveGameObjectToScene(GameObject.Find("SceneMaster"), SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(GameObject.Find("CheckPointManager"), SceneManager.GetActiveScene());
+
+            Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().Init(ReturnTitle);
         }
 
         public void ReturnTitle()
         {
             AudioManager.Instance.TitleState.start();
             SceneMaster.SceneInstance.LoadLevel(1);
+
+            Global.Instance.UIManager.Get<UITimelineSkipPanelModel>().ReleaseUI();
         }
     }
 }

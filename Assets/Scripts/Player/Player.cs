@@ -87,6 +87,7 @@ namespace SuraSang
 
             if (IsReset)
             {
+                SceneMaster.SceneInstance._replyCount++;
                 SceneMaster.SceneInstance.LoadLevel(0);
             }
 
