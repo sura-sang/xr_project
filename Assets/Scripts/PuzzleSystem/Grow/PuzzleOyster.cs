@@ -30,18 +30,25 @@ namespace SuraSang
                 Debug.Log("새송이 버섯 퍼즐 실행");
             }
         }
-        
+
 
         private void Update()
         {
             if (_monster.IsSleep)
+            {
                 CapsuleCol.enabled = false;
+            }
         }
 
 
         IEnumerator GrowUp()
         {
-            while(transform.localScale.x < Size)
+            if (TryGetComponent<Rigidbody>(out var rig))
+            {
+                rig.isKinematic = false;
+            }
+
+            while (transform.localScale.x < Size)
             {
                 transform.localScale = _originScale * (1f + _time * GrowSpeed);
                 _time += Time.deltaTime;
@@ -52,7 +59,12 @@ namespace SuraSang
                     break;
                 }
                 yield return null;
-            }        
+            }
+
+            if (rig != null)
+            {
+                rig.isKinematic = true;
+            }
         }
     }
 }

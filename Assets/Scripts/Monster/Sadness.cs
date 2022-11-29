@@ -29,21 +29,11 @@ namespace SuraSang
         public override void Absorbed()
         {
             base.Absorbed();
-
-            if (TryGetComponent<Rigidbody>(out var rig))
-            {
-                rig.isKinematic = false;
-            }
         }
 
         public override void UnAbsorbed(Monster monster)
         {
             base.UnAbsorbed(monster);
-
-            if (TryGetComponent<Rigidbody>(out var rig))
-            {
-                rig.isKinematic = true;
-            }
         }
     }
 }
