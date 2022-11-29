@@ -10,13 +10,15 @@ namespace SuraSang
 {
     public enum DescType
     {
+        None = -1,
         WASD,
         Shift,
         Space,
         Hold,
         Absorb,
         Skill,
-        CheckPoint
+        CheckPoint,
+        Reset,
     }
 
     public class UIDescPopup : UIPopupBase
@@ -40,6 +42,11 @@ namespace SuraSang
 
         public async void Init(DescType type, float releaseTime = -1)
         {
+            if (type == DescType.None)
+            {
+                return;
+            }
+
             var descPopup = UIView as UIDescPopup;
 
             for (int i = 0; i < descPopup.Icons.Length; i++)
