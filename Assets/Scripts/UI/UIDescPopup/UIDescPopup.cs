@@ -18,7 +18,6 @@ namespace SuraSang
         Absorb,
         Skill,
         CheckPoint,
-        Reset,
     }
 
     public class UIDescPopup : UIPopupBase
