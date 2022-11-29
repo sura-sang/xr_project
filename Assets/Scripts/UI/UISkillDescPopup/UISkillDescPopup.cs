@@ -41,13 +41,12 @@ namespace SuraSang
         {
             base.ReleaseUI();
 
+            Global.Instance.SceneMaster.Player.CanMove = true;
+
             if (_showSkillDesc)
             {
-                if (_showSkillDesc)
-                {
-                    Global.Instance.UIManager.ReleaseAllPopups();
-                    Global.Instance.UIManager.Get<UIDescPopupModel>().Init(DescType.Skill, 5);
-                }
+                Global.Instance.UIManager.ReleaseAllPopups();
+                Global.Instance.UIManager.Get<UIDescPopupModel>().Init(DescType.Skill, 5);
             }
         }
 
@@ -75,9 +74,11 @@ namespace SuraSang
                 UIView.GetComponent<Animator>().SetTrigger("Release");
                 ReleaseWithDelay(1);
                 inputActions.Dispose();
+                Global.Instance.SceneMaster.Player.CanMove = false;
             };
 
             AudioManager.Instance.SoundOneShot2D(AudioManager.Instance.SFX_UI_Helper);
+
         }
     }
 }
