@@ -33,6 +33,9 @@ namespace SuraSang
 
                 if (_currentCount == 1)
                 {
+                    if (_id == 0)
+                        EventManager.Instance.OffKinematic(_id);
+
                     EventManager.Instance.ShapeMove(_id);
 
                     if (_enter)

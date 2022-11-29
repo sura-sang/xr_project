@@ -66,7 +66,8 @@ namespace SuraSang
                 if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Idle") && !_isMakeEffect)
                 {
                     _happyIdleEffect = Global.Instance.ResourceManager.GetObject(Constant.HappyIdleEffect, transform);
-                    _happyIdleEffect.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    _happyIdleEffect.transform.localPosition = new Vector3(0, -0.87f, 0);
+                    _happyIdleEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); 
                     _happyIdleEffect.transform.localRotation = Quaternion.Euler(-90, 0, 0);
                     _isMakeEffect = true;
                 }
