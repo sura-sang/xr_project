@@ -17,6 +17,7 @@ namespace SuraSang
             {
                 Global.Instance.UIManager.ReleaseAllPopups();
                 Global.Instance.UIManager.Get<UIDescPopupModel>().Init(_descType, _releaseTime);
+
                 _isUsed = true;
             }
         }
