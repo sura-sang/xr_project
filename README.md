@@ -4,7 +4,7 @@
 
 >## 플레이 영상
 
-[[플레이 영상](https://img.youtube.com/vi/kGv8qahAMAo/maxresdefault.jpg)](https://youtu.be/kGv8qahAMAo)
+[![플레이 영상](https://img.youtube.com/vi/kGv8qahAMAo/maxresdefault.jpg)](https://youtu.be/kGv8qahAMAo)
 
 <br><br>
 >## 개발 기간
