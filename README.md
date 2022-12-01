@@ -2,6 +2,10 @@
 
 ![포스터](https://user-images.githubusercontent.com/20338405/204439199-464c818d-1dd1-4625-b11b-48c576f9ee66.png)
 
+>## 플레이 영상
+
+[[플레이 영상](https://img.youtube.com/vi/kGv8qahAMAo/maxresdefault.jpg)](https://youtu.be/kGv8qahAMAo)
+
 <br><br>
 >## 개발 기간
 **2022/08/31 ~ 2022/11/30**
